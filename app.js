@@ -2,9 +2,7 @@ const express = require('express');
 const mysql = require('mysql');
 const exphbs = require('express-handlebars');
 const path = require('path');
-const bcrypt = require('bcryptjs');
-
-//Resume download not working
+//const bcrypt = require('bcryptjs');
 
 const app = express();
 
