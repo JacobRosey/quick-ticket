@@ -22,10 +22,14 @@ router.get('/tickets', (req, res) => {
 
 router.get('/performance', (req, res) => {
     res.render('performance');
-})
+});
 
 router.get('/opentickets', (req, res) => {
     res.render('opentickets');
-})
+});
+
+router.get('/team', (req, res) => {
+    res.render('team');
+});
 
 module.exports = router;
