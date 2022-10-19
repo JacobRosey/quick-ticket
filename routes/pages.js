@@ -20,5 +20,9 @@ router.get('/tickets', (req, res) => {
     res.render('tickets');
 });
 
+router.get('/performance', (req, res) => {
+    res.render('performance')
+})
+
 
 module.exports = router;
