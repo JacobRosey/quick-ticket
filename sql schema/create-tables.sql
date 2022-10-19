@@ -19,7 +19,12 @@ CREATE TABLE Tickets (
     INDEX `idx_team`(team_id),
     CONSTRAINT `fk_admin_team` FOREIGN KEY (team_id)
     REFERENCES Teams(team_id) ON UPDATE CASCADE ON DELETE RESTRICT,
-    PRIMARY KEY (ticket_id)
+    PRIMARY KEY (ticket_id),
+    ticket_title VARCHAR (100) NOT NULL,
+	ticket_status BIT(4) NOT NULL,
+	opened_by VARCHAR(30)NOT NULL,
+	closed_by VARCHAR(30),
+	ticket_holder VARCHAR(30)
 )ENGINE=INNODB;
 
 CREATE TABLE Ticket_Data (
