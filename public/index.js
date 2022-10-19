@@ -1,0 +1,3 @@
+function joinTeam(){
+    alert("Hello")
+}

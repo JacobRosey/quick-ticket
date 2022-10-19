@@ -17,21 +17,43 @@
 
     <style>
         h1 {
-            color: blue;
-            font-size: large;
+            color: #0e6efd;
+            font-size: 1em;
             font-weight: bold;
-            margin: 3em;
-            text-align: center;
+            margin-bottom: 6em;
+            margin-top: 2em;
+            text-align: left;
         }
-        #current-user{
-            display: none;
+        .card-title{
+            color: #0e6efd;
+            font-weight: bolder;
         }
+
     </style>
 
     <div class="container">
-        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-        <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_ktwnwv5m.json" background="transparent"
-            speed=".5" style="width: 80%; height: 80%; margin: 3em;" loop autoplay></lottie-player>
+        <h1>Home</h1>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Join a Team!</h5>
+                        <p class="card-text">Looking to get started? Enter your team's code below to join.</p>
+                        <input type="text" id="entered-code">
+                        <a href="#" class="btn btn-primary" onClick="joinTeam();">Submit</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Team Stats</h5>
+                        <p class="card-text">See your team's all-time stats.</p>
+                        <a href="#" class="btn btn-primary">Go</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
