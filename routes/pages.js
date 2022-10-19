@@ -21,8 +21,11 @@ router.get('/tickets', (req, res) => {
 });
 
 router.get('/performance', (req, res) => {
-    res.render('performance')
+    res.render('performance');
 })
 
+router.get('/opentickets', (req, res) => {
+    res.render('opentickets');
+})
 
 module.exports = router;

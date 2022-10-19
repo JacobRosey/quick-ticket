@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Login Authentication</title>
+    <title>My Team</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/styles/styles.css">
@@ -21,35 +21,32 @@
             font-size: 1em;
             font-weight: bold;
             margin-bottom: 6em;
-            margin-top: 2em;
+            margin-top: -6em;
             text-align: left;
+        }
+
+        .container{
+            margin-top: 8em;
+        }
+        .btn{
+            line-height: 24px;
         }
     </style>
 
     <div class="container">
-        <h1>Dashboard / Performance</h1>
-        <div class="row">
-            <div class="col-sm">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Tickets Opened</h5>
-                        <p class="card-text">You have opened a total of 28 tickets. This puts you in the bottom 40% of
-                            your team.</p>
-                        <a href="#" class="btn btn-primary">New Ticket</a>
-                    </div>
-                </div>
+        <h1>Open Tickets</h1>
+        <div class="card text-center">
+            <div class="card-header">
+                Ticket #2390
             </div>
-            <div class="col-sm">
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Tickets Closed</h5>
-                    <p class="card-text">You have closed a total of 203 tickets. This puts you in the top 28% of your
-                        team.
-                    </p>
-                    <a href="/tickets" class="btn btn-primary">My Tickets</a>
-                </div>
+            <div class="card-body">
+                <h5 class="card-title">Ticket Title</h5>
+                <p class="card-text">This is the first 100 characters or so of the title_desc...</p>
+                <a href="#" class="btn btn-primary">View Ticket</a>
             </div>
-        </div>
+            <div class="card-footer text-muted">
+                Opened by: Jacob Rosey
+            </div>
         </div>
     </div>
 
