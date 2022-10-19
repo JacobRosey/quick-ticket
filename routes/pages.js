@@ -16,8 +16,8 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
-router.get('/team', (req, res) => {
-    res.render('team');
+router.get('/tickets', (req, res) => {
+    res.render('tickets');
 });
 
 
