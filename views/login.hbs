@@ -50,28 +50,50 @@
     <h1>Please Log In to Continue!</h1>
     <div class="container">
         <h1>Login</h1>
-        <div class="card" style="width: 36rem;">
-            <div class="card-body">
-                <h5 class="card-title">Enter Your Login Info</h5>
-                <form id="loginForm">
-                    <div class="form-group">
-                        <div class="form-control-lg">
-                            <p>Username:</p>
-                            <input name="user" type="text" id="loginUser" pattern="/^\S*$/" maxlength="12" required>
-                        </div>
+        <div class="d-flex justify-content-center h-100">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Sign In</h3>
+                    <div class="d-flex justify-content-end social_icon">
+                        <span><i class="fab fa-facebook-square"></i></span>
+                        <span><i class="fab fa-google-plus-square"></i></span>
+                        <span><i class="fab fa-twitter-square"></i></span>
                     </div>
-                    <div class="form-group">
-                        <div class="form-control-lg">
-                            <p>Password:</p>
-                            <input name="password" type="password" id="loginPass" pattern="/^\S*$/" maxlength="12"
-                                required>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="username">
+
                         </div>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            <input type="password" class="form-control" placeholder="password">
+                        </div>
+                        <div class="row align-items-center remember">
+                            <input type="checkbox">Remember Me
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Login" class="btn float-right login_btn">
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <div class="d-flex justify-content-center links">
+                        Don't have an account?<a href="#">Sign Up</a>
                     </div>
-                    <button type="button" class="btn btn-block" style="margin: 1em;" onClick='getLogin();'>Log
-                        In</button>
-                </form>
+                    <div class="d-flex justify-content-center">
+                        <a href="#">Forgot your password?</a>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
