@@ -24,7 +24,8 @@ CREATE TABLE Tickets (
 	ticket_status BIT(4) NOT NULL,
 	opened_by VARCHAR(30)NOT NULL,
 	closed_by VARCHAR(30),
-	ticket_holder VARCHAR(30)
+	ticket_holder VARCHAR(30),
+    creation_date TIMESTAMP NOT NULL
 )ENGINE=INNODB;
 
 CREATE TABLE Ticket_Data (
