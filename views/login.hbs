@@ -27,16 +27,6 @@
             margin-top: -2em;
         }
 
-        .container {
-            background: #ccc;
-            border-radius: 10px;
-            margin: 0 auto;
-            margin-top: 3em;
-            padding: 1em;
-            width: 85%;
-            max-width: 500px;
-        }
-
         input {
             width: 100%;
             box-sizing: border-box;
@@ -51,9 +41,11 @@
             margin: .3em;
         }
 
-        footer {
-            margin-top: 5em;
+        button{
+            background-color: #ff914c;
+
         }
+
     </style>
     <h1>Please Log In to Continue!</h1>
     <div class="container">
@@ -70,7 +62,7 @@
                     <input name="password" type="password" id="loginPass" pattern="/^\S*$/" maxlength="12" required>
                 </div>
             </div>
-            <button type="button" class="btn btn-success" style="margin: 1em;" onClick='getLogin();'>Log In</button>
+            <button type="button" class="btn btn-block" style="margin: 1em;" onClick='getLogin();'>Log In</button>
         </form>
     </div>
     </div>
