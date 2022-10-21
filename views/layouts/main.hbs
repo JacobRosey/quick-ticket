@@ -46,42 +46,19 @@
             font-weight: bolder;
             color: #ff914c;
         }
+        #sidebar-nav{
+            margin-top: 3em;
+        }
     </style>
     <nav class="navbar navbar-expand-lg bg-dark" id="click">
         <div class="container-fluid">
             <a class="navbar-brand ms-auto" href="/">
                 <img src="quick.png" width="96" height="48" class="d-inline-block align-center" alt="logo">
             </a>
-            <!--
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <button type="button" class="btn btn-primary"><a class="nav-link active" aria-current="page"
-                                href="/login" style="color: white;">Log In</a></button>
-                    </li>
-                    <li class="nav-item">
-                        <button type="button" class="btn btn-success"><a class="nav-link" href="/register"
-                                style="color:white;">Register</a></button>
-                    </li>
-                    <li class="nav-item">
-                        <button type="button" class="btn" id="team-link"><a class="nav-link" href="/team"
-                                style="color: white;">My Team</a></button>
-                    </li>
-                    <li class="nav-item">
-                        <button type="button" class="btn btn-danger"><a class="nav-link" onClick="logOut();"
-                                style="cursor:pointer;color:white;" style="color: white;">Log Out</a></button>
-                    </li>
-                </ul>
-            </div> -->
         </div>
     </nav>
     <div class="container-fluid">
-        <div class="row flex-nowrap">
+        <div class="row flex-nowrap" id="sidebar-nav">
             <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0" style="background-color: #f7f7f7;">
                 <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
