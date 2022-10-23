@@ -1,47 +1,9 @@
-const mysql = require('mysql');
-const bcrypt = require('bcryptjs');
+const express = require('express');
+const authController = require('../controllers/auth');
 
-//Connect to Jaws DB 
-const db = mysql.createConnection(process.env.JAWSDB_URL);
+const router = express.Router();
 
-exports.register = (req, res) => {
-    console.log(req.body);
+router.post('/register', authController.register);
+//router.post('/database', authController.editRow);
 
-    const { user, password, passwordConfirm } = req.body;
-
-    db.query('SELECT username FROM Users WHERE username = ?', [user], async (err, result) => {
-        if (err) {
-            console.log(err);
-        }
-        if (user.length <= 6) { 
-            //Need to make these messages show a red banner,
-            //right now it shows green banner as if the registration succeeded
-            return res.render('register', {
-                message: 'Username must be 6 or more characters'
-            });
-        }
-        if (result.length > 0) {
-            return res.render('register', {
-                message: 'That username is not available!'
-            })
-        } else if (password !== passwordConfirm) {
-            return res.render('register', {
-                message: 'Your passwords do not match!'
-            });
-        }
-        //Hash the password 8 times using bcrypt
-        let hashedPass = await bcrypt.hash(password, 8);
-        console.log(hashedPass);
-        db.query('INSERT INTO Users SET ?', { username: user, hash: hashedPass }, (err, result) => {
-            if (err) {
-                console.log(err);
-            }
-            else {
-                res.render('register', {
-                    message: 'User Registered!'
-                });
-            }
-        }
-        )
-    });
-}
+module.exports = router;
