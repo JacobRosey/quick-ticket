@@ -136,13 +136,13 @@
                         </div>
                     </form>
                 </div>
-                {{#if message }}
-                <h4 class="alert alert-success mt-4">{{message}}</h4>
-                {{/if}}
                 <div class="card-footer">
                     <div class="d-flex justify-content-center links">
                         Already have an account?<a href="/login">Sign In</a>
                     </div>
+                    {{#if message }}
+                    <h4 class="alert alert-success mt-4">{{message}}</h4>
+                    {{/if}}
                 </div>
             </div>
         </div>
