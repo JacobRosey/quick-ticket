@@ -40,5 +40,5 @@ app.listen(port, () => {
 //Define Routes
 app.use('/', require('./routes/pages'));
 app.use('/login', require('./routes/pages'));
-//app.use('/auth', require('./routes/auth'));
+app.use('/auth', require('./routes/auth'));
 app.use('/register', require('./routes/pages'));
