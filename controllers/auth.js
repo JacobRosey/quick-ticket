@@ -9,7 +9,7 @@ exports.register = (req, res) => {
 
     const { user, password, passwordConfirm } = req.body;
 
-    db.query('SELECT username FROM Users WHERE username = ?', [user], async (err, result) => {
+    db.query('SELECT user_name FROM users WHERE user_name = ?', [user], async (err, result) => {
         if (err) {
             console.log(err);
         }
@@ -32,7 +32,7 @@ exports.register = (req, res) => {
         //Hash the password 8 times using bcrypt
         let hashedPass = await bcrypt.hash(password, 8);
         console.log(hashedPass);
-        db.query('INSERT INTO Users SET ?', { username: user, hash: hashedPass }, (err, result) => {
+        db.query('INSERT INTO Users SET ?', { user_name: user, user_hash: hashedPass }, (err, result) => {
             if (err) {
                 console.log(err);
             }
