@@ -8,11 +8,28 @@ function checkForUser(){
     let userN = document.getElementById('userN');
     let isLogged = sessionStorage.getItem('logged');
     let currentUser = sessionStorage.getItem('user');
-    console.log(isLogged);
+
     if(isLogged == true){
         userN.innerHTML = currentUser; 
         return true;
-    } else return false;
+    } else {
+        userN.innerHTML = "<a href='/login'> Sign In </a>"
+        return false;
+    } 
+
+}
+
+function logOut(){
+    let isLogged = sessionStorage.getItem('logged');
+    if (isLogged !== 'true') {
+        return alert("You aren't logged in!")
+    } else {
+        //Reset session storage on logout
+        sessionStorage.setItem('logged', false);
+        sessionStorage.setItem('user', 'none');
+        alert("Logout Successful.");
+        checkForUser();
+    }
 
 }
 
