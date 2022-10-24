@@ -5,14 +5,17 @@ window.onload = checkForUser();
 //Checks if user is logged in
 function checkForUser(){
     let userN = document.getElementById('userN');
+    let userDiv = document.getElementById('user-drop');
     let isLogged = sessionStorage.getItem('logged');
     let currentUser = sessionStorage.getItem('user');
 
     if(isLogged == true){
-        userN.innerHTML = "<span class='d-none d-sm-inline mx-1' id='userN'>"+currentUser+"</span>"
+        userN.innerHTML += currentUser;
+        userDiv.style.visibility = "visible" 
         return true;
     } else {
-        userN.innerHTML = "<a href='/login'></a>"
+        userDiv.style.visibility = "hidden"
+        userN.innerHTML = ""
         return false;
     } 
 
