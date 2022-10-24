@@ -27,6 +27,7 @@ function logOut(){
         sessionStorage.setItem('logged', false);
         sessionStorage.setItem('user', 'none');
         alert("Logout Successful.");
+        window.location.replace('quick-ticket.herokuapp.com/login')
         checkForUser();
     }
 
