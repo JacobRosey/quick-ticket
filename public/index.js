@@ -2,13 +2,10 @@
 function checkForUser(){
     let userN = document.getElementById('userN');
     let userDiv = document.getElementById('user-drop');
-    let isLogged = sessionStorage.getItem('logged');
-    let currentUser = sessionStorage.getItem('user');
-
-    alert(window.onload);
+    var isLogged = sessionStorage.getItem('logged');
+    var currentUser = sessionStorage.getItem('user');
 
     if(isLogged == true){
-        alert('Logged in!!')
         userDiv.style.visibility = "visible"
         userN.innerHTML = currentUser; 
     } else {
