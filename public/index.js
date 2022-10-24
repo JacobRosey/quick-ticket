@@ -25,9 +25,9 @@ function getLogin() {
 
 function ajaxFunc(path, method, d){
     //If user is logging in; edit path to be like /login/user/pass
-    if (method == 'GET') {
+    /*if (method == 'GET') {
         path = path + "/" + d.user + "/" + d.pass + ""
-    }
+    }*/
     let xhr = new XMLHttpRequest();
     xhr.open(method, path, true);
 
