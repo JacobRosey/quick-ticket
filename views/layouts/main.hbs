@@ -27,18 +27,19 @@
             line-height: 24px !important;
         }
 
-        .col .py-3{
+        .col .py-3 {
             background-color: #d2d2d2;
         }
-        .card-body{
+
+        .card-body {
             background-color: rgb(255, 255, 255);
         }
 
-        .fs-4{
+        .fs-4 {
             color: #ff914c
         }
 
-        span{
+        span {
             color: black;
         }
 
@@ -46,13 +47,16 @@
             font-weight: bolder;
             color: #ff914c;
         }
-        .bi{
+
+        .bi {
             color: #ff914c;
         }
-        #sidebar-nav{
+
+        #sidebar-nav {
             margin-top: 4em;
         }
-        #user-drop{
+
+        #user-drop {
             margin-bottom: 2em;
         }
     </style>
@@ -64,9 +68,10 @@
         </div>
     </nav>
     <div class="container-fluid">
-        <div class="row flex-nowrap" >
+        <div class="row flex-nowrap">
             <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0" style="background-color: #f7f7f7;">
-                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100" id="sidebar-nav">
+                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100"
+                    id="sidebar-nav">
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
                         id="menu">
                         <li class="nav-item">
@@ -76,23 +81,29 @@
                         </li>
                         <li>
                             <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                                   <i class="fs-4 bi-ticket-perforated"></i> <span class="ms-1 d-none d-sm-inline">Tickets</span> </a>
+                                <i class="fs-4 bi-ticket-perforated"></i> <span
+                                    class="ms-1 d-none d-sm-inline">Tickets</span> </a>
                             <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                                 <li class="w-100">
-                                    <a href="/newticket" class="nav-link px-0"><i class="bi bi-plus-circle"></i> <span class="d-none d-sm-inline">New Ticket</span>
-                                        </a>
+                                    <a href="/mytickets" class="nav-link px-0"> <i class="bi bi-tag"></i><span
+                                            class="d-none d-sm-inline">My Tickets</span>
+                                    </a>
                                 </li>
                                 <li>
-                                    <a href="/opentickets" class="nav-link px-0"><i class="bi bi-tag"></i> <span class="d-none d-sm-inline">Open Tickets</span>
-                                        </a>
+                                    <a href="/newticket" class="nav-link px-0"><i class="bi bi-plus-circle"></i> <span
+                                            class="d-none d-sm-inline">New Ticket</span>
+                                    </a>
                                 </li>
                                 <li>
-                                    <a href="/mytickets" class="nav-link px-0"> <i class="bi bi-tag"></i><span class="d-none d-sm-inline">My Tickets</span>
-                                        </a>
+                                    <a href="/opentickets" class="nav-link px-0"><i class="bi bi-circle"></i></i> <span
+                                            class="d-none d-sm-inline">Open Tickets</span>
+                                    </a>
                                 </li>
                                 <li>
-                                    <a href="/closedtickets" class="nav-link px-0"> <i class="bi bi-app"></i><span class="d-none d-sm-inline">Closed Tickets</span>
-                                        </a>
+                                    <a href="/closedtickets" class="nav-link px-0"><i
+                                            class="bi bi-circle-fill"></i><span class="d-none d-sm-inline">Closed
+                                            Tickets</span>
+                                    </a>
                                 </li>
                             </ul>
                         </li>
@@ -104,10 +115,9 @@
                     </ul>
                     <hr>
                     <div class="dropdown pb-4" id="user-drop">
-                        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" 
+                        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                             id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="profimg.png" alt="profilepic" width="30" height="30"
-                                class="rounded-circle">
+                            <img src="profimg.png" alt="profilepic" width="30" height="30" class="rounded-circle">
                             <span class="d-none d-sm-inline mx-1" id="userN">Username</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
