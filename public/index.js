@@ -12,7 +12,7 @@ function checkForUser(){
         userN.innerHTML = "<span class='d-none d-sm-inline mx-1' id='userN'>"+currentUser+"</span>"
         return true;
     } else {
-        userN.innerHTML = "<a href='/login'> Sign In </a>"
+        userN.innerHTML = "<a href='/login'></a>"
         return false;
     } 
 
