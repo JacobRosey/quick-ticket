@@ -97,7 +97,7 @@ function ajaxFunc(path, method, d){
         var response = xhr.responseText;
         if (response == "Login Successful!") {
             //Redirect to the home page after successful login
-            window.location.replace('https://quick-ticket.herokuapp.com/home');
+            window.location.replace('/home');
             alert(response);
             //Setup session storage
             sessionStorage.setItem('logged', true);
