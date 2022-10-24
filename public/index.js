@@ -9,7 +9,6 @@ function checkForUser(){
         userN.innerHTML = currentUser; 
         sideNav.style.display = "block"
     } else {
-        userN.innerHTML = "";
         sideNav.style.display= "none";
     } 
 
