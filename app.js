@@ -2,7 +2,7 @@ const express = require('express');
 const mysql = require('mysql');
 const exphbs = require('express-handlebars');
 const path = require('path');
-//const bcrypt = require('bcryptjs');
+const bcrypt = require('bcryptjs');
 
 const app = express();
 
