@@ -13,11 +13,9 @@ function checkForUser(){
         alert('Logged in!!')
         userDiv.style.visibility = "visible"
         userN.innerHTML = currentUser; 
-        return true;
     } else {
         //userDiv.style.visibility = "hidden"
         userN.innerHTML = ""
-        return false;
     } 
 
 }
