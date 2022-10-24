@@ -5,10 +5,12 @@ window.onload = checkForUser();
 //Checks if user is logged in
 //Also used to make sure edits aren't made if not logged in.
 function checkForUser(){
-
+    let userN = document.getElementById('userN');
     let isLogged = sessionStorage.getItem('logged');
+    let currentUser = sessionStorage.getItem('user');
     console.log(isLogged);
     if(isLogged == true){
+        userN.innerHTML = currentUser; 
         return true;
     } else return false;
 
