@@ -9,6 +9,8 @@ function checkForUser(){
     let isLogged = sessionStorage.getItem('logged');
     let currentUser = sessionStorage.getItem('user');
 
+    alert(window.onload);
+
     if(isLogged == true){
         alert('Logged in!!')
         userDiv.style.visibility = "visible"
