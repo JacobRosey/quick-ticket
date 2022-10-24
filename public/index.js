@@ -5,7 +5,7 @@ function checkForUser(){
     var isLogged = sessionStorage.getItem('logged');
     var currentUser = sessionStorage.getItem('user');
 
-    if(isLogged == true){
+    if(isLogged == 'true'){
         userDiv.style.visibility = "visible"
         userN.innerHTML = currentUser; 
     } else {
