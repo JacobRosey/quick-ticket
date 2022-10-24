@@ -9,7 +9,7 @@ function checkForUser(){
         userDiv.style.visibility = "visible"
         userN.innerHTML = currentUser; 
     } else {
-        //userDiv.style.visibility = "hidden"
+        userDiv.style.visibility = "hidden"
         userN.innerHTML = ""
     } 
 
