@@ -24,16 +24,20 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
+router.get('/newticket', (req, res) => {
+    res.render('/newticket');
+});
+
 router.get('/mytickets', (req, res) => {
     res.render('mytickets');
 });
 
-router.get('/performance', (req, res) => {
-    res.render('performance');
-});
-
 router.get('/opentickets', (req, res) => {
     res.render('opentickets');
+});
+
+router.get('/performance', (req, res) => {
+    res.render('performance');
 });
 
 router.get('/team', (req, res) => {
