@@ -54,6 +54,7 @@ function getLogin() {
         }
         console.log('now doing ajax function with ' + data)
         ajaxFunc('/login/'+data.user+'/'+data.pass+'', "GET", data);
+        checkForUser();
     }
 
 }
@@ -101,7 +102,6 @@ function ajaxFunc(path, method, d){
             //Setup session storage
             sessionStorage.setItem('logged', true);
             sessionStorage.setItem('user', d.user);
-            checkForUser();
         } 
         if (response == "Incorrect Password!") {
             alert(response)
