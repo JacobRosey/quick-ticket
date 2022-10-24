@@ -17,8 +17,66 @@ function getLogin() {
             "user": user,
             "pass": pass
         }
-        console.log('now do ajax function with ' + data)
-        //ajaxFunc(undefined, '/login', "GET", data);
+        console.log('now doing ajax function with ' + data)
+        ajaxFunc('/login/'+data.user+'/'+data.pass+'', "GET", data);
     }
 
+}
+
+function ajaxFunc(path, method, d){
+    //If user is logging in; edit path to be like /login/user/pass
+    if (method == 'GET') {
+        path = path + "/" + d.user + "/" + d.pass + ""
+    }
+    let xhr = new XMLHttpRequest();
+    xhr.open(method, path, true);
+
+    xhr.setRequestHeader("Accept", "application/json");
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    /* Probably going to need a put/delete request at some point
+    if (method == 'PUT') {
+        var data = JSON.stringify({
+            "name": d.name,
+            "pass": d.pass
+        })
+
+    } */
+
+    if (method == 'GET') {
+        console.log(path)
+        var data = JSON.stringify({
+            "user": "" + d.user + "",
+            "pass": "" + d.pass + ""
+        })
+        console.log('This is a get request');
+        xhr.send(data);
+    }
+
+    xhr.onload = () => {
+        if (xhr.status == 200) {
+            console.log('success');
+        } else console.log('status ' + xhr.status)
+        //State whether login was successful or not
+        var response = xhr.responseText;
+        if (response == "Login Successful!") {
+            //Redirect to the database page after logging in
+            window.location.replace('https://livedatabase.herokuapp.com/database');
+            alert(response);
+            //Setup session storage
+            sessionStorage.setItem('logged', true);
+            sessionStorage.setItem('user', d.user);
+            checkForUser();
+        } 
+        if (response == "Incorrect Password!") {
+            alert(response)
+            document.getElementById('loginPass').value = '';
+        }
+        if(response == "This username does not exist!"){
+            alert(response);
+        }
+    }
+    xhr.onerror = () => {
+        console.log("Something went wrong")
+    }
 }
