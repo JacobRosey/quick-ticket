@@ -64,6 +64,9 @@ app.route('/login/:user/:pass')
                 }
                 if (result.length > 0) {
                     console.log('This user exists in DB');
+                    for(let i=0; i<result.length; i++){
+                        console.log(result[i])
+                    }
                     pword = result[0].hash;
                     resolve(pword);
                 }
