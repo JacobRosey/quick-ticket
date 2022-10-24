@@ -1,7 +1,3 @@
-//Should probably figure out how to use cookies so that you can't 
-//edit/delete a user that is logged in on another tab or computer as well
-window.onload = checkForUser();
-
 //Checks if user is logged in
 function checkForUser(){
     let userN = document.getElementById('userN');
@@ -119,3 +115,7 @@ function ajaxFunc(path, method, d){
         console.log("Something went wrong")
     }
 }
+
+//Should probably figure out how to use cookies so that you can't 
+//edit/delete a user that is logged in on another tab or computer as well
+window.onload = checkForUser();
