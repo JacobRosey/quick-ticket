@@ -1,3 +1,19 @@
+//Should probably figure out how to use cookies so that you can't 
+//edit/delete a user that is logged in on another tab or computer as well
+window.onload = checkForUser();
+
+//Checks if user is logged in
+//Also used to make sure edits aren't made if not logged in.
+function checkForUser(){
+
+    let isLogged = sessionStorage.getItem('logged');
+    console.log(isLogged);
+    if(isLogged == true){
+        return true;
+    } else return false;
+
+}
+
 function joinTeam(){
     alert("Hello")
 }
@@ -60,8 +76,8 @@ function ajaxFunc(path, method, d){
         //State whether login was successful or not
         var response = xhr.responseText;
         if (response == "Login Successful!") {
-            //Redirect to the database page after logging in
-            window.location.replace('https://livedatabase.herokuapp.com/database');
+            //Redirect to the home page after successful login
+            window.location.replace('https://quick-ticket.herokuapp.com/home');
             alert(response);
             //Setup session storage
             sessionStorage.setItem('logged', true);
