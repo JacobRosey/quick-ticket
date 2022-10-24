@@ -10,11 +10,12 @@ function checkForUser(){
     let currentUser = sessionStorage.getItem('user');
 
     if(isLogged == true){
-        userN.innerHTML += currentUser;
-        userDiv.style.visibility = "visible" 
+        alert('Logged in!!')
+        userDiv.style.visibility = "visible"
+        userN.innerHTML = currentUser; 
         return true;
     } else {
-        userDiv.style.visibility = "hidden"
+        //userDiv.style.visibility = "hidden"
         userN.innerHTML = ""
         return false;
     } 
