@@ -4,15 +4,13 @@ function checkForUser(){
     let sideNav = document.getElementById('side-nav')
     let isLogged = sessionStorage.getItem('logged');
     let currentUser = sessionStorage.getItem('user');
-    let footer = document.getElementsByTagName('footer');
 
     if(isLogged == 'true'){
         userN.innerHTML = currentUser; 
         sideNav.style.display = "block"
-        footer.style.marginTop = '0em';
     } else {
         sideNav.style.display= "none";
-        footer.style.marginTop = '5em';
+
     } 
 
 }
