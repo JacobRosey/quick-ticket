@@ -1,19 +1,16 @@
 //Checks if user is logged in
 function checkForUser(){
     let userN = document.getElementById('userN');
-    let userDiv = document.getElementById('user-drop');
     let sideNav = document.getElementById('side-nav')
     var isLogged = sessionStorage.getItem('logged');
     var currentUser = sessionStorage.getItem('user');
 
     if(isLogged == 'true'){
-        userDiv.style.visibility = "visible"
         userN.innerHTML = currentUser; 
-        sideNav.style.visibility = "visible"
+        sideNav.style.display = "block"
     } else {
-        userDiv.style.visibility = "hidden"
-        userN.innerHTML = ""
-        sideNav.style.visibility = "hidden";
+        userN.innerHTML = "";
+        sideNav.style.display= "none";
     } 
 
 }
