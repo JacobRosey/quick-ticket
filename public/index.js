@@ -39,7 +39,7 @@ function logOut(){
 
 function createTeam(){
     let teamName = document.getElementById('entered-team-name').value;
-    alert(teamName)
+    console.log(teamName)
 }
 
 function joinTeam(){
