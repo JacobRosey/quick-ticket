@@ -47,7 +47,7 @@ exports.register = (req, res) => {
 }
 
 exports.newTicket = (req, res) => {
-    console.log(req.body)
+    console.log("testing")
     
     res.render('newticket', {
         message: 'Ticket Created!'
