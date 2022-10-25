@@ -47,7 +47,7 @@ exports.register = (req, res) => {
 }
 
 exports.newTicket = (req, res) => {
-    console.log(req, res)
+    console.log(req.body)
     if(err) {
         console.log(err)
     }else{
