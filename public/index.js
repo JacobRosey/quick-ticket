@@ -39,7 +39,17 @@ function logOut(){
 
 function createTeam(){
     let teamName = document.getElementById('entered-team-name').value;
-    console.log(teamName)
+    let admin = sessionStorage.getItem('user');
+
+    if(teamName == ''){
+        return alert('You must enter a team name!')
+    }
+    let data = {
+        "admin":admin,
+        "team": teamName
+    }
+
+    ajaxFunc('/index/'+data.admin+'/'+data+teamName+'', 'POST', data)
 }
 
 function joinTeam(){
