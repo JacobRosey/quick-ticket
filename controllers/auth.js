@@ -17,16 +17,16 @@ exports.register = (req, res) => {
             //Need to make these messages show a red banner,
             //right now it shows green banner as if the registration succeeded
             return res.render('register', {
-                message: 'Username must be 6 or more characters'
+                failed: 'Username must be 6 or more characters'
             });
         }
         if (result.length > 0) {
             return res.render('register', {
-                message: 'That username is not available!'
+                failed: 'That username is not available!'
             })
         } else if (password !== passwordConfirm) {
             return res.render('register', {
-                message: 'Your passwords do not match!'
+                failed: 'Your passwords do not match!'
             });
         }
         //Hash the password 8 times using bcrypt
@@ -38,7 +38,7 @@ exports.register = (req, res) => {
             }
             else {
                 res.render('register', {
-                    message: 'User Registered!'
+                    success: 'User Registered!'
                 });
             }
         }
