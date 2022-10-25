@@ -89,3 +89,12 @@ app.route('/login/:user/:pass')
                 res.send("This username does not exist!")
             })
     });
+
+app.route('/index')
+    .post(function (req, res, err) {
+        if(err){
+            console.log(err)
+        }
+        const {admin, teamName} = req.body;
+        console.log(admin, teamName)
+})
