@@ -127,6 +127,19 @@ function ajaxFunc(path, method, d){
         }
     }
 
+    if(method == 'POST'){
+        console.log(path)
+        console.log('This is a get request');
+        xhr.send(d);
+        xhr.onload = () => {
+            if (xhr.status == 200) {
+                console.log('success');
+            } else console.log('status ' + xhr.status)
+            //State whether login was successful or not
+            var response = xhr.responseText;
+            console.log(response)
+        }
+    }
     xhr.onerror = () => {
         console.log("Something went wrong")
     }
