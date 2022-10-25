@@ -69,12 +69,16 @@
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Ticket Description</label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                    placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." required></textarea>
+                    placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    required></textarea>
             </div>
             <div class="form-group">
                 <button class="btn" type="submit">Create</button>
             </div>
         </form>
+        {{#if message }}
+        <h4 class="alert alert-success mt-4">{{message}}</h4>
+        {{/if}}
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
