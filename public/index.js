@@ -7,11 +7,11 @@ function checkForUser(){
 
     if(isLogged == 'true'){
         userN.innerHTML = currentUser; 
-        sideNav.style.display = "block"
+        sideNav.style.display = "block";
+        window.location.replace('home')
     } else {
         sideNav.style.display= "none";
-        window.location.replace('/login')
-
+        
     } 
 
 }
