@@ -90,7 +90,7 @@ app.route('/login/:user/:pass')
             })
     });
 
-app.route('/index')
+app.route('/index/:admin/:teamName')
     .post(function (req, res, err) {
         if(err){
             console.log(err)
