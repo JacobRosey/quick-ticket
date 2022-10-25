@@ -19,7 +19,7 @@ function clickedLogo(){
     let isLogged = sessionStorage.getItem('logged');
 
     if(isLogged == 'true'){
-        window.location.replace('/index')
+        window.location.replace('/home')
     } else window.location.replace('/login')
 }
 
