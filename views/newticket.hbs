@@ -24,35 +24,34 @@
             margin-top: 2em;
             text-align: left;
         }
-        .card{
+
+        .card {
             margin-bottom: 1em;
         }
     </style>
 
     <div class="container">
-        <div class="row">
-            <div class="col-sm">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Tickets Opened</h5>
-                        <p class="card-text">You have opened a total of 28 tickets. This puts you in the bottom 40% of
-                            your team.</p>
-                        <a href="#" class="btn btn-primary">New Ticket</a>
-                    </div>
-                </div>
+        <form>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Ticket Title</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
             </div>
-            <div class="col-sm">
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Tickets Closed</h5>
-                    <p class="card-text">You have closed a total of 203 tickets. This puts you in the top 28% of your
-                        team.
-                    </p>
-                    <a href="/tickets" class="btn btn-primary">My Tickets</a>
-                </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Priority Level</label>
+                <select class="form-control" id="exampleFormControlSelect1">
+                    <option>Low</option>
+                    <option>High</option>
+                    <option>Emergency</option>
+                </select>
             </div>
-        </div>
-        </div>
+            <div class="form-group">
+
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Ticket Description</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+        </form>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
