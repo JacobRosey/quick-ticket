@@ -49,7 +49,7 @@ function createTeam(){
         "team": teamName
     }
 
-    ajaxFunc('/index/'+data.admin+'/'+data+teamName+'', 'POST', data)
+    ajaxFunc('/index/'+admin+'/'+teamName+'', 'POST', data)
 }
 
 function joinTeam(){
