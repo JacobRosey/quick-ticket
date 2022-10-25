@@ -20,7 +20,7 @@ function clickedLogo(){
 
     if(isLogged == 'true'){
         window.location.replace('/home')
-    } else window.location.replace('/login')
+    } 
 }
 
 function logOut(){
