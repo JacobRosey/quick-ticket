@@ -10,6 +10,7 @@ function checkForUser(){
         sideNav.style.display = "block"
     } else {
         sideNav.style.display= "none";
+        window.location.replace('/login')
 
     } 
 
