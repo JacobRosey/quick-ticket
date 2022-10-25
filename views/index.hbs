@@ -34,7 +34,7 @@
             min-height: 240px;
         }
 
-        #entered-code {
+        .home-input {
             box-sizing: border-box;
             width: calc(100% - 20px)
         }
@@ -52,7 +52,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Create a Team</h5>
                         <p class="card-text">Choose a name and hit submit to create a new team!</p>
-                        <input type="text" maxlength="16" id="entered-team-name">
+                        <input type="text" maxlength="16" class="home-input" id="entered-team-name">
                         <a href="#" class="btn btn-primary" onClick="createTeam();">Submit</a>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Join a Team</h5>
                         <p class="card-text">Looking to get started? Enter your team's code below to join!</p>
-                        <input type="text" maxlength="16" id="entered-code">
+                        <input type="text" maxlength="16" class="home-input" id="entered-code">
                         <a href="#" class="btn btn-primary" onClick="joinTeam();">Submit</a>
                     </div>
                 </div>
