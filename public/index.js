@@ -129,7 +129,7 @@ function ajaxFunc(path, method, d){
 
     if(method == 'POST'){
         console.log(path)
-        console.log('This is a get request');
+        console.log('This is a post request');
         xhr.send(d);
         xhr.onload = () => {
             if (xhr.status == 200) {
