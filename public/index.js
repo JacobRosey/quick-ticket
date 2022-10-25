@@ -79,10 +79,7 @@ function getLogin() {
 }
 
 function ajaxFunc(path, method, d){
-    //If user is logging in; edit path to be like /login/user/pass
-    /*if (method == 'GET') {
-        path = path + "/" + d.user + "/" + d.pass + ""
-    }*/
+    
     let xhr = new XMLHttpRequest();
     xhr.open(method, path, true);
 
@@ -106,30 +103,30 @@ function ajaxFunc(path, method, d){
         })
         console.log('This is a get request');
         xhr.send(data);
+        xhr.onload = () => {
+            if (xhr.status == 200) {
+                console.log('success');
+            } else console.log('status ' + xhr.status)
+            //State whether login was successful or not
+            var response = xhr.responseText;
+            if (response == "Login Successful!") {
+                //Redirect to the home page after successful login
+                window.location.replace('/home');
+                alert(response);
+                //Setup session storage
+                sessionStorage.setItem('logged', true);
+                sessionStorage.setItem('user', d.user);
+            } 
+            if (response == "Incorrect Password!") {
+                alert(response)
+                document.getElementById('loginPass').value = '';
+            }
+            if(response == "This username does not exist!"){
+                alert(response);
+            }
+        }
     }
 
-    xhr.onload = () => {
-        if (xhr.status == 200) {
-            console.log('success');
-        } else console.log('status ' + xhr.status)
-        //State whether login was successful or not
-        var response = xhr.responseText;
-        if (response == "Login Successful!") {
-            //Redirect to the home page after successful login
-            window.location.replace('/home');
-            alert(response);
-            //Setup session storage
-            sessionStorage.setItem('logged', true);
-            sessionStorage.setItem('user', d.user);
-        } 
-        if (response == "Incorrect Password!") {
-            alert(response)
-            document.getElementById('loginPass').value = '';
-        }
-        if(response == "This username does not exist!"){
-            alert(response);
-        }
-    }
     xhr.onerror = () => {
         console.log("Something went wrong")
     }
