@@ -37,7 +37,7 @@
     <div class="container">
         <h1>Create New Ticket</h1>
         <form>
-            <div class="form-group">
+            <div class="form-group" action="auth/newticket" method="POST">
                 <label for="exampleFormControlInput1">Ticket Title</label>
                 <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Issue with promise in app.js">
             </div>
@@ -50,11 +50,11 @@
                 </select>
             </div>
             <div class="form-group">
-
-            </div>
-            <div class="form-group">
                 <label for="exampleFormControlTextarea1">Ticket Description</label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."></textarea>
+            </div>
+            <div class="form-group">
+                <button class="btn" type="submit">Create</button>
             </div>
         </form>
     </div>
