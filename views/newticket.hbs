@@ -51,6 +51,9 @@
 
     <div class="container">
         <h1>Create New Ticket</h1>
+        {{#if message }}
+        <h4 class="alert alert-success mt-4">{{message}}</h4>
+        {{/if}}
         <form action="auth/newticket" method="POST">
             <div class="form-group">
                 <label for="exampleFormControlInput1">Ticket Title</label>
@@ -77,9 +80,6 @@
             </div>
         </form>
     </div>
-    {{#if message }}
-    <h4 class="alert alert-success mt-4">{{message}}</h4>
-    {{/if}}
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
