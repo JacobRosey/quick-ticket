@@ -45,3 +45,7 @@ exports.register = (req, res) => {
         )
     });
 }
+
+exports.newTicket = (req, res) => {
+    console.log(req, res)
+}
