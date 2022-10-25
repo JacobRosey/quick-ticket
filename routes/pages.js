@@ -36,6 +36,10 @@ router.get('/opentickets', (req, res) => {
     res.render('opentickets');
 });
 
+router.get('/closedtickets', (req, res) => {
+    res.render('closedtickets')
+})
+
 router.get('/performance', (req, res) => {
     res.render('performance');
 });
