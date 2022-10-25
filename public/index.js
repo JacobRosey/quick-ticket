@@ -15,6 +15,14 @@ function checkForUser(){
 
 }
 
+function clickedLogo(){
+    let isLogged = sessionStorage.getItem('logged');
+
+    if(isLogged == 'true'){
+        window.location.replace('/index')
+    } else window.location.replace('/login')
+}
+
 function logOut(){
     let isLogged = sessionStorage.getItem('logged');
     if (isLogged !== 'true') {
