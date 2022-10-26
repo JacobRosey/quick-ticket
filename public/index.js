@@ -11,7 +11,12 @@ function checkForUser(){
     } else {
         sideNav.style.display= "none";
     } 
+}
 
+function setActiveLink(){
+    let active = window.location.href;
+
+    alert(active)
 }
 
 function clickedLogo(){
@@ -147,4 +152,4 @@ function ajaxFunc(path, method, d){
 
 //Should probably figure out how to use cookies so that you can't 
 //edit/delete a user that is logged in on another tab or computer as well
-window.onload = checkForUser();
+window.onload = checkForUser(); setActiveLink();
