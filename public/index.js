@@ -15,8 +15,9 @@ function checkForUser(){
 
 function setActiveLink(){
     let active = window.location.href;
+    active.replace("https://quick-ticket.herokuapp.com/")
+    console.log(active);
 
-    alert(active)
 }
 
 function clickedLogo(){
