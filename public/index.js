@@ -23,7 +23,7 @@ function setActiveLink(){
         let text = document.getElementById(active);
         text.style.fontWeight = 'bolder';
         if(active.includes('ticket')){
-            document.getElementById('tickets').style.fontStyle = "underline"
+            document.getElementById('tickets').style.textDecoration = "underline"
             let navLink = document.getElementById('submenu1');
             navLink.className ="nav flex-column ms-1 collapse show";
             navLink.setAttribute("aria-expanded", "true");
