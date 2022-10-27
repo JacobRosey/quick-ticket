@@ -14,19 +14,29 @@ function checkForUser(){
 }
 
 function setActiveLink(){
+    //Get current page
     let active = window.location.href.replace("https://quick-ticket.herokuapp.com/", "");
     console.log(active);
 
-    //If i'm on login or register page, don't worry about nav stuff
+    //If on login or register page, don't care about nav stuff
     //because it's not visible on screen
     if(active !== 'login' && active !== 'register'){
         let text = document.getElementById(active);
         text.style.fontWeight = 'bolder';
+        if(active == 'home'){
+            //Not sure how to remove the default active state
+            //from home, so just leave it as is 
+            return;
+        } else{
+            document.getElementById('home').style.fontWeight = 'normal'
+        }
+
         if(active.includes('ticket')){
             document.getElementById('tickets').style.textDecoration = "underline"
             let navLink = document.getElementById('submenu1');
             navLink.className ="nav flex-column ms-1 collapse show";
             navLink.setAttribute("aria-expanded", "true");
+            return;
         }
     }
 
