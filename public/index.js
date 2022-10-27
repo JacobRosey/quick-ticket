@@ -24,8 +24,7 @@ function setActiveLink(){
         let text = document.getElementById(active);
         text.style.fontWeight = 'bolder';
         if(active == 'home'){
-            //Not sure how to remove the default active state
-            //from home, so just leave it as is 
+            text.style.fontWeight = 'bold';
             return;
         } else{
             document.getElementById('home').style.fontWeight = 'normal'
