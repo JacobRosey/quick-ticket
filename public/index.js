@@ -17,6 +17,8 @@ function setActiveLink(){
     let active = window.location.href.replace("https://quick-ticket.herokuapp.com/", "");
     console.log(active);
 
+    //If i'm on login or register page, don't worry about nav stuff
+    //because it's not visible on screen
     if(active !== 'login' && active !== 'register'){
         let text = document.getElementById(active);
         text.style.fontWeight = 'bolder';
