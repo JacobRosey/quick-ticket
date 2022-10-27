@@ -62,7 +62,7 @@ function logOut(){
 }
 
 function createTeam(){
-    let teamName = document.getElementById('entered-team-name').value;
+    let teamName = document.getElementById('entered-team-name').value.replace('s/^\s+|\s+$|\s+(?=\s)//g');
     let admin = sessionStorage.getItem('user');
 
     if(teamName == ''){
