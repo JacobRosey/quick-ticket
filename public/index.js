@@ -22,11 +22,8 @@ function setActiveLink(){
     //because it's not visible on screen
     if(active !== 'login' && active !== 'register'){
         let text = document.getElementById(active);
-        text.style.fontWeight = 'bolder';
-        if(active == 'home'){
-            text.style.fontWeight = 'bold';
-            return;
-        } else{
+        text.style.fontWeight = 'bold';
+        if(active !== 'home'){
             document.getElementById('home').style.fontWeight = 'normal'
         }
 
