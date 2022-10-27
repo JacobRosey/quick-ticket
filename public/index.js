@@ -20,9 +20,10 @@ function setActiveLink(){
     if(active !== 'login' && active !== 'register'){
         let text = document.getElementById(active);
         text.style.fontWeight = 'bolder';
-        //If bold text is within Tickets dropdown
         if(active.contains('ticket')){
-            document.getElementById('tickets').style.fontStyle = "underline"
+            let navLink = document.getElementById('submenu1');
+            navLink.className("nav flex-column ms-1 collapse show");
+            navLink.setAttribute("aria-expanded", true);
         }
     }
 
