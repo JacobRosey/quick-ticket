@@ -20,6 +20,10 @@ function setActiveLink(){
     if(active !== 'login' && active !== 'register'){
         let text = document.getElementById(active);
         text.style.fontWeight = 'bolder';
+        //If bold text is within Tickets dropdown
+        if(active.contains('ticket')){
+            document.getElementById('tickets').style.fontStyle = "underline"
+        }
     }
 
 }
