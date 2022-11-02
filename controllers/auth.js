@@ -47,7 +47,8 @@ exports.register = (req, res) => {
 }
 
 exports.newTicket = (req, res) => {
-    console.log(req.body)
+    const { ticketTitle, ticketPriority, ticketDesc } = req.body;
+    console.log(ticketTitle, ticketPriority, ticketDesc)
     
     res.render('newticket', {
         message: 'Ticket Created!'
