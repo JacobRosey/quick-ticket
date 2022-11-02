@@ -62,19 +62,19 @@ function logOut(){
 }
 
 function createTeam(){
-    let teamName = document.getElementById('entered-team-name').value.trim().replace(/\s+/g, ' ').replace(/ /g,"_");
+    let team = document.getElementById('entered-team-name').value.trim().replace(/\s+/g, ' ').replace(/ /g,"_");
     let admin = sessionStorage.getItem('user');
 
 
-    if(teamName == ''){
+    if(team == ''){
         return alert('You must enter a team name!')
     }
     let data = {
         "admin":admin,
-        "team": teamName
+        "team": team
     }
 
-    ajaxFunc('/index/'+admin+'/'+teamName+'', 'POST', data)
+    ajaxFunc('/index/'+admin+'/'+team+'', 'POST', data)
 }
 
 function joinTeam(){
