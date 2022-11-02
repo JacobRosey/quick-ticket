@@ -95,6 +95,7 @@ app.route('/index/:admin/:teamName')
         if(err){
             console.log(err)
         }
+        console.log(req.body)
         const {admin, teamName} = req.body;
         console.log(admin, teamName)
         res.send(String(admin,teamName))
