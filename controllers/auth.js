@@ -47,8 +47,13 @@ exports.register = (req, res) => {
 }
 
 exports.newTicket = (req, res) => {
+
     const { ticketTitle, ticketPriority, ticketDesc } = req.body;
     console.log(ticketTitle, ticketPriority, ticketDesc)
+    
+    /*db.query('INSERT INTO Tickets(team_id, ticket_title, ticket_status, opened_by, creation_date)'
+    'VALUES ()')*/
+    
     
     res.render('newticket', {
         message: 'Ticket Created!'
