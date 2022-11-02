@@ -90,13 +90,13 @@ app.route('/login/:user/:pass')
             })
     });
 
-app.route('/index/:admin/:teamName')
+app.route('/index/:admin/:team')
     .post(function (req, res, err) {
         if(err){
             console.log(err)
         }
         console.log(req.body)
-        const {admin, teamName} = req.body;
-        console.log(admin, teamName)
-        res.send(String(admin,teamName))
+        const {admin, team} = req.body;
+        console.log(admin, team)
+        res.send(String(admin,team))
 })
