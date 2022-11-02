@@ -97,5 +97,5 @@ app.route('/index/:admin/:teamName')
         }
         const {admin, teamName} = req.body;
         console.log(admin, teamName)
-        res.send(String(admin), String(teamName))
+        res.send(admin, String(teamName))
 })
