@@ -122,7 +122,7 @@ app.route('/index/:admin/:team')
 
             db.query(`
             INSERT INTO Teams (team_name, team_code) 
-            VALUES (`+ team + `, ` + teamCode + `)
+            VALUES (`+ team + `, ` + teamCode + `);
             INSERT INTO Admins(user_id, team_id)
             VALUES(`+userID+`, SELECT team_id FROM Teams WHERE team_id = LAST_INSERT_ID();)`, (err, result) => {
                 if(err){
