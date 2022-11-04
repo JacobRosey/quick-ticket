@@ -3,6 +3,7 @@ const mysql = require('mysql');
 const exphbs = require('express-handlebars');
 const path = require('path');
 const bcrypt = require('bcryptjs');
+const crypto = require('crypto');
 
 const app = express();
 
@@ -97,6 +98,11 @@ app.route('/index/:admin/:team')
         }
         console.log(req.body)
         const {admin, team} = req.body;
+
+        let teamCode = crypto.randomBytes(12).toString('hex');
+        console.log(teamCode);
+
+        //db.query("BEGIN TRANSACTION INSERT INTO Teams (team_name, team_code)")
         console.log(admin, team)
         res.send(String(admin,team))
 })
