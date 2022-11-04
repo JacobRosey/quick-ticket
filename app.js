@@ -93,16 +93,44 @@ app.route('/login/:user/:pass')
 
 app.route('/index/:admin/:team')
     .post(function (req, res, err) {
-        if(err){
+        if (err) {
             console.log(err)
         }
         console.log(req.body)
-        const {admin, team} = req.body;
+        const { admin, team } = req.body;
 
-        let teamCode = crypto.randomBytes(12).toString('hex');
-        console.log(teamCode);
+        //Promise to get matching user from mySQL then create new admin record
+        const dbPromise = new Promise((resolve, reject) => {
+            db.query("SELECT * FROM users WHERE user_name = '" + admin + "'", (err, result) => {
+                if (err) {
+                    console.log(err)
+                    reject();
+                }
+                if (result.length == 0) {
+                    console.log('This user does not exist in DB');
+                    reject();
+                }
+                if (result.length > 0) {
+                    console.log('This user exists in DB');
+                    userID = result[0].user_id;
+                    resolve(userID);
+                }
+            })
+        });
+        dbPromise.then(() => {
+            const teamCode = crypto.randomBytes(12).toString('hex');
 
-        //db.query("BEGIN TRANSACTION INSERT INTO Teams (team_name, team_code)")
-        console.log(admin, team)
-        res.send(String(admin,team))
-})
+            db.query(`
+            INSERT INTO Teams (team_name, team_code) 
+            VALUES (`+ team + `, ` + teamCode + `)
+            SELECT team_id FROM Teams WHERE team_id = LAST_INSERT_ID()
+            INSERT INTO Admins(user_id, team_id)
+            VALUES(`+userID+`, SELECT team_id FROM Teams WHERE team_id = LAST_INSERT_ID();)`, (err, result) => {
+                if(err){
+                    console.log(err)
+                } else {console.log(result)}
+            })
+            console.log(admin, team, teamCode)
+            res.send(String(admin, team))
+        })
+    })
