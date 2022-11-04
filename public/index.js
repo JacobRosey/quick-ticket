@@ -62,7 +62,8 @@ function logOut(){
 }
 
 function createTeam(){
-    let team = document.getElementById('entered-team-name').value.trim().replace(/\s+/g, ' ').replace(/ /g,"_");
+    //replace spaces in team name with hyphens
+    let team = document.getElementById('entered-team-name').value.trim().replace(/\s+/g, ' ').replace(/ /g,"-");
     let admin = sessionStorage.getItem('user');
 
 
