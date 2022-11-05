@@ -120,6 +120,8 @@ app.route('/index/:admin/:team')
         dbPromise.then(() => {
             const teamCode = crypto.randomBytes(12).toString('hex');
 
+            console.log('TEAM ID IS ' + teamID)
+
             db.query(`
             INSERT INTO Teams (team_name, team_code) 
             VALUES (`+ team + `, ` + teamCode + `);
