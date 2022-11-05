@@ -127,7 +127,7 @@ app.route('/index/:admin/:team')
             VALUES (`+ team + `, ` + teamCode + `);
             SET @last_id_in_Teams = LAST_INSERT_ID();
             INSERT INTO Admins(user_id, team_id)
-            VALUES(`+userID+`, @last_id_in_Teams)`, (err, result) => {
+            VALUES(`+userID+`, @last_id_in_Teams);`, (err, result) => {
                 if(err){
                     console.log(err)
                 } else {console.log(result)}
