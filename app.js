@@ -120,13 +120,14 @@ app.route('/index/:admin/:team')
         dbPromise.then(() => {
             const teamCode = crypto.randomBytes(12).toString('hex');
 
-            console.log('TEAM ID IS ' + userID)
+            console.log('USER ID IS ' + userID)
 
             db.query(`
             INSERT INTO Teams (team_name, team_code) 
             VALUES (`+ team + `, ` + teamCode + `);
+            SET @last_id = LAST_INSERT_ID();
             INSERT INTO Admins(user_id, team_id)
-            VALUES(`+userID+`, SELECT team_id FROM Teams WHERE team_id = LAST_INSERT_ID();)`, (err, result) => {
+            VALUES(`+userID+`, @last_id)`, (err, result) => {
                 if(err){
                     console.log(err)
                 } else {console.log(result)}
