@@ -128,6 +128,6 @@ app.route('/index/:admin/:team')
                 } else {console.log(result)}
             })
             console.log(admin, team, teamCode)
-            res.send(String(admin, team))
+            //res.send(String(admin, team))
         })
     })
