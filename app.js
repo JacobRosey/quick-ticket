@@ -131,9 +131,3 @@ app.route('/index/:admin/:team')
             //res.send(String(admin, team))
         })
     })
-
-    `INSERT INTO Teams (team_name, team_code) 
-    VALUES ('new-team', '011626bdfcab3a41cb63c335'); 
-    SET @last_id_in_Teams = LAST_INSERT_ID(); 
-    INSERT INTO Admins (user_id, team_id) 
-    VALUES (4, @last_id_in_Teams);`
