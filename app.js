@@ -15,7 +15,8 @@ app.engine('hbs', exphbs.engine({ extname: '.hbs' }));
 app.set('view engine', 'hbs');
 
 //Create db connection for heroku
-const db = mysql.createConnection(process.env.JAWSDB_URL);
+const db = mysql.createConnection(process.env.JAWSDB_URL, {multipleStatements: true});
+db.multipleStatements = true;
 
 const port = process.env.PORT || 3000;
 
