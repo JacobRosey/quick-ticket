@@ -122,7 +122,7 @@ app.route('/index/:admin/:team')
             const teamCode = crypto.randomBytes(5).toString('hex');
             console.log('USER ID IS ' + userID)
 
-            db.query("START TRANSACTION;SET FOREIGN_KEY_CHECKS=0;INSERT INTO Teams (team_name, team_code) VALUES ("+ db.escape(team) + ", " + teamCode + "); SET @last_id = (SELECT LAST_INSERT_ID()); INSERT INTO Admins (user_id, team_id) VALUES ("+userID+", @last_id); COMMIT;", (err, result) => {
+            db.query("SET FOREIGN_KEY_CHECKS=0;INSERT INTO Teams (team_name, team_code) VALUES ("+ db.escape(team) + ", " + teamCode + "); SET @last_id = (SELECT LAST_INSERT_ID()); INSERT INTO Admins (user_id, team_id) VALUES ("+userID+", @last_id);", (err, result) => {
                 if(err){
                     console.log(err)
                 } else {console.log(result)}
