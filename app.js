@@ -96,8 +96,8 @@ app.route('/index/:admin/:team')
         if (err) {
             console.log(err)
         }
-        console.log(req.body)
         const { admin, team } = req.body;
+        console.log("'"+team+"'")
 
         //Promise to get matching user from mySQL then create new admin record
         const dbPromise = new Promise((resolve, reject) => {
@@ -120,7 +120,6 @@ app.route('/index/:admin/:team')
         dbPromise.then(() => {
 
             const teamCode = crypto.randomBytes(5).toString('hex');
-            console.log('USER ID IS ' + userID)
 
             db.query("START TRANSACTION;INSERT INTO Teams (team_name, team_code) VALUES ("+ db.escape(team) + ", " + teamCode + "); SET @last_id = (SELECT LAST_INSERT_ID()); INSERT INTO Admins (user_id, team_id) VALUES ("+userID+", @last_id);COMMIT;", (err, result) => {
                 if(err){
