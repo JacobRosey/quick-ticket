@@ -98,6 +98,7 @@ app.route('/index/:admin/:team')
         }
         const { admin, team } = req.body;
         console.log("'"+team+"'")
+        console.log(team)
 
         //Promise to get matching user from mySQL then create new admin record
         const dbPromise = new Promise((resolve, reject) => {
