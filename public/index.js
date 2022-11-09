@@ -90,7 +90,7 @@ function joinTeam() {
         "code": code
     }
 
-    ajaxFunc('/index/'+user+'/'+code+'', 'POST', data)
+    ajaxFunc('/index/'+data.user+'/'+data.code+'', 'POST', data)
 }
 
 function getLogin() {
