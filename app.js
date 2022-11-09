@@ -200,7 +200,7 @@ app.route('/index2/:user/:code')
         });
         dbPromise.then(() => {
             console.log(userID)
-            db.query('SELECT * FROM Teams WHERE team_code = '+code+' ', (err, result) => {
+            db.query("SELECT * FROM Teams WHERE team_code = '"+code+"' ", (err, result) => {
                 if(err) {
                     console.log(err);
                     reject();
