@@ -125,9 +125,7 @@ app.route('/index/:admin/:team')
             db.query(`INSERT INTO Teams (team_name, team_code)VALUES ('`+ team + `', '` + teamCode + `');`, (err, result)=>{
                 if(err){
                     console.log(err)
-                    res.render('index', {
-                        failed: 'Team Creation Failed!'
-                    })
+                    res.send('Team creation failed')
                 }else{
                     db.query('SET @last_id = (SELECT LAST_INSERT_ID()); ', (err, result) => {
                         if(err){
@@ -139,6 +137,7 @@ app.route('/index/:admin/:team')
                                 }
                                 else{
                                     console.log(result)
+                                    res.send('Team created')
                             }
                             })
                         }
@@ -160,7 +159,4 @@ app.route('/index/:admin/:team')
             console.log(admin, team, teamCode)
             res.send("SUCCESS!")*/
         })
-        res.render('index', {
-            success: 'Team Created!'
-        });
     })
