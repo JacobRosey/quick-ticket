@@ -207,7 +207,7 @@ app.route('/index2/:user/:code')
                 }
                 if(result.length == 0 ) {
                     console.log('Invalid code!');
-                    reject();
+                    res.send('Invalid code')
                 }
                 if(result.length > 0) {
                     console.log('Found the team');
