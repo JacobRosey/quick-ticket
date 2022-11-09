@@ -81,10 +81,12 @@ function createTeam() {
 function joinTeam() { 
     //get entered code, remove leading/trailing whitespace
     let code = document.getElementById('entered-code').value.trim();
-    let user = sessionStorage.getItem('user')
+    let user = sessionStorage.getItem('user');
+
+    console.log(code)
 
     let data = {
-        "user":user,
+        "user": user,
         "code": code
     }
 
