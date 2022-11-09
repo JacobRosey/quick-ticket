@@ -218,7 +218,7 @@ app.route('/index2/:user/:code')
                             console.log(err);
                             reject();
                         }
-                        if(result > 0){
+                        if(result.length > 0){
                             res.send("You're already a member of "+teamName + "!")
                         } else {
                             db.query('INSERT INTO Members (team_id, user_id) VALUES ('+teamID+', '+userID+');', (err, result) => {
