@@ -150,15 +150,6 @@ function ajaxFunc(path, method, d) {
                     break;
                 case "This username does not exist!":
                     alert(response);
-                    break;
-                case "Team creation failed":
-                    alert(response);
-                    break;
-                case "Team created":
-                    alert(response);
-                    setTimeout(() => {
-                        window.location.replace('/index')
-                      }, 1000)
             }
             /*
             if (response == "Login Successful!") {
@@ -191,6 +182,16 @@ function ajaxFunc(path, method, d) {
             //State whether login was successful or not
             var response = xhr.responseText;
             console.log(response)
+            switch (response) {
+                case "Team creation failed":
+                    alert(response);
+                    break;
+                case "Team created":
+                    alert(response);
+                    setTimeout(() => {
+                        window.location.replace('/index')
+                    }, 1000)
+            }
         }
     }
     xhr.onerror = () => {
