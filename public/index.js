@@ -185,12 +185,13 @@ function ajaxFunc(path, method, d) {
             switch (response) {
                 case "Team creation failed":
                     alert(response);
+                    document.getElementById('entered-team-name').value = '';
                     break;
                 case "Team created":
                     alert(response);
                     setTimeout(() => {
                         window.location.replace('/home')
-                    }, 1000)
+                    }, 500)
             }
         }
     }
