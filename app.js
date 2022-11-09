@@ -139,9 +139,6 @@ app.route('/index/:admin/:team')
                                 }
                                 else{
                                     console.log(result)
-                                    res.render('index', {
-                                        success: 'Team Created!'
-                                    });
                             }
                             })
                         }
@@ -163,4 +160,7 @@ app.route('/index/:admin/:team')
             console.log(admin, team, teamCode)
             res.send("SUCCESS!")*/
         })
+        res.render('index', {
+            success: 'Team Created!'
+        });
     })
