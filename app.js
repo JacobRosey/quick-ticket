@@ -16,7 +16,7 @@ app.engine('hbs', exphbs.engine({ extname: '.hbs' }));
 app.set('view engine', 'hbs');
 
 //Create db connection for heroku
-const db = mysql.createConnection(process.env.JAWSDB_URL, {multipleStatements: true});
+const db = mysql.createConnection(process.env.JAWSDB_URL, { multipleStatements: true });
 
 const port = process.env.PORT || 3000;
 
@@ -98,7 +98,7 @@ app.route('/index/:admin/:team')
             console.log(err)
         }
         const { admin, team } = req.body;
-        console.log("'"+team+"'")
+        console.log("'" + team + "'")
         console.log(team)
 
         //Promise to get matching user from mySQL then create new admin record
@@ -122,25 +122,33 @@ app.route('/index/:admin/:team')
         dbPromise.then(() => {
 
             const teamCode = crypto.randomBytes(5).toString('hex');
-            db.query(`INSERT INTO Teams (team_name, team_code) VALUES ('`+ team + `', '` + teamCode + `');`, (err, result)=>{
-                if(err){
+            //Only doing this ugly ass nested structure because the commented code below produced 
+            //an SQL parse error, couldn't find an answer on Google
+            db.query(`INSERT INTO Teams (team_name, team_code) VALUES ('` + team + `', '` + teamCode + `');`, (err, result) => {
+                if (err) {
                     console.log(err)
                     res.send('Team creation failed');
-                }else{
+                } else {
                     db.query('SET @last_id = (SELECT LAST_INSERT_ID()); ', (err, result) => {
-                        if(err){
+                        if (err) {
                             console.log(err);
                             res.send('Team creation failed');
-                        } else{
-                            db.query(`INSERT INTO Admins (user_id, team_id) VALUES (`+userID+`, @last_id);`, (err, result) =>{
-                                if(err){
+                        } else {//Could use an SQL trigger instead but not sure if that would be any better
+                            db.query(`INSERT INTO Members (user_id, team_id) VALUES (` + userID + `, @last_id);`, (err, result) => {
+                                if (err) {
                                     console.log(err);
-                                    res.send('Team creation failed');
+                                } else{
+                                    db.query(`INSERT INTO Admins (user_id, team_id) VALUES (` + userID + `, @last_id);`, (err, result) => {
+                                        if (err) {
+                                            console.log(err);
+                                            res.send('Team creation failed');
+                                        }
+                                        else {
+                                            console.log(result)
+                                            res.send('Team created')
+                                        }
+                                    })
                                 }
-                                else{
-                                    console.log(result)
-                                    res.send('Team created')
-                            }
                             })
                         }
                     })
