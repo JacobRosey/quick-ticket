@@ -137,6 +137,7 @@ app.route('/index/:admin/:team')
                             db.query(`INSERT INTO Members (user_id, team_id) VALUES (` + userID + `, @last_id);`, (err, result) => {
                                 if (err) {
                                     console.log(err);
+                                    res.send('Team creation failed')
                                 } else{
                                     db.query(`INSERT INTO Admins (user_id, team_id) VALUES (` + userID + `, @last_id);`, (err, result) => {
                                         if (err) {
