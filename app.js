@@ -4,6 +4,7 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
+const { isBuffer } = require('util');
 
 const app = express();
 
@@ -121,19 +122,40 @@ app.route('/index/:admin/:team')
         dbPromise.then(() => {
 
             const teamCode = crypto.randomBytes(5).toString('hex');
-
-            db.query(`START TRANSACTION;
+            db.query(`INSERT INTO Teams (team_name, team_code)VALUES ('`+ team + `', '` + teamCode + `');`, (err, result)=>{
+                if(err){
+                    console.log(err)
+                }else{
+                    db.query('SET @last_id = (SELECT LAST_INSERT_ID()); ', (err, result) => {
+                        if(err){
+                            console.log(err);
+                        } else{
+                            db.query('INSERT INTO Admins (user_id, team_id) VALUES (`+userID+`, @last_id);', (err, result) =>{
+                                if(err){
+                                    console.log(err);
+                                }
+                                else{
+                                    console.log(result)
+                                    res.send('success');
+                            }
+                            })
+                        }
+                    })
+                }
+            })
+            /*
+            db.query(`
             INSERT INTO Teams (team_name, team_code) 
             VALUES ('`+ team + `', '` + teamCode + `'); 
             SET @last_id = (SELECT LAST_INSERT_ID()); 
             INSERT INTO Admins (user_id, team_id) VALUES 
             (`+userID+`, @last_id);
-            COMMIT;`, (err, result) => {
+            `, (err, result) => {
                 if(err){
                     console.log(err)
                 } else {console.log(result)}
             })
             console.log(admin, team, teamCode)
-            res.send("SUCCESS!")
+            res.send("SUCCESS!")*/
         })
     })
