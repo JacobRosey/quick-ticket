@@ -172,7 +172,7 @@ app.route('/index/:admin/:team')
         })
     })
 
-app.route('/index/:user/:code')
+app.route('/index2/:user/:code')
     .post(function (req, res, err) {
         if(err){
             console.log(err)
