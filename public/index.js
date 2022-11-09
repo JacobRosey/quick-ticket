@@ -93,7 +93,7 @@ function joinTeam() {
         "code": code
     }
 
-    ajaxFunc('/index/'+data.user+'/'+data.code+'', 'POST', data)
+    ajaxFunc('/index/' + user + '/' + code + '', 'POST', data)
 }
 
 function getLogin() {
@@ -188,6 +188,7 @@ function ajaxFunc(path, method, d) {
     if (method == 'POST') {
         console.log(path)
         console.log('This is a post request');
+        console.log(JSON.stringify(d));
         xhr.send(JSON.stringify(d));
         xhr.onload = () => {
             if (xhr.status == 200) {
