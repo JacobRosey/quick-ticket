@@ -99,8 +99,6 @@ app.route('/index/:admin/:team')
             console.log(err)
         }
         const { admin, team } = req.body;
-        console.log("'" + team + "'")
-        console.log(team)
 
         //Promise to get matching user from mySQL then create new admin record
         const dbPromise = new Promise((resolve, reject) => {
@@ -217,22 +215,17 @@ app.route('/index/:user/:code')
                     console.log('Found the team');
                     teamID = result[0].team_id;
                     teamName = result[0].team_name;
-                    resolve(teamID, userID, teamName)
+                    db.query('INSERT INTO Members (team_id, user_id) VALUES ('+team_id+', '+user_id+');', (err, result) => {
+                        if(err) {
+                            console.log(err);
+                            reject();
+                        }
+                        res.send(teamName);
+                    })
                 }
             }).catch(function onerror(error){
                 console.error(error);
                 res.send('err');
             })
-        }).then(() => {
-            db.query('INSERT INTO Members (team_id, user_id) VALUES ('+team_id+', '+user_id+');', (err, result) => {
-                if(err) {
-                    console.log(err);
-                    reject();
-                }
-                res.send(teamName);
-            })
-        }).catch(function onerror(error){
-            console.error(error);
-            res.send('err');
         })
     })
