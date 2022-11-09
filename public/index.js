@@ -138,7 +138,7 @@ function ajaxFunc(path, method, d) {
             switch (response) {
                 case "Login Successful!":
                     //Redirect to the home page after successful login
-                    window.location.replace('/index');
+                    window.location.replace('/home');
                     alert(response);
                     //Setup session storage
                     sessionStorage.setItem('logged', true);
@@ -189,7 +189,7 @@ function ajaxFunc(path, method, d) {
                 case "Team created":
                     alert(response);
                     setTimeout(() => {
-                        window.location.replace('/index')
+                        window.location.replace('/home')
                     }, 1000)
             }
         }
