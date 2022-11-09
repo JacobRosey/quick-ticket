@@ -79,8 +79,8 @@ function createTeam() {
 }
 
 function joinTeam() { 
-    //get entered code, remove leading/trailing whitespace
-    let code = document.getElementById('entered-code').value.trim();
+    //get entered code, remove leading/trailing whitespace and other spaces
+    let code = document.getElementById('entered-code').value.trim().replace(/\s+/g, ' ').replace(/ /g, "");
     let user = sessionStorage.getItem('user');
 
     console.log(code)
