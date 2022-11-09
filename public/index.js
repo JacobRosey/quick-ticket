@@ -83,6 +83,9 @@ function joinTeam() {
     let code = document.getElementById('entered-code').value.trim().replace(/\s+/g, ' ').replace(/ /g, "");
     let user = sessionStorage.getItem('user');
 
+    if(code == ''){
+        return alert('You must enter a team code!')
+    }
     console.log(code)
 
     let data = {
