@@ -178,7 +178,7 @@ app.route('/index/:user/:code')
         }
         const {user, code} = req.body;
 
-        console.log(code)
+        console.log(user)
 
         const dbPromise = new Promise((resolve, reject) => {
             
