@@ -179,6 +179,8 @@ app.route('/index/:user/:code')
         }
         const {user, code} = req.body;
 
+        console.log(code)
+
         const dbPromise = new Promise((resolve, reject) => {
             db.query("SELECT * FROM users WHERE user_name = '" + user + "'", (err, result) => {
                 if (err) {
