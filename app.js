@@ -139,14 +139,13 @@ app.route('/index/:admin/:team')
                                 }
                                 else{
                                     console.log(result)
-                                    res.send('success');
+                                    res.render('index', {
+                                        success: 'Team Created!'
+                                    });
                             }
                             })
                         }
                     })
-                    res.render('index', {
-                        success: 'Team Created!'
-                    });
                 }
             })
             /*
