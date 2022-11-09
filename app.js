@@ -181,10 +181,6 @@ app.route('/index2/:user/:code')
 
         console.log(user)
 
-        res.send(user, code);
-
-
-        /*
         const dbPromise = new Promise((resolve, reject) => {
             
             db.query("SELECT * FROM users WHERE user_name = '" + user + "'", (err, result) => {
@@ -233,5 +229,5 @@ app.route('/index2/:user/:code')
                 console.error(error);
                 res.send('err');
             })
-        })*/
+        })
     })
