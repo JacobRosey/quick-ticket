@@ -1,36 +1,36 @@
 //Checks if user is logged in
-function checkForUser(){
+function checkForUser() {
     let userN = document.getElementById('userN');
     let sideNav = document.getElementById('side-nav')
     let isLogged = sessionStorage.getItem('logged');
     let currentUser = sessionStorage.getItem('user');
 
-    if(isLogged == 'true'){
-        userN.innerHTML = currentUser; 
+    if (isLogged == 'true') {
+        userN.innerHTML = currentUser;
         sideNav.style.display = "block";
     } else {
-        sideNav.style.display= "none";
-    } 
+        sideNav.style.display = "none";
+    }
 }
 
-function setActiveLink(){
+function setActiveLink() {
     //Get current page
     let active = window.location.href.replace("https://quick-ticket.herokuapp.com/", "");
     console.log(active);
 
     //If on login or register page, don't care about nav stuff
     //because it's not visible on screen
-    if(active !== 'login' && active !== 'register'){
+    if (active !== 'login' && active !== 'register') {
         let text = document.getElementById(active);
         text.style.fontWeight = 'bold';
-        if(active !== 'home'){
+        if (active !== 'home') {
             document.getElementById('home').style.fontWeight = 'normal'
         }
 
-        if(active.includes('ticket')){
+        if (active.includes('ticket')) {
             document.getElementById('tickets').style.textDecoration = "underline"
             let navLink = document.getElementById('submenu1');
-            navLink.className ="nav flex-column ms-1 collapse show";
+            navLink.className = "nav flex-column ms-1 collapse show";
             navLink.setAttribute("aria-expanded", "true");
             return;
         }
@@ -38,15 +38,15 @@ function setActiveLink(){
 
 }
 
-function clickedLogo(){
+function clickedLogo() {
     let isLogged = sessionStorage.getItem('logged');
 
-    if(isLogged == 'true'){
+    if (isLogged == 'true') {
         window.location.replace('/home')
-    } 
+    }
 }
 
-function logOut(){
+function logOut() {
     let isLogged = sessionStorage.getItem('logged');
     if (isLogged !== 'true') {
         return alert("You aren't logged in!")
@@ -61,24 +61,24 @@ function logOut(){
 
 }
 
-function createTeam(){
+function createTeam() {
     //replace spaces in team name with hyphens
-    let team = document.getElementById('entered-team-name').value.trim().replace(/\s+/g, ' ').replace(/ /g,"-");
+    let team = document.getElementById('entered-team-name').value.trim().replace(/\s+/g, ' ').replace(/ /g, "-");
     let admin = sessionStorage.getItem('user');
 
 
-    if(team == ''){
+    if (team == '') {
         return alert('You must enter a team name!')
     }
     let data = {
-        "admin":admin,
+        "admin": admin,
         "team": team
     }
 
-    ajaxFunc('/index/'+admin+'/'+team+'', 'POST', data)
+    ajaxFunc('/index/' + admin + '/' + team + '', 'POST', data)
 }
 
-function joinTeam(){
+function joinTeam() {
     alert("Hello")
 }
 
@@ -98,14 +98,14 @@ function getLogin() {
             "pass": pass
         }
         console.log('now doing ajax function with ' + data)
-        ajaxFunc('/login/'+data.user+'/'+data.pass+'', "GET", data);
+        ajaxFunc('/login/' + data.user + '/' + data.pass + '', "GET", data);
         checkForUser();
     }
 
 }
 
-function ajaxFunc(path, method, d){
-    
+function ajaxFunc(path, method, d) {
+
     let xhr = new XMLHttpRequest();
     xhr.open(method, path, true);
 
@@ -135,6 +135,32 @@ function ajaxFunc(path, method, d){
             } else console.log('status ' + xhr.status)
             //State whether login was successful or not
             var response = xhr.responseText;
+            switch (response) {
+                case "Login Successful!":
+                    //Redirect to the home page after successful login
+                    window.location.replace('/home');
+                    alert(response);
+                    //Setup session storage
+                    sessionStorage.setItem('logged', true);
+                    sessionStorage.setItem('user', d.user);
+                    break;
+                case "Incorrect Password!":
+                    alert(response)
+                    document.getElementById('loginPass').value = '';
+                    break;
+                case "This username does not exist!":
+                    alert(response);
+                    break;
+                case "Team creation failed":
+                    alert(response);
+                    break;
+                case "Team created":
+                    alert(response);
+                    setTimeout(() => {
+                        window.location.replace('/index')
+                      }, 1000)
+            }
+            /*
             if (response == "Login Successful!") {
                 //Redirect to the home page after successful login
                 window.location.replace('/home');
@@ -142,18 +168,19 @@ function ajaxFunc(path, method, d){
                 //Setup session storage
                 sessionStorage.setItem('logged', true);
                 sessionStorage.setItem('user', d.user);
-            } 
+            }
             if (response == "Incorrect Password!") {
                 alert(response)
                 document.getElementById('loginPass').value = '';
             }
-            if(response == "This username does not exist!"){
+            if (response == "This username does not exist!") {
                 alert(response);
             }
+            */
         }
     }
 
-    if(method == 'POST'){
+    if (method == 'POST') {
         console.log(path)
         console.log('This is a post request');
         xhr.send(JSON.stringify(d));
