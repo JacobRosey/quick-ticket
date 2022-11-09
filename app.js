@@ -213,7 +213,7 @@ app.route('/index2/:user/:code')
                     console.log('Found the team');
                     teamID = result[0].team_id;
                     teamName = result[0].team_name;
-                    db.query("SELECT * FROM Members WHERE user_id = '"+userID + "'", (err, result) => {
+                    db.query("SELECT * FROM Members WHERE user_id = '"+userID + "' AND team_id = "+teamID+"", (err, result) => {
                         if(err) {
                             console.log(err);
                             reject();
