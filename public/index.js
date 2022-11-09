@@ -207,6 +207,8 @@ function ajaxFunc(path, method, d) {
                     setTimeout(() => {
                         window.location.replace('/home')
                     }, 500)
+                    break;
+                default: alert(response);
             }
         }
     }
