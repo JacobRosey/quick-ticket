@@ -218,7 +218,7 @@ app.route('/index2/:user/:code')
                             console.log(err);
                             reject();
                         }
-                        res.send(teamName);
+                        res.send('You joined ' +teamName);
                     })
                 }
             })
