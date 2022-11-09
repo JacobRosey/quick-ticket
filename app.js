@@ -198,6 +198,9 @@ app.route('/index/:user/:code')
                     userID = result[0].user_id;
                     resolve(userID);
                 }
+            }).catch(function onerror(error){
+                console.error(error);
+                res.send('err');
             })
         });
         dbPromise.then(() => {
@@ -216,8 +219,11 @@ app.route('/index/:user/:code')
                     teamName = result[0].team_name;
                     resolve(teamID, userID, teamName)
                 }
+            }).catch(function onerror(error){
+                console.error(error);
+                res.send('err');
             })
-        })/*.then(() => {
+        }).then(() => {
             db.query('INSERT INTO Members (team_id, user_id) VALUES ('+team_id+', '+user_id+');', (err, result) => {
                 if(err) {
                     console.log(err);
@@ -225,5 +231,8 @@ app.route('/index/:user/:code')
                 }
                 res.send(teamName);
             })
-        })*/
+        }).catch(function onerror(error){
+            console.error(error);
+            res.send('err');
+        })
     })
