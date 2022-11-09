@@ -205,7 +205,7 @@ app.route('/index/:user/:code')
                 if(result.length == 0 ) {
                     console.log('Invalid code!');
                     res.send('Invalid code');
-                    reject();
+                    reject('Invalid code');
                 }
             })
         })
