@@ -183,6 +183,7 @@ app.route('/index/:user/:code')
         console.log(code)
 
         const dbPromise = new Promise((resolve, reject) => {
+            
             db.query("SELECT * FROM users WHERE user_name = '" + user + "'", (err, result) => {
                 if (err) {
                     console.log(err)
@@ -216,7 +217,7 @@ app.route('/index/:user/:code')
                     resolve(teamID, userID, teamName)
                 }
             })
-        }).then(() => {
+        })/*.then(() => {
             db.query('INSERT INTO Members (team_id, user_id) VALUES ('+team_id+', '+user_id+');', (err, result) => {
                 if(err) {
                     console.log(err);
@@ -224,5 +225,5 @@ app.route('/index/:user/:code')
                 }
                 res.send(teamName);
             })
-        })
+        })*/
     })
