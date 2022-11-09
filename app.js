@@ -213,7 +213,7 @@ app.route('/index2/:user/:code')
                     console.log('Found the team');
                     teamID = result[0].team_id;
                     teamName = result[0].team_name;
-                    db.query('INSERT INTO Members (team_id, user_id) VALUES ('+team_id+', '+user_id+');', (err, result) => {
+                    db.query('INSERT INTO Members (team_id, user_id) VALUES ('+teamID+', '+userID+');', (err, result) => {
                         if(err) {
                             console.log(err);
                             reject();
