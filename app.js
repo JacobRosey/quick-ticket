@@ -200,12 +200,11 @@ app.route('/index/:user/:code')
             db.query('SELECT * FROM Teams WHERE team_code = ?' [code], (err, result) => {
                 if(err) {
                     console.log(err);
-                    res.send('Error')
+                    reject();
                 }
                 if(result.length == 0 ) {
                     console.log('Invalid code!');
-                    res.send('Invalid code');
-                    reject('Invalid code');
+                    reject();
                 }
             })
         })
