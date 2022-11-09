@@ -78,8 +78,17 @@ function createTeam() {
     ajaxFunc('/index/' + admin + '/' + team + '', 'POST', data)
 }
 
-function joinTeam() {
-    alert("Hello")
+function joinTeam() { 
+    //get entered code, remove leading/trailing whitespace
+    let code = document.getElementById('entered-code').value.trim();
+    let user = sessionStorage.getItem('user')
+
+    let data = {
+        "user":user,
+        "code": code
+    }
+
+    ajaxFunc('/index/'+user+'/'+code+'', 'POST', data)
 }
 
 function getLogin() {

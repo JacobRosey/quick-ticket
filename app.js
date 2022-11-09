@@ -123,7 +123,7 @@ app.route('/index/:admin/:team')
 
             const teamCode = crypto.randomBytes(5).toString('hex');
             //Only doing this ugly ass nested structure because the commented code below produced 
-            //an SQL parse error, couldn't find an answer on Google
+            //an SQL parse error; couldn't find an answer on Google
             db.query(`INSERT INTO Teams (team_name, team_code) VALUES ('` + team + `', '` + teamCode + `');`, (err, result) => {
                 if (err) {
                     console.log(err)
@@ -138,7 +138,7 @@ app.route('/index/:admin/:team')
                                 if (err) {
                                     console.log(err);
                                     res.send('Team creation failed')
-                                } else{
+                                } else {
                                     db.query(`INSERT INTO Admins (user_id, team_id) VALUES (` + userID + `, @last_id);`, (err, result) => {
                                         if (err) {
                                             console.log(err);
@@ -169,5 +169,44 @@ app.route('/index/:admin/:team')
             })
             console.log(admin, team, teamCode)
             res.send("SUCCESS!")*/
+        })
+    })
+
+app.route('/index/:user/:code')
+    .post(function (req, res, err) {
+        if(err){
+            console.log(err)
+        }
+        const {user, code} = req.body;
+
+        const dbPromise = new Promise((resolve, reject) => {
+            db.query("SELECT * FROM users WHERE user_name = '" + user + "'", (err, result) => {
+                if (err) {
+                    console.log(err)
+                    reject();
+                }
+                if (result.length == 0) {
+                    console.log('This user does not exist in DB');
+                    reject();
+                }
+                if (result.length > 0) {
+                    console.log('This user exists in DB');
+                    userID = result[0].user_id;
+                    resolve(userID);
+                }
+            })
+        });
+        dbPromise.then(() => {
+            db.query('SELECT * FROM Teams WHERE team_code = ?' [code], (err, result) => {
+                if(err) {
+                    console.log(err);
+                    res.send('Error')
+                }
+                if(result.length == 0 ) {
+                    console.log('Invalid code!');
+                    res.send('Invalid code');
+                    reject();
+                }
+            })
         })
     })
