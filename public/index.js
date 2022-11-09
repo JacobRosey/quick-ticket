@@ -138,7 +138,7 @@ function ajaxFunc(path, method, d) {
             switch (response) {
                 case "Login Successful!":
                     //Redirect to the home page after successful login
-                    window.location.replace('/home');
+                    window.location.replace('/index');
                     alert(response);
                     //Setup session storage
                     sessionStorage.setItem('logged', true);
