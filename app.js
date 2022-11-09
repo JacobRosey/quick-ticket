@@ -213,12 +213,22 @@ app.route('/index2/:user/:code')
                     console.log('Found the team');
                     teamID = result[0].team_id;
                     teamName = result[0].team_name;
-                    db.query('INSERT INTO Members (team_id, user_id) VALUES ('+teamID+', '+userID+');', (err, result) => {
+                    db.query("SELECT * FROM Members WHERE user_id = '"+userID + "'", (err, result) => {
                         if(err) {
                             console.log(err);
                             reject();
                         }
-                        res.send('You joined ' +teamName);
+                        if(result > 0){
+                            res.send("You're already a member of "+teamName + "!")
+                        } else {
+                            db.query('INSERT INTO Members (team_id, user_id) VALUES ('+teamID+', '+userID+');', (err, result) => {
+                                if(err) {
+                                    console.log(err);
+                                    reject();
+                                }
+                                res.send('You joined ' +teamName);
+                            })
+                        }
                     })
                 }
             })
