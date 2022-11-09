@@ -99,7 +99,6 @@ app.route('/index/:admin/:team')
             console.log(err)
         }
         const { admin, team } = req.body;
-        console.log('wrong route buddy')
 
         //Promise to get matching user from mySQL then create new admin record
         const dbPromise = new Promise((resolve, reject) => {
