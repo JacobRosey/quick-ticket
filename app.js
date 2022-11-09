@@ -131,21 +131,29 @@ app.route('/index/:admin/:team')
                     db.query('SET @last_id = (SELECT LAST_INSERT_ID()); ', (err, result) => {
                         if (err) {
                             console.log(err);
-                            res.send('Team creation failed');
+                            res.send('Failed to get last inserted team id');
                         } else {//Could use an SQL trigger instead but not sure if that would be any better
                             db.query(`INSERT INTO Members (user_id, team_id) VALUES (` + userID + `, @last_id);`, (err, result) => {
                                 if (err) {
                                     console.log(err);
-                                    res.send('Team creation failed')
+                                    res.send('Failed to insert you into members table')
                                 } else {
                                     db.query(`INSERT INTO Admins (user_id, team_id) VALUES (` + userID + `, @last_id);`, (err, result) => {
                                         if (err) {
                                             console.log(err);
-                                            res.send('Team creation failed');
+                                            res.send('Failed to insert you into admin table');
                                         }
                                         else {
-                                            console.log(result)
-                                            res.send('Team created')
+                                            //Get user who created the team, set is_admin to 1, aka "true"
+                                            db.query("UPDATE Users SET is_admin = 1 WHERE user_id = '" + userID + "'", (err, result) => {
+                                                if (err) {
+                                                    console.log(err)
+                                                    res.send('Failed to grant you admin privileges');
+                                                } else {
+                                                    console.log(result)
+                                                    res.send('Team created')
+                                                }
+                                            })
                                         }
                                     })
                                 }
@@ -173,15 +181,15 @@ app.route('/index/:admin/:team')
 
 app.route('/index2/:user/:code')
     .post(function (req, res, err) {
-        if(err){
+        if (err) {
             console.log(err)
         }
-        const {user, code} = req.body;
+        const { user, code } = req.body;
 
         console.log(user)
 
         const dbPromise = new Promise((resolve, reject) => {
-            
+
             db.query("SELECT * FROM users WHERE user_name = '" + user + "'", (err, result) => {
                 if (err) {
                     console.log(err)
@@ -200,33 +208,33 @@ app.route('/index2/:user/:code')
         });
         dbPromise.then(() => {
             console.log(userID)
-            db.query("SELECT * FROM Teams WHERE team_code = '"+code+"' ", (err, result) => {
-                if(err) {
+            db.query("SELECT * FROM Teams WHERE team_code = '" + code + "' ", (err, result) => {
+                if (err) {
                     console.log(err);
                     reject();
                 }
-                if(result.length == 0 ) {
+                if (result.length == 0) {
                     console.log('Invalid code!');
                     res.send('Invalid code')
                 }
-                if(result.length > 0) {
+                if (result.length > 0) {
                     console.log('Found the team');
                     teamID = result[0].team_id;
                     teamName = result[0].team_name;
-                    db.query("SELECT * FROM Members WHERE user_id = '"+userID + "' AND team_id = "+teamID+"", (err, result) => {
-                        if(err) {
+                    db.query("SELECT * FROM Members WHERE user_id = '" + userID + "' AND team_id = " + teamID + "", (err, result) => {
+                        if (err) {
                             console.log(err);
                             reject();
                         }
-                        if(result.length > 0){
-                            res.send("You're already a member of "+teamName + "!")
+                        if (result.length > 0) {
+                            res.send("You're already a member of " + teamName + "!")
                         } else {
-                            db.query('INSERT INTO Members (team_id, user_id) VALUES ('+teamID+', '+userID+');', (err, result) => {
-                                if(err) {
+                            db.query('INSERT INTO Members (team_id, user_id) VALUES (' + teamID + ', ' + userID + ');', (err, result) => {
+                                if (err) {
                                     console.log(err);
                                     reject();
                                 }
-                                res.send('You joined ' +teamName);
+                                res.send('You joined ' + teamName);
                             })
                         }
                     })
