@@ -196,9 +196,6 @@ app.route('/index2/:user/:code')
                     userID = result[0].user_id;
                     resolve(userID);
                 }
-            }).catch(function onerror(error){
-                console.error(error);
-                res.send('err');
             })
         });
         dbPromise.then(() => {
@@ -224,9 +221,6 @@ app.route('/index2/:user/:code')
                         res.send(teamName);
                     })
                 }
-            }).catch(function onerror(error){
-                console.error(error);
-                res.send('err');
             })
         })
     })
