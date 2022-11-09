@@ -122,7 +122,7 @@ app.route('/index/:admin/:team')
         dbPromise.then(() => {
 
             const teamCode = crypto.randomBytes(5).toString('hex');
-            db.query(`START TRANSACTION;INSERT INTO Teams (team_name, team_code)VALUES ('`+ team + `', '` + teamCode + `');`, (err, result)=>{
+            db.query(`INSERT INTO Teams (team_name, team_code) VALUES ('`+ team + `', '` + teamCode + `');`, (err, result)=>{
                 if(err){
                     console.log(err)
                     res.send('Team creation failed');
@@ -132,7 +132,7 @@ app.route('/index/:admin/:team')
                             console.log(err);
                             res.send('Team creation failed');
                         } else{
-                            db.query(`INSERT INTO Admins (user_id, team_id) VALUES (`+userID+`, @last_id);COMMIT;`, (err, result) =>{
+                            db.query(`INSERT INTO Admins (user_id, team_id) VALUES (`+userID+`, @last_id);`, (err, result) =>{
                                 if(err){
                                     console.log(err);
                                     res.send('Team creation failed');
