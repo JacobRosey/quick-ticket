@@ -146,7 +146,7 @@ function ajaxFunc(path, method, d) {
             "pass": "" + d.pass + ""
         })*/
         console.log('This is a get request');
-        xhr.send(data);
+        xhr.send(d);
         xhr.onload = () => {
             if (xhr.status == 200) {
                 console.log('success');
