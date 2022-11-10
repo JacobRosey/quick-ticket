@@ -292,7 +292,7 @@ app.route('/team/:user')
                             if (err) {
                                 console.log(err)
                             }
-                            names += result[i].team_name;
+                            names[i] = result[i].team_name;
                         })
                     }
                     console.log('names are' + names);
