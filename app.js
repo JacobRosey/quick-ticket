@@ -295,7 +295,7 @@ app.route('/team/:user')
                             if(i <= result.length) {
                                 console.log('the team name: ' + result[i].team_name);
                                 names[i] = result[i].team_name;
-                            }
+                            } else return;
                         })
                     }
                     for (let i = 0; i < names.length; i++) {
