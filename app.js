@@ -248,7 +248,7 @@ app.route('/team/:user')
         if (err) {
             console.log(err)
         }
-        const { user } = req.params.user;
+        const user = req.params.user;
 
         console.log("user is " + user)
         const dbPromise = new Promise((resolve, reject) => {
