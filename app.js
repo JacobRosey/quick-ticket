@@ -292,9 +292,10 @@ app.route('/team/:user')
                             //First record of select statement is correct, but second record
                             //is returned as "undefined"
                             console.log(result[i])
+                            myTeams[i] = result[i]
 
-                            console.log('the team name: ' + result[i].team_name);
-                            myTeams[i] = result[i].team_name;
+                            //console.log('the team name: ' + result[i].team_name);
+                            //myTeams[i] = result[i].team_name;
                         })
                     }
                     //var names = []
@@ -313,9 +314,10 @@ app.route('/team/:user')
 
                         })
                     }*/
+                    /*
                     for (let i = 0; i < myTeams.length; i++) {
                         console.log('name ' + i + " is " + myTeams[i]);
-                    }
+                    }*/
                     res.send(myTeams);
                 }
 
