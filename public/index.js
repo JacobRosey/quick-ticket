@@ -35,7 +35,8 @@ function setActiveLink() {
             return;
         }
         if(active == 'team'){
-            alert('bruh')
+            let user = sessionStorage.getItem('user');
+            ajaxFunc('/team/'+user+'')
         }
     }
 
@@ -140,10 +141,10 @@ function ajaxFunc(path, method, d) {
 
     if (method == 'GET') {
         console.log(path)
-        var data = JSON.stringify({
+        /*var data = JSON.stringify({
             "user": "" + d.user + "",
             "pass": "" + d.pass + ""
-        })
+        })*/
         console.log('This is a get request');
         xhr.send(data);
         xhr.onload = () => {
@@ -168,23 +169,6 @@ function ajaxFunc(path, method, d) {
                 case "This username does not exist!":
                     alert(response);
             }
-            /*
-            if (response == "Login Successful!") {
-                //Redirect to the home page after successful login
-                window.location.replace('/home');
-                alert(response);
-                //Setup session storage
-                sessionStorage.setItem('logged', true);
-                sessionStorage.setItem('user', d.user);
-            }
-            if (response == "Incorrect Password!") {
-                alert(response)
-                document.getElementById('loginPass').value = '';
-            }
-            if (response == "This username does not exist!") {
-                alert(response);
-            }
-            */
         }
     }
 
