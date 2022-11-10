@@ -313,10 +313,10 @@ app.route('/team/:user')
 
                         })
                     }*/
-                    for (let i = 0; i < names.length; i++) {
-                        console.log('name ' + i + " is " + names[i]);
+                    for (let i = 0; i < myTeams.length; i++) {
+                        console.log('name ' + i + " is " + myTeams[i]);
                     }
-                    res.send(names);
+                    res.send(myTeams);
                 }
 
             })
