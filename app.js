@@ -286,9 +286,8 @@ app.route('/team/:user')
                         myTeams += result[i].team_id;
                         console.log("team id: "+ myTeams[i]);
                     }
-                    let length = myTeams.length;
                     let names = []
-                    for (let i = 0; i < length; i++) {
+                    for (let i = 0; i < myTeams.length; i++) {
                         db.query("SELECT * FROM Teams WHERE team_id = " + myTeams[i] + "", (err, result) => {
                             if (err) {
                                 console.log(err)
