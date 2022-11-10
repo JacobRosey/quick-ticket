@@ -282,7 +282,7 @@ app.route('/team/:user')
                     return res.send('User is not on a team');
                 } else {
                     let myTeams = [];
-                    for (let i = 0; i < result.length; i++) {
+                    for (let i = 0; i <= result.length; i++) {
                         myTeams[i] = result[i].team_id;
                         console.log("team id: " + myTeams[i]);
                     }
