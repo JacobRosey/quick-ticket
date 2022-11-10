@@ -249,7 +249,7 @@ app.route('/team/:user')
             console.log(err)
         }
         const { user } = req.body;
-        console.log(user)
+        console.log("user is " + user)
         const dbPromise = new Promise((resolve, reject) => {
 
             db.query("SELECT * FROM users WHERE user_name = '" + user + "'", (err, result) => {
