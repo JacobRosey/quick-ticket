@@ -267,6 +267,8 @@ app.route('/team/:user')
                     resolve(userID);
                 }
             })
+        }).catch(function (error){
+            console.log(error);
         });
         dbPromise.then(() => {
             db.query("SELECT * FROM Members WHERE user_id = '" + userID + "'", (err, result) => {
