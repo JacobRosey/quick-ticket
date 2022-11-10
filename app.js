@@ -269,7 +269,6 @@ app.route('/team/:user')
             })
         }).catch(function (error){
             console.log(error);
-            dbPromise.reject(error)
             return res.status(404).send('Error occured')
         });
         dbPromise.then(() => {
