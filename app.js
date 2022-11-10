@@ -292,7 +292,7 @@ app.route('/team/:user')
                             if (err) {
                                 console.log(err)
                             }
-                            while (i > result.length) {
+                            while (i <= result.length) {
                                 console.log('the team name: ' + result[i].team_name);
                                 names[i] = result[i].team_name;
                             }
