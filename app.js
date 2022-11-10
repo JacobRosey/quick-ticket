@@ -270,7 +270,7 @@ app.route('/team/:user')
             })
         }).catch(function (error){
             console.log(error);
-            return res.status(404).send('Error occured')
+            return res.status(404).send(error)
         });
         dbPromise.then(() => {
             db.query("SELECT * FROM Members WHERE user_id = '" + userID + "'", (err, result) => {
@@ -294,7 +294,7 @@ app.route('/team/:user')
                                 console.log(err)
                             }
                             if(result.length == 0){
-                                return res.send("error occurred in finding team name")
+                                return reject("error occurred in finding team name")
                             }else{
                                 names += result[i].team_name;
                             }
@@ -306,5 +306,8 @@ app.route('/team/:user')
                 }
 
             })
+        }).catch(function (error){
+            console.log(error)
+            return res.status(404).send(error)
         })
     })
