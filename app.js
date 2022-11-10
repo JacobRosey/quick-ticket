@@ -296,7 +296,7 @@ app.route('/team/:user')
                             names[i] = result[i].team_name;
                         })
                     }
-                    for(leti=0; i<names.length; i++){
+                    for(let i=0; i<names.length; i++){
                         console.log('name '+i+" is " + names[i]);
                     }
                     res.send(names);
