@@ -290,7 +290,7 @@ app.route('/team/:user')
                             names += result[i].team_name;
                         })
                     }
-                    console.log(names);
+                    console.log('names are' + names);
                     res.send(names);
                 }
 
