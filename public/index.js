@@ -35,6 +35,7 @@ function setActiveLink() {
         }
         if(active == 'team'){
             let user = sessionStorage.getItem('user');
+            console.log('Starting ajaxfunction on team page load')
             ajaxFunc('/team/'+user+'');
         }
     }
