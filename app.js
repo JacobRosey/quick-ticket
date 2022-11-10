@@ -279,7 +279,7 @@ app.route('/team/:user')
                     reject();
                 }
                 if (result.length == 0) {
-                    res.send('User is not on a team');
+                    return res.send('User is not on a team');
                 } else {
                     let myTeams = [];
                     for (let i = 0; i < result.length; i++) {
@@ -292,12 +292,7 @@ app.route('/team/:user')
                             if (err) {
                                 console.log(err)
                             }
-                            if(result.length == 0){
-                                return dbPromise();
-                            }else{
-                                names += result[i].team_name;
-                            }
-                            
+                            names += result[i].team_name;
                         })
                     }
                     console.log('names are' + names);
