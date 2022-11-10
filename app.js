@@ -268,7 +268,7 @@ app.route('/team/:user')
                     resolve(userID);
                 }
             })
-        }).catch(function (error){
+        }).catch(function (error) {
             console.log(error);
             return res.status(404).send(error)
         });
@@ -284,7 +284,7 @@ app.route('/team/:user')
                     let myTeams = [];
                     for (let i = 0; i < result.length; i++) {
                         myTeams[i] = result[i].team_id;
-                        console.log("team id: "+ myTeams[i]);
+                        console.log("team id: " + myTeams[i]);
                     }
                     var names = []
                     for (let i = 0; i < myTeams.length; i++) {
@@ -292,18 +292,20 @@ app.route('/team/:user')
                             if (err) {
                                 console.log(err)
                             }
-                            console.log('the team name: ' + result[i].team_name);
-                            names[i] = result[i].team_name;
+                            while (i > result.length) {
+                                console.log('the team name: ' + result[i].team_name);
+                                names[i] = result[i].team_name;
+                            }
                         })
                     }
-                    for(let i=0; i<names.length; i++){
-                        console.log('name '+i+" is " + names[i]);
+                    for (let i = 0; i < names.length; i++) {
+                        console.log('name ' + i + " is " + names[i]);
                     }
                     res.send(names);
                 }
 
             })
-        }).catch(function (error){
+        }).catch(function (error) {
             console.log("Here is your error: " + error)
             return res.status(404).send(error)
         })
