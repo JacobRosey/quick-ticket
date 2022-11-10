@@ -16,7 +16,6 @@ function checkForUser() {
 function setActiveLink() {
     //Get current page
     let active = window.location.href.replace("https://quick-ticket.herokuapp.com/", "");
-    console.log(active);
 
     //If on login or register page, don't care about nav stuff
     //because it's not visible on screen
@@ -36,7 +35,8 @@ function setActiveLink() {
         }
         if(active == 'team'){
             let user = sessionStorage.getItem('user');
-            ajaxFunc('/team/'+user+'')
+            let response = ajaxFunc('/team/'+user+'');
+            
         }
     }
 
@@ -130,21 +130,8 @@ function ajaxFunc(path, method, d) {
     xhr.setRequestHeader("Accept", "application/json");
     xhr.setRequestHeader("Content-Type", "application/json");
 
-    /* Probably going to need a put/delete request at some point
-    if (method == 'PUT') {
-        var data = JSON.stringify({
-            "name": d.name,
-            "pass": d.pass
-        })
-
-    } */
-
     if (method == 'GET') {
         console.log(path)
-        /*var data = JSON.stringify({
-            "user": "" + d.user + "",
-            "pass": "" + d.pass + ""
-        })*/
         console.log('This is a get request');
         xhr.send(d);
         xhr.onload = () => {
@@ -168,7 +155,10 @@ function ajaxFunc(path, method, d) {
                     break;
                 case "This username does not exist!":
                     alert(response);
+                    break;
+                default: return response;
             }
+
         }
     }
 

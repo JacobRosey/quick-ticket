@@ -4,7 +4,6 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
-const { isBuffer } = require('util');
 const { resolve } = require('path/posix');
 
 const app = express();
@@ -240,5 +239,62 @@ app.route('/index2/:user/:code')
                     })
                 }
             })
+        })
+    })
+
+app.route('/team/:user')
+//Get team names of any teams the user is a member of
+    .get(function (req, res, err) {
+        if (err) {
+            console.log(err)
+        }
+        const {user} = req.body
+        const dbPromise = new Promise((resolve, reject) => {
+
+            db.query("SELECT * FROM users WHERE user_name = '" + user + "'", (err, result) => {
+                if (err) {
+                    console.log(err)
+                    reject();
+                }
+                if (result.length == 0) {
+                    console.log('This user does not exist in DB');
+                    reject();
+                }
+                if (result.length > 0) {
+                    console.log('This user exists in DB');
+                    userID = result[0].user_id;
+                    resolve(userID);
+                }
+            })
+        });
+        dbPromise.then(() =>{
+            db.query("SELECT * FROM Members WHERE user_id = '"+ userID +"'", (err, result) => {
+                if (err) {
+                    console.log(err)
+                    reject();
+                }
+                if(result.length == 0){
+                    res.send('User is not on a team');
+                }else{
+                    let myTeams = [];
+                    for(let i=0; i<result.length; i++){
+                        myTeams += result[i].team_id;
+                    }
+                    resolve(myTeams)
+                }
+                
+            })
+        }).then(() => {
+            let length = myTeams.length;
+            let names = []
+            for(let i=0; i<length; i++){
+                db.query("SELECT * FROM Members WHERE team_id = " +myTeams[i]+ "", (err, result) => {
+                    if(err){
+                        console.log(err)
+                    }
+                    names += result[i].team_name;
+                })
+            }
+            res.send(names)
         })
     })
