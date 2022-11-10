@@ -156,7 +156,7 @@ function ajaxFunc(path, method, d) {
                 case "This username does not exist!":
                     alert(response);
                     break;
-                default: console.log(response);return response;
+                default: console.log("response is "+ response);
             }
 
         }
