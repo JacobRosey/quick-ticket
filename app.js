@@ -284,7 +284,7 @@ app.route('/team/:user')
                     let myTeams = [];
                     for (let i = 0; i < result.length; i++) {
                         myTeams += result[i].team_id;
-                        console.log("team id: "+ myTeams[i]);
+                        console.log("team id: "+ myTeams);
                     }
                     let names = []
                     for (let i = 0; i < myTeams.length; i++) {
