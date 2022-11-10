@@ -259,7 +259,7 @@ app.route('/team/:user')
                 }
                 if (result.length == 0) {
                     console.log('This user does not exist in DB');
-                    reject();
+                    reject('This user does not exist in DB');
                 }
                 if (result.length > 0) {
                     console.log('This user exists in DB');
