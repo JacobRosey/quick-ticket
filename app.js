@@ -293,7 +293,12 @@ app.route('/team/:user')
                             if (err) {
                                 console.log(err)
                             }
-                            names += result[i].team_name;
+                            if(result.length == 0){
+                                return res.send("error occurred in finding team name")
+                            }else{
+                                names += result[i].team_name;
+                            }
+                            
                         })
                     }
                     console.log('names are' + names);
