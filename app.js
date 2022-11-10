@@ -295,6 +295,7 @@ app.route('/team/:user')
                     names += result[i].team_name;
                 })
             }
-            res.send(names)
+            console.log(names);
+            res.send(names);
         })
     })
