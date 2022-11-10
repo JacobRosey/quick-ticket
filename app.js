@@ -292,9 +292,10 @@ app.route('/team/:user')
                             if (err) {
                                 console.log(err)
                             }
+                            console.log('Team name #'+i)
 
-                            console.log('the team name: ' + result[i].team_name);
-                            names[i] = result[i].team_name;
+                            //console.log('the team name: ' + result[i].team_name);
+                            //names[i] = result[i].team_name;
 
                         })
                     }
