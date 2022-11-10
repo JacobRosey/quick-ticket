@@ -306,7 +306,7 @@ app.route('/team/:user')
 
             })
         }).catch(function (error){
-            console.log(error)
+            console.log("Here is your error: " + error)
             return res.status(404).send(error)
         })
     })
