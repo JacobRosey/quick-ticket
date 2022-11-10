@@ -286,12 +286,14 @@ app.route('/team/:user')
                         myTeams[i] = result[i].team_id;
                         console.log("team id: " + myTeams[i]);
                     }
-                    var names = ["name 1", "name 2"]
+                    var names = ["name 0", "name 1"]
                     for (let i = 0; i < myTeams.length; i++) {
                         db.query("SELECT * FROM Teams WHERE team_id = " + myTeams[i] + "", (err, result) => {
                             if (err) {
                                 console.log(err)
                             }
+                            //First record of select statement is correct, but second record
+                            //is returned as "undefined"
                             console.log(result[i])
 
                             //console.log('the team name: ' + result[i].team_name);
