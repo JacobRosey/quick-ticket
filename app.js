@@ -293,7 +293,7 @@ app.route('/team/:user')
                                 console.log(err)
                             }
                             if(result.length == 0){
-                                Promise.reject(new Error("error occurred in finding team name"));
+                                Promise.reject("error occurred in finding team name");
                             }else{
                                 names += result[i].team_name;
                             }
