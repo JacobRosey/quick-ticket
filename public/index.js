@@ -34,6 +34,9 @@ function setActiveLink() {
             navLink.setAttribute("aria-expanded", "true");
             return;
         }
+        if(active == 'team'){
+            alert('bruh')
+        }
     }
 
 }
