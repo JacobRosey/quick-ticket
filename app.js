@@ -293,9 +293,10 @@ app.route('/team/:user')
                         async function asyncLoop(){
                             var array = []
                             for (let i = 0; i < teamIDs.length; i++) {
-                                console.log('Inside asyncLoop')
+                                console.log('sending team id ' + teamID[i] + ' to asyncQuery')
                                 let result = await asyncQuery(teamIDs[i]);
                                 array.push(result)
+                                console.log('just pushed ' + result + ' to array')
                             }
                             console.log(array)
                             return array;
@@ -305,7 +306,7 @@ app.route('/team/:user')
                                 if (err) {
                                     console.log(err)
                                 }
-                                console.log('returning query result')
+                                console.log('returning query result for id #' + id)
                                 //console.log(result)
                                 //myTeams.push(result);
                                 //console.log(myTeams);
@@ -313,12 +314,9 @@ app.route('/team/:user')
                                 
                             })
                         }
-                        //let myTeams = asyncLoop();
-                        let firstTeam = asyncQuery(29);
-                        console.log(firstTeam);
-                        res.send(firstTeam);
-                        //console.log(myTeams);
-                        //res.send(myTeams);
+                        let myTeams = asyncLoop();
+                        console.log(myTeams);
+                        res.send(myTeams);
                     })
 
                 }
