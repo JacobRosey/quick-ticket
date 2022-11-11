@@ -285,9 +285,7 @@ app.route('/team/:user')
                         var teamIDs = [];
                         for (let i = 0; i < result.length; i++) {
                             teamIDs.push(result[i].team_id);
-                            console.log(result[i].team_id)
                         }
-                        console.log(teamIDs)
                         resolve(teamIDs);
                     }).then((teamIDs) => {
                         console.log('HERE ARE THE TEAM IDS: ' + teamIDs);
