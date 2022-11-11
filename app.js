@@ -256,7 +256,7 @@ app.route('/team/:user')
             db.query("SELECT * FROM users WHERE user_name = '" + user + "'", (err, result) => {
                 if (err) {
                     console.log(err)
-                    reject();
+                    reject('There was an error querying the database');
                 }
                 if (result.length == 0) {
                     console.log('This user does not exist in DB');
