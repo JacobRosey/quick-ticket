@@ -281,7 +281,7 @@ app.route('/team/:user')
                 if (result.length == 0) {
                     return res.send('User is not on a team');
                 } else {
-                    return new Promise((resolve, reject) => {
+                    /*return new Promise((resolve, reject) => {
                         var teamIDs = [];
                         for (let i = 0; i < result.length; i++) {
                             teamIDs.push(result[i].team_id);
@@ -289,7 +289,16 @@ app.route('/team/:user')
                         }
                         console.log(teamIDs)
                         resolve(teamIDs);
-                    })
+                    })*/
+                    const fillArray = async () =>{
+                        for(res of result) {
+                            let myArray = await teamIDs.push(res[i].team_id);
+                            console.log(`Just pushed to ${myArray}`)
+                        }
+                        console.log('Array has been filled');
+                    }
+                    fillArray();
+                    resolve(myArray);
                 }
 
             })//Cannot read properties of undefined - "length" of teamIDs
