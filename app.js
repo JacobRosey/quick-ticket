@@ -281,6 +281,7 @@ app.route('/team/:user')
                 if (result.length == 0) {
                     return res.send('User is not on a team');
                 } else {
+                    /*
                     let myTeams = [];
                     for (let i = 0; i < result.length; i++) {
                         db.query("SELECT * FROM Teams WHERE team_id = " + result[i].team_id + "", (err, result) =>{
@@ -295,10 +296,30 @@ app.route('/team/:user')
                             //myTeams[i] = result[i].team_name;
                         })
                     }
-                    res.send(myTeams);
+                    res.send(myTeams);*/
+                    let teamIDs = [];
+                    for(let i=0; i<result.length; i++){
+                        teamIDs.push(result[i].team_id);
+                    }
+                    resolve(teamIDs)
                 }
 
             })
+        }).then(() => {
+            var myTeams = [];
+            for (let i = 0; i < teamIDs.length; i++) {
+                db.query("SELECT * FROM Teams WHERE team_id = " + teamIDs[i].team_id + "", (err, result) =>{
+                    if (err) {
+                        console.log(err)
+                    }
+                    //First record of select statement can be logged, but second record
+                    //is logged as "undefined"
+                    console.log(teamIDs)
+                    myTeams.push(teamIDs[i].team_name)
+                    //myTeams[i] = result[i].team_name;
+                })
+            }
+            res.send(myTeams);
         }).catch(function (error) {
             console.log("Here is your error: " + error)
             return res.status(404).send(error)
