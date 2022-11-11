@@ -298,7 +298,7 @@ app.route('/team/:user')
             })//Cannot read properties of undefined - "length" of teamIDs
             //Console.log is showing up after that message - teamIDs is
             //being returned before being filled for some reason?
-        }).then((teamIDs) => {
+        })/*.then((teamIDs) => {
             var myTeams = [];
             console.log('team ids - ' + teamIDs);
             console.log('team ids length - ' + teamIDs.length)
@@ -315,7 +315,7 @@ app.route('/team/:user')
                 })
             }
             res.send(myTeams);
-        }).catch(function (error) {
+        })*/.catch(function (error) {
             console.log("Here is your error: " + error)
             return res.status(404).send(error)
         })
