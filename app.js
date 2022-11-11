@@ -290,7 +290,7 @@ app.route('/team/:user')
 
                     }).then((teamIDs) => {
                         console.log('HERE ARE THE TEAM IDS: ' + teamIDs);
-                        async function asyncLoop(){
+                        async function asyncLoop() {
                             var array = []
                             for (let i = 0; i < teamIDs.length; i++) {
                                 console.log('sending team id ' + teamIDs[i] + ' to asyncQuery')
@@ -301,7 +301,7 @@ app.route('/team/:user')
                             console.log(array)
                             return array;
                         }
-                        async function asyncQuery(id){
+                        async function asyncQuery(id) {
                             db.query("SELECT * FROM Teams WHERE team_id = " + id + "", (err, result) => {
                                 if (err) {
                                     console.log(err)
@@ -311,13 +311,12 @@ app.route('/team/:user')
                                 //myTeams.push(result);
                                 //console.log(myTeams);
                                 return result;
-                                
+
                             })
                         }
                         let myTeams = asyncLoop();
-                        setTimeout(
-                            res.send(myTeams), 1000
-                            );
+                        res.send(myTeams);
+
                     })
 
                 }
