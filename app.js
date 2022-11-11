@@ -308,9 +308,9 @@ app.route('/team/:user')
                                     console.log(err)
                                 }
                                 console.log('returning query result for id #' + id);
-                                console.log('this is the result: ' + result.team_name)
+                                console.log('this is the result: ' + result)
                                
-                                return result.team_name;
+                                return result;
 
                             })
                         }
