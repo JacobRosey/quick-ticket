@@ -289,10 +289,24 @@ app.route('/team/:user')
                         }
                         console.log(teamIDs)
                         resolve(teamIDs);
-                    }).then((teamIDs)=> {
-                        console.log('HERE ARE THE TEAM IDS: ' + teamIDs)
+                    }).then((teamIDs) => {
+                        console.log('HERE ARE THE TEAM IDS: ' + teamIDs);
+                        var myTeams = [];
+                        for (let i = 0; i < teamIDs.length; i++) {
+                            db.query("SELECT * FROM Teams WHERE team_id = " + teamIDs[i].team_id + "", (err, result) => {
+                                if (err) {
+                                    console.log(err)
+                                }
+                                //First record of select statement can be logged, but second record
+                                //is logged as "undefined"
+                                console.log(teamIDs)
+                                myTeams.push(teamIDs[i].team_name)
+                                //myTeams[i] = result[i].team_name;
+                            })
+                        }
+                        res.send(myTeams);
                     })
-                    
+
                 }
 
             })//Cannot read properties of undefined - "length" of teamIDs
