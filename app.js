@@ -294,7 +294,7 @@ app.route('/team/:user')
                         var myTeams = [];
                         async function asyncLoop(){
                             for (let i = 0; i < teamIDs.length; i++) {
-                                await asyncQuery(teamID[i])
+                                await asyncQuery(teamIDs[i])
                             }
                         }
                         async function asyncQuery(id){
