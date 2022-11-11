@@ -309,7 +309,7 @@ app.route('/team/:user')
                             })
                         }
                         asyncLoop();
-                        console.log(myTeams)
+                        //console.log(myTeams)
                         res.send(myTeams);
                     })
 
