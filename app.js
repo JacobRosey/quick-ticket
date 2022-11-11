@@ -292,18 +292,21 @@ app.route('/team/:user')
                     }).then((teamIDs) => {
                         console.log('HERE ARE THE TEAM IDS: ' + teamIDs);
                         var myTeams = [];
-                        for (let i = 0; i < teamIDs.length; i++) {
-                            db.query("SELECT * FROM Teams WHERE team_id = " + teamIDs[i] + "", (err, result) => {
+                        async function asyncLoop(){
+                            for (let i = 0; i < teamIDs.length; i++) {
+                                await asyncQuery(teamID[i])
+                            }
+                        }
+                        async function asyncQuery(id){
+                            db.query("SELECT * FROM Teams WHERE team_id = " + id + "", (err, result) => {
                                 if (err) {
                                     console.log(err)
                                 }
-                                //First record of select statement can be logged, but second record
-                                //is logged as "undefined"
                                 console.log(result[i].team_name)
                                 myTeams.push(result[i].team_name)
-                                //myTeams[i] = result[i].team_name;
                             })
                         }
+                        asyncLoop();
                         res.send(myTeams);
                     })
 
@@ -312,24 +315,7 @@ app.route('/team/:user')
             })//Cannot read properties of undefined - "length" of teamIDs
             //Console.log is showing up after that message - teamIDs is
             //being returned before being filled for some reason?
-        })/*.then((teamIDs) => {
-            var myTeams = [];
-            console.log('team ids - ' + teamIDs);
-            console.log('team ids length - ' + teamIDs.length)
-            for (let i = 0; i < teamIDs.length; i++) {
-                db.query("SELECT * FROM Teams WHERE team_id = " + teamIDs[i].team_id + "", (err, result) => {
-                    if (err) {
-                        console.log(err)
-                    }
-                    //First record of select statement can be logged, but second record
-                    //is logged as "undefined"
-                    console.log(teamIDs)
-                    myTeams.push(teamIDs[i].team_name)
-                    //myTeams[i] = result[i].team_name;
-                })
-            }
-            res.send(myTeams);
-        })*/.catch(function (error) {
+        }).catch(function (error) {
             console.log("Here is your error: " + error)
             return res.status(404).send(error)
         })
