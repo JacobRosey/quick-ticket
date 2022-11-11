@@ -306,7 +306,8 @@ app.route('/team/:user')
                                 if (err) {
                                     console.log(err)
                                 }
-                                console.log('returning query result for id #' + id)
+                                console.log('returning query result for id #' + id);
+                                console.log('this is the result: ' + result)
                                 //console.log(result)
                                 //myTeams.push(result);
                                 //console.log(myTeams);
