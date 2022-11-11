@@ -293,7 +293,7 @@ app.route('/team/:user')
                         console.log('HERE ARE THE TEAM IDS: ' + teamIDs);
                         var myTeams = [];
                         for (let i = 0; i < teamIDs.length; i++) {
-                            db.query("SELECT * FROM Teams WHERE team_id = " + teamIDs[i].team_id + "", (err, result) => {
+                            db.query("SELECT * FROM Teams WHERE team_id = " + teamIDs[i] + "", (err, result) => {
                                 if (err) {
                                     console.log(err)
                                 }
