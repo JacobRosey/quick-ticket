@@ -296,9 +296,10 @@ app.route('/team/:user')
                             console.log(`Just pushed to ${myArray}`)
                         }
                         console.log('Array has been filled');
+                        return myArray;
                     }
-                    fillArray();
-                    resolve(myArray);
+                    let teamIDs = fillArray();
+                    resolve(teamIDs);
                 }
 
             })//Cannot read properties of undefined - "length" of teamIDs
