@@ -299,8 +299,8 @@ app.route('/team/:user')
                                 }
                                 //First record of select statement can be logged, but second record
                                 //is logged as "undefined"
-                                console.log(teamIDs)
-                                myTeams.push(teamIDs[i].team_name)
+                                console.log(result[i].team_name)
+                                myTeams.push(result[i].team_name)
                                 //myTeams[i] = result[i].team_name;
                             })
                         }
