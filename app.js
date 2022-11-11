@@ -287,8 +287,8 @@ app.route('/team/:user')
                             if (err) {
                                 console.log(err)
                             }
-                            //First record of select statement is correct, but second record
-                            //is returned as "undefined"
+                            //First record of select statement can be logged, but second record
+                            //is logged as "undefined"
                             console.log(result[i])
                             myTeams.push(result[i].team_name)
                             console.log('myTeams log: ' + myTeams[i])
