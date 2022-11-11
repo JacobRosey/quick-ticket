@@ -281,29 +281,6 @@ app.route('/team/:user')
                 if (result.length == 0) {
                     return res.send('User is not on a team');
                 } else {
-                    /*
-                    let myTeams = [];
-                    for (let i = 0; i < result.length; i++) {
-                        db.query("SELECT * FROM Teams WHERE team_id = " + result[i].team_id + "", (err, result) =>{
-                            if (err) {
-                                console.log(err)
-                            }
-                            //First record of select statement can be logged, but second record
-                            //is logged as "undefined"
-                            console.log(result[i])
-                            myTeams.push(result[i].team_name)
-                            console.log('myTeams log: ' + myTeams[i])
-                            //myTeams[i] = result[i].team_name;
-                        })
-                    }
-                    res.send(myTeams);*/
-                    /*var teamIDs = [];
-                    for(let i=0; i<result.length; i++){
-                        teamIDs.push(result[i].team_id);
-                        console.log(result[i].team_id)
-                    }
-                    console.log(teamIDs)
-                    return teamIDs;*/
                     return new Promise((resolve, reject) => {
                         var teamIDs = [];
                         for (let i = 0; i < result.length; i++) {
@@ -317,9 +294,11 @@ app.route('/team/:user')
 
             })//Cannot read properties of undefined - "length" of teamIDs
             //Console.log is showing up after that message - teamIDs is
-            //being returned first for some reason?
+            //being returned before being filled for some reason?
         }).then((teamIDs) => {
             var myTeams = [];
+            console.log(teamIDs);
+            console.log(teamIDs.length)
             for (let i = 0; i < teamIDs.length; i++) {
                 db.query("SELECT * FROM Teams WHERE team_id = " + teamIDs[i].team_id + "", (err, result) => {
                     if (err) {
