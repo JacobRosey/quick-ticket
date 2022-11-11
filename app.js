@@ -295,6 +295,10 @@ app.route('/team/:user')
                                 return await asyncQuery(teamIDs[i]);
                             }
                         }
+                        asyncLoop.then((record) => {
+                            myTeams.push(record)
+                            console.log(myTeams)
+                        });
                         async function asyncQuery(id){
                             db.query("SELECT * FROM Teams WHERE team_id = " + id + "", (err, result) => {
                                 if (err) {
@@ -307,10 +311,8 @@ app.route('/team/:user')
                                 
                             })
                         }
-                        asyncLoop().then((record) => {
-                            myTeams.push(record)
-                            console.log(myTeams)
-                        });
+
+                        asyncLoop();
                         console.log(myTeams);
                         res.send(myTeams);
                     })
