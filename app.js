@@ -304,12 +304,12 @@ app.route('/team/:user')
                                 }
                                 //console.log(result)
                                 myTeams.push(result);
-                                console.log(myTeams);
+                                //console.log(myTeams);
                                 
                             })
                         }
                         asyncLoop();
-                        //console.log(myTeams)
+                        console.log(myTeams)
                         res.send(myTeams);
                     })
 
