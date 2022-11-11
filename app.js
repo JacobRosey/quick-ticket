@@ -314,10 +314,7 @@ app.route('/team/:user')
                                 
                             })
                         }
-                        let myTeams = new Promise(resolve => 
-                            setTimeout(
-                                resolve(asyncLoop()), 1000)
-                            );
+                        let myTeams = asyncLoop();
                         console.log(myTeams);
                         res.send(myTeams);
                     })
