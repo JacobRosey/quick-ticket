@@ -291,6 +291,7 @@ app.route('/team/:user')
                             //is returned as "undefined"
                             console.log(result[i])
                             myTeams.push(result[i].team_name)
+                            console.log('myTeams log: ' + myTeams[i])
                             //myTeams[i] = result[i].team_name;
                         })
                     }
