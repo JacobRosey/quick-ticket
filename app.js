@@ -297,13 +297,22 @@ app.route('/team/:user')
                         })
                     }
                     res.send(myTeams);*/
-                    var teamIDs = [];
+                    /*var teamIDs = [];
                     for(let i=0; i<result.length; i++){
                         teamIDs.push(result[i].team_id);
                         console.log(result[i].team_id)
                     }
                     console.log(teamIDs)
-                    return teamIDs;
+                    return teamIDs;*/
+                    return new Promise((resolve, reject) => {
+                        var teamIDs = [];
+                        for (let i = 0; i < result.length; i++) {
+                            teamIDs.push(result[i].team_id);
+                            console.log(result[i].team_id)
+                        }
+                        console.log(teamIDs)
+                        resolve(teamIDs);
+                    })
                 }
 
             })//Cannot read properties of undefined - "length" of teamIDs
@@ -312,7 +321,7 @@ app.route('/team/:user')
         }).then((teamIDs) => {
             var myTeams = [];
             for (let i = 0; i < teamIDs.length; i++) {
-                db.query("SELECT * FROM Teams WHERE team_id = " + teamIDs[i].team_id + "", (err, result) =>{
+                db.query("SELECT * FROM Teams WHERE team_id = " + teamIDs[i].team_id + "", (err, result) => {
                     if (err) {
                         console.log(err)
                     }
