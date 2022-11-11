@@ -314,7 +314,7 @@ app.route('/team/:user')
                             })
                         }
                         //let myTeams = asyncLoop();
-                        let firstTeam = asyncQuery(0);
+                        let firstTeam = asyncQuery(29);
                         console.log(firstTeam);
                         res.send(firstTeam);
                         //console.log(myTeams);
