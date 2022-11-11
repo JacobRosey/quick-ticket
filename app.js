@@ -293,7 +293,7 @@ app.route('/team/:user')
                         async function asyncLoop(){
                             var array = []
                             for (let i = 0; i < teamIDs.length; i++) {
-                                console.log('sending team id ' + teamID[i] + ' to asyncQuery')
+                                console.log('sending team id ' + teamIDs[i] + ' to asyncQuery')
                                 let result = await asyncQuery(teamIDs[i]);
                                 array.push(result)
                                 console.log('just pushed ' + result + ' to array')
