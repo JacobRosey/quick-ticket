@@ -297,7 +297,7 @@ app.route('/team/:user')
                         })
                     }
                     res.send(myTeams);*/
-                    let teamIDs = [];
+                    var teamIDs = [];
                     for(let i=0; i<result.length; i++){
                         teamIDs.push(result[i].team_id);
                         console.log(result[i].team_id)
