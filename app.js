@@ -272,7 +272,7 @@ app.route('/team/:user')
             console.log(error);
             return res.status(404).send(error)
         });
-        dbPromise.then((reject, resolve) => {
+        dbPromise.then(() => {
             db.query("SELECT * FROM Members WHERE user_id = '" + userID + "'", (err, result) => {
                 if (err) {
                     console.log(err)
@@ -301,7 +301,7 @@ app.route('/team/:user')
                     for(let i=0; i<result.length; i++){
                         teamIDs.push(result[i].team_id);
                     }
-                    resolve(teamIDs)
+                    dbPromise.resolve(teamIDs)
                 }
 
             })
