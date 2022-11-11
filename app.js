@@ -309,6 +309,7 @@ app.route('/team/:user')
                         }
                         asyncLoop().then((record) => {
                             myTeams.push(record)
+                            console.log(myTeams)
                         });
                         console.log(myTeams);
                         res.send(myTeams);
