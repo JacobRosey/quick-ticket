@@ -315,7 +315,7 @@ app.route('/team/:user')
 
                             })
                         }
-                        let myTeams = asyncLoop();
+                        let myTeams = [asyncLoop()];
                         res.send(myTeams);
 
                     })
