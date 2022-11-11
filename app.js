@@ -302,11 +302,12 @@ app.route('/team/:user')
                                 if (err) {
                                     console.log(err)
                                 }
-                                console.log(result)
+                                //console.log(result)
                                 myTeams.push(result)
                             })
                         }
                         asyncLoop();
+                        console.log(myTeams)
                         res.send(myTeams);
                     })
 
