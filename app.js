@@ -301,7 +301,7 @@ app.route('/team/:user')
                     for(let i=0; i<result.length; i++){
                         teamIDs.push(result[i].team_id);
                     }
-                    resolve(teamIDs)
+                    return teamIDs;
                 }
 
             })
