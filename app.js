@@ -289,17 +289,20 @@ app.route('/team/:user')
                         resolve(teamIDs);
                     }).then((teamIDs) => {
                         console.log('HERE ARE THE TEAM IDS: ' + teamIDs);
-                        var myTeams = [];
                         async function asyncLoop(){
+                            var myTeams = []
                             for (let i = 0; i < teamIDs.length; i++) {
-                                return await asyncQuery(teamIDs[i]);
+                                console.log('Inside asyncLoop')
+                                myTeams.push(await asyncQuery(teamIDs[i]));
                             }
+                            return myTeams;
                         }
                         async function asyncQuery(id){
                             db.query("SELECT * FROM Teams WHERE team_id = " + id + "", (err, result) => {
                                 if (err) {
                                     console.log(err)
                                 }
+                                console.log('returning query result')
                                 //console.log(result)
                                 //myTeams.push(result);
                                 //console.log(myTeams);
@@ -307,12 +310,9 @@ app.route('/team/:user')
                                 
                             })
                         }
-                        asyncLoop().then((record) => {
-                            myTeams.push(record)
-                            console.log(myTeams)
-                        });
-                        console.log(myTeams);
-                        res.send(myTeams);
+                        let array = asyncLoop();
+                        console.log(array);
+                        res.send(array);
                     })
 
                 }
