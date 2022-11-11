@@ -303,8 +303,9 @@ app.route('/team/:user')
                                     console.log(err)
                                 }
                                 //console.log(result)
-                                //myTeams.push(result)
-                                myTeams[i] = result;
+                                myTeams.push(result);
+                                console.log(myTeams);
+                                
                             })
                         }
                         asyncLoop();
