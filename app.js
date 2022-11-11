@@ -291,33 +291,11 @@ app.route('/team/:user')
                             }
                             //First record of select statement is correct, but second record
                             //is returned as "undefined"
-                            console.log(result[i])
+                            console.log(result[i].team_name)
                             myTeams[i] = result[i]
-
-                            //console.log('the team name: ' + result[i].team_name);
                             //myTeams[i] = result[i].team_name;
                         })
                     }
-                    //var names = []
-                    /*
-                    for (let i = 0; i < myTeams.length; i++) {
-                        db.query("SELECT * FROM Teams WHERE team_id = " + myTeams[i] + "", (err, result) => {
-                            if (err) {
-                                console.log(err)
-                            }
-                            //First record of select statement is correct, but second record
-                            //is returned as "undefined"
-                            console.log(result[i])
-
-                            //console.log('the team name: ' + result[i].team_name);
-                            //names[i] = result[i].team_name;
-
-                        })
-                    }*/
-                    /*
-                    for (let i = 0; i < myTeams.length; i++) {
-                        console.log('name ' + i + " is " + myTeams[i]);
-                    }*/
                     res.send(myTeams);
                 }
 
