@@ -302,7 +302,7 @@ app.route('/team/:user')
                                 if (err) {
                                     console.log(err)
                                 }
-                                console.log(result.team_name)
+                                console.log(result)
                                 myTeams.push(result.team_name)
                             })
                         }
