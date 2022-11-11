@@ -292,7 +292,7 @@ app.route('/team/:user')
                         var myTeams = [];
                         async function asyncLoop(){
                             for (let i = 0; i < teamIDs.length; i++) {
-                                await asyncQuery(teamIDs[i])
+                                myTeams.push(await asyncQuery(teamIDs[i]));
                             }
                         }
                         async function asyncQuery(id){
@@ -301,13 +301,14 @@ app.route('/team/:user')
                                     console.log(err)
                                 }
                                 //console.log(result)
-                                myTeams.push(result);
+                                //myTeams.push(result);
                                 //console.log(myTeams);
+                                return result;
                                 
                             })
                         }
                         asyncLoop();
-                        console.log(myTeams)
+                        console.log(myTeams);
                         res.send(myTeams);
                     })
 
