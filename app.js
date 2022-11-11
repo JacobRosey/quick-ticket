@@ -301,12 +301,12 @@ app.route('/team/:user')
                     for(let i=0; i<result.length; i++){
                         teamIDs.push(result[i].team_id);
                     }
-                    Promise.resolve(teamIDs)
+                    resolve(teamIDs)
                 }
 
             })
         })
-        dbPromise.finally(() => {
+        dbPromise.then(() => {
             var myTeams = [];
             for (let i = 0; i < teamIDs.length; i++) {
                 db.query("SELECT * FROM Teams WHERE team_id = " + teamIDs[i].team_id + "", (err, result) =>{
