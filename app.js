@@ -300,6 +300,7 @@ app.route('/team/:user')
                     let teamIDs = [];
                     for(let i=0; i<result.length; i++){
                         teamIDs.push(result[i].team_id);
+                        console.log(result[i].team_id)
                     }
                     return teamIDs;
                 }
