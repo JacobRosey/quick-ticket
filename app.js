@@ -305,9 +305,8 @@ app.route('/team/:user')
                     return teamIDs;
                 }
 
-            })
+            })//Cannot read properties of null - "length" of teamIDs
         }).then((teamIDs) => {
-            teamIDs.length = 2;
             var myTeams = [];
             for (let i = 0; i < teamIDs.length; i++) {
                 db.query("SELECT * FROM Teams WHERE team_id = " + teamIDs[i].team_id + "", (err, result) =>{
