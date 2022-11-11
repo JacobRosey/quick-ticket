@@ -299,7 +299,7 @@ app.route('/team/:user')
                         return myArray;
                     }
                     let teamIDs = fillArray();
-                    resolve(teamIDs);
+                    return teamIDs;
                 }
 
             })//Cannot read properties of undefined - "length" of teamIDs
