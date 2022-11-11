@@ -303,7 +303,7 @@ app.route('/team/:user')
                                     console.log(err)
                                 }
                                 console.log(result)
-                                myTeams.push(result.team_name)
+                                myTeams.push(result)
                             })
                         }
                         asyncLoop();
