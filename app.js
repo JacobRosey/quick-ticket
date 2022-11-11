@@ -293,7 +293,8 @@ app.route('/team/:user')
                             var myTeams = []
                             for (let i = 0; i < teamIDs.length; i++) {
                                 console.log('Inside asyncLoop')
-                                myTeams.push(await asyncQuery(teamIDs[i]));
+                                let result = await asyncQuery(teamIDs[i]);
+                                myTeams.push(result)
                             }
                             console.log(myTeams)
                             return myTeams;
