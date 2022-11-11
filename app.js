@@ -305,7 +305,9 @@ app.route('/team/:user')
                     return teamIDs;
                 }
 
-            })//Cannot read properties of null - "length" of teamIDs
+            })//Cannot read properties of undefined - "length" of teamIDs
+            //Console.log is showing up after that message - teamIDs is
+            //being returned first for some reason?
         }).then((teamIDs) => {
             var myTeams = [];
             for (let i = 0; i < teamIDs.length; i++) {
