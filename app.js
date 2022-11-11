@@ -295,6 +295,7 @@ app.route('/team/:user')
                                 console.log('Inside asyncLoop')
                                 myTeams.push(await asyncQuery(teamIDs[i]));
                             }
+                            console.log(myTeams)
                             return myTeams;
                         }
                         async function asyncQuery(id){
