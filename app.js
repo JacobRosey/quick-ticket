@@ -289,7 +289,7 @@ app.route('/team/:user')
                             }
                             //First record of select statement is correct, but second record
                             //is returned as "undefined"
-                            console.log(result[i].team_name)
+                            console.log(result[i])
                             myTeams[i] += result[i]
                             //myTeams[i] = result[i].team_name;
                         })
