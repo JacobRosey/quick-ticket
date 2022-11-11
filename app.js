@@ -272,7 +272,7 @@ app.route('/team/:user')
             console.log(error);
             return res.status(404).send(error)
         });
-        dbPromise.then(() => {
+        dbPromise.then((reject, resolve) => {
             db.query("SELECT * FROM Members WHERE user_id = '" + userID + "'", (err, result) => {
                 if (err) {
                     console.log(err)
