@@ -297,8 +297,8 @@ app.route('/team/:user')
             //being returned before being filled for some reason?
         }).then((teamIDs) => {
             var myTeams = [];
-            console.log(teamIDs);
-            console.log(teamIDs.length)
+            console.log('team ids - ' + teamIDs);
+            console.log('team ids length - ' + teamIDs.length)
             for (let i = 0; i < teamIDs.length; i++) {
                 db.query("SELECT * FROM Teams WHERE team_id = " + teamIDs[i].team_id + "", (err, result) => {
                     if (err) {
