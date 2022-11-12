@@ -295,7 +295,7 @@ app.route('/team/:user')
                             for (let i = 0; i < teamIDs.length; i++) {
                                 console.log('sending team id ' + teamIDs[i] + ' to asyncQuery')
                                 let result = await asyncQuery(teamIDs[i]);
-                                await new Promise(resolve => setTimeout(resolve, 1000));
+                                //await new Promise(resolve => setTimeout(resolve, 1000));
                                 array.push(result)
                                 console.log('just pushed ' + result + ' to array')
                             }
