@@ -295,7 +295,7 @@ app.route('/team/:user')
                             for (let i = 0; i < teamIDs.length; i++) {
                                 console.log('sending team id ' + teamIDs[i] + ' to asyncQuery')
                                 let result = await asyncQuery(teamIDs[i]);
-                                array.push(JSON.stringify(result))
+                                array.push(result)
                                 console.log('just pushed ' + result + ' to array')
                             }
                             console.log(array)
@@ -308,7 +308,7 @@ app.route('/team/:user')
                                 }
                                 console.log('returning query result for id ' + id + '. The result is ' + JSON.stringify(result));
                                
-                                return result;
+                                return JSON.stringify(result);
 
                             })
                         }
