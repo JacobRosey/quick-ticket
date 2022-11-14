@@ -271,7 +271,7 @@ app.route('/team/:user')
         }
 
         async function getTeams(u) {
-            db.query("SELECT * FROM Members WHERE user_id = '" + userID + "'", (err, result) => {
+            db.query("SELECT * FROM Members WHERE user_id = '" + u+ "'", (err, result) => {
                 if (err) {
                     console.log(err)
                 }
