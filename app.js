@@ -307,14 +307,16 @@ app.route('/team/:user')
 
                                 })
                             }
-                            return await array;
+                            return array;
                         }
                         async function doAsyncStuff() {
                             const array = await getResults();
-                            console.log('array after loop: ' + array)
-                            res.send(array);
+                            return array;
                         }
-                        doAsyncStuff();
+                        return doAsyncStuff();
+                    }).then((arr) => {
+                        console.log('array after loop: ' + arr)
+                        res.send(arr);
                     })
                 }
             })
