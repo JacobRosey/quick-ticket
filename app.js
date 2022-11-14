@@ -252,73 +252,7 @@ app.route('/team/:user')
 
         console.log("username is " + user);
 
-        async function getUser() {
-            console.log('getting user... username is ' + user)
-            const result = await db.query("SELECT * FROM users WHERE user_name = '" + user + "'");
-            console.log('inside user query')
-            if (result.length == 0) {
-                console.log('This user does not exist in DB');
-                return 'This user does not exist in DB';
-            }
-            if (result.length > 0) {
-                console.log('This user exists in DB');
-                let userID = result[0].user_id;
-                return userID;
-            }
-        }
-
-        async function getTeams(id) {
-            db.query("SELECT * FROM Members WHERE user_id = '" + id + "'", (err, result) => {
-                if (err) {
-                    console.log(err)
-                }
-                if (result.length == 0) {
-                    return 'User is not on a team';
-                } else {
-                    var teamIDs = [];
-                    for (let i = 0; i < result.length; i++) {
-                        teamIDs.push(result[i].team_id);
-                    }
-                    return teamIDs;
-                }
-            })
-        }
-        async function asyncLoop(teamIDs) {
-            console.log('HERE ARE THE TEAM IDS: ' + teamIDs);
-            var array = []
-            for (let i = 0; i < teamIDs.length; i++) {
-                console.log('sending team id ' + teamIDs[i] + ' to asyncQuery')
-                const result = await asyncQuery(teamIDs[i]);
-                array.push(result)
-                console.log('just pushed ' + result + ' to array')
-            }
-            console.log(array)
-            return array;
-        }
-        async function asyncQuery(id) {
-            db.query("SELECT * FROM Teams WHERE team_id = " + id + "", (err, result) => {
-                if (err) {
-                    console.log(err)
-                }
-                console.log('returning query result for id ' + id + '. The result is ' + JSON.stringify(result));
-
-                return JSON.stringify(result);
-
-            })
-        }
-        async function sendResponse() {
-            const id = await getUser();
-            console.log('user_id is ' + id);
-            const teams = await getTeams(id);
-            console.log('teams are ' + teams);
-            const array = await asyncLoop(teams);
-            console.log('array is ' + array);
-            res.send(array)
-        }
-
-        sendResponse();
-
-        /*
+        
         const dbPromise = new Promise((resolve, reject) => {
 
             db.query("SELECT * FROM users WHERE user_name = '" + user + "'", (err, result) => {
@@ -398,5 +332,5 @@ app.route('/team/:user')
         }).catch(function (error) {
             console.log("Here is your error: " + error)
             return res.status(404).send(error)
-        })*/
+        })
     })
