@@ -255,6 +255,7 @@ app.route('/team/:user')
         async function getUser() {
             console.log('getting user... username is ' + user)
             db.query("SELECT * FROM users WHERE user_name = '" + user + "'", (err, result) => {
+                console.log('inside user query')
                 if (err) {
                     console.log(err)
                     return 'There was an error querying the database';
