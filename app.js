@@ -306,10 +306,11 @@ app.route('/team/:user')
 
                                 })
                             }
+                            console.log('array before resolving: ' + array)
                             resolve(array)
-                        }).then((array)=> {
-                            console.log(array)
-                            res.send(array)
+                        }).then((arr)=> {
+                            console.log("array after resolving: " + arr)
+                            res.send(arr)
                         })
 
                         /*
