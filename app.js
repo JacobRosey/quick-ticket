@@ -309,9 +309,8 @@ app.route('/team/:user')
                             }
                             return array;
                         }
-                        return new Promise(async (resolve, reject) =>{
-                            const myResults = await getResults();
-                            resolve(myResults);
+                        return new Promise((resolve, reject) =>{
+                            resolve(getResults());
                         }).then((arr) => {
                             console.log('array after promise resolved: ' + arr)
                             res.send(arr);
