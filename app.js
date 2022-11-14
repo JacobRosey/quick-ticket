@@ -256,10 +256,6 @@ app.route('/team/:user')
             console.log('getting user... username is ' + user)
             const result = await db.query("SELECT * FROM users WHERE user_name = '" + user + "'");
             console.log('inside user query')
-            if (err) {
-                console.log(err)
-                return 'There was an error querying the database';
-            }
             if (result.length == 0) {
                 console.log('This user does not exist in DB');
                 return 'This user does not exist in DB';
