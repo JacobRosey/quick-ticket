@@ -307,7 +307,7 @@ app.route('/team/:user')
 
                                 })
                             }
-                            return array;
+                            return await array;
                         }
                         async function doAsyncStuff() {
                             const array = await getResults();
