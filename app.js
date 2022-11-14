@@ -293,64 +293,29 @@ app.route('/team/:user')
                     }).then((teamIDs) => {
                         console.log('HERE ARE THE TEAM IDS: ' + teamIDs);
                         var array = [];
-                        return new Promise((resolve, reject) => {
-                            for (let i = 0; i < teamIDs.length; i++) {
-                                console.log('querying teamID ' + teamIDs[i]);
+                        //return new Promise((resolve, reject) => {
+                        for (let i = 0; i < teamIDs.length; i++) {
+                            console.log('querying teamID ' + teamIDs[i]);
 
-                                db.query("SELECT * FROM Teams WHERE team_id = " + teamIDs[i] + "", (err, result) => {
-                                    if (err) {
-                                        console.log(err)
-                                    }
-                                    console.log('pushing result to array for id ' + teamIDs[i] + '. The result is ' + JSON.stringify(result));
-                                    array.push(JSON.stringify(result))
-
-                                })
-                            }
-                            console.log('array before resolving: ' + array)
-                            resolve(array)
-                        }).then((arr)=> {
-                            console.log("array after resolving: " + arr)
-                            res.send(arr)
-                        })
-
-                        /*
-                        async function asyncLoop() {
-                            var array = []
-                            for (let i = 0; i < teamIDs.length; i++) {
-                                console.log('sending team id ' + teamIDs[i] + ' to asyncQuery')
-                                const result = await asyncQuery(teamIDs[i]);
-                                array.push(result)
-                                console.log('just pushed ' + result + ' to array')
-                            }
-                            console.log(array)
-                            return array;
-                        }
-                        async function asyncQuery(id) {
-                            db.query("SELECT * FROM Teams WHERE team_id = " + id + "", (err, result) => {
+                            db.query("SELECT * FROM Teams WHERE team_id = " + teamIDs[i] + "", (err, result) => {
                                 if (err) {
                                     console.log(err)
                                 }
-                                console.log('returning query result for id ' + id + '. The result is ' + JSON.stringify(result));
-                               
-                                return JSON.stringify(result);
+                                console.log('pushing result to array for id ' + teamIDs[i] + '. The result is ' + JSON.stringify(result));
+                                array.push(JSON.stringify(result))
 
                             })
                         }
-                        async function sendResponse() {
-                            const array = await asyncLoop();
-                            console.log(array);
-                            return array;
-                        }
-                        //sendResponse();
-                        res.send(sendResponse());*/
+                        console.log('array after loop: ' + array)
+                        res.send(array);
 
+                        /*}).then((arr)=> {
+                            console.log("array after resolving: " + arr)
+                            res.send(arr)
+                        })*/
                     })
-
                 }
-
-            })//Cannot read properties of undefined - "length" of teamIDs
-            //Console.log is showing up after that message - teamIDs is
-            //being returned before being filled for some reason?
+            })
         }).catch(function (error) {
             console.log("Here is your error: " + error)
             return res.status(404).send(error)
