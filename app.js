@@ -252,7 +252,7 @@ app.route('/team/:user')
 
         console.log("username is " + user);
 
-        
+
         const dbPromise = new Promise((resolve, reject) => {
 
             db.query("SELECT * FROM users WHERE user_name = '" + user + "'", (err, result) => {
@@ -293,22 +293,24 @@ app.route('/team/:user')
                     }).then((teamIDs) => {
                         console.log('HERE ARE THE TEAM IDS: ' + teamIDs);
                         var array = [];
-                        for (let i = 0; i < teamIDs.length; i++) {
-                            console.log('querying teamID ' + teamIDs[i]);
-                            //return new Promise((resolve, reject) => {
+                        return new Promise((resolve, reject) => {
+                            for (let i = 0; i < teamIDs.length; i++) {
+                                console.log('querying teamID ' + teamIDs[i]);
+
                                 db.query("SELECT * FROM Teams WHERE team_id = " + teamIDs[i] + "", (err, result) => {
                                     if (err) {
                                         console.log(err)
                                     }
-                                    console.log('pushing result to array for id ' + teamIDs[i]+ '. The result is ' + JSON.stringify(result));
+                                    console.log('pushing result to array for id ' + teamIDs[i] + '. The result is ' + JSON.stringify(result));
                                     array.push(result)
-    
+
                                 })
-                                //resolve();
-                            //})
-                        }
-                        console.log(array)
-                        
+                            }
+                            resolve(array)
+                        }).then((array)=> {
+                            console.log(array)
+                        })
+
                         /*
                         async function asyncLoop() {
                             var array = []
