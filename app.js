@@ -307,7 +307,7 @@ app.route('/team/:user')
             })
         }
         async function sendResponse() {
-            const id = await getUser()
+            const id = await getUser();
             console.log('user_id is ' + id);
             const teams = await getTeams(id);
             console.log('teams are ' + teams);
