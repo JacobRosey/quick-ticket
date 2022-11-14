@@ -309,14 +309,13 @@ app.route('/team/:user')
                             }
                             return array;
                         }
-                        async function doAsyncStuff() {
-                            const array = await getResults();
-                            return array;
-                        }
-                        return doAsyncStuff();
-                    }).then((arr) => {
-                        console.log('array after loop: ' + arr)
-                        res.send(arr);
+                        return new Promise(async (resolve, reject) =>{
+                            const myResults = await getResults();
+                            resolve(myResults);
+                        }).then((arr) => {
+                            console.log('array after promise resolved: ' + arr)
+                            res.send(arr);
+                        })  
                     })
                 }
             })
