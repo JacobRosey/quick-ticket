@@ -309,12 +309,10 @@ app.route('/team/:user')
                             }
                             return array;
                         }
-                        return new Promise((resolve, reject) =>{
-                            resolve(getResults());
-                        }).then((arr) => {
-                            console.log('array after promise resolved: ' + arr)
+                        getResults.then((arr) => {
+                            console.log('array after .then() : ' + arr);
                             res.send(arr);
-                        })  
+                        })
                     })
                 }
             })
