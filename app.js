@@ -312,9 +312,13 @@ app.route('/team/:user')
 
                             })
                         }
-                        let myTeams = [];
-                        myTeams.push(asyncLoop());
-                        res.send(myTeams);
+                        async function sendResponse() {
+                            const array = await asyncLoop();
+                            console.log(array);
+                            return array;
+                        }
+                        //sendResponse();
+                        res.send(sendResponse());
 
                     })
 
