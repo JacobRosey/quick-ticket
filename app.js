@@ -254,22 +254,21 @@ app.route('/team/:user')
 
         async function getUser() {
             console.log('getting user... username is ' + user)
-            db.query("SELECT * FROM users WHERE user_name = '" + user + "'", (err, result) => {
-                console.log('inside user query')
-                if (err) {
-                    console.log(err)
-                    return 'There was an error querying the database';
-                }
-                if (result.length == 0) {
-                    console.log('This user does not exist in DB');
-                    return 'This user does not exist in DB';
-                }
-                if (result.length > 0) {
-                    console.log('This user exists in DB');
-                    let userID = result[0].user_id;
-                    return userID;
-                }
-            })
+            const result = await db.query("SELECT * FROM users WHERE user_name = '" + user + "'");
+            console.log('inside user query')
+            if (err) {
+                console.log(err)
+                return 'There was an error querying the database';
+            }
+            if (result.length == 0) {
+                console.log('This user does not exist in DB');
+                return 'This user does not exist in DB';
+            }
+            if (result.length > 0) {
+                console.log('This user exists in DB');
+                let userID = result[0].user_id;
+                return userID;
+            }
         }
 
         async function getTeams(id) {
@@ -317,10 +316,10 @@ app.route('/team/:user')
             const teams = await getTeams(id);
             console.log('teams are ' + teams);
             const array = await asyncLoop(teams);
-            console.log('array is '+ array);
+            console.log('array is ' + array);
             res.send(array)
         }
-        
+
         sendResponse();
 
         /*
