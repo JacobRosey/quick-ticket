@@ -264,7 +264,7 @@ app.route('/team/:user')
                 }
                 if (result.length > 0) {
                     console.log('This user exists in DB');
-                    userID = result[0].user_id;
+                    let userID = result[0].user_id;
                     return userID;
                 }
             })
