@@ -302,13 +302,14 @@ app.route('/team/:user')
                                         console.log(err)
                                     }
                                     console.log('pushing result to array for id ' + teamIDs[i] + '. The result is ' + JSON.stringify(result));
-                                    array.push(result)
+                                    array.push(JSON.stringify(result))
 
                                 })
                             }
                             resolve(array)
                         }).then((array)=> {
                             console.log(array)
+                            res.send(array)
                         })
 
                         /*
