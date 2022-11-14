@@ -250,10 +250,10 @@ app.route('/team/:user')
         }
         const user = req.params.user;
 
-        console.log("user is " + user);
+        console.log("username is " + user);
 
-        async function getUser(u) {
-            db.query("SELECT * FROM users WHERE user_name = '" + u + "'", (err, result) => {
+        async function getUser() {
+            db.query("SELECT * FROM users WHERE user_name = '" + user + "'", (err, result) => {
                 if (err) {
                     console.log(err)
                     return 'There was an error querying the database';
@@ -270,8 +270,8 @@ app.route('/team/:user')
             })
         }
 
-        async function getTeams(u) {
-            db.query("SELECT * FROM Members WHERE user_id = '" + u+ "'", (err, result) => {
+        async function getTeams(id) {
+            db.query("SELECT * FROM Members WHERE user_id = '" + id + "'", (err, result) => {
                 if (err) {
                     console.log(err)
                 }
@@ -310,9 +310,9 @@ app.route('/team/:user')
             })
         }
         async function sendResponse() {
-            const u = await getUser(user)
-            console.log('user is ' + u);
-            const teams = await getTeams(u);
+            const id = await getUser()
+            console.log('user_id is ' + id);
+            const teams = await getTeams(id);
             console.log('teams are ' + teams);
             const array = await asyncLoop(teams);
             console.log('array is '+ array);
