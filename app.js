@@ -292,27 +292,29 @@ app.route('/team/:user')
 
                     }).then((teamIDs) => {
                         console.log('HERE ARE THE TEAM IDS: ' + teamIDs);
-                        var array = [];
-                        //return new Promise((resolve, reject) => {
-                        for (let i = 0; i < teamIDs.length; i++) {
-                            console.log('querying teamID ' + teamIDs[i]);
+                        //Do an async function here ig
+                        async function getResults() {
+                            var array = [];
+                            for (let i = 0; i < teamIDs.length; i++) {
+                                console.log('querying teamID ' + teamIDs[i]);
 
-                            db.query("SELECT * FROM Teams WHERE team_id = " + teamIDs[i] + "", (err, result) => {
-                                if (err) {
-                                    console.log(err)
-                                }
-                                console.log('pushing result to array for id ' + teamIDs[i] + '. The result is ' + JSON.stringify(result));
-                                array.push(JSON.stringify(result))
+                                db.query("SELECT * FROM Teams WHERE team_id = " + teamIDs[i] + "", (err, result) => {
+                                    if (err) {
+                                        console.log(err)
+                                    }
+                                    console.log('pushing result to array for id ' + teamIDs[i] + '. The result is ' + JSON.stringify(result));
+                                    array.push(JSON.stringify(result))
 
-                            })
+                                })
+                            }
+                            return array;
                         }
-                        console.log('array after loop: ' + array)
-                        res.send(array);
-
-                        /*}).then((arr)=> {
-                            console.log("array after resolving: " + arr)
-                            res.send(arr)
-                        })*/
+                        async function doAsyncStuff() {
+                            const array = await getResults();
+                            console.log('array after loop: ' + array)
+                            res.send(array);
+                        }
+                        doAsyncStuff();
                     })
                 }
             })
