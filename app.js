@@ -290,7 +290,7 @@ app.route('/team/:user')
                         }
                         resolve(teamIDs);
 
-                    }).then((teamIDs) => {
+                    }).then(async (teamIDs) => {
                         console.log('HERE ARE THE TEAM IDS: ' + teamIDs);
                         //Do an async function here ig
                         async function getResults() {
@@ -309,10 +309,9 @@ app.route('/team/:user')
                             }
                             return array;
                         }
-                        getResults.then((arr) => {
-                            console.log('array after .then() : ' + arr);
-                            res.send(arr);
-                        })
+                        const array = await getResults();
+                        console.log('array after await statement: ' + array);
+                        res.send(array);
                     })
                 }
             })
