@@ -295,7 +295,7 @@ app.route('/team/:user')
                         var array = [];
                         for (let i = 0; i < teamIDs.length; i++) {
                             console.log('querying teamID ' + teamIDs[i]);
-                            return new Promise((resolve, reject) => {
+                            //return new Promise((resolve, reject) => {
                                 db.query("SELECT * FROM Teams WHERE team_id = " + teamIDs[i] + "", (err, result) => {
                                     if (err) {
                                         console.log(err)
@@ -305,7 +305,7 @@ app.route('/team/:user')
     
                                 })
                                 //resolve();
-                            })
+                            //})
                         }
                         console.log(array)
                         
