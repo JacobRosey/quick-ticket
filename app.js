@@ -304,7 +304,7 @@ app.route('/team/:user')
                                     array.push(result)
     
                                 })
-                                resolve();
+                                //resolve();
                             })
                         }
                         console.log(array)
