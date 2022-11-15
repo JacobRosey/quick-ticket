@@ -309,10 +309,7 @@ app.route('/team/:user')
                             }
                             return array;
                         }
-                        getResults().then(response => {
-                            console.log('array after await statement: ' + response);
-                            res.send(response);
-                        });
+                        console.log('array after await getResults() call: '+ await getResults());
                     })
                 }
             })
