@@ -301,17 +301,13 @@ app.route('/team/:user')
 
                         async function queryDB(id) {
                             console.log('querying teamID ' + id);
-                            //db.query("SELECT * FROM Teams WHERE team_id = " + id + "", (err, result) => {
-                            /*if (err) {
-                                console.log(err)
-                            }*/
                             //Can't use normal db.query syntax here because it uses a callback
                             const result = await db.query("SELECT * FROM Teams WHERE team_id = " + id + "");
-                            if(result.length > 0){
-                                console.log('there are results');
-                            }
-                            console.log('pushing result to array for id ' + id + '. The result is ' + result);
-                            return result;
+                            return new Promise(resolve  => {
+                                console.log('pushing result to array for id ' + id + '. The result is ' + result);
+                                console.log(result.length, result[0].team_name)
+                                resolve(result);
+                            })
                             //})
                         }
 
