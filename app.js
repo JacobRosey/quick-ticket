@@ -300,7 +300,7 @@ app.route('/team/:user')
                             return array;
                         }
 
-                        async function queryDB(index) {
+                        function queryDB(index) {
                             console.log('querying teamID ' + index);
                             db.query("SELECT * FROM Teams WHERE team_id = " + index + "", (err, result) => {
                                 if (err) {
