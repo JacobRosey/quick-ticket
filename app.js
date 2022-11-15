@@ -303,12 +303,12 @@ app.route('/team/:user')
                         async function queryDB(id) {
                             console.log('querying teamID ' + id);
                             //db.query("SELECT * FROM Teams WHERE team_id = " + id + "", (err, result) => {
-                                /*if (err) {
-                                    console.log(err)
-                                }*/
+                            /*if (err) {
+                                console.log(err)
+                            }*/
                             const result = await db.query("SELECT * FROM Teams WHERE team_id = " + id + "");
-                                console.log('pushing result to array for id ' + id + '. The result is ' + JSON.stringify(result));
-                                return JSON.stringify(result)
+                            //console.log('pushing result to array for id ' + id + '. The result is ' + JSON.stringify(result));
+                            return JSON.stringify(result)
                             //})
                         }
                         loopIndices().then(response => {
