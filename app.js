@@ -314,6 +314,7 @@ app.route('/team/:user')
                           
                         loopIndices().then(response => {
                             console.log('response is: ' + response);
+                            response = JSON.stringify(response)
                             res.json(response)
                         }).catch(err => {
                             console.log('You caught this error: ' + err);
