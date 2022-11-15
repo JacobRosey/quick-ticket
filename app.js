@@ -327,9 +327,9 @@ app.route('/team/:user')
 
                         loopIndices().then(response => {
                             res.json(response)
-                        }).catch(err => {
+                        })/*.catch(err => {
                             console.log('You caught this error: ' + err);
-                        });
+                        });*/
                     })
                 }
             })
