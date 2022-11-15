@@ -315,7 +315,7 @@ app.route('/team/:user')
                             console.log('response is: ' + response);
                         }
                         
-                        doAsyncStuff.then(response => {res.send(response)});
+                        doAsyncStuff().then(response => {res.send(response)});
                         //OR
                         //loopIndices.then(response => console.log('response is: ' + response))
                         
