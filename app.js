@@ -310,7 +310,7 @@ app.route('/team/:user')
                             const response = await getResult();
                             return response;
                         }
-                        callGetResult().then(response => {console.log(response)})
+                        callGetResult().then(response => {console.log(response); res.send(response)})
 
                     })
                 }
