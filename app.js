@@ -312,7 +312,7 @@ app.route('/team/:user')
                             //})
                         }
                         //Remove circular references
-                        function removeCircular(obj) {
+                        async function removeCircular(obj) {
                             const seen = new Map();
                             const recurse = obj => {
                                 seen.add(obj,true);
