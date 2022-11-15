@@ -147,7 +147,7 @@ app.route('/index/:admin/:team')
                                             db.query("UPDATE Users SET is_admin = 1 WHERE user_id = '" + userID + "'", (err, result) => {
                                                 if (err) {
                                                     console.log(err)
-                                                    res.send('Failed to grant you admin privileges');
+                                                    res.send('Failed to grant admin privileges');
                                                 } else {
                                                     console.log(result)
                                                     res.send('Team created')
@@ -311,7 +311,7 @@ app.route('/team/:user')
                                 resolve(array);
                             })
                         }
-                        getResult().then(response => console.log('getResult returned: '+ response))
+                        getResult().then(response => {console.log('getResult returned: '+ response); res.send(response)}).catch(err => console.log(err))
                         
                     })
                 }
