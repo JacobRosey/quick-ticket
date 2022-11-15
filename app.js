@@ -310,7 +310,9 @@ app.route('/team/:user')
                             const response = await getResult();
                             return response;
                         }
-                        callGetResult().then(response => {console.log('response is ' + response); res.send(response)})
+
+                        console.log('Here is the result of getResult: ' + callGetResult());
+                        //callGetResult().then(response => {console.log(response)})
 
                     })
                 }
