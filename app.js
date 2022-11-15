@@ -310,7 +310,7 @@ app.route('/team/:user')
                                 return JSON.stringify(result)
                             })
                         }
-                        loopIndices.then(
+                        loopIndices().then(
                             response => {console.log('response is: ' + response); 
                             res.send(response);
                         }).catch(err => {
