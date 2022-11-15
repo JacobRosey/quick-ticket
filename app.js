@@ -308,7 +308,6 @@ app.route('/team/:user')
                             const result = await db.query("SELECT * FROM Teams WHERE team_id = " + id + "");
                             console.log('returning result for id ' + id + '.');
                             return result;
-                            //})
                         }
 
                         loopIndices().then(response => {
