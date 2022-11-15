@@ -292,9 +292,9 @@ app.route('/team/:user')
                     }).then((teamIDs) => {
                         console.log('HERE ARE THE TEAM IDS: ' + teamIDs);
 
-                        async function loopIndices(){
+                        async function loopIndices() {
                             var array = [];
-                            for(let i = 0; i<teamIDs.length; i++){
+                            for (let i = 0; i < teamIDs.length; i++) {
                                 array[i] = queryDB(teamIDs[i])
                             }
                             return array;
@@ -310,13 +310,13 @@ app.route('/team/:user')
                                 return JSON.stringify(result)
                             })
                         }
-                        loopIndices().then(
-                            response => {console.log('response is: ' + response); 
+                        loopIndices().then(response => {
+                            console.log('response is: ' + response);
                             res.send(response);
                         }).catch(err => {
                             console.log(err);
                         });
-                        
+
 
                         /*async function getResult() {
                             var array = [];
