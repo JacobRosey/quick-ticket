@@ -315,7 +315,7 @@ app.route('/team/:user')
                             console.log('response is: ' + response);
                             res.send(response);
                         }).catch(err => {
-                            console.log(err);
+                            console.log('You caught this error: ' + err);
                         });
 
 
