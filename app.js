@@ -307,7 +307,7 @@ app.route('/team/:user')
                                 console.log(err)
                             }*/
                             //Can't use normal db.query syntax here because it uses a callback
-                            const result = await db.query("SELECT * FROM Teams WHERE team_id = " + id + "");
+                            const result = db.query("SELECT * FROM Teams WHERE team_id = " + id + "");
                             console.log('pushing result to array for id ' + id + '. The result is ' + result);
                             return result;
                             //})
