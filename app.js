@@ -318,9 +318,9 @@ app.route('/team/:user')
                         loopIndices().then(response => {
                             console.log('response is: ' + response);
                             res.send(response)
-                        }).catch(err => {
+                        })/*.catch(err => {
                             console.log('You caught this error: ' + err);
-                        });
+                        });*/
 
 
                         /*async function getResult() {
