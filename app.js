@@ -295,7 +295,7 @@ app.route('/team/:user')
                         async function loopIndices(){
                             var array = [];
                             for(let i = 0; i<teamIDs.length; i++){
-                                array.push(await queryDB(teamID[i]))
+                                array.push(await queryDB(teamIDs[i]))
                             }
                             return array;
                         }
