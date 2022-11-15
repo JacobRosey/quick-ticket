@@ -306,7 +306,12 @@ app.route('/team/:user')
                             }
                             return array;
                         }
-                        getResult().then(response => { console.log('getResult returned: ' + response); res.send(response) }).catch(err => console.log(err))
+                        async function callGetResult(){
+                            const response = await getResult();
+                            return response;
+                        }
+
+                        console.log('Here is the result of getResult: ' + callGetResult());
 
                     })
                 }
