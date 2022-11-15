@@ -308,7 +308,7 @@ app.route('/team/:user')
                             //Can't use normal db.query syntax here because it uses a callback
                             const result = await db.query("SELECT * FROM Teams WHERE team_id = " + id + "");
                             console.log('pushing result to array for id ' + id + '. The result is ' + Object.values(JSON.parse(JSON.stringify(result))));
-                            return Object.values(JSON.parse(JSON.stringify(result)));
+                            return JSON.parse(JSON.stringify(result));
                             //})
                         }
                         loopIndices().then(response => {
