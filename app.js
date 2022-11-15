@@ -294,7 +294,10 @@ app.route('/team/:user')
                         async function loopIndices() {
                             var array = [];
                             for (let i = 0; i < teamIDs.length; i++) {
+                                //Get query result
                                 array[i] = await queryDB(teamIDs[i])
+                                //Stringify query result
+                                array[i] = JSON.stringify(array[i]);
                             }
                             return array;
                         }
