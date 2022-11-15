@@ -4,7 +4,6 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
-import {inspect} from 'util'
 
 const app = express();
 
