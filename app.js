@@ -292,24 +292,27 @@ app.route('/team/:user')
 
                     }).then((teamIDs) => {
                         console.log('HERE ARE THE TEAM IDS: ' + teamIDs);
-                        //Do an async function here ig
-                        async function getResults() {
-                            var array = [];
-                            for (let i = 0; i < teamIDs.length; i++) {
-                                console.log('querying teamID ' + teamIDs[i]);
 
-                                db.query("SELECT * FROM Teams WHERE team_id = " + teamIDs[i] + "", (err, result) => {
-                                    if (err) {
-                                        console.log(err)
-                                    }
-                                    console.log('pushing result to array for id ' + teamIDs[i] + '. The result is ' + JSON.stringify(result));
-                                    array.push(JSON.stringify(result))
-
-                                })
-                            }
-                            return array;
+                        function getResult(){
+                            return new Promise((resolve, reject) => {
+                                var array = [];
+                                for (let i = 0; i < teamIDs.length; i++) {
+                                    console.log('querying teamID ' + teamIDs[i]);
+    
+                                    db.query("SELECT * FROM Teams WHERE team_id = " + teamIDs[i] + "", (err, result) => {
+                                        if (err) {
+                                            console.log(err)
+                                        }
+                                        console.log('pushing result to array for id ' + teamIDs[i] + '. The result is ' + JSON.stringify(result));
+                                        array.push(JSON.stringify(result))
+    
+                                    })
+                                }
+                                resolve(array);
+                            })
                         }
-                        console.log('after awaiting: ' + await(getResults()));
+                        getResult().then(response => {console.log('promiseFunc returned: '+ response)})
+                        
                     })
                 }
             })
