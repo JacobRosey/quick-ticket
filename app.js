@@ -292,7 +292,19 @@ app.route('/team/:user')
                     }).then((teamIDs) => {
                         console.log('HERE ARE THE TEAM IDS: ' + teamIDs);
 
-                        async function loopIndices() {
+                        var array = [];
+                        for (let i = 0; i < teamIDs.length; i++) {
+                            console.log('querying teamID ' + id);
+                            db.query("SELECT * FROM Teams WHERE team_id = " + id + "", (err, result) => {
+                                if (err) {
+                                    console.log(err)
+                                }
+                                console.log('pushing result to array for id ' + id + '. The result is ' + JSON.stringify(result));
+                                array.push(JSON.stringify(result))
+                            })
+                        }
+                        console.log(array)
+                        /*async function loopIndices() {
                             var array = [];
                             for (let i = 0; i < teamIDs.length; i++) {
                                 array[i] = await queryDB(teamIDs[i])
@@ -315,7 +327,7 @@ app.route('/team/:user')
                             res.send(response);
                         }).catch(err => {
                             console.log(err);
-                        });
+                        });*/
 
 
                         /*async function getResult() {
