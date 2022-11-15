@@ -312,8 +312,8 @@ app.route('/team/:user')
                             //})
                         }
                         loopIndices().then(response => {
-                            console.log('response is: ' + response);
-                            res.send(response);
+                            console.log('response is: ' + JSON.stringify(response));
+                            res.send(JSON.stringify(response));
                         }).catch(err => {
                             console.log(err);
                         });
