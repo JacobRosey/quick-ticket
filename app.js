@@ -297,6 +297,7 @@ app.route('/team/:user')
                             for (let i = 0; i < teamIDs.length; i++) {
                                 //Get query result
                                 array[i] = await queryDB(teamIDs[i])
+                                console.log('pushed result for id '+ teamIDs[i] + ' to array')
                             }
                             return array;
                         }
@@ -305,14 +306,13 @@ app.route('/team/:user')
                             console.log('querying teamID ' + id);
                             //Can't use normal db.query syntax here because it uses a callback
                             const result = await db.query("SELECT * FROM Teams WHERE team_id = " + id + "");
-                            console.log('pushing result to array for id ' + id + '. The result is ' + result);
+                            console.log('returning result for id ' + id + '.');
                             return result;
                             //})
                         }
 
                         loopIndices().then(response => {
-                            console.log('response is: ' + response);
-                            res.send(response)
+                            res.json(response)
                         }).catch(err => {
                             console.log('You caught this error: ' + err);
                         });
