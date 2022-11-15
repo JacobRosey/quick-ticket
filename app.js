@@ -294,12 +294,12 @@ app.route('/team/:user')
 
                         var array = [];
                         for (let i = 0; i < teamIDs.length; i++) {
-                            console.log('querying teamID ' + id);
-                            db.query("SELECT * FROM Teams WHERE team_id = " + id + "", (err, result) => {
+                            console.log('querying teamID ' + teamIDs[i]);
+                            db.query("SELECT * FROM Teams WHERE team_id = " +  teamIDs[i]+ "", (err, result) => {
                                 if (err) {
                                     console.log(err)
                                 }
-                                console.log('pushing result to array for id ' + id + '. The result is ' + JSON.stringify(result));
+                                console.log('pushing result to array for id ' +  teamIDs[i] + '. The result is ' + JSON.stringify(result));
                                 array.push(JSON.stringify(result))
                             })
                         }
