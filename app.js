@@ -300,13 +300,13 @@ app.route('/team/:user')
                             return array;
                         }
 
-                        function queryDB(index) {
-                            console.log('querying teamID ' + index);
-                            db.query("SELECT * FROM Teams WHERE team_id = " + index + "", (err, result) => {
+                        function queryDB(id) {
+                            console.log('querying teamID ' + id);
+                            db.query("SELECT * FROM Teams WHERE team_id = " + id + "", (err, result) => {
                                 if (err) {
                                     console.log(err)
                                 }
-                                console.log('pushing result to array for id ' + index + '. The result is ' + JSON.stringify(result));
+                                console.log('pushing result to array for id ' + id + '. The result is ' + JSON.stringify(result));
                                 return JSON.stringify(result)
                             })
                         }
