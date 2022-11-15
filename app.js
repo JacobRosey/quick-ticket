@@ -289,7 +289,7 @@ app.route('/team/:user')
                             teamIDs.push(result[i].team_id);
                         }
                         resolve(teamIDs);
-                    }).then(async (teamIDs) => {
+                    }).then((teamIDs) => {
                         console.log('HERE ARE THE TEAM IDS: ' + teamIDs);
 
                         async function loopIndices(){
@@ -300,7 +300,7 @@ app.route('/team/:user')
                             return array;
                         }
 
-                        function queryDB(index) {
+                        async function queryDB(index) {
                             console.log('querying teamID ' + index);
                             db.query("SELECT * FROM Teams WHERE team_id = " + index + "", (err, result) => {
                                 if (err) {
@@ -310,10 +310,12 @@ app.route('/team/:user')
                                 return JSON.stringify(result)
                             })
                         }
+                        async function doAsyncStuff(){
+                            const response = await loopIndices();
+                            console.log('response is: ' + response);
+                        }
                         
-                        const response = await loopIndices();
-                        console.log('response is: ' + response);
-                        res.send(response);
+                        doAsyncStuff.then(response => {res.send(response)});
                         //OR
                         //loopIndices.then(response => console.log('response is: ' + response))
                         
