@@ -4,7 +4,6 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
-const { resolve } = require('path/posix');
 
 const app = express();
 
@@ -313,8 +312,8 @@ app.route('/team/:user')
                             //})
                         }
                         loopIndices().then(response => {
-                            console.log('response is: ' + JSON.stringify(response));
-                            res.send(JSON.stringify(response));
+                            console.log('response is: ' + response);
+                            res.send(response);
                         }).catch(err => {
                             console.log(err);
                         });
