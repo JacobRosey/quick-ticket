@@ -326,7 +326,7 @@ app.route('/team/:user')
                           
                         loopIndices().then(response => {
                             console.log('response is: ' + JSON.stringify(response, getCircularReplacer()));
-                            res.send(response);
+                            res.send(JSON.stringify(response, getCircularReplacer()));
                         }).catch(err => {
                             console.log('You caught this error: ' + err);
                         });
