@@ -313,6 +313,7 @@ app.route('/team/:user')
                         
                         const response = await loopIndices();
                         console.log('response is: ' + response);
+                        res.send(response);
                         //OR
                         //loopIndices.then(response => console.log('response is: ' + response))
                         
