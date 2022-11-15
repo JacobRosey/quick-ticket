@@ -4,6 +4,7 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
+import {inspect} from 'util'
 
 const app = express();
 
@@ -307,7 +308,7 @@ app.route('/team/:user')
                             }*/
                             //Can't use normal db.query syntax here because it uses a callback
                             const result = await db.query("SELECT * FROM Teams WHERE team_id = " + id + "");
-                            console.log('pushing result to array for id ' + id + '. The result is ' + result);
+                            console.log('pushing result to array for id ' + id + '. The result is ' + util.inspect(result));
                             return result;
                             //})
                         }
