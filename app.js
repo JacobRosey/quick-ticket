@@ -305,10 +305,24 @@ app.route('/team/:user')
                         async function queryDB(id) {
                             console.log('querying teamID ' + id);
                             //Can't use normal db.query syntax here because it uses a callback
-                            const result = await db.query("SELECT * FROM Teams WHERE team_id = " + id + "");
+                            //Remove circular references
+                            const result = await removeCircular(db.query("SELECT * FROM Teams WHERE team_id = " + id + ""));
                             console.log('returning result for id ' + id + '.');
                             return result;
                             //})
+                        }
+                        //Remove circular references
+                        function removeCircular(obj) {
+                            const seen = new Map();
+                            const recurse = obj => {
+                                seen.add(obj,true);
+                                for( let [k, v] of Object.entries(obj)) {
+                                    if( typeof v !== "object") continue;
+                                    if(seen.has(v)) delete obj[k];
+                                    else recurse(v);
+                                }
+                            }
+                            recurse(obj);
                         }
 
                         loopIndices().then(response => {
