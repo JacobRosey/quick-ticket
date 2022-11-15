@@ -289,30 +289,25 @@ app.route('/team/:user')
                             teamIDs.push(result[i].team_id);
                         }
                         resolve(teamIDs);
-
                     }).then((teamIDs) => {
                         console.log('HERE ARE THE TEAM IDS: ' + teamIDs);
 
-                        async function getResult(){
-                            return new Promise((resolve, reject) => {
-                                var array = [];
-                                for (let i = 0; i < teamIDs.length; i++) {
-                                    console.log('querying teamID ' + teamIDs[i]);
-    
-                                    db.query("SELECT * FROM Teams WHERE team_id = " + teamIDs[i] + "", (err, result) => {
-                                        if (err) {
-                                            console.log(err)
-                                        }
-                                        console.log('pushing result to array for id ' + teamIDs[i] + '. The result is ' + JSON.stringify(result));
-                                        array.push(JSON.stringify(result))
-    
-                                    })
-                                }
-                                resolve(array);
-                            })
+                        async function getResult() {
+                            var array = [];
+                            for (let i = 0; i < teamIDs.length; i++) {
+                                console.log('querying teamID ' + teamIDs[i]);
+                                db.query("SELECT * FROM Teams WHERE team_id = " + teamIDs[i] + "", (err, result) => {
+                                    if (err) {
+                                        console.log(err)
+                                    }
+                                    console.log('pushing result to array for id ' + teamIDs[i] + '. The result is ' + JSON.stringify(result));
+                                    array.push(JSON.stringify(result))
+                                })
+                            }
+                            return array;
                         }
-                        getResult().then(response => {console.log('getResult returned: '+ response); res.send(response)}).catch(err => console.log(err))
-                        
+                        getResult().then(response => { console.log('getResult returned: ' + response); res.send(response) }).catch(err => console.log(err))
+
                     })
                 }
             })
