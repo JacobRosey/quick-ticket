@@ -311,22 +311,10 @@ app.route('/team/:user')
                             return result;
                             //})
                         }
-                        const getCircularReplacer = () => {
-                            const seen = new WeakSet();
-                            return (key, value) => {
-                              if (typeof value === "object" && value !== null) {
-                                if (seen.has(value)) {
-                                  return;
-                                }
-                                seen.add(value);
-                              }
-                              return value;
-                            };
-                          };
                           
                         loopIndices().then(response => {
-                            console.log('response is: ' + JSON.stringify(response, getCircularReplacer()));
-                            res.send(JSON.stringify(response, getCircularReplacer()));
+                            console.log('response is: ' + response);
+                            res.json(response)
                         }).catch(err => {
                             console.log('You caught this error: ' + err);
                         });
