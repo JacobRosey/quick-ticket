@@ -318,33 +318,9 @@ app.route('/team/:user')
                         loopIndices().then(response => {
                             console.log('response is: ' + response);
                             res.send(response)
-                        })/*.catch(err => {
+                        }).catch(err => {
                             console.log('You caught this error: ' + err);
-                        });*/
-
-
-                        /*async function getResult() {
-                            var array = [];
-                            for (let i = 0; i < teamIDs.length; i++) {
-                                console.log('querying teamID ' + teamIDs[i]);
-                                db.query("SELECT * FROM Teams WHERE team_id = " + teamIDs[i] + "", (err, result) => {
-                                    if (err) {
-                                        console.log(err)
-                                    }
-                                    console.log('pushing result to array for id ' + teamIDs[i] + '. The result is ' + JSON.stringify(result));
-                                    array.push(JSON.stringify(result))
-                                })
-                            }
-                            return array;
-                        }
-                        async function callGetResult(){
-                            const response = await getResult();
-                            return response;
-                        }*/
-
-                        //console.log('Here is the result of getResult: ' + callGetResult());
-                        //callGetResult().then(response => {console.log(response)})
-
+                        });
                     })
                 }
             })
