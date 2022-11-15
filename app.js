@@ -297,7 +297,6 @@ app.route('/team/:user')
                             for (let i = 0; i < teamIDs.length; i++) {
                                 //Get query result
                                 array[i] = await queryDB(teamIDs[i])
-                                console.log(util.inspect(array[i]));
                             }
                             return array;
                         }
