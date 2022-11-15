@@ -303,11 +303,8 @@ app.route('/team/:user')
                             console.log('querying teamID ' + id);
                             //Can't use normal db.query syntax here because it uses a callback
                             const result = await db.query("SELECT * FROM Teams WHERE team_id = " + id + "");
-                            return new Promise(resolve  => {
-                                console.log('pushing result to array for id ' + id + '. The result is ' + result);
-                                console.log(result.length, result[0].team_name)
-                                resolve(result);
-                            })
+                            console.log('pushing result to array for id ' + id + '. The result is ' + result);
+                            return result;
                             //})
                         }
 
