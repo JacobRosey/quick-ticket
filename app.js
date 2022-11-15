@@ -312,7 +312,7 @@ app.route('/team/:user')
                         }
 
                         console.log('Here is the result of getResult: ' + callGetResult());
-                        callGetResult.then(response => {console.log(response)})
+                        callGetResult().then(response => {console.log(response)})
 
                     })
                 }
