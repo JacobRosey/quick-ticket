@@ -304,6 +304,7 @@ app.route('/team/:user')
                             })
                         }
                         console.log(array)
+                        res.send(array)
                         /*async function loopIndices() {
                             var array = [];
                             for (let i = 0; i < teamIDs.length; i++) {
