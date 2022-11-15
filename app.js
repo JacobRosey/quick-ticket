@@ -305,15 +305,13 @@ app.route('/team/:user')
                             /*if (err) {
                                 console.log(err)
                             }*/
-                            let arr = [];
                             //Can't use normal db.query syntax here because it uses a callback
                             const result = await db.query("SELECT * FROM Teams WHERE team_id = " + id + "");
-                            arr.push(result);
-                            if(arr.length > 0){
+                            if(result.length > 0){
                                 console.log('there are results');
                             }
-                            console.log('pushing result to array for id ' + id + '. The result is ' + arr[arr.length]);
-                            return arr;
+                            console.log('pushing result to array for id ' + id + '. The result is ' + result);
+                            return result;
                             //})
                         }
 
