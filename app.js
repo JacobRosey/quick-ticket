@@ -296,6 +296,9 @@ app.route('/team/:user')
                             for (let i = 0; i < teamIDs.length; i++) {
                                 array[i] = await queryDB(teamIDs[i])
                             }
+                            for(let i=0; i<array.length; i++) {
+                                array[i] = await JSON.parse(JSON.stringify((array[i])))
+                            }
                             return array;
                         }
 
@@ -307,7 +310,7 @@ app.route('/team/:user')
                             }*/
                             //Can't use normal db.query syntax here because it uses a callback
                             const result = await db.query("SELECT * FROM Teams WHERE team_id = " + id + "");
-                            console.log('pushing result to array for id ' + id + '. The result is ' + result[0]);
+                            console.log('pushing result to array for id ' + id + '. The result is ' + result);
                             return result;
                             //})
                         }
