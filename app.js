@@ -293,7 +293,7 @@ app.route('/team/:user')
                     }).then((teamIDs) => {
                         console.log('HERE ARE THE TEAM IDS: ' + teamIDs);
 
-                        function getResult(){
+                        async function getResult(){
                             return new Promise((resolve, reject) => {
                                 var array = [];
                                 for (let i = 0; i < teamIDs.length; i++) {
@@ -311,7 +311,7 @@ app.route('/team/:user')
                                 resolve(array);
                             })
                         }
-                        getResult().then(response => {console.log('promiseFunc returned: '+ response)})
+                        getResult().then(response => console.log('getResult returned: '+ response))
                         
                     })
                 }
