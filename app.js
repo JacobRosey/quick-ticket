@@ -305,13 +305,9 @@ app.route('/team/:user')
                         async function queryDB(id) {
                             console.log('querying teamID ' + id);
                             //Can't use normal db.query syntax here because it uses a callback
-                            //const result = await db.query("SELECT * FROM Teams WHERE team_id = " + id + "");
-                            db.query("SELECT * FROM Teams WHERE team_id = " + id + "", async (err, result) => {
-                                console.log('returning result for id ' + id + '.');
-                                return await result;
-                            })
-                            //console.log('returning result for id ' + id + '.');
-                            //return result;
+                            const result = await db.query("SELECT * FROM Teams WHERE team_id = " + id + "");
+                            console.log('returning result for id ' + id + '.');
+                            return result;
                             //})
                         }
 
