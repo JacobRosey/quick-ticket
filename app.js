@@ -292,20 +292,7 @@ app.route('/team/:user')
                     }).then((teamIDs) => {
                         console.log('HERE ARE THE TEAM IDS: ' + teamIDs);
 
-                        var array = [];
-                        for (let i = 0; i < teamIDs.length; i++) {
-                            console.log('querying teamID ' + teamIDs[i]);
-                            db.query("SELECT * FROM Teams WHERE team_id = " +  teamIDs[i]+ "", (err, result) => {
-                                if (err) {
-                                    console.log(err)
-                                }
-                                console.log('pushing result to array for id ' +  teamIDs[i] + '. The result is ' + JSON.stringify(result));
-                                array.push(JSON.stringify(result))
-                            })
-                        }
-                        console.log(array)
-                        res.send(array)
-                        /*async function loopIndices() {
+                        async function loopIndices() {
                             var array = [];
                             for (let i = 0; i < teamIDs.length; i++) {
                                 array[i] = await queryDB(teamIDs[i])
@@ -315,20 +302,21 @@ app.route('/team/:user')
 
                         async function queryDB(id) {
                             console.log('querying teamID ' + id);
-                            db.query("SELECT * FROM Teams WHERE team_id = " + id + "", (err, result) => {
-                                if (err) {
+                            //db.query("SELECT * FROM Teams WHERE team_id = " + id + "", (err, result) => {
+                                /*if (err) {
                                     console.log(err)
-                                }
+                                }*/
+                            const result = await db.query("SELECT * FROM Teams WHERE team_id = " + id + "");
                                 console.log('pushing result to array for id ' + id + '. The result is ' + JSON.stringify(result));
                                 return JSON.stringify(result)
-                            })
+                            //})
                         }
                         loopIndices().then(response => {
                             console.log('response is: ' + response);
                             res.send(response);
                         }).catch(err => {
                             console.log(err);
-                        });*/
+                        });
 
 
                         /*async function getResult() {
