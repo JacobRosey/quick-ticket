@@ -289,10 +289,35 @@ app.route('/team/:user')
                             teamIDs.push(result[i].team_id);
                         }
                         resolve(teamIDs);
-                    }).then((teamIDs) => {
+                    }).then(async (teamIDs) => {
                         console.log('HERE ARE THE TEAM IDS: ' + teamIDs);
 
-                        async function getResult() {
+                        async function loopIndices(){
+                            var array = [];
+                            for(let i = 0; i<teamID.length; i++){
+                                array.push(await queryDB(teamID[i]))
+                            }
+                            return array;
+                        }
+
+                        async function queryDB(index) {
+                            console.log('querying teamID ' + index);
+                            db.query("SELECT * FROM Teams WHERE team_id = " + index + "", (err, result) => {
+                                if (err) {
+                                    console.log(err)
+                                }
+                                console.log('pushing result to array for id ' + index + '. The result is ' + JSON.stringify(result));
+                                return JSON.stringify(result)
+                            })
+                        }
+                        
+                        const response = await loopIndices();
+                        console.log('response is: ' + response);
+                        //OR
+                        //loopIndices.then(response => console.log('response is: ' + response))
+                        
+
+                        /*async function getResult() {
                             var array = [];
                             for (let i = 0; i < teamIDs.length; i++) {
                                 console.log('querying teamID ' + teamIDs[i]);
@@ -309,7 +334,7 @@ app.route('/team/:user')
                         async function callGetResult(){
                             const response = await getResult();
                             return response;
-                        }
+                        }*/
 
                         console.log('Here is the result of getResult: ' + callGetResult());
                         //callGetResult().then(response => {console.log(response)})
