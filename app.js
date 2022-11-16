@@ -45,20 +45,27 @@ app.use('/auth', require('./routes/auth'));
 app.use('/register', require('./routes/pages'));
 
 
-async function getUser(u) {
-    //Promise to get matching user from mySQL then create new admin record
-    db.query("SELECT * FROM users WHERE user_name = '" + u + "'", (err, result) => {
-        if (err) {
-            console.log(err)
-        }
-        if (result.length == 0) {
-            console.log('This user does not exist in DB');
-        }
-        if (result.length > 0) {
-            console.log('This user exists in DB');
-            userID = result[0].user_id;
-            return userID;
-        }
+//This is where i'll put a global func to get userID at some point
+function getUser(u) {
+    const dbPromise = new Promise((resolve, reject) => {
+        db.query("SELECT * FROM users WHERE user_name = '" + u + "'", (err, result) => {
+            if (err) {
+                console.log(err)
+                reject();
+            }
+            if (result.length == 0) {
+                console.log('This user does not exist in DB');
+                reject();
+            }
+            if (result.length > 0) {
+                console.log('This user exists in DB');
+                userID = result[0].user_id;
+                resolve(userID);
+            }
+        })
+    });
+    dbPromise.then(() =>{
+        return userID;
     })
 }
 
@@ -343,9 +350,9 @@ app.route('/team/:user')
     })
 
 app.route('/closedtickets/:user')
-    .get(async function (req, res, err) {
+    .get(function (req, res, err) {
         const user = req.params.user;
         console.log(user);
-        let userID = await getUser(user);
+        const userID = getUser(user);
         res.send(userID);
     })
