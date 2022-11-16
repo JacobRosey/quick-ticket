@@ -305,13 +305,9 @@ app.route('/team/:user')
                         async function queryDB(id) {
                             console.log('querying teamID ' + id);
                             //Can't use normal db.query syntax here because it uses a callback
-                            return new Promise((resolve, reject) => {
-                                const result = db.query("SELECT * FROM Teams WHERE team_id = " + id + "");
-                                console.log('returning result for id ' + id + '.');
-                                resolve(result)
-                            }).then((result) =>{
-                                return result;
-                            })
+                            const result = await db.query("SELECT * FROM Teams WHERE team_id = " + id + "");
+                            console.log('returning result for id ' + id + '.');
+                            return result;
                         }
                         //TypeError: Converting circular structure to JSON
                         //Gonna come back to this
