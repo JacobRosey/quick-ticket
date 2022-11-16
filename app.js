@@ -319,6 +319,8 @@ app.route('/team/:user')
                         console.log('HERE ARE THE TEAM IDS: ' + teamIDs);
 
                         //THIS IS WHERE I NEED TO COME BACK AND WORK ON TEAM QUERY
+                        //CHECK OUT MYSQL2 OR OTHER MODERN LIBRARIES TO BE ABLE TO USE
+                        //ASYNC FUNCTIONS WITH QUERIES. OR TRY TO PROMISIFY THE QUERY
 
                         async function loopIndices() {
                             var array = [];
@@ -368,7 +370,7 @@ app.route('/closedtickets/:user')
                 }
                 if (result.length > 0) {
                     console.log('This user exists in DB');
-                    userID = result[0].user_id;
+                    let userID = result[0].user_id;
                     resolve(userID);
                 }
             })
@@ -377,6 +379,7 @@ app.route('/closedtickets/:user')
             return res.status(404).send(error)
         });
         dbPromise.then(() => {
+            console.log('user id: ' +userID)
             res.send(userID)
         })
     })
