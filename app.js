@@ -5,6 +5,7 @@ const path = require('path');
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
 const util = require('node:util');
+const { query } = require('express');
 
 const app = express();
 
@@ -296,8 +297,11 @@ app.route('/team/:user')
                             var array = [];
                             for (let i = 0; i < teamIDs.length; i++) {
                                 //Get query result
-                                array[i] = await queryDB(teamIDs[i])
-                                console.log('pushed result for id '+ teamIDs[i] + ' to array')
+                                //array[i] = await queryDB(teamIDs[i])
+                                queryDB.then((result) => {
+                                    array.push(result);
+                                    console.log('pushed result for id '+ teamIDs[i] + ' to array')
+                                })
                             }
                             return array;
                         }
@@ -305,9 +309,18 @@ app.route('/team/:user')
                         async function queryDB(id) {
                             console.log('querying teamID ' + id);
                             //Can't use normal db.query syntax here because it uses a callback
-                            const result = await db.query("SELECT * FROM Teams WHERE team_id = " + id + "");
+                            /*const result = await db.query("SELECT * FROM Teams WHERE team_id = " + id + "");
                             console.log('returning result for id ' + id + '.');
-                            return result;
+                            return result;*/
+                            return new Promise ((resolve, reject) => {
+                            db.query("SELECT * FROM Teams WHERE team_id = " + id + "", (err, result) => {
+                                if(err){
+                                    console.log(err)
+                                }
+                                console.log('retrieving result for id ' + id + '. result is ' + result);
+                                resolve(result)
+                            });
+                            })
                         }
                         //TypeError: Converting circular structure to JSON
                         //Gonna come back to this
