@@ -309,15 +309,23 @@ app.route('/team/:user')
                             console.log('returning result for id ' + id + '.');
                             return result;
                         }
-
+                        //TypeError: Converting circular structure to JSON
+                        //Gonna come back to this
                         loopIndices().then(response => {
                             res.json(response)
-                        }).catch(err => {
-                            console.log('You caught this error: ' + err);
-                        });
-                    })
-                }
-            })
+                    }).catch(err => {
+                        console.log('You caught this error: ' + err);
+                        return res.status(404).send(error)
+                    });
+                }).catch(err => {
+                    console.log('You caught this error: ' + err);
+                    return res.status(404).send(error)
+                });
+            }
+            }).catch(err => {
+                console.log('You caught this error: ' + err);
+                return res.status(404).send(error)
+            });
         }).catch(function (error) {
             console.log("Here is your error: " + error)
             return res.status(404).send(error)
