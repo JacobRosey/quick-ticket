@@ -294,15 +294,15 @@ app.route('/team/:user')
                         let arr = [];
                         const dbPromise = new Promise((resolve, reject) => {
                             for(let i=0; i<teamIDs.length; i++){
-                                db.query("SELECT * FROM Teams WHERE team_id = " + id + "", (err, result) => {
+                                db.query("SELECT * FROM Teams WHERE team_id = " + teamIDs[i] + "", (err, result) => {
                                     if(err){
                                         console.log(err)
                                     }
                                     console.log(result);
                                     arr.push(result)
                                 })
-                                resolve(arr)
                             }   
+                            resolve(arr)
                         })
 
                         dbPromise.then((response) =>{
