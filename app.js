@@ -361,7 +361,7 @@ app.route('/team/:user')
                             }
                             return arr;
                         }
-                        await getData().then((response) => {
+                        getData().then((response) => {
                             console.log('response is' + response)
                             res.send(response)
                         })
