@@ -346,11 +346,18 @@ app.route('/team/:user')
                         }).catch(err => {
                             console.log('You caught this error: ' + err);
                         });*/
-                        db.promise().query("SELECT * FROM Teams WHERE team_id = " + 29 + "")
+                        let arr = [];
+                        for(let i=0; i<teamIDs.length; i++){
+                            db.promise().query("SELECT * FROM Teams WHERE team_id = " + 29 + "")
                         .then( ([rows, fields]) => {
                             console.log(rows)
+                            arr.push(rows);
                         }).catch(console.log)
-                        .then( () => db.end());
+                        .then( () => {
+                            db.end()
+                            res.send(arr)
+                        });
+                        }
                     })
                 }
             })
