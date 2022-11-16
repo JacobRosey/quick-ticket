@@ -313,7 +313,7 @@ app.route('/team/:user')
                         //Gonna come back to this
                         loopIndices().then(response => {
                             //res.json(response)
-                            console.log(response);
+                            console.log(JSON.parse(response));
                             res.send('bruh');
                     }).catch(err => {
                         console.log('You caught this error: ' + err);
