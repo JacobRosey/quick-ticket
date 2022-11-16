@@ -363,6 +363,7 @@ app.route('/team/:user')
 
                         async function doAsyncStuff(){
                             const arr = await getData();
+                            console.log('Here is the data before sending ' + arr )
                             return arr;
                         }
 
