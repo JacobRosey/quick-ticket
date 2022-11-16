@@ -316,7 +316,7 @@ app.route('/team/:user')
                             teamIDs.push(result[i].team_id);
                         }
                         resolve(teamIDs);
-                    }).then(async (teamIDs) => {
+                    }).then((teamIDs) => {
                         console.log('HERE ARE THE TEAM IDS: ' + teamIDs);
 
                         //THIS IS WHERE I NEED TO COME BACK AND WORK ON TEAM QUERY
@@ -346,7 +346,7 @@ app.route('/team/:user')
                         }).catch(err => {
                             console.log('You caught this error: ' + err);
                         });*/
-                        async function getData() {
+                        //function getData() {
                             let arr = [];
                             for (let i = 0; i < teamIDs.length; i++) {
                                 db.promise().query("SELECT * FROM Teams WHERE team_id = " + teamIDs[i] + "")
@@ -359,12 +359,16 @@ app.route('/team/:user')
                                         console.log('array before returning: ' + arr)
                                 })
                             }
-                            return arr;
-                        }
-                        getData().then((response) => {
+                            //return arr;
+                            resolve(arr)
+                        //}
+                        /*getData().then((response) => {
                             console.log('response is' + response)
                             res.send(response)
-                        })
+                        })*/
+                    }).then((arr) => {
+                        console.log('response is: ' + arr);
+                        res.send(arr)
                     })
                 }
             })
