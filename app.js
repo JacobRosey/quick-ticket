@@ -356,6 +356,7 @@ app.route('/team/:user')
                         }).catch(console.log)
                         .then( () => {
                             db.end()
+                            console.log('array before returning: ' + arr)
                             return arr;
                         });
                         }
