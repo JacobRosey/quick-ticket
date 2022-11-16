@@ -4,8 +4,6 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
-const util = require('node:util');
-const { resolve } = require('path/posix');
 
 const app = express();
 
@@ -45,6 +43,31 @@ app.use('/', require('./routes/pages'));
 app.use('/login', require('./routes/pages'));
 app.use('/auth', require('./routes/auth'));
 app.use('/register', require('./routes/pages'));
+
+
+function getUser(u) {
+    //Promise to get matching user from mySQL then create new admin record
+    const user = new Promise((resolve, reject) => {
+        db.query("SELECT * FROM users WHERE user_name = '" + u + "'", (err, result) => {
+            if (err) {
+                console.log(err)
+                reject();
+            }
+            if (result.length == 0) {
+                console.log('This user does not exist in DB');
+                reject();
+            }
+            if (result.length > 0) {
+                console.log('This user exists in DB');
+                userID = result[0].user_id;
+                resolve(userID);
+            }
+        })
+    });
+    user.then((result) => {
+        return result;
+    })
+}
 
 app.route('/login/:user/:pass')
     .get(function (req, res, err) {
@@ -294,13 +317,13 @@ app.route('/team/:user')
                         console.log('HERE ARE THE TEAM IDS: ' + teamIDs);
 
                         //THIS IS WHERE I NEED TO COME BACK AND WORK ON TEAM QUERY
-                        
+
                         async function loopIndices() {
                             var array = [];
                             for (let i = 0; i < teamIDs.length; i++) {
                                 //Get query result
                                 array[i] = await queryDB(teamIDs[i])
-                                console.log('pushed result for id '+ teamIDs[i] + ' to array')
+                                console.log('pushed result for id ' + teamIDs[i] + ' to array')
                             }
                             return array;
                         }
@@ -313,12 +336,12 @@ app.route('/team/:user')
                         }
                         loopIndices().then(response => {
                             console.log(response[0]);
-                            res.send('bruh'); 
-                    }).catch(err => {
-                        console.log('You caught this error: ' + err);
-                    });
-                })
-            }
+                            res.send('bruh');
+                        }).catch(err => {
+                            console.log('You caught this error: ' + err);
+                        });
+                    })
+                }
             })
         }).catch(err => {
             console.log("Here is your error: " + err)
@@ -327,7 +350,9 @@ app.route('/team/:user')
     })
 
 app.route('/closedtickets/:user')
-    .get(function (req, res, err){
+    .get(function (req, res, err) {
         const user = req.params.user;
-        console.log(user)
+        console.log(user);
+        let userID = getUser(user);
+        res.send(userID);
     })
