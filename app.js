@@ -315,7 +315,6 @@ app.route('/team/:user')
                             res.json(response)
                     }).catch(err => {
                         console.log('You caught this error: ' + err);
-                        return res.status(404).send(err)
                     });
                 }).catch(err => {
                     console.log('You caught this error: ' + err);
