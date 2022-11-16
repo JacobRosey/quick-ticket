@@ -354,5 +354,6 @@ app.route('/closedtickets/:user')
         const user = req.params.user;
         console.log(user);
         const userID = getUser(user);
+        console.log('userid: ' + userID)
         res.send(userID);
     })
