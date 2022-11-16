@@ -293,7 +293,7 @@ app.route('/team/:user')
                     }).then((teamIDs) => {
                         console.log('HERE ARE THE TEAM IDS: ' + teamIDs);
 
-                        function loopIndices() {
+                        async function loopIndices() {
                             var array = [];
                             for (let i = 0; i < teamIDs.length; i++) {
                                 //Get query result
