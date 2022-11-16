@@ -1,5 +1,5 @@
 const express = require('express');
-const mysql = require('mysql2');
+const mysql = require('mysql2/promise');
 const exphbs = require('express-handlebars');
 const path = require('path');
 const bcrypt = require('bcryptjs');
