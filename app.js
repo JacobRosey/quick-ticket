@@ -357,11 +357,13 @@ app.route('/team/:user')
                                     .then(() => {
                                         db.end()
                                         console.log('array before returning: ' + arr)
-                                        res.send(arr)
-                                    });
+                                        return arr;
+                                });
                             }
                         }
-                        await getData();
+                        await getData().then((response) => {
+                            res.send(response)
+                        })
                     })
                 }
             })
