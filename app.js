@@ -346,7 +346,7 @@ app.route('/team/:user')
                         }).catch(err => {
                             console.log('You caught this error: ' + err);
                         });*/
-                        function getData() {
+                        async function getData() {
                             let arr = [];
                             for (let i = 0; i < teamIDs.length; i++) {
                                 db.promise().query("SELECT * FROM Teams WHERE team_id = " + teamIDs[i] + "")
