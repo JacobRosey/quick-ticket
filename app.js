@@ -378,6 +378,6 @@ app.route('/closedtickets/:user')
 
         dbPromise.then((response) => {
             console.log('user id: ' + response)
-            res.status(200).send(stringify(response))
+            res.status(200).send(response.toString())
         })
     })
