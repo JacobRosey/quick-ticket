@@ -357,9 +357,9 @@ app.route('/team/:user')
                                     .then(() => {
                                         db.end()
                                         console.log('array before returning: ' + arr)
-                                        return arr;
-                                });
+                                })
                             }
+                            return arr;
                         }
                         await getData().then((response) => {
                             res.send(response)
