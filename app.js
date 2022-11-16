@@ -321,7 +321,8 @@ app.route('/team/:user')
 
                         //THIS IS WHERE I NEED TO COME BACK AND WORK ON TEAM QUERY
                         //CHECK OUT MYSQL2 OR OTHER MODERN LIBRARIES TO BE ABLE TO USE
-                        //ASYNC FUNCTIONS WITH QUERIES. OR TRY TO PROMISIFY THE QUERY
+                        //ASYNC FUNCTIONS WITH QUERIES. ALSO REWRITE QUERIES TO USE PARAMETERS
+                        //AND NOT STRING CONCATENATION
 
                         async function loopIndices() {
                             var array = [];
