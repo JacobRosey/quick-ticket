@@ -119,9 +119,23 @@ app.route('/index/:admin/:team')
             })
         });
         dbPromise.then(() => {
+            /*
+            db.query(`
+            INSERT INTO Teams (team_name, team_code) 
+            VALUES ('`+ team + `', '` + teamCode + `'); 
+            SET @last_id = (SELECT LAST_INSERT_ID()); 
+            INSERT INTO Admins (user_id, team_id) VALUES 
+            (`+userID+`, @last_id);
+            `, (err, result) => {
+                if(err){
+                    console.log(err)
+                } else {console.log(result)}
+            })
+            console.log(admin, team, teamCode)
+            res.send("SUCCESS!")*/
 
             const teamCode = crypto.randomBytes(5).toString('hex');
-            //Only doing this ugly ass nested structure because the commented code below produced 
+            //Only doing this ugly ass nested structure because the commented code above produced 
             //an SQL parse error; couldn't find an answer on Google
             db.query(`INSERT INTO Teams (team_name, team_code) VALUES ('` + team + `', '` + teamCode + `');`, (err, result) => {
                 if (err) {
@@ -162,20 +176,6 @@ app.route('/index/:admin/:team')
                     })
                 }
             })
-            /*
-            db.query(`
-            INSERT INTO Teams (team_name, team_code) 
-            VALUES ('`+ team + `', '` + teamCode + `'); 
-            SET @last_id = (SELECT LAST_INSERT_ID()); 
-            INSERT INTO Admins (user_id, team_id) VALUES 
-            (`+userID+`, @last_id);
-            `, (err, result) => {
-                if(err){
-                    console.log(err)
-                } else {console.log(result)}
-            })
-            console.log(admin, team, teamCode)
-            res.send("SUCCESS!")*/
         })
     })
 
@@ -324,4 +324,10 @@ app.route('/team/:user')
             console.log("Here is your error: " + err)
             return res.status(404).send(err)
         })
+    })
+
+app.route('/closedtickets/:user')
+    .get(function (req, res, err){
+        const user = req.params.user;
+        console.log(user)
     })

@@ -16,6 +16,7 @@ function checkForUser() {
 function setActiveLink() {
     //Get current page
     let active = window.location.href.replace("https://quick-ticket.herokuapp.com/", "");
+    const user = sessionStorage.getItem('user');
 
     //If on login or register page, don't care about nav stuff
     //because it's not visible on screen
@@ -31,10 +32,13 @@ function setActiveLink() {
             let navLink = document.getElementById('submenu1');
             navLink.className = "nav flex-column ms-1 collapse show";
             navLink.setAttribute("aria-expanded", "true");
+            if(active == 'closedtickets'){
+                console.log('Starting ajaxfunction on closedtickets page load');
+                ajaxFunc('/closedtickets/'+user+'', 'GET', user)
+            }
             return;
         }
         if(active == 'team'){
-            let user = sessionStorage.getItem('user');
             console.log('Starting ajaxfunction on team page load')
             ajaxFunc('/team/'+user+'', 'GET', user);
         }
