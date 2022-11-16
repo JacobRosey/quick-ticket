@@ -319,37 +319,10 @@ app.route('/team/:user')
                     }).then((teamIDs) => {
                         console.log('HERE ARE THE TEAM IDS: ' + teamIDs);
 
-                        //THIS IS WHERE I NEED TO COME BACK AND WORK ON TEAM QUERY
-                        //CHECK OUT MYSQL2 OR OTHER MODERN LIBRARIES TO BE ABLE TO USE
-                        //ASYNC FUNCTIONS WITH QUERIES. ALSO REWRITE QUERIES TO USE PARAMETERS
-                        //AND NOT STRING CONCATENATION
-
-                        /*async function loopIndices() {
-                            var array = [];
-                            for (let i = 0; i < teamIDs.length; i++) {
-                                //Get query result
-                                array[i] = await queryDB(teamIDs[i])
-                                console.log('pushed result for id ' + teamIDs[i] + ' to array')
-                            }
-                            return array;
-                        }
-
-                        async function queryDB(id) {
-                            console.log('querying teamID ' + id);
-                            const result = db.query("SELECT * FROM Teams WHERE team_id = " + id + "");
-                            console.log('returning result for id ' + id + '.');
-                            return result;
-                        }
-                        loopIndices().then(response => {
-                            console.log(response[0]);
-                            res.send('bruh');
-                        }).catch(err => {
-                            console.log('You caught this error: ' + err);
-                        });*/
-
-                        //Need to use setTimeout somewhere....
-                        //Like, setTimeout between calling getData and 
-                        //Returning values
+                        //My issue with this code was that I thought async/await caused
+                        //the function to wait until resolution before moving onto the 
+                        //.then statement. it seems that this only defines the order of
+                        //the functions being called, not the order of resolution.
                         async function getData() {
                             let arr = [];
                             for (let i = 0; i < teamIDs.length; i++) {
@@ -358,18 +331,14 @@ app.route('/team/:user')
                                         console.log(rows)
                                         arr.push(rows);
                                     }).catch(console.log)
-                                    .then(() => {
-                                        //db.end()
-                                        console.log('array before returning: ' + arr)
-                                })
                             }
                             return arr;
                         }
-                        getData().then((getData) => {
+                        getData().then((response) => {
                             setTimeout(() => {
                                 console.log("Delayed for 1/5 of a second.");
-                                console.log('response is' + getData)
-                                res.send(getData)
+                                console.log('response is' + response)
+                                res.send(response)
                               }, 200)
                             
                         })
