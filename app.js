@@ -46,6 +46,7 @@ app.use('/register', require('./routes/pages'));
 
 
 //This is where i'll put a global func to get userID at some point
+/*
 function getUser(u) {
     const dbPromise = new Promise((resolve, reject) => {
         db.query("SELECT * FROM users WHERE user_name = '" + u + "'", (err, result) => {
@@ -68,6 +69,7 @@ function getUser(u) {
         return userID;
     })
 }
+*/
 
 app.route('/login/:user/:pass')
     .get(function (req, res, err) {
@@ -353,7 +355,28 @@ app.route('/closedtickets/:user')
     .get(function (req, res, err) {
         const user = req.params.user;
         console.log(user);
-        const userID = getUser(user);
-        console.log('userid: ' + userID)
-        res.send(userID);
+        const dbPromise = new Promise((resolve, reject) => {
+
+            db.query("SELECT * FROM users WHERE user_name = '" + user + "'", (err, result) => {
+                if (err) {
+                    console.log(err)
+                    reject('There was an error querying the database');
+                }
+                if (result.length == 0) {
+                    console.log('This user does not exist in DB');
+                    reject('This user does not exist in DB');
+                }
+                if (result.length > 0) {
+                    console.log('This user exists in DB');
+                    userID = result[0].user_id;
+                    resolve(userID);
+                }
+            })
+        }).catch(function (error) {
+            console.log(error);
+            return res.status(404).send(error)
+        });
+        dbPromise.then(() => {
+            res.send(userID)
+        })
     })
