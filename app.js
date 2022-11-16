@@ -319,15 +319,15 @@ app.route('/team/:user')
                     });
                 }).catch(err => {
                     console.log('You caught this error: ' + err);
-                    return res.status(404).send(error)
+                    return res.status(404).send(err)
                 });
             }
             }).catch(err => {
                 console.log('You caught this error: ' + err);
-                return res.status(404).send(error)
+                return res.status(404).send(err)
             });
-        }).catch(function (error) {
-            console.log("Here is your error: " + error)
-            return res.status(404).send(error)
+        }).catch(err => {
+            console.log("Here is your error: " + err)
+            return res.status(404).send(err)
         })
     })
