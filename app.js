@@ -322,35 +322,8 @@ app.route('/team/:user')
                         //THIS IS WHERE I NEED TO COME BACK AND WORK ON TEAM QUERY
                         //CHECK OUT MYSQL2 OR OTHER MODERN LIBRARIES TO BE ABLE TO USE
                         //ASYNC FUNCTIONS WITH QUERIES. OR TRY TO PROMISIFY THE QUERY
-                        async function queryLoop() {
-                            let arr = [];
-                            for (let i = 0; i < teamIDs.length; i++) {
-                                const promisified = util.promisify(queryDB)
-                                arr.push(promisified)
-                            }
-                            return arr;
-                        }
 
-
-                        function queryDB(id) {
-                            db.query("SELECT * FROM Teams WHERE team_id = " + id + "", (err, result) => {
-                                if (err) {
-                                    console.log(err)
-                                }
-                                console.log('result in query: ' + result);
-                                return result;
-                            })
-                            return result;
-                        }
-                        async function doAsyncStuff(){
-                            const response = await queryLoop();
-                            return response;
-                        }
-
-                        const response = doAsyncStuff();
-                        res.send(response)
-
-                        /*async function loopIndices() {
+                        async function loopIndices() {
                             var array = [];
                             for (let i = 0; i < teamIDs.length; i++) {
                                 //Get query result
@@ -371,7 +344,7 @@ app.route('/team/:user')
                             res.send('bruh');
                         }).catch(err => {
                             console.log('You caught this error: ' + err);
-                        });*/
+                        });
                     })
                 }
             })
