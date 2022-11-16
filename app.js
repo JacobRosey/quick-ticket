@@ -312,7 +312,9 @@ app.route('/team/:user')
                         //TypeError: Converting circular structure to JSON
                         //Gonna come back to this
                         loopIndices().then(response => {
-                            res.json(response)
+                            //res.json(response)
+                            console.log(response);
+                            res.send('bruh');
                     }).catch(err => {
                         console.log('You caught this error: ' + err);
                     });
