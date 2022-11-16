@@ -346,6 +346,10 @@ app.route('/team/:user')
                         }).catch(err => {
                             console.log('You caught this error: ' + err);
                         });*/
+
+                        //Need to use setTimeout somewhere....
+                        //Like, setTimeout between calling getData and 
+                        //Returning values
                         async function getData() {
                             let arr = [];
                             for (let i = 0; i < teamIDs.length; i++) {
@@ -362,8 +366,12 @@ app.route('/team/:user')
                             return arr;
                         }
                         getData().then((getData) => {
-                            console.log('response is' + getData)
-                            res.send(getData)
+                            setTimeout(() => {
+                                console.log("Delayed for 1 second.");
+                                console.log('response is' + getData)
+                                res.send(getData)
+                              }, 1000)
+                            
                         })
                     })
                 }
