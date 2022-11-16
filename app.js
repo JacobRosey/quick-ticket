@@ -292,6 +292,8 @@ app.route('/team/:user')
                         resolve(teamIDs);
                     }).then((teamIDs) => {
                         console.log('HERE ARE THE TEAM IDS: ' + teamIDs);
+
+                        //THIS IS WHERE I NEED TO COME BACK AND WORK ON TEAM QUERY
                         
                         async function loopIndices() {
                             var array = [];
