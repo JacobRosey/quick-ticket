@@ -362,7 +362,7 @@ app.route('/team/:user')
                         }
                     }
                         let data = await getData();
-                        res.send(data)
+                        res.send(JSON.stringify(data))
                     })
                 }
             })
