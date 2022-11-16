@@ -325,7 +325,7 @@ app.route('/team/:user')
                         async function queryLoop() {
                             let arr = [];
                             for (let i = 0; i < teamIDs.length; i++) {
-                                const promisified = util.promisify(queryDB(teamIDs[i]))
+                                const promisified = util.promisify(queryDB(29))
                                 arr.push(promisified)
                             }
                             return arr;
