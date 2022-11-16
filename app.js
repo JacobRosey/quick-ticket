@@ -346,24 +346,22 @@ app.route('/team/:user')
                         }).catch(err => {
                             console.log('You caught this error: ' + err);
                         });*/
-                        async function getData(){
-                        let arr = [];
-                        for(let i=0; i<teamIDs.length; i++){
-                            db.promise().query("SELECT * FROM Teams WHERE team_id = " + teamIDs[i] + "")
-                        .then( ([rows, fields]) => {
-                            console.log(rows)
-                            arr.push(rows);
-                        }).catch(console.log)
-                        .then( () => {
-                            db.end()
-                            console.log('array before returning: ' + arr)
-                            return arr;
-                        });
+                        async function getData() {
+                            let arr = [];
+                            for (let i = 0; i < teamIDs.length; i++) {
+                                db.promise().query("SELECT * FROM Teams WHERE team_id = " + teamIDs[i] + "")
+                                    .then(([rows, fields]) => {
+                                        console.log(rows)
+                                        arr.push(rows);
+                                    }).catch(console.log)
+                                    .then(() => {
+                                        db.end()
+                                        console.log('array before returning: ' + arr)
+                                        res.send(arr)
+                                    });
+                            }
                         }
-                        let data = await getData();
-                        console.log('data before res.send: ' + data)
-                        res.send(JSON.stringify(data))
-                    }
+                        await getData();
                     })
                 }
             })
