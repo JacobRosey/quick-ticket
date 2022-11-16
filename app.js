@@ -323,7 +323,7 @@ app.route('/team/:user')
                         //ASYNC FUNCTIONS WITH QUERIES. ALSO REWRITE QUERIES TO USE PARAMETERS
                         //AND NOT STRING CONCATENATION
 
-                        async function loopIndices() {
+                        /*async function loopIndices() {
                             var array = [];
                             for (let i = 0; i < teamIDs.length; i++) {
                                 //Get query result
@@ -344,7 +344,16 @@ app.route('/team/:user')
                             res.send('bruh');
                         }).catch(err => {
                             console.log('You caught this error: ' + err);
-                        });
+                        });*/
+                        let arr = [];
+                        for(let i=0; i<teamIDs.length; i++){
+                            const result = db.promise().query("SELECT * FROM Teams WHERE team_id = " + teamIDs[i] + "")
+                            .then(()=>{
+                                arr.push(result)
+                            })
+                        }   
+                        console.log(arr);
+                        res.send('bruh')
                     })
                 }
             })
