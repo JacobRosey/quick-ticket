@@ -5,6 +5,7 @@ const path = require('path');
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
 const util = require('node:util');
+const { resolve } = require('path/posix');
 
 const app = express();
 
@@ -291,30 +292,8 @@ app.route('/team/:user')
                         resolve(teamIDs);
                     }).then((teamIDs) => {
                         console.log('HERE ARE THE TEAM IDS: ' + teamIDs);
-                        let arr = [];
-                        const dbPromise = new Promise((resolve, reject) => {
-                            for(let i=0; i<teamIDs.length; i++){
-                                db.query("SELECT * FROM Teams WHERE team_id = " + teamIDs[i] + "", (err, result) => {
-                                    if(err){
-                                        console.log(err)
-                                    }
-                                    console.log('inside query loop: ' + result);
-                                    arr.push(result)
-                                })
-                            }   
-                            resolve(arr)
-                        })
-
-                        dbPromise.then((response) =>{
-                            if(response.length != teamIDs.length){
-                                dbPromise();
-                            }
-                            console.log('after .then: ' + response)
-                            res.send(response);
-                        })
-
-
-                        /*async function loopIndices() {
+                        
+                        async function loopIndices() {
                             var array = [];
                             for (let i = 0; i < teamIDs.length; i++) {
                                 //Get query result
@@ -335,7 +314,7 @@ app.route('/team/:user')
                             res.send('bruh'); 
                     }).catch(err => {
                         console.log('You caught this error: ' + err);
-                    });*/
+                    });
                 })
             }
             })
