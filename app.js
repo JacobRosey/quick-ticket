@@ -293,46 +293,46 @@ app.route('/team/:user')
                     }).then((teamIDs) => {
                         console.log('HERE ARE THE TEAM IDS: ' + teamIDs);
 
-                        async function loopIndices() {
+                        function loopIndices() {
                             var array = [];
                             for (let i = 0; i < teamIDs.length; i++) {
                                 //Get query result
                                 //array[i] = await queryDB(teamIDs[i])
                                 queryDB.then((result) => {
                                     array.push(result);
-                                    console.log('pushed result for id '+ teamIDs[i] + ' to array')
+                                    console.log('pushed result for id ' + teamIDs[i] + ' to array')
                                 })
                             }
                             return array;
                         }
 
-                        async function queryDB(id) {
+                        //async function queryDB(id) {
+                        queryDB = new Promise((resolve, reject) => {
                             console.log('querying teamID ' + id);
                             //Can't use normal db.query syntax here because it uses a callback
                             /*const result = await db.query("SELECT * FROM Teams WHERE team_id = " + id + "");
                             console.log('returning result for id ' + id + '.');
                             return result;*/
-                            return new Promise ((resolve, reject) => {
+
                             db.query("SELECT * FROM Teams WHERE team_id = " + id + "", (err, result) => {
-                                if(err){
+                                if (err) {
                                     console.log(err)
                                 }
                                 console.log('retrieving result for id ' + id + '. result is ' + result);
                                 resolve(result)
                             });
-                            })
-                        }
-                        //TypeError: Converting circular structure to JSON
-                        //Gonna come back to this
+                        })
+                        //}
+
                         loopIndices().then(response => {
                             //res.json(response)
                             console.log(response[0]);
                             res.send('bruh');
-                    }).catch(err => {
-                        console.log('You caught this error: ' + err);
-                    });
-                })
-            }
+                        }).catch(err => {
+                            console.log('You caught this error: ' + err);
+                        });
+                    })
+                }
             })
         }).catch(err => {
             console.log("Here is your error: " + err)
