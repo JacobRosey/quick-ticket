@@ -374,10 +374,8 @@ app.route('/closedtickets/:user')
                     resolve(userID);
                 }
             })
-        }).catch(function (error) {
-            console.log(error);
-            return res.status(404).send(error)
-        });
+        })
+        
         dbPromise.then((response) => {
             console.log('user id: ' + response)
             res.send(response)
