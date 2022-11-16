@@ -64,9 +64,6 @@ function getUser(u) {
             }
         })
     });
-    user.then((result) => {
-        return result;
-    })
 }
 
 app.route('/login/:user/:pass')
@@ -353,6 +350,7 @@ app.route('/closedtickets/:user')
     .get(function (req, res, err) {
         const user = req.params.user;
         console.log(user);
-        let userID = getUser(user);
-        res.send(userID);
+        getUser(user).then((result) => {
+            res.send(result)
+        })
     })
