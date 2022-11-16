@@ -306,6 +306,9 @@ app.route('/team/:user')
                         })
 
                         dbPromise.then((response) =>{
+                            if(response.length != teamIDs.length){
+                                dbPromise();
+                            }
                             console.log('after .then: ' + response)
                             res.send(response);
                         })
