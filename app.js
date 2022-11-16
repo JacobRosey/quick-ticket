@@ -360,10 +360,10 @@ app.route('/team/:user')
                             return arr;
                         });
                         }
-                    }
                         let data = await getData();
                         console.log('data before res.send: ' + data)
                         res.send(JSON.stringify(data))
+                    }
                     })
                 }
             })
