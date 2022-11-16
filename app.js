@@ -309,7 +309,7 @@ app.route('/team/:user')
                                 db.query("SELECT * FROM Teams WHERE team_id = " + id + "");
                                 console.log('returning result for id ' + id + '.');
                                 resolve(result)
-                            }).then(() =>{
+                            }).then((result) =>{
                                 return result;
                             })
                         }
