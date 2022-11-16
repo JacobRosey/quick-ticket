@@ -348,7 +348,7 @@ app.route('/team/:user')
                         });*/
                         let arr = [];
                         for(let i=0; i<teamIDs.length; i++){
-                            const result = db.promise(resolve).query("SELECT * FROM Teams WHERE team_id = " + teamIDs[i] + "")
+                            const result = db.promise().query("SELECT * FROM Teams WHERE team_id = " + teamIDs[i] + "")
                             resolve(result)
                             .then((result)=>{
                                 arr.push(result)
