@@ -346,7 +346,7 @@ app.route('/team/:user')
                         }).catch(err => {
                             console.log('You caught this error: ' + err);
                         });*/
-                        async function getData(){
+                        function getData(){
                         let arr = [];
                         for(let i=0; i<teamIDs.length; i++){
                             db.promise().query("SELECT * FROM Teams WHERE team_id = " + teamIDs[i] + "")
@@ -360,14 +360,7 @@ app.route('/team/:user')
                         });
                         }
                     }
-
-                        async function doAsyncStuff(){
-                            const arr = await getData();
-                            console.log('Here is the data before sending ' + arr )
-                            return arr;
-                        }
-
-                        res.send(doAsyncStuff())
+                        res.send(getData())
                     })
                 }
             })
