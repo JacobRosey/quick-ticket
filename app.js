@@ -298,7 +298,7 @@ app.route('/team/:user')
                                     if(err){
                                         console.log(err)
                                     }
-                                    console.log(result);
+                                    console.log('inside query loop: ' + result);
                                     arr.push(result)
                                 })
                             }   
@@ -306,6 +306,7 @@ app.route('/team/:user')
                         })
 
                         dbPromise.then((response) =>{
+                            console.log('after .then: ' + response)
                             res.send(response);
                         })
 
