@@ -359,7 +359,7 @@ app.route('/team/:user')
                                         arr.push(rows);
                                     }).catch(console.log)
                                     .then(() => {
-                                        db.end()
+                                        //db.end()
                                         console.log('array before returning: ' + arr)
                                 })
                             }
