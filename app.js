@@ -338,8 +338,8 @@ app.route('/team/:user')
                             setTimeout(() => {
                                 console.log("Delayed for 200ms");
                                 console.log('response is' + response)
-                                let newArr = [].concat(...response);
-                                console.log(newArr)
+                                response = [].concat(...response);
+                                console.log(response[0].team_name)
                                 res.send(response)
                               }, 200)
                         })
