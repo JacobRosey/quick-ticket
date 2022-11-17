@@ -163,7 +163,7 @@ function ajaxFunc(path, method, d) {
                 default: 
                 console.log("response is "+ response);
                 response = JSON.parse(response);
-                alert(response[0])
+                alert(response[0].team_name)
 
                 return response;
             }
