@@ -152,7 +152,7 @@ function useResponse(res) {
             <div class="team-info">
             <div class="card" id="team-card"style="width: 18rem;">
             <div class="card-header" style="font-weight: bolder;">
-            <i class="fs-4 bi-people"></i>
+            <i class="fs-4 bi-people" style="margin-right: 1em;"></i>
                 `+ res[i].team_name + `
             </div>
             <ul class="list-group list-group-flush">
