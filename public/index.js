@@ -149,8 +149,8 @@ function useResponse(res) {
         for (let i = 0; i < res.length; i++) {
             //const teamInfoCards = document.getElementsByClassName('team-info');
             container.innerHTML += `
-            <div class="team-info">
             <div class="col-sm">
+            <div class="team-info">
             <div class="card" id="team-card"style="width: 18rem;">
             <div class="card-header" style="font-weight: bolder;">
                 `+ res[i].team_name + `
@@ -162,7 +162,7 @@ function useResponse(res) {
             </ul>
             </div>
             </div>
-            <a class="btn btn-outline-danger btn-lg" onClick="deleteTeam(`+i+`)" role="button">Delete Team</a>
+            <a class="btn btn-outline-danger btn-block" onClick="deleteTeam(`+i+`)" role="button">Delete Team</a>
             </div>
             `
         }
