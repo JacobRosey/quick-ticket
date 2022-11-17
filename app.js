@@ -340,7 +340,6 @@ app.route('/team/:user')
                                 console.log('response is' + response)
                                 res.send(response)
                               }, 200)
-                            
                         })
                     })
                 }
