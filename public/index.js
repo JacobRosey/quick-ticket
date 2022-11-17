@@ -190,7 +190,7 @@ function ajaxFunc(path, method, d) {
                     alert(response);
                     break;
                 case "User is not on a team":
-                    userResponse(0);
+                    useResponse(0);
                     break;
                 default:
                     console.log("response is " + response);
