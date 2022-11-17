@@ -131,7 +131,7 @@ function useResponse(res) {
     const container = document.getElementById('team-card-container');
     
     if (res == 0) {
-        container.innerHTML += `<i class="fs-4 bi-people"></i><h3 class="text-center" style="font-weight: bold;">You are not on a team!</h3>`
+        container.innerHTML += `<span><i class="fs-4 bi-people"></i><h3 class="text-center" style="font-weight: bold;">You are not on a team!</h3></span>`
         container.innerHTML += `
         <div class="jumbotron">
         <h1 class="display-4">Hello, world!</h1>
