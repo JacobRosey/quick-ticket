@@ -128,7 +128,7 @@ function getLogin() {
 
 function useResponse(res){
     //If this is the team page load response
-    const container = document.getElementById('team-container');
+    const container = document.getElementById('team-card-container');
     const card = document.getElementById('team-card');
     if(res == 'user is not on a team'){
         card.style.display = 'none';
