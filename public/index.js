@@ -162,7 +162,7 @@ function useResponse(res) {
             </ul>
             </div>
             </div>
-            <a class="btn btn-outline-danger btn-block" onClick="deleteTeam(`+i+`)" role="button">Delete Team</a>
+            <a class="btn btn-outline-danger btn-lg" onClick="deleteTeam(`+i+`)" role="button">Delete Team</a>
             </div>
             `
         }
