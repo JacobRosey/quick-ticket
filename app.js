@@ -336,9 +336,9 @@ app.route('/team/:user')
                         }
                         getData().then((response) => {
                             setTimeout(() => {
-                                console.log("Delayed for 1/5 of a second.");
+                                console.log("Delayed for 200ms");
                                 console.log('response is' + response)
-                                res.send(response)
+                                res.JSON(response)
                               }, 200)
                         })
                     })
