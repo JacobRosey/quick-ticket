@@ -131,13 +131,12 @@ function useResponse(res) {
     const container = document.getElementById('team-card-container');
     
     if (res == 0) {
-        container.innerHTML += `<span><i class="fs-4 bi-people"></i><pclass="text-center" style="font-weight: bold;">You are not on a team!</p></span>`
         container.innerHTML += `
         <div class="jumbotron">
-        <h1 class="display-4">Hello, world!</h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <span><i class="fs-4 bi-people"></i><pclass="text-center" style="font-weight: bold;">You are not a member of a team!</p></span>
+        <p class="lead">Go to the home page and create a new team, or join an existing team using the team code!</p>
         <hr class="my-4">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <p>Ask your manager for the team code so you can get to work! If you create a new team, come back to this page to see the team code.</p>
         <p class="lead">
           <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
         </p>
