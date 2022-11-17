@@ -147,7 +147,9 @@ function useResponse(res) {
     if (res[0].hasOwnProperty('team_id') && res[0].hasOwnProperty('team_name')) {
 
         for (let i = 0; i < res.length; i++) {
+            //const teamInfoCards = document.getElementsByClassName('team-info');
             container.innerHTML += `
+            <div class="team-info">
             <div class="col-sm">
             <div class="card" id="team-card"style="width: 18rem;">
             <div class="card-header" style="font-weight: bolder;">
@@ -159,7 +161,10 @@ function useResponse(res) {
                 <li class="list-group-item">Managed by: <span id="admin-name">jacobrosey</span></li>
             </ul>
             </div>
-            </div>`
+            </div>
+            <a class="btn btn-emergency btn-lg" onClick="deleteTeam(`+i+`)" role="button">Delete Team</a>
+            </div>
+            `
         }
     }
 }
