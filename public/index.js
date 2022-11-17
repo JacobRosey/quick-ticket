@@ -170,8 +170,8 @@ function useResponse(res) {
 
 function deleteTeam(num){
     const teamInfoCards = document.getElementsByClassName('team-info');
-    let teamName = document.getElementsByClassName('card-header').value;
-    if(confirm("Are you sure you want to delete " + teamName[num] +"? This cannot be reversed.")){
+    let teamName = document.getElementsByClassName('card-header');
+    if(confirm("Are you sure you want to delete " + teamName[num].value +"? This cannot be reversed.")){
         teamInfoCards[num].remove();
     }
 }
