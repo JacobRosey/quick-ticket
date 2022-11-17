@@ -161,8 +161,8 @@ function ajaxFunc(path, method, d) {
                     alert(response);
                     break;
                 default: 
-                console.log("response is "+ response);
-                alert(response)
+                console.log("response is "+ JSON.parse(response));
+                alert(JSON.parse(response))
                 return response;
             }
 
