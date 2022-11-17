@@ -40,7 +40,8 @@ function setActiveLink() {
         }
         if(active == 'team'){
             console.log('Starting ajaxfunction on team page load')
-            ajaxFunc('/team/'+user+'', 'GET', user);
+            let response = ajaxFunc('/team/'+user+'', 'GET', user);
+            alert(response)
         }
     }
 
@@ -160,7 +161,9 @@ function ajaxFunc(path, method, d) {
                 case "This username does not exist!":
                     alert(response);
                     break;
-                default: console.log("response is "+ response);
+                default: 
+                console.log("response is "+ response);
+                return response;
             }
 
         }
