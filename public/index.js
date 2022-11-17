@@ -172,9 +172,10 @@ function useResponse(res) {
 function deleteTeam(num) {
     const teamInfoCards = document.getElementsByClassName('team-info');
     const teamName = document.getElementsByClassName('team-name-span')[num];
+    console.log(teamInfoCards[num].value);
+    console.log(teamInfoCards[num].innerHTML);
     if (confirm('Are you sure you want to delete ' + teamName.innerHTML + '? This cannot be reversed.')) {
         //Need to fix the alert box, there  are line breaks in the html apparently
-        console.log(teamInfoCards[num])
         teamInfoCards[num].remove();
         //Only admins can delete the team
     }
