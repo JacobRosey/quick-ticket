@@ -160,13 +160,17 @@ function useResponse(res) {
                 <li class="list-group-item" id="member-count"># of team members</li>
                 <li class="list-group-item">Managed by: <span id="admin-name">jacobrosey</span></li>
             </ul>
-            <a class="btn btn-danger btn-sm" onClick="deleteTeam(`+i+`)" role="button">Delete Team</a>
+            <a class="btn btn-danger btn-lg" onClick="deleteTeam(`+i+`)" role="button">Delete Team</a>
             </div>
             </div>
             </div>
             `
         }
     }
+}
+
+function deleteTeam(num){
+    alert(num)
 }
 
 function ajaxFunc(path, method, d) {
