@@ -131,7 +131,7 @@ function useResponse(res) {
     const container = document.getElementById('team-card-container');
     
     if (res == 0) {
-        container.innerHTML += `<h3>You are not on a team!</h3>`
+        container.innerHTML += `<h3 class="text-justify" style="font-weight: bold;">You are not on a team!</h3>`
     }
 
     if (res[0].hasOwnProperty('team_id') && res[0].hasOwnProperty('team_name')) {
@@ -140,7 +140,7 @@ function useResponse(res) {
             container.innerHTML += `
             <div class="col-sm">
             <div class="card" id="team-card"style="width: 18rem;">
-            <div class="card-header" style="font-weight: bolder">
+            <div class="card-header" style="font-weight: bolder;">
                 `+ res[i].team_name + `
             </div>
             <ul class="list-group list-group-flush">
