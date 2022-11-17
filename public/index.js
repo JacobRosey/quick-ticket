@@ -138,7 +138,7 @@ function useResponse(res) {
         <hr class="my-4">
         <p>Ask your manager for the team code so you can get to work! If you create a new team, come back to this page to see the team code.</p>
         <p class="lead">
-          <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+          <a class="btn btn-primary btn-lg" href="/home" role="button">Home Page</a>
         </p>
       </div>
         `
