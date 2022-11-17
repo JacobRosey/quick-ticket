@@ -162,7 +162,7 @@ function ajaxFunc(path, method, d) {
                     break;
                 default: 
                 console.log("response is "+ response);
-                const obj = JSON.parse(response[0]);
+                const obj = JSON.parse(response);
                 alert(obj.team_id)
 
                 return response;
