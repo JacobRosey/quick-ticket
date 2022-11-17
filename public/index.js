@@ -171,7 +171,7 @@ function useResponse(res) {
 function deleteTeam(num){
     const teamInfoCards = document.getElementsByClassName('team-info');
     const teamName = document.getElementsByClassName('card-header');
-    if(confirm("Are you sure you want to delete " + teamName[num].innerHTML +"? This cannot be reversed.")){
+    if(confirm("Are you sure you want to delete " + teamName[num].innerHTML.toString() +"? This cannot be reversed.")){
         teamInfoCards[num].remove();
     }
 }
