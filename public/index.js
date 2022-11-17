@@ -147,7 +147,6 @@ function useResponse(res) {
     if (res[0].hasOwnProperty('team_id') && res[0].hasOwnProperty('team_name')) {
 
         for (let i = 0; i < res.length; i++) {
-            //const teamInfoCards = document.getElementsByClassName('team-info');
             container.innerHTML += `
             <div class="col-sm">
             <div class="team-info">
@@ -170,7 +169,8 @@ function useResponse(res) {
 }
 
 function deleteTeam(num){
-    alert(num)
+    const teamInfoCards = document.getElementsByClassName('team-info');
+    teamInfoCards[num].remove();
 }
 
 function ajaxFunc(path, method, d) {
