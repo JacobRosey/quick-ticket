@@ -161,7 +161,7 @@ function useResponse(res) {
                 <li class="list-group-item">Managed by: <span id="admin-name">jacobrosey</span></li>
             </ul>
             <div class="text-center">
-            <a class="btn btn-danger" onClick="deleteTeam(`+ i + `)" role="button" style="width: 75%;">Delete Team</a>
+            <a class="btn btn-danger" onClick="deleteTeam(`+ i + `)" role="button" style="width: 50%;">Delete Team</a>
             </div>
             </div>
             </div>
