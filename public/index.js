@@ -162,7 +162,7 @@ function ajaxFunc(path, method, d) {
                     break;
                 default: 
                 console.log("response is "+ response);
-                alert(response)
+                alert(response[0].team_id, response[0].team_name)
 
                 return response;
             }
