@@ -128,8 +128,28 @@ function getLogin() {
 
 function useResponse(res){
     //If this is the team page load response
+    const container = document.getElementById('team-container');
+    const card = document.getElementById('team-card');
+    if(res == 'user is not on a team'){
+        card.style.display = 'none';
+        container.innerHTML += `<h3>You are not on a team!</h3>`
+        
+    }
     if(res[0].hasOwnProperty('team_id') && res[0].hasOwnProperty('team_name')){
-        alert(res[0].team_id);
+
+        for(let i=0; i<res.length; i++){
+            container.innerHTML += `
+            <div class="card" id="team-card"style="width: 18rem;">
+            <div class="card-header">
+                `+res[i].team_name+`
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" id="team-code">`+res[i].team_code+`</li>
+                <li class="list-group-item" id="member-count"># of team members</li>
+                <li class="list-group-item">Managed by: <span id="admin-name">jacobrosey</span></li>
+            </ul>
+        </div>`
+        }
     }
 }
 
