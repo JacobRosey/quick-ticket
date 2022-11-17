@@ -140,11 +140,11 @@ function useResponse(res){
         for(let i=0; i<res.length; i++){
             container.innerHTML += `
             <div class="card" id="team-card"style="width: 18rem;">
-            <div class="card-header">
+            <div class="card-header" style="font-weight: bolder">
                 `+res[i].team_name+`
             </div>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item" id="team-code">`+res[i].team_code+`</li>
+                <li class="list-group-item" id="team-code">Invitation code: `+res[i].team_code+`</li>
                 <li class="list-group-item" id="member-count"># of team members</li>
                 <li class="list-group-item">Managed by: <span id="admin-name">jacobrosey</span></li>
             </ul>
