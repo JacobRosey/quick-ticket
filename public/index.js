@@ -40,11 +40,7 @@ function setActiveLink() {
         }
         if(active == 'team'){
             console.log('Starting ajaxfunction on team page load')
-            let response = ajaxFunc('/team/'+user+'', 'GET', user);
-            setTimeout(() => {
-                alert(response[0].team_name)
-              }, 1000)
-            
+            ajaxFunc('/team/'+user+'', 'GET', user);
         }
     }
 
@@ -166,6 +162,7 @@ function ajaxFunc(path, method, d) {
                     break;
                 default: 
                 console.log("response is "+ response);
+                alert(response)
                 return response;
             }
 
