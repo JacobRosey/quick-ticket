@@ -40,9 +40,7 @@ function setActiveLink() {
         }
         if(active == 'team'){
             console.log('Starting ajaxfunction on team page load')
-            let res = ajaxFunc('/team/'+user+'', 'GET', user);
-            console.log(res)
-            alert(res[0].team_name)
+            ajaxFunc('/team/'+user+'', 'GET', user);
         }
     }
 
@@ -128,6 +126,13 @@ function getLogin() {
 
 }
 
+function useResponse(res){
+    //If this is the team page load response
+    if(res[0].hasOwnProperty('team_id') && res[0].hasOwnProperty('team_name')){
+        alert(res[0]);
+    }
+}
+
 function ajaxFunc(path, method, d) {
 
     let xhr = new XMLHttpRequest();
@@ -165,9 +170,8 @@ function ajaxFunc(path, method, d) {
                 default: 
                 console.log("response is "+ response);
                 response = JSON.parse(response);
-                //alert(response[0].team_name)
-
-                return response;
+                useResponse(response)
+                
             }
         }
     }
