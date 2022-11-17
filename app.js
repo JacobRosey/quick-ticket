@@ -338,7 +338,7 @@ app.route('/team/:user')
                             setTimeout(() => {
                                 console.log("Delayed for 200ms");
                                 console.log('response is' + response)
-                                res.JSON(response)
+                                res.send(JSON.stringify(response))
                               }, 200)
                         })
                     })
