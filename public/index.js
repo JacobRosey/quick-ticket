@@ -133,7 +133,7 @@ function useResponse(res) {
     if (res == 0) {
         container.innerHTML += `
         <div class="jumbotron">
-        <span><i class="fs-4 bi-people"></i><pclass="text-center" style="font-weight: bold;">You are not a member of a team!</p></span>
+        <span><i class="fs-4 bi-people"></i><p class="text-center" style="font-weight: bold;">You are not a member of a team!</p></span>
         <p class="lead">Go to the home page and create a new team, or join an existing team using the team code!</p>
         <hr class="my-4">
         <p>Ask your manager for the team code so you can get to work! If you create a new team, come back to this page to see the team code.</p>
@@ -160,7 +160,7 @@ function useResponse(res) {
                 <li class="list-group-item" id="member-count"># of team members</li>
                 <li class="list-group-item">Managed by: <span id="admin-name">jacobrosey</span></li>
             </ul>
-            <a class="btn btn-danger" onClick="deleteTeam(`+ i + `)" role="button"><i class="fa-regular fa-trash"></i>Delete Team</a>
+            <a class="btn btn-danger" onClick="deleteTeam(`+ i + `)" role="button"><i class="bi bi-trash"></i>Delete Team</a>
             </div>
             </div>
             </div>
