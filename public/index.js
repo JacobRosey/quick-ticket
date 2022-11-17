@@ -131,7 +131,7 @@ function useResponse(res) {
     const container = document.getElementById('team-card-container');
     
     if (res == 0) {
-        container.innerHTML += `<h3 class="text-justify" style="font-weight: bold;">You are not on a team!</h3>`
+        container.innerHTML += `<h3 class="text-center" style="font-weight: bold;">You are not on a team!</h3>`
     }
 
     if (res[0].hasOwnProperty('team_id') && res[0].hasOwnProperty('team_name')) {
