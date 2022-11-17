@@ -152,9 +152,9 @@ function useResponse(res) {
             <div class="team-info">
             <div class="card" id="team-card"style="width: 18rem;">
             <div class="card-header" style="font-weight: bolder;">
-            <i class="fs-4 bi-people" style="margin-right: .25em;"></i>
+            <i class="fs-4 bi-people" style="margin-right: .25em;"></i><span class="team-name-span">
                 `+ res[i].team_name + `
-            </div>
+            </span></div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item" id="team-code">Invitation code: `+ res[i].team_code + `</li>
                 <li class="list-group-item" id="member-count"># of team members</li>
@@ -171,7 +171,7 @@ function useResponse(res) {
 
 function deleteTeam(num) {
     const teamInfoCards = document.getElementsByClassName('team-info');
-    const teamName = document.getElementsByClassName('card-header')[num];
+    const teamName = document.getElementsByClassName('team-name-span')[num];
     if (confirm('Are you sure you want to delete ' + teamName.innerHTML + '? This cannot be reversed.')) {
         //Need to fix the alert box, there  are line breaks in the html apparently
         teamInfoCards[num].remove();
