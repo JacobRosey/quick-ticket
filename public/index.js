@@ -130,7 +130,7 @@ function useResponse(res) {
     //If this is the team page load response
     const container = document.getElementById('team-card-container');
     const card = document.getElementById('team-card');
-    if (res == 'user is not on a team') {
+    if (res == 0) {
         card.style.display = 'none';
         container.innerHTML += `<h3>You are not on a team!</h3>`
 
@@ -188,6 +188,9 @@ function ajaxFunc(path, method, d) {
                     break;
                 case "This username does not exist!":
                     alert(response);
+                    break;
+                case "User is not on a team":
+                    userResponse(0);
                     break;
                 default:
                     console.log("response is " + response);
