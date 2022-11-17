@@ -129,7 +129,7 @@ function getLogin() {
 function useResponse(res) {
     //If this is the team page load response
     const container = document.getElementById('team-card-container');
-    
+
     if (res == 0) {
         container.innerHTML += `
         <div class="jumbotron">
@@ -160,7 +160,9 @@ function useResponse(res) {
                 <li class="list-group-item" id="member-count"># of team members</li>
                 <li class="list-group-item">Managed by: <span id="admin-name">jacobrosey</span></li>
             </ul>
-            <a class="btn btn-danger text-center" onClick="deleteTeam(`+i+`)" role="button" style="width: 75%;">Delete Team</a>
+            <div class="text-center">
+            <a class="btn btn-danger" onClick="deleteTeam(`+ i + `)" role="button" style="width: 75%;">Delete Team</a>
+            </div>
             </div>
             </div>
             </div>
@@ -169,11 +171,11 @@ function useResponse(res) {
     }
 }
 
-function deleteTeam(num){
+function deleteTeam(num) {
     const teamInfoCards = document.getElementsByClassName('team-info');
     const teamName = document.getElementsByClassName('card-header')[num];
-    if(confirm('Are you sure you want to delete ' + teamName.innerHTML +'? This cannot be reversed.')){
-       //Need to fix the alert box, there  are line breaks in the html apparently
+    if (confirm('Are you sure you want to delete ' + teamName.innerHTML + '? This cannot be reversed.')) {
+        //Need to fix the alert box, there  are line breaks in the html apparently
         teamInfoCards[num].remove();
         //Only admins can delete the team
     }
