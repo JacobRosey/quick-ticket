@@ -159,7 +159,7 @@ function useResponse(res) {
                 <li class="list-group-item" id="member-count"># of team members</li>
                 <li class="list-group-item">Managed by: <span id="admin-name">jacobrosey</span></li>
             </ul>
-            <a class="btn btn-danger btn-lg" onClick="deleteTeam(`+i+`)" role="button">Delete Team</a>
+            <a class="btn btn-danger" onClick="deleteTeam(`+i+`)" role="button">Delete Team</a>
             </div>
             </div>
             </div>
@@ -172,7 +172,9 @@ function deleteTeam(num){
     const teamInfoCards = document.getElementsByClassName('team-info');
     const teamName = document.getElementsByClassName('card-header')[num];
     if(confirm('Are you sure you want to delete ' + teamName.innerHTML +'? This cannot be reversed.')){
+       //Need to fix the alert box, there  are line breaks in the html apparently
         teamInfoCards[num].remove();
+        //Only admins can delete the team
     }
 }
 
