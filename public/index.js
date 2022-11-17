@@ -32,15 +32,15 @@ function setActiveLink() {
             let navLink = document.getElementById('submenu1');
             navLink.className = "nav flex-column ms-1 collapse show";
             navLink.setAttribute("aria-expanded", "true");
-            if(active == 'closedtickets'){
+            if (active == 'closedtickets') {
                 console.log('Starting ajaxfunction on closedtickets page load');
-                ajaxFunc('/closedtickets/'+user+'', 'GET', user)
+                ajaxFunc('/closedtickets/' + user + '', 'GET', user)
             }
             return;
         }
-        if(active == 'team'){
+        if (active == 'team') {
             console.log('Starting ajaxfunction on team page load')
-            ajaxFunc('/team/'+user+'', 'GET', user);
+            ajaxFunc('/team/' + user + '', 'GET', user);
         }
     }
 
@@ -86,12 +86,12 @@ function createTeam() {
     ajaxFunc('/index/' + admin + '/' + team + '', 'POST', data)
 }
 
-function joinTeam() { 
+function joinTeam() {
     //get entered code, remove leading/trailing whitespace and other spaces
     let code = document.getElementById('entered-code').value.trim().replace(/\s+/g, ' ').replace(/ /g, "");
     let user = sessionStorage.getItem('user');
 
-    if(code == ''){
+    if (code == '') {
         return alert('You must enter a team code!')
     }
     console.log(code)
@@ -126,29 +126,31 @@ function getLogin() {
 
 }
 
-function useResponse(res){
+function useResponse(res) {
     //If this is the team page load response
     const container = document.getElementById('team-card-container');
     const card = document.getElementById('team-card');
-    if(res == 'user is not on a team'){
+    if (res == 'user is not on a team') {
         card.style.display = 'none';
         container.innerHTML += `<h3>You are not on a team!</h3>`
-        
-    }
-    if(res[0].hasOwnProperty('team_id') && res[0].hasOwnProperty('team_name')){
 
-        for(let i=0; i<res.length; i++){
+    }
+    if (res[0].hasOwnProperty('team_id') && res[0].hasOwnProperty('team_name')) {
+
+        for (let i = 0; i < res.length; i++) {
             container.innerHTML += `
+            <div class="col-sm">
             <div class="card" id="team-card"style="width: 18rem;">
             <div class="card-header" style="font-weight: bolder">
-                `+res[i].team_name+`
+                `+ res[i].team_name + `
             </div>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item" id="team-code">Invitation code: `+res[i].team_code+`</li>
+                <li class="list-group-item" id="team-code">Invitation code: `+ res[i].team_code + `</li>
                 <li class="list-group-item" id="member-count"># of team members</li>
                 <li class="list-group-item">Managed by: <span id="admin-name">jacobrosey</span></li>
             </ul>
-        </div>`
+            </div>
+            </div>`
         }
     }
 }
@@ -187,11 +189,11 @@ function ajaxFunc(path, method, d) {
                 case "This username does not exist!":
                     alert(response);
                     break;
-                default: 
-                console.log("response is "+ response);
-                response = JSON.parse(response);
-                useResponse(response)
-                
+                default:
+                    console.log("response is " + response);
+                    response = JSON.parse(response);
+                    useResponse(response)
+
             }
         }
     }
@@ -219,11 +221,11 @@ function ajaxFunc(path, method, d) {
                         window.location.replace('/home')
                     }, 500)
                     break;
-                default: 
-                alert(response); 
-                setTimeout(() => {
-                    window.location.replace('/home')
-                }, 500)
+                default:
+                    alert(response);
+                    setTimeout(() => {
+                        window.location.replace('/home')
+                    }, 500)
             }
         }
     }
