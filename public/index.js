@@ -129,12 +129,11 @@ function getLogin() {
 function useResponse(res) {
     //If this is the team page load response
     const container = document.getElementById('team-card-container');
-    const card = document.getElementById('team-card');
+    
     if (res == 0) {
-        card.style.display = 'none';
         container.innerHTML += `<h3>You are not on a team!</h3>`
-
     }
+
     if (res[0].hasOwnProperty('team_id') && res[0].hasOwnProperty('team_name')) {
 
         for (let i = 0; i < res.length; i++) {
