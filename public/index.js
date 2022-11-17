@@ -41,6 +41,7 @@ function setActiveLink() {
         if(active == 'team'){
             console.log('Starting ajaxfunction on team page load')
             let res = ajaxFunc('/team/'+user+'', 'GET', user);
+            console.log(res)
             alert(res[0].team_name)
         }
     }
