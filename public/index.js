@@ -162,7 +162,7 @@ function ajaxFunc(path, method, d) {
                     break;
                 default: 
                 console.log("response is "+ response);
-                alert(response[0])
+                alert(response[1])
 
                 return response;
             }
