@@ -449,9 +449,14 @@ app.route('/delete-team/:user')
                                 return true;
                             } else res.send(false);
                         }, 50)
-                    }).then((response) => {
+                    }).then(() => {
                         setTimeout(() => {
-                            console.log("this should only appear for admins")
+                            db.query("DELETE FROM Teams WHERE team_name = " + team + "", (err, result) =>{
+                                if(err){
+                                    console.log(err)
+                                }
+                                res.send("Team deleted")
+                            })
                         },100)
                     })
                 })

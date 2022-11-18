@@ -169,11 +169,12 @@ function useResponse(res) {
         }
     }
 
-    if (res == "This user is not an admin" || false) {
+    if (res == "This user is not an admin") {
         alert("You do not have permission to delete this team")
     }
-    if (res == true) {
-        console.log('team deleted')
+    if (res == "Team deleted") {
+        alert('team deleted')
+        location.reload();
     }
 }
 
@@ -285,11 +286,7 @@ async function ajaxFunc(path, method, d) {
             //State whether login was successful or not
             var response = xhr.responseText;
             console.log('response is: ' + response);
-            if (response == "This user is not an admin") {
-                useResponse(response)
-            } else {
-                useResponse(JSON.parse(response));
-            }
+            useResponse(response)
 
 
         }
