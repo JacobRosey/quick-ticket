@@ -398,7 +398,10 @@ app.route('/delete-team/:user')
                     console.log('This user exists in DB');
                     let userID = result[0].user_id;
                     console.log(result[0])
-                    if(result[0].is_admin == 1){
+                    //For some reason when I get the value of is_admin
+                    //it shows <buffer 01> instead of just 1, so I have
+                    //to check the value like this
+                    if(result[0].is_admin.lastIndexOf(1) !== 1){
                         resolve(userID)
                     }
                     else{
