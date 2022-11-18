@@ -170,6 +170,9 @@ function useResponse(res) {
     if(res == "This user is not an admin"){
         alert("You do not have permission to delete this team")
     }
+    if(res == "cuh"){
+        console.log('team deleted')
+    }
 }
 
 function deleteTeam(num) {

@@ -419,7 +419,7 @@ app.route('/delete-team/:user')
 
             //db.query("SELECT * FROM ")
 
-            res.send('this is the .then statement');
+            res.send('cuh');
 
         }).catch(err => {
             console.log(err)
