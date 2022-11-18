@@ -451,7 +451,10 @@ app.route('/delete-team/:user')
                                 const id = response.indexOf(team) + 1;
                                 console.log("returning this index: " + response[id])
                                 return response[id];
-                            } else return false;
+                            } else {
+                                console.log("User is not an admin for this team")
+                                return false;
+                            }
                         }, 50)
                     }).then((response) => {
                         setTimeout(() => {
