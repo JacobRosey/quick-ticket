@@ -429,7 +429,24 @@ app.route('/delete-team/:user')
                     }
                     resolve(arr)
                 }).then((arr) => {
-                    console.log("this user is an admin for the following team_id's: " + arr)
+                    console.log("this user is an admin for the following team_id's: " + arr);
+
+                    async function getData() {
+                        let teamNames = [];
+                        for (let i = 0; i < arr.length; i++) {
+                            db.promise().query("SELECT * FROM Teams WHERE team_id = " + arr[i] + "")
+                                .then(([rows, fields]) => {
+                                    console.log(rows)
+                                    teamNames.push(rows[i].team_name);
+                                }).catch(console.log)
+                        }
+                        return arr;
+                    }
+                    getData().then((response) => {
+                        setTimeout(() => {
+                            res.send(response)
+                        }, 50)
+                    })
                     res.send(arr)
                 })
 
