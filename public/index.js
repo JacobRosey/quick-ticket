@@ -173,7 +173,7 @@ function deleteTeam(num) {
     const teamInfoCards = document.getElementsByClassName('team-info');
     const teamName = document.getElementsByClassName('team-name-span');
     //Replace whitespace, replace hyphen with space
-    let string = teamName[num].innerHTML.trim().replace('-', ' ');
+    let string = teamName[num].innerHTML.trim().replace(/-/g, ' ');
     console.log(string);
     if (confirm('Are you sure you want to delete "' + string + '"? This cannot be reversed.')) {
         //Need to fix the alert box, there  are line breaks in the html apparently
@@ -182,7 +182,7 @@ function deleteTeam(num) {
         const user = sessionStorage.getItem('user');
         let data = {
             "user": user,
-            "team": string.replace( / /g, '-')
+            "team": string.replace(/ /g, '-')
         }
         console.log(data)
         ajaxFunc('/delete-team/:user', "PUT", data)
