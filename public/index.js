@@ -283,7 +283,7 @@ async function ajaxFunc(path, method, d) {
             } else console.log('status ' + xhr.status)
             //State whether login was successful or not
             var response = xhr.responseText;
-            console.log(response);
+            console.log('response is: ' + response);
             useResponse(JSON.parse(response));
 
         }
