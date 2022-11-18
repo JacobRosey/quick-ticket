@@ -450,7 +450,9 @@ app.route('/delete-team/:user')
                             } else res.send(false);
                         }, 50)
                     }).then((response) => {
-                        console.log("this should only appear for admins")
+                        setTimeout(() => {
+                            console.log("this should only appear for admins")
+                        },100)
                     })
                 })
 
