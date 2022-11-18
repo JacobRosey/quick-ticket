@@ -129,7 +129,6 @@ function getLogin() {
 function useResponse(res) {
     //If this is the team page load response
     const container = document.getElementById('team-card-container');
-
     if (res == "Not on a team") {
         container.innerHTML += `
         <div class="jumbotron">
@@ -189,8 +188,7 @@ function deleteTeam(num) {
         const user = sessionStorage.getItem('user');
         let data = {
             "user": user,
-            "team": string.replace(/ /g, '-'),
-            "index": num
+            "team": string.replace(/ /g, '-')
         }
         console.log(data)
         ajaxFunc('/delete-team/:user', "PUT", data);
@@ -287,6 +285,9 @@ async function ajaxFunc(path, method, d) {
             //State whether login was successful or not
             var response = xhr.responseText;
             console.log('response is: ' + response);
+            if(response == "This user is not an admin"){
+                useResponse(response)
+            }
             useResponse(JSON.parse(response));
 
         }
