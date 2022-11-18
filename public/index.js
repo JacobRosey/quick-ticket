@@ -169,7 +169,7 @@ function useResponse(res) {
         }
     }
 
-    if (res == "This user is not an admin" || false) {
+    if (res == "This user is not an admin" || res == false) {
         alert("You do not have permission to delete this team")
     }
     if (res == "Team deleted") {
