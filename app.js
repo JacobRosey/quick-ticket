@@ -420,9 +420,10 @@ app.route('/delete-team/:user')
             //db.query("SELECT * FROM ")
 
             res.send('this is the .then statement');
-            
+
         }).catch(err => {
             console.log(err)
+            res.send(err)
         })
         //res.send('user is ' + user);
     })
