@@ -174,7 +174,7 @@ function deleteTeam(num) {
     const teamName = document.getElementsByClassName('team-name-span');
     //Replace whitespace, replace hyphen with space
     let string = teamName[num].innerHTML.trim().replace(/-/g, ' ');
-    
+
     if (confirm('Are you sure you want to delete "' + string + '"? This cannot be reversed.')) {
         //Only admins can delete the team
         const user = sessionStorage.getItem('user');
@@ -185,16 +185,16 @@ function deleteTeam(num) {
         console.log(data)
         let response = ajaxFunc('/delete-team/:user', "PUT", data);
         setTimeout(() => {
-            console.log('response is: '+ response)
-        if(response == false){
-            alert('You do not have permission to delete this team')
-        }
-        else{
-            teamInfoCards[num].remove();
-        }
+            console.log('response is: ' + response)
+            if (response == false) {
+                alert('You do not have permission to delete this team')
+            }
+            else {
+                teamInfoCards[num].remove();
+            }
         }, 200)
-        
-        
+
+
     }
 }
 
@@ -274,7 +274,7 @@ function ajaxFunc(path, method, d) {
             }
         }
     }
-    if(method == "PUT"){
+    if (method == "PUT") {
         console.log(path)
         console.log('This is a put request');
         console.log(JSON.stringify(d));
@@ -286,10 +286,10 @@ function ajaxFunc(path, method, d) {
             //State whether login was successful or not
             var response = xhr.responseText;
             console.log(response)
-            if(response == false){
+            if (response == false) {
                 return false;
             } else return true;
-            
+
         }
     }
     xhr.onerror = () => {
