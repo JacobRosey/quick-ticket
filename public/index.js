@@ -185,7 +185,7 @@ function deleteTeam(num) {
             "team": teamName[num].trim()
         }
         console.log(data)
-        ajaxFunc('/delete-team/:user', "GET", data)
+        ajaxFunc('/delete-team/:user', "PUT", data)
     }
 }
 
@@ -264,6 +264,20 @@ function ajaxFunc(path, method, d) {
                         window.location.replace('/home')
                     }, 500)
             }
+        }
+    }
+    if(method == "PUT"){
+        console.log(path)
+        console.log('This is a put request');
+        console.log(JSON.stringify(d));
+        xhr.send(JSON.stringify(d));
+        xhr.onload = () => {
+            if (xhr.status == 200) {
+                console.log('success');
+            } else console.log('status ' + xhr.status)
+            //State whether login was successful or not
+            var response = xhr.responseText;
+            console.log(response)
         }
     }
     xhr.onerror = () => {
