@@ -385,4 +385,5 @@ app.route('/delete-team/:user')
     .put(function (req, res, err) {
         const {user, team} = req.body;
         console.log(user, team)
+        res.send('user is ' + user)
     })
