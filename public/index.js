@@ -183,17 +183,22 @@ function deleteTeam(num) {
             "team": string.replace(/ /g, '-')
         }
         console.log(data)
-        let response = ajaxFunc('/delete-team/:user', "PUT", data);
-        setTimeout(() => {
-            console.log('response is: ' + response)
-            if (response == false) {
-                alert('You do not have permission to delete this team')
-            }
-            else {
-                teamInfoCards[num].remove();
-            }
-        }, 500)
+        async function getResponse() {
+            let response = ajaxFunc('/delete-team/:user', "PUT", data);
+            return response;
+        }
 
+        getResponse().then((response) => {
+            setTimeout(() => {
+                console.log('response is: ' + response)
+                if (response == false) {
+                    alert('You do not have permission to delete this team')
+                }
+                else {
+                    teamInfoCards[num].remove();
+                }
+            }, 300)
+        })
 
     }
 }
