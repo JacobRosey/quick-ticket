@@ -407,6 +407,9 @@ app.route('/delete-team/:user')
                     }
                     //resolve(userID);
                 }
+            }).catch(err => {
+                console.log(err)
+                res.send(err)
             })
         })
 
