@@ -419,7 +419,6 @@ app.route('/delete-team/:user')
             //Still need to make sure the userID is an admin of 
             //The given team. Last check only verified that user
             //is an admin of any team in general
-            let arr = []
             db.query("SELECT * FROM Admins WHERE user_id = " + userID, (err, result) => {
                 if (err) {
                     console.log(err)
