@@ -143,30 +143,33 @@ function useResponse(res) {
       </div>
         `
     }
+    //If response is an array
+    if(Array.isArray(res)){
+        if (res[0].hasOwnProperty('team_id') && res[0].hasOwnProperty('team_name')) {
 
-    if (res[0].hasOwnProperty('team_id') && res[0].hasOwnProperty('team_name')) {
-
-        for (let i = 0; i < res.length; i++) {
-            container.innerHTML += `
-            <div class="col-sm">
-            <div class="team-info">
-            <div class="card" id="team-card"style="width: 18rem;">
-            <div class="card-header" style="font-weight: bolder;">
-            <i class="fs-4 bi-people" style="margin-right: .25em;"></i><span class="team-name-span">
-                `+ res[i].team_name + `
-            </span></div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item" id="team-code">Invitation code: `+ res[i].team_code + `</li>
-                <li class="list-group-item" id="member-count"># of team members</li>
-                <li class="list-group-item">Managed by: <span id="admin-name">jacobrosey</span></li>
-            </ul>
-            <a class="btn btn-danger" onClick="deleteTeam(`+ i + `)" role="button" style="font-weight: bold; line-height: 32.5px !important;">Delete Team</a>
-            </div>
-            </div>
-            </div>
-            `
+            for (let i = 0; i < res.length; i++) {
+                container.innerHTML += `
+                <div class="col-sm">
+                <div class="team-info">
+                <div class="card" id="team-card"style="width: 18rem;">
+                <div class="card-header" style="font-weight: bolder;">
+                <i class="fs-4 bi-people" style="margin-right: .25em;"></i><span class="team-name-span">
+                    `+ res[i].team_name + `
+                </span></div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" id="team-code">Invitation code: `+ res[i].team_code + `</li>
+                    <li class="list-group-item" id="member-count"># of team members</li>
+                    <li class="list-group-item">Managed by: <span id="admin-name">jacobrosey</span></li>
+                </ul>
+                <a class="btn btn-danger" onClick="deleteTeam(`+ i + `)" role="button" style="font-weight: bold; line-height: 32.5px !important;">Delete Team</a>
+                </div>
+                </div>
+                </div>
+                `
+            }
         }
     }
+    
     if(res == "This user is not an admin" || false){
         alert("You do not have permission to delete this team")
     }
