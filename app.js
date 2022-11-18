@@ -397,7 +397,6 @@ app.route('/delete-team/:user')
                 if (result.length > 0) {
                     console.log('This user exists in DB');
                     let userID = result[0].user_id;
-                    console.log(result[0])
                     //For some reason when I get the value of is_admin
                     //it shows <buffer 01> instead of just 1, so I have
                     //to check the value like this
@@ -423,18 +422,17 @@ app.route('/delete-team/:user')
                 if (err) {
                     console.log(err)
                 }
-                if (result > 0) {
-                    return new Promise((resolve, reject) => {
-                        let arr = [];
-                        for(let i=0; i<result.length; i++){
-                            arr.push(result[i].team_id)
-                        }
-                        resolve(arr)
-                    }).then((arr) => {
-                        console.log("the array is: " + arr)
-                        res.send(arr)
-                    })
-                }
+                return new Promise((resolve, reject) => {
+                    let arr = [];
+                    for (let i = 0; i < result.length; i++) {
+                        arr.push(result[i].team_id)
+                    }
+                    resolve(arr)
+                }).then((arr) => {
+                    console.log("the array is: " + arr)
+                    res.send(arr)
+                })
+
             })
         }).catch(err => {
             console.log(err)
