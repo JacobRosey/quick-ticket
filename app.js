@@ -458,7 +458,7 @@ app.route('/delete-team/:user')
                         }, 50)
                     }).then((response) => {
                         setTimeout(() => {
-                            if (response == false) {
+                            if (response === false) {
                                 return res.send(response)
                             } else {
                                 /*db.query("DELETE FROM Teams WHERE team_name = " + team + "", (err, result) =>{
