@@ -173,6 +173,9 @@ function useResponse(res) {
     if(res == "cuh"){
         console.log('team deleted')
     }
+    if(Array.isArray(res)){
+        alert('received an array as response');
+    }
 }
 
 function deleteTeam(num) {
