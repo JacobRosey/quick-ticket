@@ -188,7 +188,7 @@ function deleteTeam(num) {
             return response;
         }
 
-        getResponse().then(() => {
+        getResponse().then((response) => {
             setTimeout(() => {
                 console.log('response is: ' + response)
                 if (response == "This user is not an admin") {
@@ -197,7 +197,7 @@ function deleteTeam(num) {
                 else {
                     teamInfoCards[num].remove();
                 }
-            }, 300)
+            }, 1000)
         })
 
     }
