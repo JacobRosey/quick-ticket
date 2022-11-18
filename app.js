@@ -421,7 +421,7 @@ app.route('/delete-team/:user')
 
             //db.query("SELECT * FROM ")
 
-            res.status(200).send(userID.toString());
+            res.send('this is the .then statement');
         })
         //res.send('user is ' + user);
     })
