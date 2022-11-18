@@ -284,7 +284,7 @@ function ajaxFunc(path, method, d) {
             //State whether login was successful or not
             var response = xhr.responseText;
             console.log(response)
-            return response;
+            return response.toString();
         }
     }
     xhr.onerror = () => {
