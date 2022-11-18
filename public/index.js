@@ -191,7 +191,7 @@ function deleteTeam(num) {
         getResponse().then((response) => {
             setTimeout(() => {
                 console.log('response is: ' + response)
-                if (response == false) {
+                if (response == "This user is not an admin") {
                     alert('You do not have permission to delete this team')
                 }
                 else {
@@ -291,8 +291,7 @@ async function ajaxFunc(path, method, d) {
             //State whether login was successful or not
             var response = xhr.responseText;
             console.log(response);
-            alert(response);
-            return false;
+            return response;
 
         }
     }
