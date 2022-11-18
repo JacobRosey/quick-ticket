@@ -431,7 +431,7 @@ app.route('/delete-team/:user')
                         }
                         resolve(arr)
                     }).then((arr) => {
-                        console.log(arr)
+                        console.log("the array is: " + arr)
                         res.send(arr)
                     })
                 }
