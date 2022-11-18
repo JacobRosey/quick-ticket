@@ -184,11 +184,11 @@ function deleteTeam(num) {
         }
         console.log(data)
         async function getResponse() {
-            let response = await ajaxFunc('/delete-team/:user', "PUT", data);
+            const response = await ajaxFunc('/delete-team/:user', "PUT", data);
             return response;
         }
 
-        getResponse().then((response) => {
+        getResponse().then(() => {
             setTimeout(() => {
                 console.log('response is: ' + response)
                 if (response == "This user is not an admin") {
