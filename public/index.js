@@ -143,7 +143,7 @@ function useResponse(res) {
         `
     }
     //If response is an array
-    if(Array.isArray(res)){
+    if (Array.isArray(res)) {
         if (res[0].hasOwnProperty('team_id') && res[0].hasOwnProperty('team_name')) {
 
             for (let i = 0; i < res.length; i++) {
@@ -168,13 +168,13 @@ function useResponse(res) {
             }
         }
     }
-    
-    if(res == "This user is not an admin" || false){
+
+    if (res == "This user is not an admin" || false) {
         alert("You do not have permission to delete this team")
     }
-    if(res == true){
+    if (res == true) {
         console.log('team deleted')
-    } 
+    }
 }
 
 function deleteTeam(num) {
@@ -192,7 +192,7 @@ function deleteTeam(num) {
         }
         console.log(data)
         ajaxFunc('/delete-team/:user', "PUT", data);
-            
+
 
     }
 }
@@ -285,10 +285,12 @@ async function ajaxFunc(path, method, d) {
             //State whether login was successful or not
             var response = xhr.responseText;
             console.log('response is: ' + response);
-            if(response == "This user is not an admin"){
+            if (response == "This user is not an admin") {
                 useResponse(response)
+            } else {
+                useResponse(JSON.parse(response));
             }
-            useResponse(JSON.parse(response));
+
 
         }
     }
