@@ -184,13 +184,16 @@ function deleteTeam(num) {
         }
         console.log(data)
         let response = ajaxFunc('/delete-team/:user', "PUT", data);
-        console.log('response is: '+ response)
+        setTimeout(() => {
+            console.log('response is: '+ response)
         if(response == false){
             alert('You do not have permission to delete this team')
         }
         else{
             teamInfoCards[num].remove();
         }
+        }, 200)
+        
         
     }
 }
