@@ -416,9 +416,19 @@ app.route('/delete-team/:user')
         })
 
         dbPromise.then((userID) => {
-
-            //db.query("SELECT * FROM ")
-
+            //Still need to make sure the userID is an admin of 
+            //The given team. Last check only verified that user
+            //is an admin of any team in general
+            let arr = []
+            db.query("SELECT * FROM Admins WHERE user_id = " + userID, (err, result) => {
+                if(err){
+                    console.log(err)
+                }
+                for(let i=0; i<result.length; i++){
+                    arr.push(result[i].team_id);
+                }
+            })
+            console.log(arr)
             res.send('cuh');
 
         }).catch(err => {
