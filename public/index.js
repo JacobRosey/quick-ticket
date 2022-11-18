@@ -292,7 +292,7 @@ function ajaxFunc(path, method, d) {
             var response = xhr.responseText;
             console.log(response);
             alert(response);
-            return response;
+            return false;
 
         }
     }
