@@ -451,7 +451,7 @@ app.route('/delete-team/:user')
                                 const id = response.indexOf(team) + 1;
                                 console.log("returning this index: " + response[id])
                                 return response[id];
-                            } else res.send(false);
+                            } else reject(false);
                         }, 50)
                     }).then((response) => {
                         setTimeout(() => {
