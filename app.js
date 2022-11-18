@@ -5,6 +5,7 @@ const path = require('path');
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
 const { resolve } = require('path/posix');
+const { reset } = require('nodemon');
 
 const app = express();
 
@@ -461,6 +462,7 @@ app.route('/delete-team/:user')
                                 res.send("Team deleted")
                             })*/
                             console.log('The team id to be deleted: ' + JSON.parse(id))
+                            res.send("Team deleted")
                         },100)
                     })
                 })
