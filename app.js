@@ -423,7 +423,7 @@ app.route('/delete-team/:user')
 
         }).catch(err => {
             console.log(err)
-            res.send('BRUH')
+            res.send(false)
         })
         //res.send('user is ' + user);
     })

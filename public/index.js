@@ -185,7 +185,7 @@ function deleteTeam(num) {
         console.log(data)
         let response = ajaxFunc('/delete-team/:user', "PUT", data);
         console.log('response is: '+ response)
-        if(response == "BRUH"){
+        if(response == false){
             alert('You do not have permission to delete this team')
         }
         else{
@@ -284,7 +284,10 @@ function ajaxFunc(path, method, d) {
             //State whether login was successful or not
             var response = xhr.responseText;
             console.log(response)
-            return response.toString();
+            /*if(response == false){
+                return false;
+            } else return true;*/
+            return response;
         }
     }
     xhr.onerror = () => {
