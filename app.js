@@ -446,19 +446,21 @@ app.route('/delete-team/:user')
                             console.log(response)
                             if(response.includes(team)){
                                 //If user is admin of the given team
-                                return true;
+                                let id = response.indexOf(team) + 1;
+                                return id;
                             } else res.send(false);
                         }, 50)
-                    })/*.then(() => {
+                    }).then((id) => {
                         setTimeout(() => {
-                            db.query("DELETE FROM Teams WHERE team_name = " + team + "", (err, result) =>{
+                            /*db.query("DELETE FROM Teams WHERE team_name = " + team + "", (err, result) =>{
                                 if(err){
                                     console.log(err)
                                 }
                                 res.send("Team deleted")
-                            })
+                            })*/
+                            console.log('The team id to be deleted: ' + id)
                         },100)
-                    })*/
+                    })
                 })
 
             })
