@@ -415,7 +415,7 @@ app.route('/delete-team/:user')
 
         dbPromise.then((userID) => {
 
-            db.query("SELECT * FROM ")
+            //db.query("SELECT * FROM ")
 
             res.status(200).send(userID.toString());
         })
