@@ -440,7 +440,7 @@ app.route('/delete-team/:user')
                                     teamNames.push(rows[0].team_name);
                                 }).catch(console.log)
                         }
-                        return arr;
+                        return teamNames;
                     }
                     getData().then((response) => {
                         setTimeout(() => {
