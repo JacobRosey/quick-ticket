@@ -382,7 +382,7 @@ app.route('/closedtickets/:user')
 
 app.route('/delete-team/:user')
     .put(function (req, res, err) {
-        const { user, team} = req.body;
+        const { user, team } = req.body;
         console.log(user, team);
         const dbPromise = new Promise((resolve, reject) => {
 
@@ -445,25 +445,29 @@ app.route('/delete-team/:user')
                     getData().then((response) => {
                         setTimeout(() => {
                             console.log(response)
-                            if(response.includes(team)){
+                            if (response.includes(team)) {
                                 //If user is admin of the given team
                                 console.log("response includes team")
                                 const id = response.indexOf(team) + 1;
                                 console.log("returning this index: " + response[id])
                                 return response[id];
-                            } else reject(false);
+                            } else return false;
                         }, 50)
                     }).then((response) => {
                         setTimeout(() => {
-                            /*db.query("DELETE FROM Teams WHERE team_name = " + team + "", (err, result) =>{
+                            if (response == false) {
+                                return res.send(response)
+                            } else {
+                                /*db.query("DELETE FROM Teams WHERE team_name = " + team + "", (err, result) =>{
                                 if(err){
                                     console.log(err)
                                 }
                                 res.send("Team deleted")
                             })*/
-                            console.log('The team id to be deleted: ' + response)
-                            res.send("Team deleted")
-                        },100)
+                                console.log('The team id to be deleted: ' + response)
+                                res.send("Team deleted")
+                            }
+                        }, 100)
                     })
                 })
 
