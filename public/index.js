@@ -183,7 +183,8 @@ function deleteTeam(num) {
             "team": string.replace(/ /g, '-')
         }
         console.log(data)
-        ajaxFunc('/delete-team/:user', "PUT", data);
+        let response = ajaxFunc('/delete-team/:user', "PUT", data);
+        if(response == "This user is not an admin")
         teamInfoCards[num].remove();
     }
 }
@@ -277,6 +278,7 @@ function ajaxFunc(path, method, d) {
             //State whether login was successful or not
             var response = xhr.responseText;
             console.log(response)
+            return response;
         }
     }
     xhr.onerror = () => {
