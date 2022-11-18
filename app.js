@@ -455,22 +455,22 @@ app.route('/delete-team/:user')
                                 console.log("User is not an admin for this team")
                                 return false;
                             }
-                        }, 50).then((response) => {
-                            setTimeout(() => {
-                                if (response === false) {
-                                    return res.send(response)
-                                } else {
-                                    /*db.query("DELETE FROM Teams WHERE team_name = " + team + "", (err, result) =>{
-                                    if(err){
-                                        console.log(err)
-                                    }
-                                    res.send("Team deleted")
-                                })*/
-                                    console.log('The team id to be deleted: ' + response)
-                                    res.send("Team deleted")
+                        }, 50)
+                    }).then((response) => {
+                        setTimeout(() => {
+                            if (response === false) {
+                                return res.send(response)
+                            } else {
+                                /*db.query("DELETE FROM Teams WHERE team_name = " + team + "", (err, result) =>{
+                                if(err){
+                                    console.log(err)
                                 }
-                            }, 100)
-                        })
+                                res.send("Team deleted")
+                            })*/
+                                console.log('The team id to be deleted: ' + response)
+                                res.send("Team deleted")
+                            }
+                        }, 100)
                     })
                 })
 
