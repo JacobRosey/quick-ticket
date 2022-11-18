@@ -184,7 +184,7 @@ function deleteTeam(num) {
         }
         console.log(data)
         async function getResponse() {
-            let response = ajaxFunc('/delete-team/:user', "PUT", data);
+            let response = await ajaxFunc('/delete-team/:user', "PUT", data);
             return response;
         }
 
@@ -203,7 +203,7 @@ function deleteTeam(num) {
     }
 }
 
-function ajaxFunc(path, method, d) {
+async function ajaxFunc(path, method, d) {
 
     let xhr = new XMLHttpRequest();
     xhr.open(method, path, true);
