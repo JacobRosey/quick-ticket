@@ -436,7 +436,7 @@ app.route('/delete-team/:user')
                         for (let i = 0; i < arr.length; i++) {
                             db.promise().query("SELECT * FROM Teams WHERE team_id = " + arr[i] + "")
                                 .then(([rows, fields]) => {
-                                    teamNames.push(rows[0].team_name);
+                                    teamNames.push(rows[0].team_name, rows[0].team_id);
                                 }).catch(console.log)
                         }
                         return teamNames;
@@ -449,7 +449,7 @@ app.route('/delete-team/:user')
                                 return true;
                             } else res.send(false);
                         }, 50)
-                    }).then(() => {
+                    })/*.then(() => {
                         setTimeout(() => {
                             db.query("DELETE FROM Teams WHERE team_name = " + team + "", (err, result) =>{
                                 if(err){
@@ -458,7 +458,7 @@ app.route('/delete-team/:user')
                                 res.send("Team deleted")
                             })
                         },100)
-                    })
+                    })*/
                 })
 
             })
