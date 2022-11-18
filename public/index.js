@@ -176,8 +176,6 @@ function deleteTeam(num) {
     let string = teamName[num].innerHTML.trim().replace(/-/g, ' ');
     console.log(string);
     if (confirm('Are you sure you want to delete "' + string + '"? This cannot be reversed.')) {
-        //Need to fix the alert box, there  are line breaks in the html apparently
-        teamInfoCards[num].remove();
         //Only admins can delete the team
         const user = sessionStorage.getItem('user');
         let data = {
@@ -185,7 +183,8 @@ function deleteTeam(num) {
             "team": string.replace(/ /g, '-')
         }
         console.log(data)
-        ajaxFunc('/delete-team/:user', "PUT", data)
+        ajaxFunc('/delete-team/:user', "PUT", data);
+        teamInfoCards[num].remove();
     }
 }
 
