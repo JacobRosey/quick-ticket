@@ -381,8 +381,8 @@ app.route('/closedtickets/:user')
 
 app.route('/delete-team/:user')
     .put(function (req, res, err) {
-        const { user, team, index } = req.body;
-        console.log(user, team, index);
+        const { user, team} = req.body;
+        console.log(user, team);
         const dbPromise = new Promise((resolve, reject) => {
 
             db.query("SELECT * FROM users WHERE user_name = '" + user + "'", (err, result) => {
@@ -445,10 +445,12 @@ app.route('/delete-team/:user')
                         setTimeout(() => {
                             console.log(response)
                             if(response.includes(team)){
-                                res.send(true)
+                                //If user is admin of the given team
+                                return true;
                             } else res.send(false);
-                            //res.send(response)
                         }, 50)
+                    }).then((response) => {
+                        console.log("this should only appear for admins")
                     })
                 })
 
