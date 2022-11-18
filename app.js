@@ -397,6 +397,7 @@ app.route('/delete-team/:user')
                 if (result.length > 0) {
                     console.log('This user exists in DB');
                     let userID = result[0].user_id;
+                    console.log(result[0])
                     if(result[0].is_admin == 1){
                         resolve(userID)
                     }
