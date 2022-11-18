@@ -447,7 +447,6 @@ app.route('/delete-team/:user')
                             res.send(response)
                         }, 50)
                     })
-                    res.send(arr)
                 })
 
             })
