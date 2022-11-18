@@ -437,7 +437,7 @@ app.route('/delete-team/:user')
                             db.promise().query("SELECT * FROM Teams WHERE team_id = " + arr[i] + "")
                                 .then(([rows, fields]) => {
                                     console.log(rows)
-                                    teamNames.push(rows[i].team_name);
+                                    teamNames.push(rows[0].team_name);
                                 }).catch(console.log)
                         }
                         return arr;
