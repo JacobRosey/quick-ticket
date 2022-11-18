@@ -179,6 +179,13 @@ function deleteTeam(num) {
         //Need to fix the alert box, there  are line breaks in the html apparently
         teamInfoCards[num].remove();
         //Only admins can delete the team
+        const user = sessionStorage.getItem('user');
+        let data = {
+            "user": user,
+            "team": teamName[num].trim()
+        }
+        console.log(data)
+        ajaxFunc('/delete-team/:user', "GET", data)
     }
 }
 

@@ -380,3 +380,9 @@ app.route('/closedtickets/:user')
             res.status(200).send(response.toString())
         })
     })
+
+app.route('/delete-team/:user')
+    .put(function (req, res, err) {
+        const {user, team} = req.body;
+        console.log(user, team)
+    })
