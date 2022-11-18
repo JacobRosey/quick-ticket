@@ -174,7 +174,7 @@ function deleteTeam(num) {
     const teamName = document.getElementsByClassName('team-name-span');
     //Replace whitespace, replace hyphen with space
     let string = teamName[num].innerHTML.trim().replace(/-/g, ' ');
-    console.log(string);
+    
     if (confirm('Are you sure you want to delete "' + string + '"? This cannot be reversed.')) {
         //Only admins can delete the team
         const user = sessionStorage.getItem('user');
@@ -283,10 +283,10 @@ function ajaxFunc(path, method, d) {
             //State whether login was successful or not
             var response = xhr.responseText;
             console.log(response)
-            /*if(response == false){
+            if(response == false){
                 return false;
-            } else return true;*/
-            return JSON.parse(response);
+            } else return true;
+            
         }
     }
     xhr.onerror = () => {
