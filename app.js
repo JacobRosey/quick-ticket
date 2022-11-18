@@ -381,8 +381,8 @@ app.route('/closedtickets/:user')
 
 app.route('/delete-team/:user')
     .put(function (req, res, err) {
-        const {user, team} = req.body;
-        console.log(user, team);
+        const {user, team, index} = req.body;
+        console.log(user, team, index);
         const dbPromise = new Promise((resolve, reject) => {
 
             db.query("SELECT * FROM users WHERE user_name = '" + user + "'", (err, result) => {

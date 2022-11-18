@@ -130,7 +130,7 @@ function useResponse(res) {
     //If this is the team page load response
     const container = document.getElementById('team-card-container');
 
-    if (res == 0) {
+    if (res == "Not on a team") {
         container.innerHTML += `
         <div class="jumbotron">
         <span><i class="fs-4 bi-people"></i><p class="text-center" style="font-weight: bold;">You are not a member of a team!</p></span>
@@ -167,10 +167,13 @@ function useResponse(res) {
             `
         }
     }
+    if(res == "This user is not an admin"){
+        alert("You do not have permission to delete this team")
+    }
 }
 
 function deleteTeam(num) {
-    const teamInfoCards = document.getElementsByClassName('team-info');
+    //const teamInfoCards = document.getElementsByClassName('team-info');
     const teamName = document.getElementsByClassName('team-name-span');
     //Replace whitespace, replace hyphen with space
     let string = teamName[num].innerHTML.trim().replace(/-/g, ' ');
@@ -180,25 +183,12 @@ function deleteTeam(num) {
         const user = sessionStorage.getItem('user');
         let data = {
             "user": user,
-            "team": string.replace(/ /g, '-')
+            "team": string.replace(/ /g, '-'),
+            "index": num
         }
         console.log(data)
-        async function getResponse() {
-            const response = await ajaxFunc('/delete-team/:user', "PUT", data);
-            return response;
-        }
-
-        getResponse().then((response) => {
-            setTimeout(() => {
-                console.log('response is: ' + response)
-                if (response == "This user is not an admin") {
-                    alert('You do not have permission to delete this team')
-                }
-                else {
-                    teamInfoCards[num].remove();
-                }
-            }, 1000)
-        })
+        ajaxFunc('/delete-team/:user', "PUT", data);
+            
 
     }
 }
@@ -238,7 +228,7 @@ async function ajaxFunc(path, method, d) {
                     alert(response);
                     break;
                 case "User is not on a team":
-                    useResponse(0);
+                    useResponse("Not on a team");
                     break;
                 default:
                     console.log("response is " + response);
@@ -291,7 +281,7 @@ async function ajaxFunc(path, method, d) {
             //State whether login was successful or not
             var response = xhr.responseText;
             console.log(response);
-            return response;
+            useResponse(response);
 
         }
     }
