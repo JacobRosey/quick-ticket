@@ -460,7 +460,7 @@ app.route('/delete-team/:user')
                                 }
                                 res.send("Team deleted")
                             })*/
-                            console.log('The team id to be deleted: ' + id)
+                            console.log('The team id to be deleted: ' + JSON.parse(id))
                         },100)
                     })
                 })
