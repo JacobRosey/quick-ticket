@@ -182,7 +182,7 @@ function deleteTeam(num) {
         const user = sessionStorage.getItem('user');
         let data = {
             "user": user,
-            "team": string.replace(' ', '-')
+            "team": string.replace( / /g, '-')
         }
         console.log(data)
         ajaxFunc('/delete-team/:user', "PUT", data)
