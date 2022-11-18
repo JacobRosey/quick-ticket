@@ -404,8 +404,8 @@ app.route('/delete-team/:user')
             })
         })
 
-        dbPromise.then((response) => {
-            res.send(response);
+        dbPromise.then((userID) => {
+            res.send(userID);
         })
         //res.send('user is ' + user);
     })
