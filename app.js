@@ -407,7 +407,7 @@ app.route('/delete-team/:user')
                     }
                     else{
                         console.log('this user is not an admin')
-                        return dbPromise.reject('This user is not an admin')
+                        return reject('This user is not an admin')
                     }
                     //resolve(userID);
                 }
