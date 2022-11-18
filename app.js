@@ -339,7 +339,7 @@ app.route('/team/:user')
                                 //change 2d array to normal array
                                 response = [].concat(...response);
                                 res.send(response)
-                              }, 200)
+                              }, 50)
                         })
                     })
                 }
@@ -401,7 +401,7 @@ app.route('/delete-team/:user')
                     //For some reason when I get the value of is_admin
                     //it shows <buffer 01> instead of just 1, so I have
                     //to check the value like this
-                    if(result[0].is_admin.contains(1)){
+                    if(result[0].is_admin.includes(1)){
                         console.log('this user is an admin')
                         resolve(userID)
                     }
