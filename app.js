@@ -413,8 +413,6 @@ app.route('/delete-team/:user')
                     //resolve(userID);
                 }
             })
-        }).catch(err => {
-            console.log(err)
         })
 
         dbPromise.then((userID) => {
@@ -422,6 +420,9 @@ app.route('/delete-team/:user')
             //db.query("SELECT * FROM ")
 
             res.send('this is the .then statement');
+            
+        }).catch(err => {
+            console.log(err)
         })
         //res.send('user is ' + user);
     })
