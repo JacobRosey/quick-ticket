@@ -429,7 +429,7 @@ app.route('/delete-team/:user')
                     }
                     resolve(arr)
                 }).then((arr) => {
-                    console.log("the array is: " + arr)
+                    console.log("this user is an admin for the following team_id's: " + arr)
                     res.send(arr)
                 })
 
