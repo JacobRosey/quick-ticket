@@ -234,8 +234,7 @@ function ajaxFunc(path, method, d) {
                     break;
                 default:
                     console.log("response is " + response);
-                    response = JSON.parse(response);
-                    useResponse(response)
+                    useResponse(JSON.parse(response))
 
             }
         }
@@ -287,7 +286,7 @@ function ajaxFunc(path, method, d) {
             /*if(response == false){
                 return false;
             } else return true;*/
-            return response;
+            return JSON.parse(response);
         }
     }
     xhr.onerror = () => {
