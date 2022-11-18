@@ -192,7 +192,7 @@ function deleteTeam(num) {
             else {
                 teamInfoCards[num].remove();
             }
-        }, 200)
+        }, 500)
 
 
     }
