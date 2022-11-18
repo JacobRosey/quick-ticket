@@ -399,12 +399,21 @@ app.route('/delete-team/:user')
                 if (result.length > 0) {
                     console.log('This user exists in DB');
                     let userID = result[0].user_id;
-                    resolve(userID);
+                    if(result[0].is_admin == 1){
+                        resolve(userID)
+                    }
+                    else{
+                        reject('This user is not an admin')
+                    }
+                    //resolve(userID);
                 }
             })
         })
 
         dbPromise.then((userID) => {
+
+            db.query("SELECT * FROM ")
+
             res.status(200).send(userID.toString());
         })
         //res.send('user is ' + user);
