@@ -401,7 +401,7 @@ app.route('/delete-team/:user')
                     //For some reason when I get the value of is_admin
                     //it shows <buffer 01> instead of just 1, so I have
                     //to check the value like this
-                    if(result[0].is_admin.lastIndexOf(1) !== 1){
+                    if(result[0].is_admin.contains(1)){
                         console.log('this user is an admin')
                         resolve(userID)
                     }
