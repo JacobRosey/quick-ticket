@@ -415,7 +415,6 @@ app.route('/delete-team/:user')
             })
         }).catch(err => {
             console.log(err)
-            res.send(err)
         })
 
         dbPromise.then((userID) => {
