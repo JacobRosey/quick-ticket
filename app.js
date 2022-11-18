@@ -447,7 +447,7 @@ app.route('/delete-team/:user')
                             if(response.includes(team)){
                                 //If user is admin of the given team
                                 console.log("response includes team")
-                                let id = response.indexOf(team) + 1;
+                                const id = response.indexOf(team) + 1;
                                 console.log("returning this index: " + id)
                                 return response[id];
                             } else res.send(false);
