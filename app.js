@@ -336,10 +336,8 @@ app.route('/team/:user')
                         }
                         getData().then((response) => {
                             setTimeout(() => {
-                                console.log("Delayed for 200ms");
-                                console.log('response is' + response)
+                                //change 2d array to normal array
                                 response = [].concat(...response);
-                                console.log(response[0].team_name)
                                 res.send(response)
                               }, 200)
                         })
