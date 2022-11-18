@@ -444,7 +444,10 @@ app.route('/delete-team/:user')
                     }
                     getData().then((response) => {
                         setTimeout(() => {
-                            res.send(response)
+                            if(response.includes(team)){
+                                res.send(true)
+                            } else res.send(false);
+                            //res.send(response)
                         }, 50)
                     })
                 })

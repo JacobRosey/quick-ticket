@@ -167,15 +167,12 @@ function useResponse(res) {
             `
         }
     }
-    if(res == "This user is not an admin"){
+    if(res == "This user is not an admin" || false){
         alert("You do not have permission to delete this team")
     }
-    /*if(res == "cuh"){
+    if(res == true){
         console.log('team deleted')
-    }*/
-    if(Array.isArray(res)){
-        alert('received an array as response');
-    }
+    } 
 }
 
 function deleteTeam(num) {
