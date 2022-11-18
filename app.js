@@ -436,7 +436,6 @@ app.route('/delete-team/:user')
                         for (let i = 0; i < arr.length; i++) {
                             db.promise().query("SELECT * FROM Teams WHERE team_id = " + arr[i] + "")
                                 .then(([rows, fields]) => {
-                                    console.log(rows)
                                     teamNames.push(rows[0].team_name);
                                 }).catch(console.log)
                         }
@@ -444,6 +443,7 @@ app.route('/delete-team/:user')
                     }
                     getData().then((response) => {
                         setTimeout(() => {
+                            console.log(response)
                             if(response.includes(team)){
                                 res.send(true)
                             } else res.send(false);
