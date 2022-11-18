@@ -184,6 +184,7 @@ function deleteTeam(num) {
         }
         console.log(data)
         let response = ajaxFunc('/delete-team/:user', "PUT", data);
+        console.log('response is: '+ response)
         if(response == "BRUH"){
             alert('You do not have permission to delete this team')
         }
