@@ -339,7 +339,7 @@ app.route('/team/:user')
                                 //change 2d array to normal array
                                 response = [].concat(...response);
                                 res.send(response)
-                              }, 50)
+                            }, 50)
                         })
                     })
                 }
@@ -381,7 +381,7 @@ app.route('/closedtickets/:user')
 
 app.route('/delete-team/:user')
     .put(function (req, res, err) {
-        const {user, team, index} = req.body;
+        const { user, team, index } = req.body;
         console.log(user, team, index);
         const dbPromise = new Promise((resolve, reject) => {
 
@@ -401,11 +401,11 @@ app.route('/delete-team/:user')
                     //For some reason when I get the value of is_admin
                     //it shows <buffer 01> instead of just 1, so I have
                     //to check the value like this
-                    if(result[0].is_admin.includes(1)){
+                    if (result[0].is_admin.includes(1)) {
                         console.log('this user is an admin')
                         resolve(userID)
                     }
-                    else{
+                    else {
                         console.log('this user is not an admin')
                         reject('This user is not an admin');
                         return;
@@ -421,16 +421,22 @@ app.route('/delete-team/:user')
             //is an admin of any team in general
             let arr = []
             db.query("SELECT * FROM Admins WHERE user_id = " + userID, (err, result) => {
-                if(err){
+                if (err) {
                     console.log(err)
                 }
-                for(let i=0; i<result.length; i++){
-                    arr.push(result[i].team_id);
+                if (result > 0) {
+                    return new Promise((resolve, reject) => {
+                        let arr = [];
+                        for(let i=0; i<result.length; i++){
+                            arr.push(result[i].team_id)
+                        }
+                        resolve(arr)
+                    }).then((arr) => {
+                        console.log(arr)
+                        res.send(arr)
+                    })
                 }
             })
-            console.log(arr)
-            res.send('cuh');
-
         }).catch(err => {
             console.log(err)
             res.send(err)
