@@ -337,7 +337,7 @@ app.route('/team/:user')
                                             arr = [].concat(...arr)
                                             //Add key-value pair for member-count
                                             arr[i].member_count = rows.length;
-                                            db.promise().query("SELECT * FROM Admins WHERE team_id = " + teamIDs[i] +" LIMIT 1")
+                                            db.promise(resolve).query("SELECT * FROM Admins WHERE team_id = " + teamIDs[i] +" LIMIT 1")
                                             .then(([rows, fields]) => {
                                                 resolve(rows.user_id);
                                             }).then((response) => {
