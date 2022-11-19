@@ -180,7 +180,7 @@ function deleteTeam(num) {
     //Replace whitespace, replace hyphen with space
     let string = teamName[num].innerHTML.trim().replace(/-/g, ' ');
 
-    if (confirm('Are you sure you want to delete "' + string + '"? This cannot be reversed.')) {
+    if (confirm('Are you sure you want to delete "' + string + '"? This will also delete all associated data such as tickets and team members. This cannot be reversed.')) {
         //Only admins can delete the team
         const user = sessionStorage.getItem('user');
         let data = {
