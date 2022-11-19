@@ -333,6 +333,7 @@ app.route('/team/:user')
                                         arr.push(rows);
                                         db.promise().query("SELECT * FROM Members WHERE team_id =" + teamIDs[i]+"")
                                         .then(([rows, fields]) => {
+                                            //Get number of members in each team
                                             arr.push(rows.length)
                                         })
                                     }).catch(console.log)
@@ -343,7 +344,6 @@ app.route('/team/:user')
                             setTimeout(() => {
                                 //change 2d array to normal array
                                 response = [].concat(...response);
-                                console.log(response)
                                 res.send(response)
                             }, 50)
                         })
