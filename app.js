@@ -343,6 +343,7 @@ app.route('/team/:user')
                             setTimeout(() => {
                                 //change 2d array to normal array
                                 response = [].concat(...response);
+                                console.log(response)
                                 res.send(response)
                             }, 50)
                         })
