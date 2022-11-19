@@ -331,23 +331,22 @@ app.route('/team/:user')
                                     .then(([rows, fields]) => {
                                         arr.push(rows);
                                         //Get number of members in each team
-                                        db.promise().query("SELECT * FROM Members WHERE team_id =" + teamIDs[i]+"")
-                                        .then(([rows, fields]) => {
-                                            //Change 2d array to 1d array before we...
-                                            arr = [].concat(...arr)
-                                            //Add key-value pair for member-count
-                                            arr[i].member_count = rows.length;
-                                            /*db.promise(resolve).query("SELECT * FROM Admins WHERE team_id = " + teamIDs[i] +" LIMIT 1")
+                                        db.promise().query("SELECT * FROM Members WHERE team_id =" + teamIDs[i] + "")
                                             .then(([rows, fields]) => {
-                                                resolve(rows.user_id);
-                                            }).then((response) => {
-                                                db.promise().query("SELECT user_name FROM Users WHERE user_id = " + response)
-                                                .then(([rows, fields]) => {
-                                                    arr = arr.concat(...arr);
-                                                    arr[i].admin_name = rows;
-                                                })
-                                            })*/
-                                        })
+                                                //Change 2d array to 1d array before we...
+                                                arr = [].concat(...arr)
+                                                //Add key-value pair for member-count
+                                                arr[i].member_count = rows.length;
+                                                db.promise().query("SELECT * FROM Admins WHERE team_id = " + teamIDs[i] + " LIMIT 1")
+                                                    .then(([rows, fields]) => {
+                                                        console.log(rows);
+                                                        db.promise().query("SELECT user_name FROM Users WHERE user_id = " + rows)
+                                                            .then(() => {
+                                                                arr = arr.concat(...arr);
+                                                                arr[i].admin_name = rows;
+                                                            })
+                                                    })
+                                            })
                                     }).catch(console.log)
                             }
                             return arr;
@@ -480,16 +479,16 @@ app.route('/delete-team/:user')
                                     return res.send("User is not an admin")
                                 } else {
                                     console.log('The team id to be deleted: ' + response)
-                                    db.query("DELETE FROM Teams WHERE team_id = " + response + "", (err, result) =>{
-                                    if(err){
-                                        console.log(err)
-                                    }
-                                    res.send("Team deleted")
-                                })
+                                    db.query("DELETE FROM Teams WHERE team_id = " + response + "", (err, result) => {
+                                        if (err) {
+                                            console.log(err)
+                                        }
+                                        res.send("Team deleted")
+                                    })
                                 }
                             }, 100)
                         })
-                     
+
                     })
                 })
 
