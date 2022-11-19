@@ -331,7 +331,7 @@ app.route('/team/:user')
                                     .then(([rows, fields]) => {
                                         console.log(rows)
                                         arr.push(rows);
-                                        db.promise().query("SELECT * FROM Members WHERE team_id " + teamIDs[i]+"")
+                                        db.promise().query("SELECT * FROM Members WHERE team_id =" + teamIDs[i]+"")
                                         .then(([rows, fields]) => {
                                             arr.push(rows.length)
                                         })
