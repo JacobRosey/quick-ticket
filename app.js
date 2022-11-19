@@ -337,6 +337,16 @@ app.route('/team/:user')
                                             arr = [].concat(...arr)
                                             //Add key-value pair for member-count
                                             arr[i].member_count = rows.length;
+                                            db.promise().query("SELECT * FROM Admins WHERE team_id = " + teamIDs[i] +" LIMIT 1")
+                                            .then(([rows, fields]) => {
+                                                return rows.user_id;
+                                            }).then((response) => {
+                                                db.promise().query("SELECT user_name FROM Users WHERE user_id = " + response)
+                                                .then(([rows, fields]) => {
+                                                    arr = arr.concat(...arr);
+                                                    arr[i].admin_name = rows;
+                                                })
+                                            })
                                         })
                                     }).catch(console.log)
                             }
