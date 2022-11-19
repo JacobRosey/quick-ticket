@@ -330,13 +330,13 @@ app.route('/team/:user')
                                 db.promise().query("SELECT * FROM Teams WHERE team_id = " + teamIDs[i] + "")
                                     .then(([rows, fields]) => {
                                         arr.push(rows);
+                                        //Get number of members in each team
                                         db.promise().query("SELECT * FROM Members WHERE team_id =" + teamIDs[i]+"")
                                         .then(([rows, fields]) => {
-                                            //Get number of members in each team,
-                                            //Add key-value pair for member-count
+                                            //Change 2d array to 1d array before we...
                                             arr = [].concat(...arr)
+                                            //Add key-value pair for member-count
                                             arr[i].member_count = rows.length;
-                                            console.log("arr is now " + arr)
                                         })
                                     }).catch(console.log)
                             }
@@ -344,8 +344,8 @@ app.route('/team/:user')
                         }
                         getData().then((response) => {
                             setTimeout(() => {
-                                //change 2d array to normal array
-                                //response = [].concat(...response);
+                                //For some reason have to change 2d array to normal array again?
+                                response = [].concat(...response);
                                 res.send(response)
                             }, 50)
                         })
