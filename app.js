@@ -349,6 +349,7 @@ app.route('/team/:user')
                                                             .then(() => {
                                                                 arr = arr.concat(...arr);
                                                                 arr[i].admin_name = rows[0].user_name;
+                                                                console.log('added admin name')
                                                             })
                                                     })
                                             })
