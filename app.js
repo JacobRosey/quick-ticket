@@ -333,8 +333,9 @@ app.route('/team/:user')
                                         arr.push(rows);
                                         db.promise().query("SELECT * FROM Members WHERE team_id =" + teamIDs[i]+"")
                                         .then(([rows, fields]) => {
-                                            //Get number of members in each team
-                                            arr[i].push(rows.length)
+                                            //Get number of members in each team,
+                                            //Add key-value pair for member-count
+                                            arr[i].member_count = rows.length;
                                         })
                                     }).catch(console.log)
                             }
