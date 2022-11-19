@@ -168,10 +168,6 @@ function useResponse(res) {
             }
         }
     }
-
-    if (res == "This user is not an admin" || res === false) {
-        alert("You do not have permission to delete this team")
-    }
     if (res == "Team deleted") {
         alert('team deleted')
         location.reload();
@@ -285,10 +281,13 @@ async function ajaxFunc(path, method, d) {
             } else console.log('status ' + xhr.status)
             //State whether login was successful or not
             var response = xhr.responseText;
-            console.log('response is: ' + response);
-            setTimeout(() => {
-                useResponse(response)
-            }, 100)
+            if(response === false){
+                alert("You don't have permission to delete this team!")
+            } else {
+                setTimeout(() => {
+                    useResponse(response)
+                }, 100)
+            }
         }
     }
     xhr.onerror = () => {
