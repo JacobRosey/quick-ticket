@@ -157,7 +157,7 @@ function useResponse(res) {
                 </span></div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item" id="team-code">Invitation code: `+ res[i].team_code + `</li>
-                    <li class="list-group-item" id="member-count"># of team members</li>
+                    <li class="list-group-item" id="member-count">Total team members: <span style="font-weight: bolder">` +res[i].member_count +`</span></li>
                     <li class="list-group-item">Managed by: <span id="admin-name">jacobrosey</span></li>
                 </ul>
                 <a class="btn btn-danger" onClick="deleteTeam(`+ i + `)" role="button" style="font-weight: bold; line-height: 32.5px !important;">Delete Team</a>
