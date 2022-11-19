@@ -460,8 +460,7 @@ app.route('/delete-team/:user')
                         }).then((response) => {
                             setTimeout(() => {
                                 if (response === false) {
-                                    console.log('User is not an admin')
-                                    return res.send(false)
+                                    return res.send("User is not an admin")
                                 } else {
                                     console.log('The team id to be deleted: ' + response)
                                     db.query("DELETE FROM Teams WHERE team_id = " + response + "", (err, result) =>{
