@@ -270,6 +270,7 @@ app.route('/index2/:user/:code')
         })
     })
 
+//USED TO APPEND CARDS TO MY TEAM PAGE - THE ONES THAT SHOW 'DELETE TEAM' ON THEM
 app.route('/team/:user')
     //Get team names of any teams the user is a member of
     .get(function (req, res, err) {
@@ -340,7 +341,7 @@ app.route('/team/:user')
                                                 db.promise().query("SELECT * FROM Admins WHERE team_id = " + teamIDs[i] + " LIMIT 1")
                                                     .then(([rows, fields]) => {
                                                         console.log(rows);
-                                                        db.promise().query("SELECT user_name FROM Users WHERE user_id = " + rows)
+                                                        db.promise().query("SELECT user_name FROM Users WHERE user_id = " + JSON.stringify(rows))
                                                             .then(() => {
                                                                 arr = arr.concat(...arr);
                                                                 arr[i].admin_name = rows;
