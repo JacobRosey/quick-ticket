@@ -336,6 +336,7 @@ app.route('/team/:user')
                                             //Get number of members in each team,
                                             //Add key-value pair for member-count
                                             arr[i].member_count = rows.length;
+                                            console.log("arr is now " + arr)
                                         })
                                     }).catch(console.log)
                             }
