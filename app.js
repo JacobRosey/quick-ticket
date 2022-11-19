@@ -443,34 +443,37 @@ app.route('/delete-team/:user')
                         return teamNames;
                     }
                     getData().then((response) => {
-                        setTimeout(() => {
-                            console.log(response)
-                            if (response.includes(team)) {
-                                //If user is admin of the given team
-                                console.log("response includes team")
-                                const id = response.indexOf(team) + 1;
-                                console.log("returning this index: " + response[id])
-                                return response[id];
-                            } else {
-                                console.log("User is not an admin for this team")
-                                return false;
-                            }
-                        }, 50)
-                    }).then((response) => {
-                        setTimeout(() => {
-                            if (response === false) {
-                                return res.send(response)
-                            } else {
-                                /*db.query("DELETE FROM Teams WHERE team_name = " + team + "", (err, result) =>{
-                                if(err){
-                                    console.log(err)
+                        return new Promise((resolve, reject) => {
+                            setTimeout(() => {
+                                console.log(response)
+                                if (response.includes(team)) {
+                                    //If user is admin of the given team
+                                    console.log("response includes team")
+                                    const id = response.indexOf(team) + 1;
+                                    console.log("returning this index: " + response[id])
+                                    resolve(response[id]);
+                                } else {
+                                    console.log("User is not an admin for this team")
+                                    resolve(false);
                                 }
-                                res.send("Team deleted")
-                            })*/
-                                console.log('The team id to be deleted: ' + response)
-                                res.send("Team deleted")
-                            }
-                        }, 100)
+                            }, 50)
+                        }).then((response) => {
+                            setTimeout(() => {
+                                if (response === false) {
+                                    return res.send(response)
+                                } else {
+                                    /*db.query("DELETE FROM Teams WHERE team_name = " + team + "", (err, result) =>{
+                                    if(err){
+                                        console.log(err)
+                                    }
+                                    res.send("Team deleted")
+                                })*/
+                                    console.log('The team id to be deleted: ' + response)
+                                    res.send("Team deleted")
+                                }
+                            }, 100)
+                        })
+                     
                     })
                 })
 
