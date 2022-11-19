@@ -286,9 +286,9 @@ async function ajaxFunc(path, method, d) {
             //State whether login was successful or not
             var response = xhr.responseText;
             console.log('response is: ' + response);
-            useResponse(response)
-
-
+            setTimeout(() => {
+                useResponse(response)
+            }, 100)
         }
     }
     xhr.onerror = () => {
