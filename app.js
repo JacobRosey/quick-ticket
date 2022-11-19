@@ -343,7 +343,7 @@ app.route('/team/:user')
                                                     .then(([rows, fields]) => {
                                                         rows = JSON.stringify(rows)
                                                         console.log(rows)
-                                                        console.log('user id is ' + rows.user_id);
+                                                        console.log('user id is ' + rows[0].user_id);
                                                         db.promise().query("SELECT user_name FROM Users WHERE user_id = " + rows[0].user_id)
                                                             .then(() => {
                                                                 arr = arr.concat(...arr);
