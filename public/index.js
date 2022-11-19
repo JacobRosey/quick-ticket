@@ -281,7 +281,7 @@ async function ajaxFunc(path, method, d) {
             } else console.log('status ' + xhr.status)
             //State whether login was successful or not
             var response = xhr.responseText;
-            if(response === false){
+            if(response == "User is not an admin"){
                 alert("You don't have permission to delete this team!")
             } else {
                 setTimeout(() => {
