@@ -334,8 +334,9 @@ app.route('/team/:user')
                                         .then(([rows, fields]) => {
                                             //Get number of members in each team,
                                             //Add key-value pair for member-count
+                                            arr = [].concat(...arr)
                                             arr[i].member_count = rows.length;
-                                            console.log("arr is now " + JSON.stringify(arr))
+                                            console.log("arr is now " + arr)
                                         })
                                     }).catch(console.log)
                             }
@@ -344,7 +345,7 @@ app.route('/team/:user')
                         getData().then((response) => {
                             setTimeout(() => {
                                 //change 2d array to normal array
-                                response = [].concat(...response);
+                                //response = [].concat(...response);
                                 res.send(response)
                             }, 50)
                         })
