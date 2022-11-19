@@ -342,8 +342,8 @@ app.route('/team/:user')
                                                 db.promise().query("SELECT * FROM Admins WHERE team_id = " + teamIDs[i] + " LIMIT 1")
                                                     .then(([rows, fields]) => {
                                                         rows = JSON.stringify(rows)
-                                                        console.log('user id is ' + rows);
-                                                        db.promise().query("SELECT user_name FROM Users WHERE user_id = " + rows.user_id)
+                                                        console.log('user id is ' + rows[0].user_id);
+                                                        db.promise().query("SELECT user_name FROM Users WHERE user_id = " + rows[0].user_id)
                                                             .then(() => {
                                                                 arr = arr.concat(...arr);
                                                                 arr[i].admin_name = rows;
