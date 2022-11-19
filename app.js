@@ -348,7 +348,7 @@ app.route('/team/:user')
                                                         db.promise().query("SELECT user_name FROM Users WHERE user_id = " + rows[0].user_id)
                                                             .then(() => {
                                                                 arr = arr.concat(...arr);
-                                                                arr[i].admin_name = rows;
+                                                                arr[i].admin_name = rows[0].user_name;
                                                             })
                                                     })
                                             })
