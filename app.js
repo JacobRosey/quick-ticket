@@ -513,5 +513,6 @@ app.route('/newticket/:user/:title/:prio/:desc')
                 fail: 'Fill out the form properly!'
             });
         }
+        res.send(prio)
 
     })
