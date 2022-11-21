@@ -354,6 +354,7 @@ app.route('/team/:user')
                                             })
                                     }).catch(console.log)
                             }
+                            console.log(arr)
                             return arr;
                         }
                         getData().then((response) => {
