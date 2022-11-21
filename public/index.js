@@ -136,7 +136,7 @@ function newTicket(){
         return alert("Please fill out the form properly!")
     }
 
-    alert(user, title, prio, desc);
+    alert(user + title + prio + desc);
 }
 
 function deleteTeam(num) {
