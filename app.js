@@ -541,6 +541,7 @@ app.route('/get-teams/:user')
         })
 
         dbPromise.then((id) => {
+            /*
             db.promise().query("SELECT * FROM Members WHERE user_id = " + id + "")
                 .then(([rows, fields]) => {
                     let arr = [];
@@ -554,7 +555,35 @@ app.route('/get-teams/:user')
                     }
                     console.log(arr)
                     res.send(arr)
-                }).catch(console.log)
+                }).catch(console.log) 
+            */
+            async function getData() {
+                let teamIDs = [];
+                db.promise().query("SELECT * FROM Members WHERE user_id = " + id + "")
+                    .then(([rows, fields]) => { 
+                        for(let i=0; i<rows.length; i++){
+                            teamIDs.push(rows[i].team_id);
+                        }
+                    }).catch(console.log)
+                return teamIDs;
+            }
+            getData().then((response) => {
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        console.log(response)
+                        return response;
+                        //Do stuff with id's here
+                    }, 50)
+                }).then((response) => {
+                    setTimeout(() => {
+                        console.log(response)
+                        res.send(response)
+                        //return team names here
+                    }, 100)
+                })
+
+            })
+
         }).catch(err => {
             console.log(err)
         })
