@@ -511,6 +511,13 @@ app.route('/newticket/:user/:title/:prio/:desc')
         if (title.trim() == "" || desc.trim() == "") {
             return res.send('Fill out the form properly!');
         }
-        res.send("Testing res")
+        db.promise().query("INSERT INTO Tickets () VALUES")
+        res.send("Testing res");
 
+    })
+
+app.route('/get-teams/:user')
+    .get(function (req, res, err) { 
+        const user = req.params;
+        res.send(user)
     })

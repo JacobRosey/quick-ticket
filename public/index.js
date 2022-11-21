@@ -42,6 +42,9 @@ function setActiveLink() {
             console.log('Starting ajaxfunction on team page load')
             ajaxFunc('/team/' + user + '', 'GET', user);
         }
+        if (active == 'newticket'){
+            ajaxFunc('/get-teams' + user + '/', 'GET', user)
+        }
     }
 
 }
