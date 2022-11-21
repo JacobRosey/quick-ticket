@@ -541,11 +541,16 @@ app.route('/get-teams/:user')
         })
 
         dbPromise.then((id) => {
-            let arr = [];
             db.promise().query("SELECT * FROM Members WHERE user_id = " + id + "")
                 .then(([rows, fields]) => {
-                    for (let i = 0; i < rows.length; i++) {
-                        arr.push(rows[i].team_id)
+                    let arr = [];
+                    for (let i=0; i < rows.length; i++) {
+                        db.promise().query("SELECT * FROM Teams WHERE team_id =" + rows[i].team_id+"")
+                        .then(([rows, fields]) => {
+                            for(let i=0; i< rows.length; i++) {
+                                arr.push(rows[i].team_name)
+                            }
+                        })
                     }
                     console.log(arr)
                     res.send(arr)
