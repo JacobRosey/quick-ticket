@@ -352,9 +352,10 @@ app.route('/team/:user')
                                                             })
                                                     })
                                             })
-                                    }).catch(console.log)
+                                    }).catch(err => {
+                                        console.log(err)
+                                    })
                             }
-                            console.log(arr)
                             return arr;
                         }
                         getData().then((response) => {
