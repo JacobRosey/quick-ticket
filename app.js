@@ -519,5 +519,37 @@ app.route('/newticket/:user/:title/:prio/:desc')
 app.route('/get-teams/:user')
     .get(function (req, res, err) { 
         const user = req.params;
-        res.send(user)
+
+        const dbPromise = new Promise((resolve, reject) => {
+
+            db.query("SELECT * FROM users WHERE user_name = '" + user + "'", (err, result) => {
+                if (err) {
+                    console.log(err)
+                    reject('There was an error querying the database');
+                }
+                if (result.length == 0) {
+                    console.log('This user does not exist in DB');
+                    reject('This user does not exist in DB');
+                }
+                if (result.length > 0) {
+                    console.log('This user exists in DB');
+                    let userID = result[0].user_id;
+                    resolve(userID);
+                }
+            })
+        })
+
+        dbPromise.then((id) => {
+            let arr = [];
+            db.query("SELECT * FROM Members WHERE user_id = " + id + "", (err, result) =>{
+                if(err){
+                    console.log(err)
+                }
+                for(let i=0; i < result.length; i++){
+                    arr.push(result[i].team_id)
+                }
+            })
+            res.send(arr)
+        })
+        //res.send(user)
     })
