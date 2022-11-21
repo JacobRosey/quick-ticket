@@ -37,7 +37,7 @@ function setActiveLink() {
                 ajaxFunc('/closedtickets/' + user + '', 'GET', user)
             }
             if (active == 'newticket'){
-                ajaxFunc('/get-teams' + user + '/', 'GET', user)
+                ajaxFunc('/get-teams/' + user + '/', 'GET', user)
             }
             return;
         }
