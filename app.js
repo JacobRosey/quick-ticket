@@ -513,8 +513,6 @@ app.route('/newticket/:user/:title/:prio/:desc')
                 fail: 'Fill out the form properly!'
             });
         }
-        res.render('newticket', {
-            success: 'Ticket Created!'
-        });
+        res.send("Testing res")
 
     })
