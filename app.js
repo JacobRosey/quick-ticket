@@ -570,13 +570,13 @@ app.route('/get-teams/:user')
             getData().then((response) => {
                 return new Promise((resolve, reject) => {
                     setTimeout(() => {
-                        console.log(response)
-                        return response;
+                        console.log("1st then " + response)
+                        resolve(response);
                         //Do stuff with id's here
                     }, 50)
                 }).then((response) => {
                     setTimeout(() => {
-                        console.log(response)
+                        console.log("2nd then " + response)
                         res.send(response)
                         //return team names here
                     }, 100)
