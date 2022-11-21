@@ -503,3 +503,14 @@ app.route('/delete-team/:user')
         })
         //res.send('user is ' + user);
     })
+
+app.route('/newticket/create')
+    .post(function (req, res, err) {
+        const { ticketTitle, ticketPriority, ticketDesc } = req.body;
+        console.log(ticketTitle, ticketPriority, ticketDesc);
+        if (ticketTitle.trim() == "" || ticketDesc.trim() == "") {
+            return res.render('newticket', {
+                fail: 'Fill out the form properly!'
+            });
+        }
+    })

@@ -126,52 +126,13 @@ function getLogin() {
 
 }
 
-function useResponse(res) {
-    //If this is the team page load response
-    const container = document.getElementById('team-card-container');
-    if (res == "Not on a team") {
-        container.innerHTML += `
-        <div class="jumbotron">
-        <span><i class="fs-4 bi-people"></i><p class="text-center" style="font-weight: bold;">You are not a member of a team!</p></span>
-        <p class="lead">Go to the home page and create a new team, or join an existing team using the team code!</p>
-        <hr class="my-4">
-        <p>Ask your manager for the team code so you can get to work! If you create a new team, come back to this page to see the team code.</p>
-        <p class="lead">
-          <a class="btn btn-primary btn-lg" href="/home" role="button">Home Page</a>
-        </p>
-      </div>
-        `
-    }
-    //If response is an array
-    if (Array.isArray(res)) {
-        if (res[0].hasOwnProperty('team_id') && res[0].hasOwnProperty('team_name')) {
+function newTicket(){
+    let user = sessionStorage.getItem('user');
+    let title = document.getElementById('ticketTitle').value;
+    let prio = document.getElementById('ticketPriority').value;
+    let desc = document.getElementById('ticketDesc').value;
 
-            for (let i = 0; i < res.length; i++) {
-                container.innerHTML += `
-                <div class="col-sm">
-                <div class="team-info">
-                <div class="card" id="team-card"style="width: 18rem;">
-                <div class="card-header" style="font-weight: bolder;">
-                <i class="fs-4 bi-people" style="margin-right: .25em;"></i><span class="team-name-span">
-                    `+ res[i].team_name + `
-                </span></div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item" id="team-code" >Invitation Code: <span style="font-weight: 300;">`+ res[i].team_code + `</span></li>
-                    <li class="list-group-item" id="member-count">Total Members: <span style="font-weight: 300;">` +res[i].member_count +`</span></li>
-                    <li class="list-group-item">Team Admin: <span id="admin-name" style="font-weight: 300;">`+res[i].admin_name+`</span></li>
-                </ul>
-                <a class="btn btn-danger" onClick="deleteTeam(`+ i + `)" role="button" style="font-weight: bold; line-height: 32.5px !important;">Delete Team</a>
-                </div>
-                </div>
-                </div>
-                `
-            }
-        }
-    }
-    if (res == "Team deleted") {
-        alert('team deleted')
-        location.reload();
-    }
+    alert(user, title, prio, desc);
 }
 
 function deleteTeam(num) {
@@ -292,6 +253,54 @@ async function ajaxFunc(path, method, d) {
     }
     xhr.onerror = () => {
         console.log("Something went wrong")
+    }
+}
+
+function useResponse(res) {
+    //If this is the team page load response
+    const container = document.getElementById('team-card-container');
+    if (res == "Not on a team") {
+        container.innerHTML += `
+        <div class="jumbotron">
+        <span><i class="fs-4 bi-people"></i><p class="text-center" style="font-weight: bold;">You are not a member of a team!</p></span>
+        <p class="lead">Go to the home page and create a new team, or join an existing team using the team code!</p>
+        <hr class="my-4">
+        <p>Ask your manager for the team code so you can get to work! If you create a new team, come back to this page to see the team code.</p>
+        <p class="lead">
+          <a class="btn btn-primary btn-lg" href="/home" role="button">Home Page</a>
+        </p>
+      </div>
+        `
+    }
+    //If response is an array
+    if (Array.isArray(res)) {
+        if (res[0].hasOwnProperty('team_id') && res[0].hasOwnProperty('team_name')) {
+
+            for (let i = 0; i < res.length; i++) {
+                container.innerHTML += `
+                <div class="col-sm">
+                <div class="team-info">
+                <div class="card" id="team-card"style="width: 18rem;">
+                <div class="card-header" style="font-weight: bolder;">
+                <i class="fs-4 bi-people" style="margin-right: .25em;"></i><span class="team-name-span">
+                    `+ res[i].team_name + `
+                </span></div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" id="team-code" >Invitation Code: <span style="font-weight: 300;">`+ res[i].team_code + `</span></li>
+                    <li class="list-group-item" id="member-count">Total Members: <span style="font-weight: 300;">` +res[i].member_count +`</span></li>
+                    <li class="list-group-item">Team Admin: <span id="admin-name" style="font-weight: 300;">`+res[i].admin_name+`</span></li>
+                </ul>
+                <a class="btn btn-danger" onClick="deleteTeam(`+ i + `)" role="button" style="font-weight: bold; line-height: 32.5px !important;">Delete Team</a>
+                </div>
+                </div>
+                </div>
+                `
+            }
+        }
+    }
+    if (res == "Team deleted") {
+        alert('team deleted')
+        location.reload();
     }
 }
 

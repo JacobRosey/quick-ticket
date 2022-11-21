@@ -56,7 +56,7 @@ exports.newTicket = (req, res) => {
         });
     }
     
-    /*db.query('INSERT INTO Tickets(team_id, ticket_title, ticket_status, opened_by, creation_date)'
+    /*b.query('INSERT INTO Tickets(team_id, ticket_title, ticket_status, opened_by, creation_date)'
     'VALUES ()')*/
     
     
