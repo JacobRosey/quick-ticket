@@ -136,7 +136,14 @@ function newTicket(){
         return alert("Please fill out the form properly!")
     }
 
-    alert(user + title + prio + desc);
+    let data = {
+        "user": user,
+        "title": title,
+        "prio": prio,
+        "desc": desc
+    }
+
+    ajaxFunc('/newticket/create', 'POST', data)
 }
 
 function deleteTeam(num) {
