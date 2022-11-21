@@ -517,7 +517,7 @@ app.route('/newticket/:user/:title/:prio/:desc')
     })
 
 app.route('/get-teams/:user')
-    .get(function (req, res, err) { 
+    .get(function (req, res, err) {
         const user = req.params.user;
         console.log(user)
 
@@ -542,16 +542,14 @@ app.route('/get-teams/:user')
 
         dbPromise.then((id) => {
             let arr = [];
-            db.query("SELECT * FROM Members WHERE user_id = " + id + "", (err, result) =>{
-                if(err){
-                    console.log(err)
-                }
-                for(let i=0; i < result.length; i++){
-                    arr.push(result[i].team_id)
-                }
-            })
-            console.log(arr)
-            res.send(arr)
+            db.promise().query("SELECT * FROM Members WHERE user_id = " + id + "")
+                .then(([rows, fields]) => {
+                    for (let i = 0; i < rows.length; i++) {
+                        arr.push(rows[i].team_id)
+                    }
+                    console.log(arr)
+                    res.send(arr)
+                }).catch(console.log)
         }).catch(err => {
             console.log(err)
         })
