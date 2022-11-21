@@ -549,7 +549,7 @@ app.route('/get-teams/:user')
                     arr.push(result[i].team_id)
                 }
             })
-            res.send(arr)
+            res.send(JSON.stringify(arr))
         })
         //res.send(user)
     })
