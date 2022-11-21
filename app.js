@@ -509,9 +509,7 @@ app.route('/newticket/:user/:title/:prio/:desc')
         const { user, title, prio, desc } = req.params;
         console.log(user + prio + title + desc);
         if (title.trim() == "" || desc.trim() == "") {
-            return res.render('newticket', {
-                fail: 'Fill out the form properly!'
-            });
+            return res.send('Fill out the form properly!');
         }
         res.send("Testing res")
 
