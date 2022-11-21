@@ -518,7 +518,7 @@ app.route('/newticket/:user/:title/:prio/:desc')
 
 app.route('/get-teams/:user')
     .get(function (req, res, err) { 
-        const user = req.params;
+        const user = req.params.user;
         console.log(user)
 
         const dbPromise = new Promise((resolve, reject) => {
