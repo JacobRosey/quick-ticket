@@ -4,9 +4,6 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
-const { resolve } = require('path/posix');
-const { reset } = require('nodemon');
-const { runInNewContext } = require('vm');
 
 const app = express();
 
