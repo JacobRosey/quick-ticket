@@ -518,6 +518,6 @@ app.route('/newticket/:user/:title/:prio/:desc')
 
 app.route('/get-teams/:user')
     .get(function (req, res, err) { 
-        const user = req.body;
+        const user = req.params;
         res.send(user)
     })
