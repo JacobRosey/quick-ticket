@@ -132,6 +132,10 @@ function newTicket(){
     let prio = document.getElementById('ticketPriority').value;
     let desc = document.getElementById('ticketDesc').value;
 
+    if(title.trim() == '' || desc.trim() == ''){
+        return alert("Please fill out the form properly!")
+    }
+
     alert(user, title, prio, desc);
 }
 
