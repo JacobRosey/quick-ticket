@@ -550,7 +550,8 @@ app.route('/get-teams/:user')
                     arr.push(result[i].team_id)
                 }
             })
-            res.send(JSON.stringify(arr))
+            console.log(arr)
+            res.send(arr)
         }).catch(err => {
             console.log(err)
         })
