@@ -519,6 +519,7 @@ app.route('/newticket/:user/:title/:prio/:desc')
 app.route('/get-teams/:user')
     .get(function (req, res, err) { 
         const user = req.params;
+        console.log(user)
 
         const dbPromise = new Promise((resolve, reject) => {
 
@@ -550,6 +551,8 @@ app.route('/get-teams/:user')
                 }
             })
             res.send(JSON.stringify(arr))
+        }).catch(err => {
+            console.log(err)
         })
         //res.send(user)
     })
