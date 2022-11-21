@@ -54,8 +54,11 @@
     </style>
 
     <div class="container">
-        {{#if message }}
-        <h4 class="alert alert-success mt-4">{{message}}</h4>
+        {{#if success }}
+        <h4 class="alert alert-success mt-4">{{success}}</h4>
+        {{/if}}
+        {{#if fail }}
+        <h4 class="alert alert-success mt-4">{{fail}}</h4>
         {{/if}}
         <form action="auth/newticket" method="POST">
             <div class="form-group">
