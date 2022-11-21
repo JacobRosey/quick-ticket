@@ -143,7 +143,7 @@ function newTicket(){
         "desc": desc
     }
 
-    ajaxFunc('/newticket/create', 'POST', data)
+    ajaxFunc('/newticket/'+user+'/'+title+'/'+prio+'/'+desc, 'POST', data)
 }
 
 function deleteTeam(num) {

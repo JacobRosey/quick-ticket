@@ -504,7 +504,7 @@ app.route('/delete-team/:user')
         //res.send('user is ' + user);
     })
 
-app.route('/newticket/create')
+app.route('/newticket/:user/:title/:prio/:desc')
     .post(function (req, res, err) {
         const { user, ticketTitle, ticketPriority, ticketDesc } = req.body;
         console.log(user, ticketTitle, ticketPriority, ticketDesc);
