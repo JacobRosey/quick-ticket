@@ -507,7 +507,7 @@ app.route('/delete-team/:user')
 app.route('/newticket/:user/:title/:prio/:desc')
     .post(function (req, res, err) {
         const { user, ticketTitle, ticketPriority, ticketDesc } = req.body;
-        console.log(user, ticketTitle, ticketPriority, ticketDesc);
+        console.log(user + ticketTitle + ticketPriority + ticketDesc);
         if (ticketTitle.trim() == "" || ticketDesc.trim() == "") {
             return res.render('newticket', {
                 fail: 'Fill out the form properly!'
