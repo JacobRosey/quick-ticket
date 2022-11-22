@@ -323,6 +323,7 @@ function useResponse(res) {
             </div>`
 
             let teamSelectInput = document.getElementById('team-select-input');
+            console.log(arr)
             for(let i=0; i<arr.length; i++){
                 teamSelectInput.innerHTML += 
                     `
