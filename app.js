@@ -158,55 +158,55 @@ app.route('/index/:admin/:team')
             })
             console.log(admin, team, teamCode)
             res.send("SUCCESS!")*/
-            db.promise().query('SELECT * FROM Teams WHERE team_name = "'+team+'"')
-            .then(([rows, fields]) => {
-                if(rows.length > 0){
-                    return res.send("Team name not available");
-                }
-            })
-
-            const teamCode = crypto.randomBytes(5).toString('hex');
-            //Only doing this ugly ass nested structure because the commented code above produced 
-            //an SQL parse error; couldn't find an answer on Google
-            db.query(`INSERT INTO Teams (team_name, team_code) VALUES ('` + team + `', '` + teamCode + `');`, (err, result) => {
-                if (err) {
-                    console.log(err)
-                    res.send('Team creation failed');
-                } else {
-                    db.query('SET @last_id = (SELECT LAST_INSERT_ID()); ', (err, result) => {
-                        if (err) {
-                            console.log(err);
-                            res.send('Failed to get last inserted team id');
-                        } else {//Could use an SQL trigger instead but not sure if that would be any better
-                            db.query(`INSERT INTO Members (user_id, team_id) VALUES (` + userID + `, @last_id);`, (err, result) => {
-                                if (err) {
-                                    console.log(err);
-                                    res.send('Failed to insert you into members table')
-                                } else {
-                                    db.query(`INSERT INTO Admins (user_id, team_id) VALUES (` + userID + `, @last_id);`, (err, result) => {
-                                        if (err) {
-                                            console.log(err);
-                                            res.send('Failed to insert you into admin table');
-                                        }
-                                        else {
-                                            //Get user who created the team, set is_admin to 1, aka "true"
-                                            db.query("UPDATE Users SET is_admin = 1 WHERE user_id = '" + userID + "'", (err, result) => {
-                                                if (err) {
-                                                    console.log(err)
-                                                    res.send('Failed to grant admin privileges');
-                                                } else {
-                                                    console.log(result)
-                                                    res.send('Team created')
-                                                }
-                                            })
-                                        }
-                                    })
-                                }
-                            })
-                        }
-                    })
-                }
-            })
+            db.promise().query('SELECT * FROM Teams WHERE team_name = "' + team + '"')
+                .then(([rows, fields]) => {
+                    if (rows.length > 0) {
+                        return res.send("Team name not available");
+                    } else {
+                        const teamCode = crypto.randomBytes(5).toString('hex');
+                        //Only doing this ugly ass nested structure because the commented code above produced 
+                        //an SQL parse error; couldn't find an answer on Google
+                        db.query(`INSERT INTO Teams (team_name, team_code) VALUES ('` + team + `', '` + teamCode + `');`, (err, result) => {
+                            if (err) {
+                                console.log(err)
+                                res.send('Team creation failed');
+                            } else {
+                                db.query('SET @last_id = (SELECT LAST_INSERT_ID()); ', (err, result) => {
+                                    if (err) {
+                                        console.log(err);
+                                        res.send('Failed to get last inserted team id');
+                                    } else {//Could use an SQL trigger instead but not sure if that would be any better
+                                        db.query(`INSERT INTO Members (user_id, team_id) VALUES (` + userID + `, @last_id);`, (err, result) => {
+                                            if (err) {
+                                                console.log(err);
+                                                res.send('Failed to insert you into members table')
+                                            } else {
+                                                db.query(`INSERT INTO Admins (user_id, team_id) VALUES (` + userID + `, @last_id);`, (err, result) => {
+                                                    if (err) {
+                                                        console.log(err);
+                                                        res.send('Failed to insert you into admin table');
+                                                    }
+                                                    else {
+                                                        //Get user who created the team, set is_admin to 1, aka "true"
+                                                        db.query("UPDATE Users SET is_admin = 1 WHERE user_id = '" + userID + "'", (err, result) => {
+                                                            if (err) {
+                                                                console.log(err)
+                                                                res.send('Failed to grant admin privileges');
+                                                            } else {
+                                                                console.log(result)
+                                                                res.send('Team created')
+                                                            }
+                                                        })
+                                                    }
+                                                })
+                                            }
+                                        })
+                                    }
+                                })
+                            }
+                        })
+                    }
+                })
         })
     })
 
@@ -514,10 +514,10 @@ app.route('/newticket/:user/:team/:title/:prio/:desc')
     .post(function (req, res, err) {
         const { user, team, title, prio, desc } = req.params;
         console.log(user + team + prio + title + desc);
-        
+
         const dbPromise = new Promise((resolve, reject) => {
-            db.query('SELECT team_id FROM Teams WHERE team_name = "'+team+'"', (err, result) =>{
-                if(err){
+            db.query('SELECT team_id FROM Teams WHERE team_name = "' + team + '"', (err, result) => {
+                if (err) {
                     console.log(err)
                 }
                 resolve(result)
@@ -557,8 +557,8 @@ app.route('/get-teams/:user')
             async function getData() {
                 let teamIDs = [];
                 db.promise().query("SELECT * FROM Members WHERE user_id = " + id + "")
-                    .then(([rows, fields]) => { 
-                        for(let i=0; i<rows.length; i++){
+                    .then(([rows, fields]) => {
+                        for (let i = 0; i < rows.length; i++) {
                             teamIDs.push(rows[i].team_id);
                         }
                     }).catch(console.log)
@@ -568,18 +568,18 @@ app.route('/get-teams/:user')
                 return new Promise((resolve, reject) => {
                     setTimeout(() => {
                         let arr = []
-                        for(let i=0; i<response.length; i++){
+                        for (let i = 0; i < response.length; i++) {
                             db.promise().query("SELECT * FROM Teams WHERE team_id = " + response[i])
-                            .then(([rows, fields]) => {
-                                arr.push(rows[0].team_name)
-                            }).catch(err => console.log(err))
+                                .then(([rows, fields]) => {
+                                    arr.push(rows[0].team_name)
+                                }).catch(err => console.log(err))
                         }
                         resolve(arr);
                         //Do stuff with id's here
                     }, 50)
                 }).then((response) => {
                     setTimeout(() => {
-                        if(response.length == 1) {
+                        if (response.length == 1) {
                             //If there's only 1 team we don't need to add
                             //a team selection input to new ticket form
                             res.send('Only 1 team');
