@@ -570,13 +570,19 @@ app.route('/get-teams/:user')
             getData().then((response) => {
                 return new Promise((resolve, reject) => {
                     setTimeout(() => {
-                        console.log("1st then " + response)
-                        resolve(response);
+                        let arr = []
+                        for(let i=0; i<response.length; i++){
+                            db.promise().query("SELECT * FROM Teams WHERE team_id = " + response[i])
+                            .then(([rows, fields]) => {
+                                arr.push(rows[i].team_name)
+                            }).catch(err => console.log(err))
+                        }
+                        resolve(arr);
                         //Do stuff with id's here
                     }, 50)
                 }).then((response) => {
                     setTimeout(() => {
-                        console.log("2nd then " + response)
+                        console.log("returning res: " + response)
                         res.send(response)
                         //return team names here
                     }, 100)
