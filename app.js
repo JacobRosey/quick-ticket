@@ -583,7 +583,11 @@ app.route('/get-teams/:user')
                 }).then((response) => {
                     setTimeout(() => {
                         console.log("returning res: " + response)
-                        res.send(response)
+                        if(response.length == 1) {
+                            //If there's only 1 team we don't need to add
+                            //a team selection input to new ticket form
+                            res.send('Only 1 team');
+                        } else res.send(response.unshift('team_names'))
                         //return team names here
                     }, 100)
                 })

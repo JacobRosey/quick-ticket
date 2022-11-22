@@ -311,7 +311,28 @@ function useResponse(res) {
                 `
             }
         }
+        if(res[0] == 'team_names'){
+            let teamSelectContainer = document.getElementById('team-select');
+            //remove 'team_names' from arr, that only served to show there are multiple teams
+            let arr = res.shift();
+            teamSelectContainer.innerHTML +=
+            `<div class="form-group">
+                <label for="exampleFormControlSelect1">Select Team</label>
+                <select class="form-control" name="team-select-input" id="team-select-input" required>
+                </select>
+            </div>`
+
+            let teamSelectInput = document.getElementById('team-select-input');
+            for(let i=0; i<arr.length; i++){
+                teamSelectInput.innerHTML += 
+                    `
+                    <option>`+arr[i]+`</option>
+                    `
+                
+            }
+        }
     }
+    
     if (res == "Team deleted") {
         alert('team deleted')
         location.reload();
