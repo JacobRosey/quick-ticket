@@ -504,10 +504,10 @@ app.route('/delete-team/:user')
         //res.send('user is ' + user);
     })
 
-app.route('/newticket/:user/:title/:prio/:desc')
+app.route('/newticket/:user/:team/:title/:prio/:desc')
     .post(function (req, res, err) {
-        const { user, title, prio, desc } = req.params;
-        console.log(user + prio + title + desc);
+        const { user, team, title, prio, desc } = req.params;
+        console.log(user + team + prio + title + desc);
         if (title.trim() == "" || desc.trim() == "") {
             return res.send('Fill out the form properly!');
         }
@@ -541,22 +541,6 @@ app.route('/get-teams/:user')
         })
 
         dbPromise.then((id) => {
-            /*
-            db.promise().query("SELECT * FROM Members WHERE user_id = " + id + "")
-                .then(([rows, fields]) => {
-                    let arr = [];
-                    for (let i=0; i < rows.length; i++) {
-                        db.promise().query("SELECT * FROM Teams WHERE team_id =" + rows[i].team_id+"")
-                        .then(([rows, fields]) => {
-                            for(let i=0; i< rows.length; i++) {
-                                arr.push(rows[i].team_name)
-                            }
-                        })
-                    }
-                    console.log(arr)
-                    res.send(arr)
-                }).catch(console.log) 
-            */
             async function getData() {
                 let teamIDs = [];
                 db.promise().query("SELECT * FROM Members WHERE user_id = " + id + "")

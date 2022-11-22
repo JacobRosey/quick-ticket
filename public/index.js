@@ -131,6 +131,7 @@ function getLogin() {
 
 function newTicket(){
     let user = sessionStorage.getItem('user');
+    let team = document.getElementById('team-select-input').value;
     let title = document.getElementById('ticketTitle').value;
     let prio = document.getElementById('ticketPriority').value;
     let desc = document.getElementById('ticketDesc').value;
@@ -141,12 +142,13 @@ function newTicket(){
 
     let data = {
         "user": user,
+        "team": team,
         "title": title,
         "prio": prio,
         "desc": desc
     }
 
-    ajaxFunc('/newticket/'+user+'/'+title+'/'+prio+'/'+desc, 'POST', data)
+    ajaxFunc('/newticket/'+user+'/'+team+'/'+title+'/'+prio+'/'+desc, 'POST', data)
 }
 
 function deleteTeam(num) {
