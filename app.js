@@ -524,7 +524,7 @@ app.route('/newticket/:user/:team/:title/:prio/:desc')
             })
         })
         dbPromise.then((id) => {
-            console.log(JSON.stringify(id.team_id));
+            console.log(JSON.stringify(id));
             res.send(id);
         })
 
