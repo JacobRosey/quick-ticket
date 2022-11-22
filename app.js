@@ -582,7 +582,7 @@ app.route('/get-teams/:user')
                     }, 50)
                 }).then((response) => {
                     setTimeout(() => {
-                        response = response.unshift('team_names')
+                        response.unshift('team_names')
                         console.log("returning res: " + response)
                         if(response.length == 1) {
                             //If there's only 1 team we don't need to add
