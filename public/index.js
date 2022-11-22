@@ -315,8 +315,8 @@ function useResponse(res) {
             let teamSelectContainer = document.getElementById('team-select');
             //remove 'team_names' from arr, that only served to show there are multiple teams
             console.log(res);
-            let arr = res.shift();
-            console.log(arr);
+            res.shift();
+            console.log(res);
             teamSelectContainer.innerHTML +=
             `<div class="form-group">
                 <label for="exampleFormControlSelect1">Select Team</label>
@@ -325,10 +325,10 @@ function useResponse(res) {
             </div>`
 
             let teamSelectInput = document.getElementById('team-select-input');
-            for(let i=0; i<arr.length; i++){
+            for(let i=0; i<res.length; i++){
                 teamSelectInput.innerHTML += 
                     `
-                    <option>`+arr[i]+`</option>
+                    <option>`+res[i]+`</option>
                     `
                 
             }
