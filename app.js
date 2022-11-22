@@ -520,7 +520,7 @@ app.route('/newticket/:user/:team/:title/:prio/:desc')
                 if (err) {
                     console.log(err)
                 }
-                resolve(result.team_id)
+                resolve(result)
             })
         })
         dbPromise.then((id) => {
