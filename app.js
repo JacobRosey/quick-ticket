@@ -589,7 +589,7 @@ app.route('/get-teams/:user')
                             //a team selection input to new ticket form
                             res.send('Only 1 team');
                         } else {
-                            res.send(response)
+                            res.send(JSON.stringify(response))
                         }
                         //return team names here
                     }, 100)
