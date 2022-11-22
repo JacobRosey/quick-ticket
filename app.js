@@ -587,7 +587,10 @@ app.route('/get-teams/:user')
                             //If there's only 1 team we don't need to add
                             //a team selection input to new ticket form
                             res.send('Only 1 team');
-                        } else res.send(response.unshift('team_names'))
+                        } else {
+                            response = response.unshift('team_names')
+                            res.send(response)
+                        }
                         //return team names here
                     }, 100)
                 })
