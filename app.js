@@ -510,13 +510,11 @@ app.route('/newticket/:user/:team/:title/:prio/:desc')
         console.log(user + team + prio + title + desc);
         
         const dbPromise = new Promise((resolve, reject) => {
-            db.query('SELECT FROM Teams WHERE team_name = "'+team+'"', (err, result) =>{
+            db.query('SELECT team_id FROM Teams WHERE team_name = "'+team+'"', (err, result) =>{
                 if(err){
                     console.log(err)
                 }
-                if(result.length > 0){
-                    resolve(result[0].team_id)
-                }
+                resolve(result)
             })
         })
         dbPromise.then((id) => {
