@@ -158,6 +158,12 @@ app.route('/index/:admin/:team')
             })
             console.log(admin, team, teamCode)
             res.send("SUCCESS!")*/
+            db.promise().query('SELECT * FROM Teams WHERE team_name = "'+team+'"')
+            .then(([rows, fields]) => {
+                if(rows.length > 0){
+                    return res.send("Team name not available");
+                }
+            })
 
             const teamCode = crypto.randomBytes(5).toString('hex');
             //Only doing this ugly ass nested structure because the commented code above produced 
