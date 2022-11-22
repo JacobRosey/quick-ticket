@@ -574,7 +574,7 @@ app.route('/get-teams/:user')
                         for(let i=0; i<response.length; i++){
                             db.promise().query("SELECT * FROM Teams WHERE team_id = " + response[i])
                             .then(([rows, fields]) => {
-                                arr.push(rows[i].team_name)
+                                arr.push(rows[0].team_name)
                             }).catch(err => console.log(err))
                         }
                         resolve(arr);
