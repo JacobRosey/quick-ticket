@@ -508,11 +508,20 @@ app.route('/newticket/:user/:team/:title/:prio/:desc')
     .post(function (req, res, err) {
         const { user, team, title, prio, desc } = req.params;
         console.log(user + team + prio + title + desc);
-        if (title.trim() == "" || desc.trim() == "") {
-            return res.send('Fill out the form properly!');
-        }
-        db.promise().query("INSERT INTO Tickets () VALUES")
-        res.send("Testing res");
+        
+        const dbPromise = new Promise((resolve, reject) => {
+            db.query('SELECT FROM Teams WHERE team_name = '+team+'', (err, result) =>{
+                if(err){
+                    console.log(err)
+                }
+                if(result.length > 0){
+                    resolve(result[0].team_id)
+                }
+            })
+        })
+        dbPromise.then((id) => {
+            res.send(id);
+        })
 
     })
 
