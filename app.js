@@ -525,7 +525,7 @@ app.route('/newticket/:user/:team/:title/:prio/:desc')
         })
         dbPromise.then((id) => {
             console.log(id[0].team_id);
-            let now = new Date.toLocaleString();
+            let now = new Date().toLocaleString();
             console.log(now);
             //db.query('INSERT INTO Tickets (team_id, )VALUES')
             res.send("Ticket created");
