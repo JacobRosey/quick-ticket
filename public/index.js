@@ -341,6 +341,10 @@ function useResponse(res) {
         alert('team deleted')
         location.reload();
     }
+    if (res == "Ticket created"){
+        alert(res);
+        window.location.replace('/newticket')
+    }
 }
 
 //Should probably figure out how to use cookies so that you can't 
