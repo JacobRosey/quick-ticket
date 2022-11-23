@@ -527,7 +527,29 @@ app.route('/newticket/:user/:team/:title/:prio/:desc')
             console.log(id[0].team_id);
             let timestamp = new Date().toISOString().slice(0, 19).replace('T', ' ');
             console.log(timestamp);
-            db.promise().query('INSERT INTO Tickets (team_id, ticket_title, ticket_status, opened_by, creation_date) VALUES ('+id[0].team_id+',"'+title+'",'+0+', "'+user+'","'+timestamp+'"); SET @last_id = (SELECT LAST_INSERT_ID()); INSERT INTO Ticket_Data (ticket_id, ticket_desc, priority) VALUES (@last_id,"'+desc+'","'+prio+'");');
+            db.query('INSERT INTO Tickets (team_id, ticket_title, ticket_status, opened_by, creation_date) VALUES ('+id[0].team_id+',"'+title+'",'+0+', "'+user+'","'+timestamp+'");');
+            if(err){
+                console.log(err)
+                res.send('Ticket creation failed')
+            }
+            else {
+                db.query('SET @last_id = (SELECT LAST_INSERT_ID());')
+                if(err){
+                    console.log(err)
+                    res.send('Ticket creation failed')
+                }
+                else{
+                    db.query('INSERT INTO Ticket_Data (ticket_id, ticket_desc, priority) VALUES (@last_id,"'+desc+'","'+prio+'");')
+                    if(err){
+                        console.log(err);
+                        res.send('Ticket creation failed')
+                    }
+                    else { 
+                        res.send('Ticket created');
+                    }
+                }
+            }
+            
             res.send("Ticket created");
         })
 
