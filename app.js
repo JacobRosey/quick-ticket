@@ -525,7 +525,7 @@ app.route('/newticket/:user/:team/:title/:prio/:desc')
         })
         dbPromise.then((id) => {
             console.log(id[0].team_id);
-            let now = Math.round(+new Date()/1000).toLocaleString();
+            let now = new Date.toLocaleString();
             console.log(now);
             //db.query('INSERT INTO Tickets (team_id, )VALUES')
             res.send("Ticket created");
@@ -536,10 +536,9 @@ app.route('/newticket/:user/:team/:title/:prio/:desc')
 app.route('/get-teams/:user')
     .get(function (req, res, err) {
         const user = req.params.user;
-        console.log(user)
+        console.log(user);
 
         const dbPromise = new Promise((resolve, reject) => {
-
             db.query("SELECT * FROM users WHERE user_name = '" + user + "'", (err, result) => {
                 if (err) {
                     console.log(err)
