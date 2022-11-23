@@ -527,7 +527,7 @@ app.route('/newticket/:user/:team/:title/:prio/:desc')
             console.log(id[0].team_id);
             let timestamp = new Date().toISOString().slice(0, 19).replace('T', ' ');
             console.log(timestamp);
-            //db.query('INSERT INTO Tickets (team_id, )VALUES')
+            db.query('INSERT INTO Tickets (team_id, ticket_title, ticket_status, opened_by, creation_date) VALUES ('+id+',"'+title+'",'+0+', "'+user+'","'+timestamp+'")');
             res.send("Ticket created");
         })
 
