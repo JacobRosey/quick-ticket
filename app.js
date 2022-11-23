@@ -527,6 +527,8 @@ app.route('/newticket/:user/:team/:title/:prio/:desc')
             console.log(id[0].team_id);
             let timestamp = new Date().toISOString().slice(0, 19).replace('T', ' ');
             console.log(timestamp);
+            //START TRANSACTION still not working
+            //neither is multiple statements in 1 query
             db.query('INSERT INTO Tickets (team_id, ticket_title, ticket_status, opened_by, creation_date) VALUES (' + id[0].team_id + ',"' + title + '",' + 0 + ', "' + user + '","' + timestamp + '");', (err, result) => {
                 if (err) {
                     console.log(err)
@@ -539,7 +541,7 @@ app.route('/newticket/:user/:team/:title/:prio/:desc')
                             res.send('Ticket creation failed')
                         } else {
         
-                            db.query('INSERT INTO Ticket_Data (ticket_id, ticket_desc, priority) VALUES (@last_id,"' + desc + '","' + prio + '");', (err, result) => {
+                            db.query('INSERT INTO Ticket_Data (ticket_id, ticket_desc, ticket_priority) VALUES (@last_id,"' + desc + '","' + prio + '");', (err, result) => {
                                 if (err) {
                                     console.log(err);
                                     res.send('Ticket creation failed')
