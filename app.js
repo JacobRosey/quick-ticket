@@ -524,8 +524,10 @@ app.route('/newticket/:user/:team/:title/:prio/:desc')
             })
         })
         dbPromise.then((id) => {
-            console.log(JSON.stringify(id[0].team_id));
-            console.log(id[0].team_id)
+            console.log(id[0].team_id);
+            let now = Date.now();
+            console.log(now);
+            //db.query('INSERT INTO Tickets (team_id, )VALUES')
             res.send("Ticket created");
         })
 
