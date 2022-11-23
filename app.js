@@ -549,8 +549,6 @@ app.route('/newticket/:user/:team/:title/:prio/:desc')
                     }
                 }
             }
-            
-            res.send("Ticket created");
         })
 
     })
