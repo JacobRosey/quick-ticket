@@ -130,22 +130,22 @@ function getLogin() {
 }
 
 function newTicket(){
-    let user = sessionStorage.getItem('user');
-    let team = document.getElementById('team-select-input').value;
-    let title = document.getElementById('ticketTitle').value;
-    let prio = document.getElementById('ticketPriority').value;
-    let desc = document.getElementById('ticketDesc').value;
+    let user = encodeURIcomponent(sessionStorage.getItem('user'));
+    let team = encodeURIcomponent(document.getElementById('team-select-input').value);
+    let title = encodeURIcomponent(document.getElementById('ticketTitle').value);
+    let prio = encodeURIcomponent(document.getElementById('ticketPriority').value);
+    let desc = encodeURIcomponent(document.getElementById('ticketDesc').value);
 
     if(title.trim() == '' || desc.trim() == ''){
         return alert("Please fill out the form properly!")
     }
 
     let data = {
-        "user": encodeURIcomponent(user),
-        "team": encodeURIcomponent(team),
-        "title": encodeURIcomponent(title),
-        "prio": encodeURIcomponent(prio),
-        "desc": encodeURIcomponent(desc)
+        "user": user,
+        "team": team,
+        "title": title,
+        "prio": prio,
+        "desc": desc
     }
 
     ajaxFunc('/newticket/'+user+'/'+team+'/'+title+'/'+prio+'/'+desc, 'POST', data)
