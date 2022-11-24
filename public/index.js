@@ -141,11 +141,11 @@ function newTicket(){
     }
 
     let data = {
-        "user": user,
-        "team": team,
-        "title": title,
-        "prio": prio,
-        "desc": desc
+        "user": encodeURIcomponent(user),
+        "team": encodeURIcomponent(team),
+        "title": encodeURIcomponent(title),
+        "prio": encodeURIcomponent(prio),
+        "desc": encodeURIcomponent(desc)
     }
 
     ajaxFunc('/newticket/'+user+'/'+team+'/'+title+'/'+prio+'/'+desc, 'POST', data)
