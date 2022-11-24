@@ -148,7 +148,8 @@ function newTicket(){
         "desc": desc
     }
 
-    ajaxFunc('/newticket/'+encodeURIcomponent(user)+'/'+encodeURIcomponent(team)+'/'+encodeURIcomponent(title)+'/'+encodeURIcomponent(prio)+'/'+encodeURIcomponent(desc), 'POST', data)
+    //Not sure if this is where I need to encodeURIcomponent or not but... figure dat out
+    ajaxFunc('/newticket/'+user+'/'+team+'/'+title+'/'+prio+'/'+desc, 'POST', data)
 }
 
 function deleteTeam(num) {
