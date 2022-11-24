@@ -130,11 +130,11 @@ function getLogin() {
 }
 
 function newTicket(){
-    let user = encodeURIcomponent(sessionStorage.getItem('user'));
-    let team = encodeURIcomponent(document.getElementById('team-select-input').value);
-    let title = encodeURIcomponent(document.getElementById('ticketTitle').value);
-    let prio = encodeURIcomponent(document.getElementById('ticketPriority').value);
-    let desc = encodeURIcomponent(document.getElementById('ticketDesc').value);
+    let user = sessionStorage.getItem('user');
+    let team = document.getElementById('team-select-input').value;
+    let title = document.getElementById('ticketTitle').value;
+    let prio = document.getElementById('ticketPriority').value;
+    let desc = document.getElementById('ticketDesc').value;
 
     if(title.trim() == '' || desc.trim() == ''){
         return alert("Please fill out the form properly!")
@@ -148,7 +148,7 @@ function newTicket(){
         "desc": desc
     }
 
-    ajaxFunc('/newticket/'+user+'/'+team+'/'+title+'/'+prio+'/'+desc, 'POST', data)
+    ajaxFunc('/newticket/'+encodeURIcomponent(user)+'/'+encodeURIcomponent(team)+'/'+encodeURIcomponent(title)+'/'+encodeURIcomponent(prio)+'/'+encodeURIcomponent(desc), 'POST', data)
 }
 
 function deleteTeam(num) {
