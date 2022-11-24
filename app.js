@@ -513,7 +513,7 @@ app.route('/delete-team/:user')
 app.route('/newticket/:user/:team/:title/:prio/:desc')
     .post(function (req, res, err) {
         //Need to decodeURIcomponent on parameters here
-        const { user, team, title, prio, desc } = req.params;
+        const { user, team, title, prio, desc } = decodeURIcomponent(req.params);
         console.log(user + team + prio + title + desc);
 
         const dbPromise = new Promise((resolve, reject) => {
