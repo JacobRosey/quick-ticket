@@ -547,6 +547,7 @@ app.route('/newticket/:user/:team/:title/:prio/:desc')
                                     res.send('Ticket creation failed')
                                 }
                                 else {
+                                    console.log('Ticket created')
                                     res.send('Ticket created');
                                 }
                             })
