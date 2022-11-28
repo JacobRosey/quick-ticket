@@ -341,6 +341,9 @@ function useResponse(res) {
                 
             }
         }
+        if(res[0].hasOwnProperty('ticket_id')){
+            console.log('these are tickets')
+        }
     }
     
     if (res == "Team deleted") {
