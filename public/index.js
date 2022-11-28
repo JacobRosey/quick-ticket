@@ -348,7 +348,20 @@ function useResponse(res) {
             const active = window.location.href.replace("https://quick-ticket.herokuapp.com/", "");
             const container = document.getElementById('my-tickets');
             if (active == 'mytickets') {
-                for (let i = 0; i < res.length; i++) {
+                //Consolidate ticket and ticket_data table values
+                for(let i=0; i<res.length; i++){
+                    let id = res[i].ticket_id;
+                    for(let j=0; j<res.length; j++){
+                        if(res[j].ticket_id == id){
+                            res[i].ticket_desc = res[j].ticket_desc;
+                            res[i].img_path = res[j].img_path;
+                            res[i].ticket_priority = res[j].ticket_priority;
+                            //Now that data has been consolidated, remove unnecessary element
+                            res.splice(j, 1)
+                        }
+                    }
+                }
+                for (let i=0; i<res.length; i++) {
                     let status = 'TESTING';
                     /*switch(res[i].ticket_status){
                         case 0: 
