@@ -679,6 +679,7 @@ app.route('/mytickets/:user')
                 }).then((response) => {
                     setTimeout(() => {
                         console.log("returning res: " + response)
+                        console.log(res.length)
                         res.send(response)
                     }, 100)
                 })
