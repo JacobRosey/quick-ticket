@@ -675,15 +675,11 @@ app.route('/mytickets/:user')
                                     db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + arr[i].ticket_id)
                                         .then(([rows, fields]) => {
                                             arr.push(rows[0])
-                                            /*arr[i].ticket_desc = rows[0].ticket_desc;
-                                            arr[i].img_path = rows[0].img_path;
-                                            arr[i].ticket_priority = rows[0].ticket_priority;
-                                            */
                                         }).catch(err => console.log(err))
                                 }).catch(err => console.log(err))
                         }
                         resolve(arr);
-                    }, 100)
+                    }, 50)
                 }).then((response) => {
                     setTimeout(() => {
                         console.log("returning res: " + JSON.stringify(response))
@@ -695,7 +691,7 @@ app.route('/mytickets/:user')
                             }
                         }
                         res.send(response)
-                    }, 150)
+                    }, 100)
                 })
 
             })
