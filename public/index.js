@@ -387,7 +387,7 @@ function useResponse(res) {
                         `
                         <div class="card text-center">
                             <div class="card-header">
-                                <b>Ticket ID#`+res[i].ticket_id+`</b> - <span class="text-muted">
+                                <b>Ticket ID #`+res[i].ticket_id+`</b> - <span class="text-muted">
                                 Created: `+res[i].creation_date+`
                                 </span>
                         </div>
