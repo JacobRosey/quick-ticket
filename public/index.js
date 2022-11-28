@@ -361,6 +361,7 @@ function useResponse(res) {
                         }
                     }
                 }
+                console.log(res)
                 for (let i=0; i<res.length; i++) {
                     let status = 'TESTING';
                     /*switch(res[i].ticket_status){
