@@ -36,11 +36,11 @@ function setActiveLink() {
                 console.log('Starting ajaxfunction on closedtickets page load');
                 ajaxFunc('/closedtickets/' + user + '', 'GET', user)
             }
-            if (active == 'newticket'){
+            if (active == 'newticket') {
                 console.log('Starting ajaxfunction on newticket page load');
                 ajaxFunc('/get-teams/' + user + '/', 'GET', user)
             }
-            if(active == 'mytickets'){
+            if (active == 'mytickets') {
                 console.log('Starting ajaxfunction on mytickets page load');
                 ajaxFunc('/mytickets/' + user + '/', 'GET', user)
             }
@@ -134,14 +134,14 @@ function getLogin() {
 
 }
 
-function newTicket(){
+function newTicket() {
     let user = sessionStorage.getItem('user');
     let team = document.getElementById('team-select-input').value;
     let title = document.getElementById('ticketTitle').value;
     let prio = document.getElementById('ticketPriority').value;
     let desc = document.getElementById('ticketDesc').value;
 
-    if(title.trim() == '' || desc.trim() == ''){
+    if (title.trim() == '' || desc.trim() == '') {
         return alert("Please fill out the form properly!")
     }
 
@@ -154,7 +154,7 @@ function newTicket(){
     }
 
     //Not sure if this is where I need to encodeURIcomponent or not but... figure dat out
-    ajaxFunc('/newticket/'+user+'/'+team+'/'+title+'/'+prio+'/'+desc, 'POST', data)
+    ajaxFunc('/newticket/' + user + '/' + team + '/' + title + '/' + prio + '/' + desc, 'POST', data)
 }
 
 function deleteTeam(num) {
@@ -264,7 +264,7 @@ async function ajaxFunc(path, method, d) {
             } else console.log('status ' + xhr.status)
             //State whether login was successful or not
             var response = xhr.responseText;
-            if(response == "User is not an admin"){
+            if (response == "User is not an admin") {
                 alert("You don't have permission to delete this team!")
             } else {
                 setTimeout(() => {
@@ -309,8 +309,8 @@ function useResponse(res) {
                 </span></div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item" id="team-code" >Invitation Code: <span style="font-weight: 300;">`+ res[i].team_code + `</span></li>
-                    <li class="list-group-item" id="member-count">Total Members: <span style="font-weight: 300;">` +res[i].member_count +`</span></li>
-                    <li class="list-group-item">Team Admin: <span id="admin-name" style="font-weight: 300;">`+res[i].admin_name+`</span></li>
+                    <li class="list-group-item" id="member-count">Total Members: <span style="font-weight: 300;">` + res[i].member_count + `</span></li>
+                    <li class="list-group-item">Team Admin: <span id="admin-name" style="font-weight: 300;">`+ res[i].admin_name + `</span></li>
                 </ul>
                 <a class="btn btn-danger" onClick="deleteTeam(`+ i + `)" role="button" style="font-weight: bold; line-height: 32.5px !important;">Delete Team</a>
                 </div>
@@ -319,38 +319,83 @@ function useResponse(res) {
                 `
             }
         }
-        if(res[0] == 'team_names'){
+        if (res[0] == 'team_names') {
             let teamSelectContainer = document.getElementById('team-select');
             //remove 'team_names' from arr, that only served to show there are multiple teams
             console.log(res);
             res.shift();
             console.log(res);
             teamSelectContainer.innerHTML +=
-            `<div class="form-group">
+                `<div class="form-group">
                 <label for="exampleFormControlSelect1">Select Team</label>
                 <select class="form-control" name="team-select-input" id="team-select-input" required>
                 </select>
             </div>`
 
             let teamSelectInput = document.getElementById('team-select-input');
-            for(let i=0; i<res.length; i++){
-                teamSelectInput.innerHTML += 
+            for (let i = 0; i < res.length; i++) {
+                teamSelectInput.innerHTML +=
                     `
-                    <option>`+res[i]+`</option>
+                    <option>`+ res[i] + `</option>
                     `
-                
+
             }
         }
-        if(res[0].hasOwnProperty('ticket_id')){
-            console.log('these are tickets')
+        if (res[0].hasOwnProperty('ticket_id')) {
+            console.log('these are tickets');
+            //Need to check if this is "my tickets", "closed tickets" or "open tickets" to know 
+            //what to do with response
+            const active = window.location.href.replace("https://quick-ticket.herokuapp.com/", "");
+            const container = document.getElementById('my-tickets');
+            if (active == 'mytickets') {
+                for (let i = 0; i < res.length; i++) {
+                    let status;
+                    switch(res[i].ticket_status.data){
+                        case 0: 
+                        status = 'open';
+                        break;
+                        case 1: 
+                        status = 'In Progress';
+                        break;
+                        case 2: 
+                        status = 'Closed';
+                        break;
+                        default: status = "error"
+                    }
+                    container.innerHTML +=
+                        `
+                        <div class="card text-center">
+                            <div class="card-header">
+                                <b>Ticket ID#`+res[i].ticket_id+`</b> - <span class="text-muted">
+                                Created: `+res[i].creation_date+`
+                                </span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">`+res[i].ticket_title+`</h5>
+                            <p class="card-text">This is the first 100 characters or so of the ticket_desc...</p>
+                            <a href="#" class="btn btn-primary">View Ticket</a>
+                        </div>
+                        <div class="card-footer text-muted">
+                            Opened by: `+res[i].opened_by+` Status: `+status+`
+                        </div>
+                    </div>
+                        `
+                }
+            }
+            if (active == 'opentickets') {
+                console.log('open tickets got response')
+            }
+            if (active == 'closedtickets') {
+                console.log('closed tickets got response')
+            }
         }
     }
-    
+
     if (res == "Team deleted") {
         alert('team deleted')
         location.reload();
     }
-    if (res == "Ticket created"){
+    if (res == "Ticket created") {
         alert(res);
         window.location.replace('/newticket')
     }
