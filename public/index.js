@@ -394,10 +394,11 @@ function useResponse(res) {
                         <div class="card-body">
                             <h5 class="card-title">`+res[i].ticket_title+`</h5>
                             <p class="card-text">`+res[i].ticket_desc+`</p>
+                            <p class="card-text">Priority: `+res[i].ticket_priority+`</p>
                             <a href="#" class="btn btn-primary">View Ticket</a>
                         </div>
                         <div class="card-footer text-muted">
-                            Opened by: `+res[i].opened_by+` Status: `+status+` Priority: `+res[i].ticket_priority+`
+                            Opened by: `+res[i].opened_by+` Status: `+status+`
                         </div>
                     </div>
                         `
