@@ -349,8 +349,8 @@ function useResponse(res) {
             const container = document.getElementById('my-tickets');
             if (active == 'mytickets') {
                 for (let i = 0; i < res.length; i++) {
-                    let status;
-                    switch(res[i].ticket_status){
+                    let status = 'TESTING';
+                    /*switch(res[i].ticket_status){
                         case 0: 
                         status = 'open';
                         break;
@@ -361,7 +361,7 @@ function useResponse(res) {
                         status = 'Closed';
                         break;
                         default: status = "error"
-                    }
+                    }*/
                     container.innerHTML +=
                         `
                         <div class="card text-center">
