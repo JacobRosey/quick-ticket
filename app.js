@@ -674,11 +674,17 @@ app.route('/mytickets/:user')
                                     arr.push(rows[0])
                                 }).catch(err => console.log(err))
                         }
+                        for(let i=0; i<response.length; i++){
+                            db.promise().query("SELECT * FROM Ticket_Data WHERE team_id =" + response[i])
+                                .then(([rows, fields]) => {
+                                    arr.push(rows[0])
+                                }).catch(err => {console.log(err)})
+                        }
                         resolve(arr);
                     }, 50)
                 }).then((response) => {
                     setTimeout(() => {
-                        console.log("returning res: " + response)
+                        console.log("returning res: " + JSON.stringify(response))
                         for(let i=0; i<response.length; i++){
                             if(response[i] == null){
                                 //If null, remove from array.
