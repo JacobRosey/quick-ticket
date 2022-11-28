@@ -350,7 +350,7 @@ function useResponse(res) {
             if (active == 'mytickets') {
                 for (let i = 0; i < res.length; i++) {
                     let status;
-                    switch(res[i].ticket_status.data){
+                    switch(res[i].ticket_status){
                         case 0: 
                         status = 'open';
                         break;
