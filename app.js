@@ -679,12 +679,12 @@ app.route('/mytickets/:user')
                                 }).catch(err => console.log(err))
                         }
                         resolve(arr);
-                    }, 50)
+                    }, 500)
                 }).then((response) => {
                     setTimeout(() => {
                         console.log("returning res: " + JSON.stringify(response))
                         res.send(response)
-                    }, 100)
+                    }, 1000)
                 })
 
             })
