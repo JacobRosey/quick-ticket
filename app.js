@@ -679,7 +679,13 @@ app.route('/mytickets/:user')
                 }).then((response) => {
                     setTimeout(() => {
                         console.log("returning res: " + response)
-                        console.log(response.splice(1,1))
+                        for(let i=0; i<response.length; i++){
+                            if(response[i].length == 'null'){
+                                //If null, remove from array.
+                                //Not sure how null values are getting in array
+                                response[i].splice(i,1)
+                            }
+                        }
                         res.send(response)
                     }, 100)
                 })
