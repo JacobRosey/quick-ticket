@@ -683,7 +683,7 @@ app.route('/mytickets/:user')
                             if(response[i] == null){
                                 //If null, remove from array.
                                 //Not sure how null values are getting in array
-                                response[i].splice(i,1)
+                                response.splice(i,1)
                             }
                         }
                         res.send(response)
