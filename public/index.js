@@ -355,6 +355,9 @@ function useResponse(res) {
                         if(i == j){
                             continue;
                         }
+                        if(res[j] == null){
+                            res.splice(j, 1)
+                        }
                         if(res[j].ticket_id == res[i].ticket_id){
                             console.log("ticket ids match: " + res[j].ticket_id)
                             res[i].ticket_desc = res[j].ticket_desc;
