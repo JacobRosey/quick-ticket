@@ -630,3 +630,62 @@ app.route('/get-teams/:user')
         })
         //res.send(user)
     })
+
+app.route('/mytickets/:user')    
+    .get(function (req, res, err) { 
+    const user = req.params.user;
+    console.log(user);
+
+        const dbPromise = new Promise((resolve, reject) => {
+            db.query("SELECT * FROM users WHERE user_name = '" + user + "'", (err, result) => {
+                if (err) {
+                    console.log(err)
+                    reject('There was an error querying the database');
+                }
+                if (result.length == 0) {
+                    console.log('This user does not exist in DB');
+                    reject('This user does not exist in DB');
+                }
+                if (result.length > 0) {
+                    console.log('This user exists in DB');
+                    let userID = result[0].user_id;
+                    resolve(userID);
+                }
+            })
+        })
+        dbPromise.then((id) => {
+            async function getData() {
+                let teamIDs = [];
+                db.promise().query("SELECT * FROM Members WHERE user_id = " + id + "")
+                    .then(([rows, fields]) => {
+                        for (let i = 0; i < rows.length; i++) {
+                            teamIDs.push(rows[i].team_id);
+                        }
+                    }).catch(console.log)
+                return teamIDs;
+            }
+            getData().then((response) => {
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        let arr = []
+                        for (let i = 0; i < response.length; i++) {
+                            db.promise().query("SELECT * FROM Tickets WHERE team_id = " + response[i])
+                                .then(([rows, fields]) => {
+                                    arr.push(rows[0])
+                                }).catch(err => console.log(err))
+                        }
+                        resolve(arr);
+                    }, 50)
+                }).then((response) => {
+                    setTimeout(() => {
+                        console.log("returning res: " + response)
+                        res.send(JSON.stringify(response))
+                    }, 100)
+                })
+
+            })
+
+        }).catch(err => {
+            console.log(err)
+        })
+    })
