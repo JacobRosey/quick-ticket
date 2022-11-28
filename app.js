@@ -671,7 +671,7 @@ app.route('/mytickets/:user')
                         for (let i = 0; i < response.length; i++) {
                             db.promise().query("SELECT * FROM Tickets WHERE team_id = " + response[i])
                                 .then(([rows, fields]) => {
-                                    arr[i] =rows[0];
+                                    arr.push(rows[0])
                                 }).catch(err => console.log(err))
                         }
                         resolve(arr);
@@ -679,7 +679,7 @@ app.route('/mytickets/:user')
                 }).then((response) => {
                     setTimeout(() => {
                         console.log("returning res: " + response)
-                        console.log(res.length)
+                        console.log(response.length)
                         res.send(response)
                     }, 100)
                 })
