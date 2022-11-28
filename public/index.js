@@ -353,6 +353,7 @@ function useResponse(res) {
                     let id = res[i].ticket_id;
                     for(let j=0; j<res.length; j++){
                         if(res[j].ticket_id == id){
+                            console.log("ticket ids match: " + res[j].ticket_id)
                             res[i].ticket_desc = res[j].ticket_desc;
                             res[i].img_path = res[j].img_path;
                             res[i].ticket_priority = res[j].ticket_priority;
