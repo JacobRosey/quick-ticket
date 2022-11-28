@@ -671,7 +671,7 @@ app.route('/mytickets/:user')
                         for (let i = 0; i < response.length; i++) {
                             db.promise().query("SELECT * FROM Tickets WHERE team_id = " + response[i])
                                 .then(([rows, fields]) => {
-                                    arr.push(rows[0])
+                                    arr[i].push(rows[0])
                                 }).catch(err => console.log(err))
                         }
                         resolve(arr);
