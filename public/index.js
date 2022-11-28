@@ -350,13 +350,12 @@ function useResponse(res) {
             if (active == 'mytickets') {
                 //Consolidate ticket and ticket_data table values
                 for(let i=0; i<res.length; i++){
-                    let id = res[i].ticket_id;
                     for(let j=0; j<res.length; j++){
                         //Need to avoid comparing an index to itself
                         if(i == j){
                             continue;
                         }
-                        if(res[j].ticket_id == id){
+                        if(res[j].ticket_id == res[i].ticket_id){
                             console.log("ticket ids match: " + res[j].ticket_id)
                             res[i].ticket_desc = res[j].ticket_desc;
                             res[i].img_path = res[j].img_path;
