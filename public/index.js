@@ -157,6 +157,10 @@ function newTicket() {
     ajaxFunc('/newticket/' + user + '/' + team + '/' + title + '/' + prio + '/' + desc, 'POST', data)
 }
 
+function claimTicket(id){
+    alert('you claimed the ticket with id number: ' + id);
+}
+
 function deleteTeam(num) {
     //const teamInfoCards = document.getElementsByClassName('team-info');
     const teamName = document.getElementsByClassName('team-name-span');
@@ -396,6 +400,7 @@ function useResponse(res) {
                             <p class="card-text">`+res[i].ticket_desc+`</p>
                             <p class="card-text">Priority: `+res[i].ticket_priority+`</p>
                             <a href="#" class="btn btn-primary">View Ticket</a>
+                            <a onClick="claimTicket(`+res[i].ticket_id+`)" class="btn btn-primary">Claim Ticket</a>
                         </div>
                         <div class="card-footer text-muted">
                             Opened by: `+res[i].opened_by+` Status: `+status+`
