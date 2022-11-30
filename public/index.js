@@ -368,6 +368,8 @@ function useResponse(res) {
                     }
                     if (res[j] == null) {
                         res.splice(j, 1)
+                        console.log('spliced!');
+                        console.log('new arr: '+ res)
                         continue;
                     }
                     if (res[j].ticket_id == res[i].ticket_id) {
