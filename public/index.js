@@ -358,20 +358,19 @@ function useResponse(res) {
             //Need to check if this is "my tickets", "closed tickets" or "open tickets" to know 
             //what to do with response
             const active = window.location.href.replace("https://quick-ticket.herokuapp.com/", "");
-        
+
             //Consolidate ticket and ticket_data table values
             for (let i = 0; i < res.length; i++) {
                 for (let j = 0; j < res.length; j++) {
                     //Need to avoid comparing an index to itself
-                    console.log(res[i].ticket_id, res[j].ticket_id)
                     if (i == j) {
-                        console.log('continuing because '+ i + ' = ' + j)
+                        console.log('continuing because ' + i + ' = ' + j)
                         continue;
                     }
-                    if (res[j] == null || res[j] =='') {
+                    if (res[j] == null || res[j] == '') {
                         res.splice(j, 1)
                         console.log('spliced!');
-                        console.log('new arr: '+ JSON.stringify(res))
+                        console.log('new arr: ' + JSON.stringify(res))
                         continue;
                     }
                     if (res[j].ticket_id == res[i].ticket_id) {
@@ -387,9 +386,9 @@ function useResponse(res) {
             console.log("array before adding html elements: " + res)
             let container;
             if (active == 'opentickets') {
-               container = document.getElementById('open-tickets');
-            } else if (active == 'closedtickets'){
-               container = document.getElementById('closed-tickets');
+                container = document.getElementById('open-tickets');
+            } else if (active == 'closedtickets') {
+                container = document.getElementById('closed-tickets');
             }
             for (let i = 0; i < res.length; i++) {
                 let status = 'TESTING';
