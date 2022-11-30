@@ -366,10 +366,10 @@ function useResponse(res) {
                     if (i == j) {
                         continue;
                     }
-                    if (res[j] == null) {
+                    if (res[j] == null || res[j] =='') {
                         res.splice(j, 1)
                         console.log('spliced!');
-                        console.log('new arr: '+ res)
+                        console.log('new arr: '+ JSON.stringify(res))
                         continue;
                     }
                     if (res[j].ticket_id == res[i].ticket_id) {
