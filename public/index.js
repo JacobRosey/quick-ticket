@@ -383,7 +383,7 @@ function useResponse(res) {
                     }
                 }
             }
-            console.log(res)
+            console.log("array before adding html elements: " + res)
             let container;
             if (active == 'opentickets') {
                container = document.getElementById('open-tickets');
