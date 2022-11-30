@@ -18,10 +18,7 @@ function setActiveLink() {
     let active = window.location.href.replace("https://quick-ticket.herokuapp.com/", "");
     const user = sessionStorage.getItem('user');
     const container = document.getElementById('breadcrumb-container');
-    container.innerHTML += 
-    `
-    <h3>`+ active +`</h3>
-    `
+
 
     //If on login or register page, don't care about nav stuff
     //because it's not visible on screen
@@ -43,11 +40,13 @@ function setActiveLink() {
                     "user": user,
                     "status": 2
                 }
-                ajaxFunc('/ticketdata/' + data.user + '/' + data.status, 'GET', data)
+                ajaxFunc('/ticketdata/' + data.user + '/' + data.status, 'GET', data);
+                container.innerHTML += `<h3>Closed Tickets</h3>`
             }
             if (active == 'newticket') {
                 console.log('Starting ajaxfunction on newticket page load');
                 ajaxFunc('/get-teams/' + user + '/', 'GET', user)
+                container.innerHTML += `<h3>Create New Ticket</h3>`
             }
             if (active == 'opentickets') {
                 console.log('Starting ajaxfunction on opentickets page load');
@@ -55,15 +54,17 @@ function setActiveLink() {
                     "user": user,
                     "status": 0
                 }
-                ajaxFunc('/ticketdata/' + data.user + '/' + data.status, 'GET', data)
+                ajaxFunc('/ticketdata/' + data.user + '/' + data.status, 'GET', data);
+                container.innerHTML += `<h3>Open Tickets</h3>`
             }
-            if (active == 'mytickets'){
+            if (active == 'mytickets') {
                 console.log('Starting ajaxfunction on mytickets page load');
                 const data = {
                     "user": user,
                     "status": 1
                 }
                 ajaxFunc('/ticketdata/' + data.user + '/' + data.status, 'GET', data)
+                container.innerHTML += `<h3>My Tickets</h3>`
             }
             return;
         }
