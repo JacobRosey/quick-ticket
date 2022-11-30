@@ -631,9 +631,10 @@ app.route('/get-teams/:user')
         //res.send(user)
     })
 
-app.route('/opentickets/:user')    
+app.route('/ticketdata/:user/:status')    
     .get(function (req, res, err) { 
     const user = req.params.user;
+    const status = req.params.status
     console.log(user);
 
         const dbPromise = new Promise((resolve, reject) => {
@@ -669,7 +670,7 @@ app.route('/opentickets/:user')
                     setTimeout(() => {
                         let arr = []
                         for (let i = 0; i < response.length; i++) {
-                            db.promise().query("SELECT * FROM Tickets WHERE team_id = " + response[i] + " AND ticket_status = 0")
+                            db.promise().query("SELECT * FROM Tickets WHERE team_id = " + response[i] + " AND ticket_status = " + status)
                                 .then(([rows, fields]) => {
                                     arr.push(rows[0])
                                     db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + arr[i].ticket_id)

@@ -34,7 +34,11 @@ function setActiveLink() {
             navLink.setAttribute("aria-expanded", "true");
             if (active == 'closedtickets') {
                 console.log('Starting ajaxfunction on closedtickets page load');
-                ajaxFunc('/closedtickets/' + user + '', 'GET', user)
+                const data = {
+                    "user": user,
+                    "status": 2
+                }
+                ajaxFunc('/ticketdata/' + user + '', 'GET', data)
             }
             if (active == 'newticket') {
                 console.log('Starting ajaxfunction on newticket page load');
@@ -42,7 +46,11 @@ function setActiveLink() {
             }
             if (active == 'opentickets') {
                 console.log('Starting ajaxfunction on mytickets page load');
-                ajaxFunc('/opentickets/' + user + '/', 'GET', user)
+                const data = {
+                    "user": user,
+                    "status": 0
+                }
+                ajaxFunc('/ticketdata/' + user + '/', 'GET', data)
             }
             return;
         }
