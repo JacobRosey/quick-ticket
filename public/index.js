@@ -412,6 +412,12 @@ function useResponse(res) {
                 status = 'Closed'
                 console.log('closed tickets got response');
             }
+            else if (active == 'mytickets') {
+                container = document.getElementById('my-tickets');
+                btnText = 'Close Ticket';
+                status = 'In Progress'
+                console.log('My tickets got response');
+            }
             for (let i = 0; i < res.length; i++) {
                 container.innerHTML +=
                     `
