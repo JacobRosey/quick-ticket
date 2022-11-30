@@ -368,6 +368,7 @@ function useResponse(res) {
                     }
                     if (res[j] == null) {
                         res.splice(j, 1)
+                        continue;
                     }
                     if (res[j].ticket_id == res[i].ticket_id) {
                         console.log("ticket ids match: " + res[j].ticket_id)
