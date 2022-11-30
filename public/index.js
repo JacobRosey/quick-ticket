@@ -391,10 +391,15 @@ function useResponse(res) {
             }
             console.log("array before adding html elements: " + res)
             let container;
+            let btnText;
             if (active == 'opentickets') {
                 container = document.getElementById('open-tickets');
+                btnText = 'Claim Ticket';
+                console.log('open tickets got response')
             } else if (active == 'closedtickets') {
                 container = document.getElementById('closed-tickets');
+                btnText = 'Re-Open Ticket';
+                console.log('closed tickets got response')
             }
             for (let i = 0; i < res.length; i++) {
                 let status = 'TESTING';
@@ -423,19 +428,13 @@ function useResponse(res) {
                             <p class="card-text">`+ res[i].ticket_desc + `</p>
                             <p class="card-text">Priority: `+ res[i].ticket_priority + `</p>
                             <a href="#" class="btn btn-primary">View Ticket</a>
-                            <a onClick="claimTicket(`+ res[i].ticket_id + `)" class="btn btn-primary">Claim Ticket</a>
+                            <a onClick="claimTicket(`+ res[i].ticket_id + `)" class="btn btn-primary">`+btnText+`</a>
                         </div>
                         <div class="card-footer text-muted">
                             Opened by: `+ res[i].opened_by + ` Status: ` + status + `
                         </div>
                     </div>
                         `
-            }
-            if (active == 'mytickets') {
-                console.log('my tickets got response')
-            }
-            if (active == 'closedtickets') {
-                console.log('closed tickets got response')
             }
         }
     }
