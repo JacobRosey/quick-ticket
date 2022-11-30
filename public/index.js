@@ -358,7 +358,7 @@ function useResponse(res) {
             //Need to check if this is "my tickets", "closed tickets" or "open tickets" to know 
             //what to do with response
             const active = window.location.href.replace("https://quick-ticket.herokuapp.com/", "");
-
+            res = [].concat(...res);
             //Consolidate ticket and ticket_data table values
             for (let i = 0; i < res.length; i++) {
                 for (let j = 0; j < res.length; j++) {
