@@ -380,10 +380,11 @@ function useResponse(res) {
                 }
             }
             console.log(res)
+            let container;
             if (active == 'opentickets') {
-                const container = document.getElementById('open-tickets');
+               container = document.getElementById('open-tickets');
             } else if (active == 'closedtickets'){
-                const container = document.getElementById('closed-tickets');
+               container = document.getElementById('closed-tickets');
             }
             for (let i = 0; i < res.length; i++) {
                 let status = 'TESTING';
