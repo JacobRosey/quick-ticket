@@ -392,29 +392,19 @@ function useResponse(res) {
             console.log("array before adding html elements: " + res)
             let container;
             let btnText;
+            let status;
             if (active == 'opentickets') {
                 container = document.getElementById('open-tickets');
                 btnText = 'Claim Ticket';
-                console.log('open tickets got response')
+                console.log('open tickets got response');
+                status = 'Open';
             } else if (active == 'closedtickets') {
                 container = document.getElementById('closed-tickets');
                 btnText = 'Re-Open Ticket';
-                console.log('closed tickets got response')
+                status = 'Closed'
+                console.log('closed tickets got response');
             }
             for (let i = 0; i < res.length; i++) {
-                let status = 'TESTING';
-                /*switch(res[i].ticket_status){
-                    case 0: 
-                    status = 'open';
-                    break;
-                    case 1: 
-                    status = 'In Progress';
-                    break;
-                    case 2: 
-                    status = 'Closed';
-                    break;
-                    default: status = "error"
-                }*/
                 container.innerHTML +=
                     `
                         <div class="card text-center">
