@@ -669,7 +669,7 @@ app.route('/mytickets/:user')
                     setTimeout(() => {
                         let arr = []
                         for (let i = 0; i < response.length; i++) {
-                            db.promise().query("SELECT * FROM Tickets WHERE team_id = " + response[i] + "AND ticket_status = 0")
+                            db.promise().query("SELECT * FROM Tickets WHERE team_id = " + response[i] + " AND ticket_status = 0")
                                 .then(([rows, fields]) => {
                                     arr.push(rows[0])
                                     db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + arr[i].ticket_id)
