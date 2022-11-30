@@ -38,7 +38,7 @@ function setActiveLink() {
                     "user": user,
                     "status": 2
                 }
-                ajaxFunc('/ticketdata/' + user + '', 'GET', data)
+                ajaxFunc('/ticketdata/' + data.user + '/' + data.status, 'GET', data)
             }
             if (active == 'newticket') {
                 console.log('Starting ajaxfunction on newticket page load');
@@ -50,7 +50,7 @@ function setActiveLink() {
                     "user": user,
                     "status": 0
                 }
-                ajaxFunc('/ticketdata/' + user + '/', 'GET', data)
+                ajaxFunc('/ticketdata/' + data.user + '/' + data.status, 'GET', data)
             }
             return;
         }
