@@ -364,13 +364,10 @@ function useResponse(res) {
                 for (let j = 0; j < res.length; j++) {
                     //Need to avoid comparing an index to itself
                     console.log(res[i].ticket_id, res[j].ticket_id)
-                    if(res.length > 2 ){
-                        if (i == j) {
-                            continue;
-                        }
+                    if (i == j) {
+                        continue;
                     }
-                    
-                    if (res[j] == null || res[j] == '') {
+                    if (res[j] == null || res[j] =='') {
                         res.splice(j, 1)
                         console.log('spliced!');
                         console.log('new arr: '+ JSON.stringify(res))
