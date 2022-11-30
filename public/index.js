@@ -363,6 +363,7 @@ function useResponse(res) {
             for (let i = 0; i < res.length; i++) {
                 for (let j = 0; j < res.length; j++) {
                     //Need to avoid comparing an index to itself
+                    console.log(res[i].ticket_id, res[j].ticket_id)
                     if (i == j) {
                         continue;
                     }
