@@ -165,7 +165,7 @@ function newTicket() {
     ajaxFunc('/newticket/' + user + '/' + team + '/' + title + '/' + prio + '/' + desc, 'POST', data)
 }
 
-function claimTicket(id){
+function claimTicket(id) {
     alert('you claimed the ticket with id number: ' + id);
 }
 
@@ -358,64 +358,67 @@ function useResponse(res) {
             //Need to check if this is "my tickets", "closed tickets" or "open tickets" to know 
             //what to do with response
             const active = window.location.href.replace("https://quick-ticket.herokuapp.com/", "");
-            const container = document.getElementById('open-tickets');
-            if (active == 'opentickets') {
-                //Consolidate ticket and ticket_data table values
-                for(let i=0; i<res.length; i++){
-                    for(let j=0; j<res.length; j++){
-                        //Need to avoid comparing an index to itself
-                        if(i == j){
-                            continue;
-                        }
-                        if(res[j] == null){
-                            res.splice(j, 1)
-                        }
-                        if(res[j].ticket_id == res[i].ticket_id){
-                            console.log("ticket ids match: " + res[j].ticket_id)
-                            res[i].ticket_desc = res[j].ticket_desc;
-                            res[i].img_path = res[j].img_path;
-                            res[i].ticket_priority = res[j].ticket_priority;
-                            //Now that data has been consolidated, remove unnecessary element
-                            res.splice(j, 1)
-                        }
+
+            //Consolidate ticket and ticket_data table values
+            for (let i = 0; i < res.length; i++) {
+                for (let j = 0; j < res.length; j++) {
+                    //Need to avoid comparing an index to itself
+                    if (i == j) {
+                        continue;
+                    }
+                    if (res[j] == null) {
+                        res.splice(j, 1)
+                    }
+                    if (res[j].ticket_id == res[i].ticket_id) {
+                        console.log("ticket ids match: " + res[j].ticket_id)
+                        res[i].ticket_desc = res[j].ticket_desc;
+                        res[i].img_path = res[j].img_path;
+                        res[i].ticket_priority = res[j].ticket_priority;
+                        //Now that data has been consolidated, remove unnecessary element
+                        res.splice(j, 1)
                     }
                 }
-                console.log(res)
-                for (let i=0; i<res.length; i++) {
-                    let status = 'TESTING';
-                    /*switch(res[i].ticket_status){
-                        case 0: 
-                        status = 'open';
-                        break;
-                        case 1: 
-                        status = 'In Progress';
-                        break;
-                        case 2: 
-                        status = 'Closed';
-                        break;
-                        default: status = "error"
-                    }*/
-                    container.innerHTML +=
-                        `
+            }
+            console.log(res)
+            if (active == 'opentickets') {
+                const container = document.getElementById('open-tickets');
+            } else if (active == 'closedtickets'){
+                const container = document.getElementById('closed-tickets');
+            }
+            for (let i = 0; i < res.length; i++) {
+                let status = 'TESTING';
+                /*switch(res[i].ticket_status){
+                    case 0: 
+                    status = 'open';
+                    break;
+                    case 1: 
+                    status = 'In Progress';
+                    break;
+                    case 2: 
+                    status = 'Closed';
+                    break;
+                    default: status = "error"
+                }*/
+                container.innerHTML +=
+                    `
                         <div class="card text-center">
                             <div class="card-header">
-                                <b>Ticket ID #`+res[i].ticket_id+`</b> - <span class="text-muted">
-                                Created: `+res[i].creation_date+`
+                                <b>Ticket ID #`+ res[i].ticket_id + `</b> - <span class="text-muted">
+                                Created: `+ res[i].creation_date + `
                                 </span>
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">`+res[i].ticket_title+`</h5>
-                            <p class="card-text">`+res[i].ticket_desc+`</p>
-                            <p class="card-text">Priority: `+res[i].ticket_priority+`</p>
+                            <h5 class="card-title">`+ res[i].ticket_title + `</h5>
+                            <p class="card-text">`+ res[i].ticket_desc + `</p>
+                            <p class="card-text">Priority: `+ res[i].ticket_priority + `</p>
                             <a href="#" class="btn btn-primary">View Ticket</a>
-                            <a onClick="claimTicket(`+res[i].ticket_id+`)" class="btn btn-primary">Claim Ticket</a>
+                            <a onClick="claimTicket(`+ res[i].ticket_id + `)" class="btn btn-primary">Claim Ticket</a>
                         </div>
                         <div class="card-footer text-muted">
-                            Opened by: `+res[i].opened_by+` Status: `+status+`
+                            Opened by: `+ res[i].opened_by + ` Status: ` + status + `
                         </div>
                     </div>
                         `
-                }
             }
             if (active == 'mytickets') {
                 console.log('my tickets got response')
