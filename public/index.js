@@ -364,7 +364,7 @@ function useResponse(res) {
                 for (let j = 0; j < res.length; j++) {
                     //Need to avoid comparing an index to itself
                     console.log(res[i].ticket_id, res[j].ticket_id)
-                    if (i == j && res.length > 2) {
+                    if (i == j) {
                         console.log('continuing because '+ i + ' = ' + j)
                         continue;
                     }
