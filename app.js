@@ -631,7 +631,7 @@ app.route('/get-teams/:user')
         //res.send(user)
     })
 
-app.route('/mytickets/:user')    
+app.route('/opentickets/:user')    
     .get(function (req, res, err) { 
     const user = req.params.user;
     console.log(user);

@@ -40,9 +40,9 @@ function setActiveLink() {
                 console.log('Starting ajaxfunction on newticket page load');
                 ajaxFunc('/get-teams/' + user + '/', 'GET', user)
             }
-            if (active == 'mytickets') {
+            if (active == 'opentickets') {
                 console.log('Starting ajaxfunction on mytickets page load');
-                ajaxFunc('/mytickets/' + user + '/', 'GET', user)
+                ajaxFunc('/opentickets/' + user + '/', 'GET', user)
             }
             return;
         }
@@ -346,8 +346,8 @@ function useResponse(res) {
             //Need to check if this is "my tickets", "closed tickets" or "open tickets" to know 
             //what to do with response
             const active = window.location.href.replace("https://quick-ticket.herokuapp.com/", "");
-            const container = document.getElementById('my-tickets');
-            if (active == 'mytickets') {
+            const container = document.getElementById('open-tickets');
+            if (active == 'opentickets') {
                 //Consolidate ticket and ticket_data table values
                 for(let i=0; i<res.length; i++){
                     for(let j=0; j<res.length; j++){
@@ -404,8 +404,8 @@ function useResponse(res) {
                         `
                 }
             }
-            if (active == 'opentickets') {
-                console.log('open tickets got response')
+            if (active == 'mytickets') {
+                console.log('my tickets got response')
             }
             if (active == 'closedtickets') {
                 console.log('closed tickets got response')
