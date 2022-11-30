@@ -365,6 +365,7 @@ function useResponse(res) {
                     //Need to avoid comparing an index to itself
                     console.log(res[i].ticket_id, res[j].ticket_id)
                     if (i == j) {
+                        console.log('continuing because '+ i + ' = ' + j)
                         continue;
                     }
                     if (res[j] == null || res[j] =='') {
