@@ -435,7 +435,7 @@ function useResponse(res) {
                             <a onClick="claimTicket(`+ res[i].ticket_id + `)" class="btn btn-primary">` + btnText + `</a>
                         </div>
                         <div class="card-footer text-muted">
-                            <b>Opened by:</b> `+ res[i].opened_by + ` <b>Status:</b> ` + status `
+                            <b>Opened by:</b> `+ res[i].opened_by + ` <b>Status:</b> ` + status + `
                         </div>
                     </div>
                         `
