@@ -368,7 +368,7 @@ function useResponse(res) {
                         continue;
                     }
                     if (res[i] == null || res[i] == '') {
-                        res.splice(j, 1)
+                        res.splice(i, 1)
                         console.log('spliced!');
                         console.log('new arr: ' + JSON.stringify(res))
                         continue;
