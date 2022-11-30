@@ -45,10 +45,18 @@ function setActiveLink() {
                 ajaxFunc('/get-teams/' + user + '/', 'GET', user)
             }
             if (active == 'opentickets') {
-                console.log('Starting ajaxfunction on mytickets page load');
+                console.log('Starting ajaxfunction on opentickets page load');
                 const data = {
                     "user": user,
                     "status": 0
+                }
+                ajaxFunc('/ticketdata/' + data.user + '/' + data.status, 'GET', data)
+            }
+            if (active == 'mytickets'){
+                console.log('Starting ajaxfunction on mytickets page load');
+                const data = {
+                    "user": user,
+                    "status": 1
                 }
                 ajaxFunc('/ticketdata/' + data.user + '/' + data.status, 'GET', data)
             }
@@ -418,7 +426,7 @@ function useResponse(res) {
                             <p class="card-text">`+ res[i].ticket_desc + `</p>
                             <p class="card-text">Priority: `+ res[i].ticket_priority + `</p>
                             <a href="#" class="btn btn-primary">View Ticket</a>
-                            <a onClick="claimTicket(`+ res[i].ticket_id + `)" class="btn btn-primary">`+btnText+`</a>
+                            <a onClick="claimTicket(`+ res[i].ticket_id + `)" class="btn btn-primary">` + btnText + `</a>
                         </div>
                         <div class="card-footer text-muted">
                             Opened by: `+ res[i].opened_by + ` Status: ` + status + `
