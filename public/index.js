@@ -375,11 +375,11 @@ function useResponse(res) {
                     }
                     if (res[j].ticket_id == res[i].ticket_id) {
                         console.log("ticket ids match: " + res[j].ticket_id)
-                        res[i].ticket_desc = res[j].ticket_desc;
+                        /*res[i].ticket_desc = res[j].ticket_desc;
                         res[i].img_path = res[j].img_path;
                         res[i].ticket_priority = res[j].ticket_priority;
                         //Now that data has been consolidated, remove unnecessary element
-                        res.splice(j, 1)
+                        res.splice(j, 1)*/
                     }
                 }
             }
