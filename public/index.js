@@ -17,6 +17,11 @@ function setActiveLink() {
     //Get current page
     let active = window.location.href.replace("https://quick-ticket.herokuapp.com/", "");
     const user = sessionStorage.getItem('user');
+    const container = document.getElementById('breadcrumb-container');
+    container.innerHTML += 
+    `
+    <h3>`+ active +`</h3>
+    `
 
     //If on login or register page, don't care about nav stuff
     //because it's not visible on screen
