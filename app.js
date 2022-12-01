@@ -144,27 +144,29 @@ app.route('/home/:user')
         dbPromise.then(() => {
             let sql = "SELECT * FROM Members WHERE user_id = ?";
             db.promise().query(sql, [userID])
-            .then(([rows, fields]) => {
-                let arr =  [];
-                for(let i=0; i<rows.length; i++){
-                    arr.push(rows[i].team_id)
-                }
-                let sql = "SELECT * FROM Tickets WHERE team_id = ? AND ticket_status = 0";
-                var tickets = 0;
-                for(let i=0; i<arr.length; i++){
-                    db.promise().query(sql, [arr[i]])
-                    .then(([rows, fields]) => {
-                        tickets += rows.length;
-                        console.log(tickets)
-                    })
-                }
-                resolve(tickets.toString())
-            }).then((tickets) => {
-                console.log('Sending response')
-                res.send(tickets)
-            })
+                .then(([rows, fields]) => {
+                    let arr = [];
+                    for (let i = 0; i < rows.length; i++) {
+                        arr.push(rows[i].team_id)
+                    }
+                    let sql = "SELECT * FROM Tickets WHERE team_id = ? AND ticket_status = 0";
+                    var tickets = 0;
+                    for (let i = 0; i < arr.length; i++) {
+                        db.promise().query(sql, [arr[i]])
+                            .then(([rows, fields]) => {
+                                tickets += rows.length;
+                                console.log(tickets)
+                            })
+                    }
+                    resolve(tickets.toString())
+                }).then((tickets) => {
+                    setTimeout(() => {
+                        console.log('Sending response')
+                        res.send(tickets)
+                    }, 75)
+                })
         })
-        
+
     });
 
 app.route('/index/:admin/:team')
@@ -562,7 +564,7 @@ app.route('/delete-team/:user')
 app.route('/newticket/:user/:team/:title/:prio/:desc')
     .post(function (req, res, err) {
         //Need to decodeURIcomponent on parameters here
-        const { user, team, title, prio, desc } =req.params;
+        const { user, team, title, prio, desc } = req.params;
         console.log(user + team + prio + title + desc);
 
         const dbPromise = new Promise((resolve, reject) => {
@@ -590,7 +592,7 @@ app.route('/newticket/:user/:team/:title/:prio/:desc')
                             console.log(err)
                             res.send('Ticket creation failed')
                         } else {
-        
+
                             db.query('INSERT INTO Ticket_Data (ticket_id, ticket_desc, ticket_priority) VALUES (@last_id,"' + db.escape(desc) + '","' + db.escape(prio) + '");', (err, result) => {
                                 if (err) {
                                     console.log(err);
@@ -601,11 +603,11 @@ app.route('/newticket/:user/:team/:title/:prio/:desc')
                                     res.send('Ticket created');
                                 }
                             })
-        
+
                         }
                     })
                 }
-            }); 
+            });
         })
 
     })
@@ -680,11 +682,11 @@ app.route('/get-teams/:user')
         //res.send(user)
     })
 
-app.route('/ticketdata/:user/:status')    
-    .get(function (req, res, err) { 
-    const user = req.params.user;
-    const status = req.params.status
-    console.log(user);
+app.route('/ticketdata/:user/:status')
+    .get(function (req, res, err) {
+        const user = req.params.user;
+        const status = req.params.status
+        console.log(user);
 
         const dbPromise = new Promise((resolve, reject) => {
             db.query("SELECT * FROM users WHERE user_name = '" + user + "'", (err, result) => {
@@ -720,7 +722,7 @@ app.route('/ticketdata/:user/:status')
                         let arr = []
                         //For open/closed tickets
                         console.log(response)
-                        if(status != 1){
+                        if (status != 1) {
                             for (let i = 0; i < response.length; i++) {
                                 db.promise().query("SELECT * FROM Tickets WHERE team_id = " + response[i] + " AND ticket_status = " + status)
                                     .then(([rows, fields]) => {
@@ -735,7 +737,7 @@ app.route('/ticketdata/:user/:status')
                         } else {
                             //For 'My Tickets'
                             for (let i = 0; i < response.length; i++) {
-                                db.promise().query("SELECT * FROM Tickets WHERE team_id = " + response[i] + " AND ticket_holder = '" + user+"'")
+                                db.promise().query("SELECT * FROM Tickets WHERE team_id = " + response[i] + " AND ticket_holder = '" + user + "'")
                                     .then(([rows, fields]) => {
                                         arr.push(rows[0])
                                         db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + arr[i].ticket_id)
@@ -744,7 +746,7 @@ app.route('/ticketdata/:user/:status')
                                             }).catch(err => console.log(err))
                                     }).catch(err => console.log(err))
                             }
-                            resolve(arr); 
+                            resolve(arr);
                         }
                     }, 50)
                 }).then((response) => {
