@@ -121,7 +121,8 @@ app.route('/login/:user/:pass')
 app.route('/home/:user')
     .get(function (req, res, err) {
         console.log('ELLO GUVNA');
-        res.send('Suh')
+        const user = req.params.user;
+        res.send(user)
     });
 
 app.route('/index/:admin/:team')
