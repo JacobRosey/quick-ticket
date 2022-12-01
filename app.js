@@ -158,7 +158,7 @@ app.route('/home/:user')
                                 console.log(tickets)
                             })
                     }
-                    resolve(tickets.toString())
+                    resolve(tickets)
                 }).then((tickets) => {
                     setTimeout(() => {
                         console.log('Sending response')
