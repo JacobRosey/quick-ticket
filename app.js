@@ -118,6 +118,12 @@ app.route('/login/:user/:pass')
             })
     });
 
+app.route('/home/:user')
+    .get(function (req, res, err) {
+        console.log('ELLO GUVNA');
+        res.send('Suh')
+    });
+
 app.route('/index/:admin/:team')
     .post(function (req, res, err) {
         if (err) {

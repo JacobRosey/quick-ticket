@@ -27,6 +27,8 @@ function setActiveLink() {
         text.style.fontWeight = 'bold';
         if (active !== 'home') {
             document.getElementById('home').style.fontWeight = 'normal'
+        } else{
+            ajaxFunc('/home/' + user + '/', 'GET', user)
         }
 
         if (active.includes('ticket')) {
