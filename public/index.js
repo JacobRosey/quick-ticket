@@ -373,39 +373,11 @@ function useResponse(res) {
             //Need to check if this is "my tickets", "closed tickets" or "open tickets" to know 
             //what to do with response
             const active = window.location.href.replace("https://quick-ticket.herokuapp.com/", "");
-            //remove null from array
+            
+            //Remove null from array
             res = res.filter(function (el) {return el!=null;})
-            //Consolidate ticket and ticket_data table values
-            /*
-            for (let i = 0; i < res.length; i++) {
-                for (let j = 0; j < res.length; j++) {
-                    //Need to avoid comparing an index to itself
-                    if (i == j) {
-                        console.log('continuing because ' + i + ' = ' + j)
-                        continue;
-                    }
-                    if (res[i] == null || res[i] == '') {
-                        res.splice(i, 1)
-                        console.log('spliced!');
-                        console.log('new arr: ' + JSON.stringify(res))
-                        continue;
-                    }
-                    if (res[j] == null || res[j] == '') {
-                        res.splice(j, 1)
-                        console.log('spliced!');
-                        console.log('new arr: ' + JSON.stringify(res))
-                        continue;
-                    }
-                    if (res[j].ticket_id == res[i].ticket_id) {
-                        console.log("ticket ids match: " + res[j].ticket_id)
-                        res[i].ticket_desc = res[j].ticket_desc;
-                        res[i].img_path = res[j].img_path;
-                        res[i].ticket_priority = res[j].ticket_priority;
-                        //Now that data has been consolidated, remove unnecessary element
-                        res.splice(j, 1)
-                    }
-                }
-            } */
+            
+            //Consolidate ticket and ticket_data table values       
             res.sort((a, b) => {
                 let count = 0;
                 console.log('Now sorting ticket response');
@@ -416,7 +388,8 @@ function useResponse(res) {
                     a.ticket_priority = b.ticket_priority;
                     a.img_path = b.img_path;
                     let index = res.indexOf(b);
-                    res.splice(index, 1)
+                    console.log('Attempting to splice index ' + index)
+                    res.splice(index, 1);
                     console.log('Data has been joined and spliced! Count: '+ count );
                     count++;
                 }
