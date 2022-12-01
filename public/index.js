@@ -204,7 +204,7 @@ function deleteTeam(num) {
     }
 }
 
-async function ajaxFunc(path, method, d) {
+function ajaxFunc(path, method, d) {
 
     let xhr = new XMLHttpRequest();
     xhr.open(method, path, true);
