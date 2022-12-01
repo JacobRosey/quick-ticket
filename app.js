@@ -170,6 +170,7 @@ app.route('/home/:user')
                     }, 50)
                 })
             }).then((tickets) => {
+                console.log('Sending response')
                 res.send(tickets.toString())
             })
             /*
