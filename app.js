@@ -154,6 +154,7 @@ app.route('/home/:user')
                     db.promise().query(sql, [arr[i]])
                     .then(([rows, fields]) => {
                         tickets += rows.length;
+                        console.log(tickets)
                     })
                 }
                 res.send(tickets.toString())
