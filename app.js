@@ -148,7 +148,7 @@ app.route('/home/:user')
                 for(let i=0; i<rows.length; i++){
                     arr.push(rows[i].team_id)
                 }
-                let sql = "SELECT * FROM Tickets WHERE team_id = ? AND status = 0";
+                let sql = "SELECT * FROM Tickets WHERE team_id = ? AND ticket_status = 0";
                 let tickets;
                 for(let i=0; i<arr.length; i++){
                     db.promise().query(sql, [arr[i]])
