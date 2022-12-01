@@ -122,7 +122,36 @@ app.route('/home/:user')
     .get(function (req, res, err) {
         console.log('ELLO GUVNA');
         const user = req.params.user;
-        res.send(user)
+
+        const dbPromise = new Promise((resolve, reject) => {
+            db.query("SELECT * FROM users WHERE user_name = '" + admin + "'", (err, result) => {
+                if (err) {
+                    console.log(err)
+                    reject();
+                }
+                if (result.length == 0) {
+                    console.log('This user does not exist in DB');
+                    reject();
+                }
+                if (result.length > 0) {
+                    console.log('This user exists in DB');
+                    userID = result[0].user_id;
+                    resolve(userID);
+                }
+            })
+        });
+        dbPromise.then(() => {
+            let sql = "SELECT * FROM Members WHERE user_id = ";
+            db.promise().query(sql, userID)
+            .then(([rows, fields]) => {
+                let arr =  [];
+                for(let i=0; i<rows.length; i++){
+                    arr.push(rows[i].team_id)
+                }
+                res.send(arr)
+            })
+        })
+        
     });
 
 app.route('/index/:admin/:team')
