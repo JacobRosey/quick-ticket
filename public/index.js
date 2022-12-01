@@ -406,6 +406,8 @@ function useResponse(res) {
                 }
             } */
             res.sort((a, b) => {
+                let count = 0;
+                console.log('Now sorting ticket response');
                 if(a.ticket_id === b.ticket_id) {
                     console.log('ID match! ' + a.ticket_id + ' ' + b.ticket_id);
                     a.ticket_desc = b.ticket_desc;
@@ -413,7 +415,11 @@ function useResponse(res) {
                     a.img_path = b.img_path;
                     let index = res.indexOf(b);
                     res.splice(index, 1)
-                    console.log('Data has been joined and spliced!')
+                    console.log('Data has been joined and spliced! Count: '+ count );
+                    count++;
+                }
+                else{
+                    console.log('No match, skipping. Count: ' + count)
                 }
             });
             
