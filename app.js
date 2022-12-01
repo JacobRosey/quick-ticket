@@ -171,37 +171,11 @@ app.route('/home/:user')
                 })
             }).then((tickets) => {
                 setTimeout(()=> {
-                    console.log('Sending response')
+                    console.log('Sending response which is' + tickets)
                     res.send(tickets.toString())
                 },75)
             })
-            /*
-            let sql = "SELECT * FROM Members WHERE user_id = ?";
-            db.promise().query(sql, [userID])
-                .then(([rows, fields]) => {
-                    let arr = [];
-                    for (let i = 0; i < rows.length; i++) {
-                        arr.push(rows[i].team_id)
-                    }
-                    let sql = "SELECT * FROM Tickets WHERE team_id = ? AND ticket_status = 0";
-                    var tickets = 0;
-                    for (let i = 0; i < arr.length; i++) {
-                        db.promise().query(sql, [arr[i]])
-                            .then(([rows, fields]) => {
-                                tickets += rows.length;
-                                console.log(tickets)
-                            })
-                    }
-                    resolve(tickets)
-                }).then((tickets) => {
-                    setTimeout(() => {
-                        console.log('Sending response')
-                        console.log(tickets)
-                        res.send(tickets)
-                    }, 75)
-                })*/
         })
-
     });
 
 app.route('/index/:admin/:team')
