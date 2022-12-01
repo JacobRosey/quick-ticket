@@ -383,6 +383,11 @@ function useResponse(res) {
                 for(let j=i+1; j<res.length; j++){
                     if(res[i].ticket_id == res[j].ticket_id){
                         console.log('Ticket IDs are a match! IDs = '+ res[i].ticket_id);
+                        res[i].ticket_desc = res[j].ticket_desc;
+                        res[i].img_path = res[j].img_path;
+                        res[i].ticket_priority = res[j].ticket_priority;
+                        //Remove res[j] because we just took its data, no longer need it
+                        res.splice(j, 1)
 
                     } else{
                         console.log('Ticket IDs do not match, skipping. IDs = ' + res[i].ticket_id +' '+ res[j].ticket_id)
