@@ -157,6 +157,7 @@ app.route('/home/:user')
                         console.log(tickets)
                     })
                 }
+                console.log('Sending response')
                 res.send(tickets.toString())
             })
         })
