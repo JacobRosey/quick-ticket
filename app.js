@@ -154,13 +154,13 @@ app.route('/home/:user')
                     }).catch(console.log)
                 return arr;
             }
-            getData().then((response) => {
+            getData().then((arr) => {
                 return new Promise((resolve, reject) => {
                     setTimeout(() => {
                         let sql = "SELECT * FROM Tickets WHERE team_id = ? AND ticket_status = 0";
                         var tickets = 0;
                         for (let i = 0; i < arr.length; i++) {
-                            db.promise().query(sql, [response[i]])
+                            db.promise().query(sql, [arr[i]])
                                 .then(([rows, fields]) => {
                                     tickets += rows.length;
                                     console.log(tickets)
