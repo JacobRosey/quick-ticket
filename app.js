@@ -141,8 +141,8 @@ app.route('/home/:user')
             })
         });
         dbPromise.then(() => {
-            let sql = "SELECT * FROM Members WHERE user_id = ";
-            db.promise().query(sql, userID)
+            let sql = "SELECT * FROM Members WHERE user_id = ?";
+            db.promise().query(sql, [userID])
             .then(([rows, fields]) => {
                 let arr =  [];
                 for(let i=0; i<rows.length; i++){
