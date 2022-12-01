@@ -156,7 +156,7 @@ app.route('/home/:user')
                         tickets += rows.length;
                     })
                 }
-                res.send(tickets)
+                res.send(tickets.toString())
             })
         })
         
