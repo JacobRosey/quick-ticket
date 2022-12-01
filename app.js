@@ -170,8 +170,10 @@ app.route('/home/:user')
                     }, 50)
                 })
             }).then((tickets) => {
-                console.log('Sending response')
-                res.send(tickets.toString())
+                setTimeout(()=> {
+                    console.log('Sending response')
+                    res.send(tickets.toString())
+                },75)
             })
             /*
             let sql = "SELECT * FROM Members WHERE user_id = ?";
