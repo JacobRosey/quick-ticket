@@ -159,10 +159,10 @@ app.route('/home/:user')
                     })
                 }
                 resolve(tickets)
+            }).then((tickets) => {
+                console.log('Sending response')
+                res.send(tickets.toString())
             })
-        }).then((tickets) => {
-            console.log('Sending response')
-            res.send(tickets.toString())
         })
         
     });
