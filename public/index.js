@@ -374,7 +374,7 @@ function useResponse(res) {
             //what to do with response
             const active = window.location.href.replace("https://quick-ticket.herokuapp.com/", "");
             //remove null from array
-            res = res.filter(function () {return true;})
+            res = res.filter(function (el) {return el!=null;})
             //Consolidate ticket and ticket_data table values
             /*
             for (let i = 0; i < res.length; i++) {
