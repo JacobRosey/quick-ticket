@@ -162,7 +162,7 @@ app.route('/home/:user')
                 }).then((tickets) => {
                     setTimeout(() => {
                         console.log('Sending response')
-                        res.send(tickets)
+                        res.send(tickets.toString())
                     }, 75)
                 })
         })
