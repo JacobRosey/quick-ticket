@@ -375,6 +375,7 @@ function useResponse(res) {
             const active = window.location.href.replace("https://quick-ticket.herokuapp.com/", "");
 
             //Consolidate ticket and ticket_data table values
+            /*
             for (let i = 0; i < res.length; i++) {
                 for (let j = 0; j < res.length; j++) {
                     //Need to avoid comparing an index to itself
@@ -403,7 +404,19 @@ function useResponse(res) {
                         res.splice(j, 1)
                     }
                 }
-            }
+            } */
+            res.sort((a, b) => {
+                if(a.ticket_id === b.ticket_id) {
+                    console.log('ID match! ' + a.ticket_id + ' ' + b.ticket_id);
+                    a.ticket_desc = b.ticket_desc;
+                    a.ticket_priority = b.ticket_priority;
+                    a.img_path = b.img_path;
+                    let index = res.indexOf(b);
+                    res.splice(index, 1)
+                    console.log('Data has been joined and spliced!')
+                }
+            });
+            
             console.log("array before adding html elements: " + res)
             let container;
             let btnText;
