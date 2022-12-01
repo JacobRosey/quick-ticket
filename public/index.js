@@ -379,22 +379,16 @@ function useResponse(res) {
             console.log(res)
 
             //Consolidate ticket and ticket_data table values       
-            res.sort((a, b) => {
-                console.log('Now sorting ticket response');
-                if(a.ticket_id == b.ticket_id) {
-                    console.log('ID match! ' + a.ticket_id + ' ' + b.ticket_id);
-                    a.ticket_desc = b.ticket_desc;
-                    a.ticket_priority = b.ticket_priority;
-                    a.img_path = b.img_path;
-                    let index = res.indexOf(b);
-                    console.log('Attempting to splice index ' + index)
-                    res.splice(index, 1);
-                    console.log('Data has been joined and spliced');
+            for(let i=0; i< res.length; i++){
+                for(let j=i+1; j<res.length; j++){
+                    if(res[i].ticket_id == res[j].ticket_id){
+                        console.log('Ticket IDs are a match! IDs = '+ res[i].ticket_id);
+
+                    } else{
+                        console.log('Ticket IDs do not match, skipping. IDs = ' + res[i].ticket_id +' '+ res[j].ticket_id)
+                    }
                 }
-                else{
-                    console.log(res.indexOf(a) + 'does not match ' + res.indexOf(b) + '. Skipping.')
-                }
-            });
+            }
             
             console.log("array before adding html elements: " + res)
             let container;
