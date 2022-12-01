@@ -4,6 +4,7 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
+const { resolve } = require('path/posix');
 
 const app = express();
 
@@ -157,9 +158,11 @@ app.route('/home/:user')
                         console.log(tickets)
                     })
                 }
-                console.log('Sending response')
-                res.send(tickets.toString())
+                resolve(tickets)
             })
+        }).then((tickets) => {
+            console.log('Sending response')
+            res.send(tickets.toString())
         })
         
     });
