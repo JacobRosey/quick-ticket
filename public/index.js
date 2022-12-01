@@ -376,12 +376,11 @@ function useResponse(res) {
             
             //Remove null from array
             res = res.filter(function (el) {return el!=null;})
-            
+            console.log(res)
+
             //Consolidate ticket and ticket_data table values       
             res.sort((a, b) => {
-                let count = 0;
                 console.log('Now sorting ticket response');
-                console.log(res)
                 if(a.ticket_id == b.ticket_id) {
                     console.log('ID match! ' + a.ticket_id + ' ' + b.ticket_id);
                     a.ticket_desc = b.ticket_desc;
@@ -390,11 +389,10 @@ function useResponse(res) {
                     let index = res.indexOf(b);
                     console.log('Attempting to splice index ' + index)
                     res.splice(index, 1);
-                    console.log('Data has been joined and spliced! Count: '+ count );
-                    count++;
+                    console.log('Data has been joined and spliced');
                 }
                 else{
-                    console.log('No match, skipping. Count: ' + count)
+                    console.log(res.indexOf(a) + 'does not match ' + res.indexOf(b) + '. Skipping.')
                 }
             });
             
