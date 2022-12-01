@@ -408,6 +408,7 @@ function useResponse(res) {
             res.sort((a, b) => {
                 let count = 0;
                 console.log('Now sorting ticket response');
+                console.log(res)
                 if(a.ticket_id === b.ticket_id) {
                     console.log('ID match! ' + a.ticket_id + ' ' + b.ticket_id);
                     a.ticket_desc = b.ticket_desc;
