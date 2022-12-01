@@ -670,6 +670,7 @@ app.route('/ticketdata/:user/:status')
                     setTimeout(() => {
                         let arr = []
                         //For open/closed tickets
+                        console.log(response)
                         if(status != 1){
                             for (let i = 0; i < response.length; i++) {
                                 db.promise().query("SELECT * FROM Tickets WHERE team_id = " + response[i] + " AND ticket_status = " + status)
