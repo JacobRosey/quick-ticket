@@ -142,6 +142,37 @@ app.route('/home/:user')
             })
         });
         dbPromise.then(() => {
+
+            async function getData() {
+                let arr = [];
+                let sql = "SELECT * FROM Members WHERE user_id = ?";
+                db.promise().query(sql, [userID])
+                    .then(([rows, fields]) => {
+                        for (let i = 0; i < rows.length; i++) {
+                            arr.push(rows[i].team_id)
+                        }
+                    }).catch(console.log)
+                return arr;
+            }
+            getData().then((response) => {
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        let sql = "SELECT * FROM Tickets WHERE team_id = ? AND ticket_status = 0";
+                        var tickets = 0;
+                        for (let i = 0; i < arr.length; i++) {
+                            db.promise().query(sql, [response[i]])
+                                .then(([rows, fields]) => {
+                                    tickets += rows.length;
+                                    console.log(tickets)
+                                })
+                        }
+                        resolve(tickets)
+                    }, 50)
+                })
+            }).then((tickets) => {
+                res.send(tickets.toString())
+            })
+            /*
             let sql = "SELECT * FROM Members WHERE user_id = ?";
             db.promise().query(sql, [userID])
                 .then(([rows, fields]) => {
@@ -165,7 +196,7 @@ app.route('/home/:user')
                         console.log(tickets)
                         res.send(tickets)
                     }, 75)
-                })
+                })*/
         })
 
     });
