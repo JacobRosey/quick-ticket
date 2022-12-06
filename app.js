@@ -167,13 +167,14 @@ app.route('/home/:user')
                                 }).catch(err => {console.log(err)})
                         }
                         resolve(tickets)
-                    }, 50)
+                    
                 }).then((t) => {
                     setTimeout(()=> {
                         console.log('Sending response which is ' + t)
                         res.send(t.toString())
                     },75)
                 })
+            }, 50)
             })
         })
     });
