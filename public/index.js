@@ -308,6 +308,7 @@ function ajaxFunc(path, method, d) {
 }
 
 function useResponse(res) {
+    const active = window.location.href.replace("https://quick-ticket.herokuapp.com/", "");
     //If this is the team page load response
     const container = document.getElementById('team-card-container');
     if (res == "Not on a team") {
@@ -372,9 +373,6 @@ function useResponse(res) {
         }
         if (res[0].hasOwnProperty('ticket_id')) {
             console.log('these are tickets');
-            //Need to check if this is "my tickets", "closed tickets" or "open tickets" to know 
-            //what to do with response
-            const active = window.location.href.replace("https://quick-ticket.herokuapp.com/", "");
             
             //Remove null from array
             res = res.filter(function (el) {return el!=null;})
@@ -401,6 +399,8 @@ function useResponse(res) {
             let container;
             let btnText;
             let status;
+            //Need to check if this is "my tickets", "closed tickets" or "open tickets" to know 
+            //what to do with response
             if (active == 'opentickets') {
                 container = document.getElementById('open-tickets');
                 btnText = 'Claim Ticket';
