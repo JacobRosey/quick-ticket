@@ -155,9 +155,9 @@ app.route('/home/:user')
                 return arr;
             }
             getData().then((arr) => {
+                setTimeout(() => {
                 return new Promise((resolve, reject) => {
                     var tickets = 0;
-                    setTimeout(() => {
                         let sql = "SELECT * FROM Tickets WHERE team_id = ? AND ticket_status = 0";
                         for (let i = 0; i < arr.length; i++) {
                             db.promise().query(sql, [arr[i]])
