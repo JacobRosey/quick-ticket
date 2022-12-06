@@ -151,7 +151,7 @@ app.route('/home/:user')
                         for (let i = 0; i < rows.length; i++) {
                             arr.push(rows[i].team_id)
                         }
-                    }).catch(console.log)
+                    }).catch(err => {console.log(err)})
                 return arr;
             }
             getData().then((arr) => {
@@ -164,7 +164,7 @@ app.route('/home/:user')
                                 .then(([rows, fields]) => {
                                     tickets += rows.length;
                                     console.log(tickets)
-                                })
+                                }).catch(err => {console.log(err)})
                         }
                         resolve(tickets)
                     }, 50)
