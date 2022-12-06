@@ -172,10 +172,10 @@ app.route('/home/:user')
                         resolve(tickets);
                     //},75)
                 }).then((t) => {
-                   // setTimeout(() => {
+                   setTimeout(() => {
                         console.log('Returning tickets which is ' + t)
                         res.send(t.toString());
-                    //},100)
+                    },100)
                 })
             })
         })
