@@ -326,7 +326,7 @@ function useResponse(res) {
     }
     if(active == 'home'){
         let count = document.getElementById('ticket-count');
-        count.innerHTML += res;
+        count.innerHTML = res;
     }
     //If response is an array
     if (Array.isArray(res)) {
