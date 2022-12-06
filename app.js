@@ -168,10 +168,12 @@ app.route('/home/:user')
                                 }).catch(err => { console.log(err) })
                         }
                         resolve(tickets);
-                    }, 100)
+                    }, 50)
                 }).then((t) => {
-                    console.log('Returning tickets which is ' + t)
-                    res.send(t.toString());
+                    setTimeout(() => {
+                        console.log('Returning tickets which is ' + t)
+                        res.send(t.toString());
+                    })
                 })
             })
         })
