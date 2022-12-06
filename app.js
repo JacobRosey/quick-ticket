@@ -167,15 +167,15 @@ app.route('/home/:user')
                                     console.log(tickets)
                                 }).catch(err => { console.log(err) })
                         }
-                    }, 10)
+                    }, 25)
                     setTimeout(() => {
                         resolve(tickets);
-                    },20)
+                    },50)
                 }).then((t) => {
                    setTimeout(() => {
                         console.log('Returning tickets which is ' + t)
                         res.send(t.toString());
-                    },30)
+                    },75)
                 })
             })
         })
