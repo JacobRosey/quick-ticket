@@ -169,14 +169,10 @@ app.route('/home/:user')
                         }
                         return tickets;
                     }
-                    /*
-                    setTimeout(async () => {
-                        let tickets = await getTickets();
+                    setTimeout(() => {
+                        let tickets = getTickets();
                         resolve(tickets)
-                    }, 50)*/
-                    getTickets().then((tickets) => {
-                        resolve(tickets)
-                    })
+                    }, 50)
                 }).then((t) => { //Quite the familiar issue here
                     setTimeout(() => {
                         console.log('Sending response which is ' + t)
