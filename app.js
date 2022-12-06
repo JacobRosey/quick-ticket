@@ -157,18 +157,17 @@ app.route('/home/:user')
             getData().then((arr) => {
                 return new Promise((resolve, reject) => {
                     var tickets = 0;
-                    setTimeout(() => {
-                        let sql = "SELECT * FROM Tickets WHERE team_id = ? AND ticket_status = 0";
-                        for (let i = 0; i < arr.length; i++) {
-                            db.promise().query(sql, [arr[i]])
-                                .then(([rows, fields]) => {
-                                    tickets += rows.length;
-                                    console.log(tickets)
-                                }).catch(err => { console.log(err) })
-                        }
-                        resolve(tickets)
-                    }, 50)
-                }).then((t) => {
+                    let sql = "SELECT * FROM Tickets WHERE team_id = ? AND ticket_status = 0";
+                    for (let i = 0; i < arr.length; i++) {
+                        db.promise().query(sql, [arr[i]])
+                            .then(([rows, fields]) => {
+                                tickets += rows.length;
+                                console.log(tickets)
+                            }).catch(err => { console.log(err) })
+                    }
+                    resolve(tickets)
+
+                }).then((t) => { //Quite the familiar issue here
                     setTimeout(() => {
                         console.log('Sending response which is ' + t)
                         res.send(t.toString())
