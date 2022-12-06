@@ -173,7 +173,7 @@ app.route('/home/:user')
                     setTimeout(() => {
                         console.log('Returning tickets which is ' + t)
                         res.send(t.toString());
-                    })
+                    },100)
                 })
             })
         })
