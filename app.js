@@ -166,8 +166,8 @@ app.route('/home/:user')
                                     console.log(tickets)
                                 })
                         }
+                        resolve(tickets)
                     }, 50)
-                    resolve(tickets)
                 })
             }).then((tickets) => {
                 setTimeout(()=> {
