@@ -169,12 +169,10 @@ app.route('/home/:user')
                         }
                         return tickets;
                     }
-                    setTimeout(() => {
-                        resolve(getTickets())
-                    }, 100)
-                }).then((t) => {
-                    console.log('Returning tickets which is ' + t)
-                    res.send(t.toString())
+                    getTickets().then((t) => {
+                        console.log('Returning tickets which is ' + t)
+                        res.send(t.toString())
+                    })
                 })
             })
         })
