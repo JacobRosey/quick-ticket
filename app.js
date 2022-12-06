@@ -168,10 +168,10 @@ app.route('/home/:user')
                         }
                         resolve(tickets)
                     }, 50)
-                }).then((tickets) => {
+                }).then((t) => {
                     setTimeout(()=> {
-                        console.log('Sending response which is ' + tickets)
-                        res.send(tickets.toString())
+                        console.log('Sending response which is ' + t)
+                        res.send(t.toString())
                     },75)
                 })
             })
