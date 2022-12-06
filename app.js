@@ -169,16 +169,12 @@ app.route('/home/:user')
                         }
                         return tickets;
                     }
-                    setTimeout(async () => {
-                        let tickets = await getTickets();
-                        resolve(tickets)
-                    }, 50)
-                }).then((t) => { //Quite the familiar issue here
-                    console.log('before timeout')
                     setTimeout(() => {
-                        console.log('Sending response which is ' + t)
-                        res.send(t.toString())
-                    }, 75)
+                        resolve(getTickets)
+                    }, 100)
+                }).then((t) => {
+                    console.log('Returning tickets which is ' + t)
+                    res.send(t)
                 })
             })
         })
