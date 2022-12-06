@@ -156,8 +156,8 @@ app.route('/home/:user')
             }
             getData().then((arr) => {
                 return new Promise((resolve, reject) => {
-                    
-                    async function getTickets(){
+
+                    setTimeout(() => {
                         let tickets = 0;
                         let sql = "SELECT * FROM Tickets WHERE team_id = ? AND ticket_status = 0";
                         for (let i = 0; i < arr.length; i++) {
@@ -167,12 +167,11 @@ app.route('/home/:user')
                                     console.log(tickets)
                                 }).catch(err => { console.log(err) })
                         }
-                        return tickets;
-                    }
-                    getTickets().then((t) => {
-                        console.log('Returning tickets which is ' + t)
-                        res.send(t.toString())
-                    })
+                        resolve(tickets);
+                    }, 100)
+                }).then((t) => {
+                    console.log('Returning tickets which is ' + t)
+                    res.send(t.toString());
                 })
             })
         })
