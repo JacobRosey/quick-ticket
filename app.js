@@ -169,8 +169,8 @@ app.route('/home/:user')
                         }
                         return tickets;
                     }
-                    setTimeout(() => {
-                        let tickets = getTickets();
+                    setTimeout(async () => {
+                        let tickets = await getTickets();
                         resolve(tickets)
                     }, 50)
                 }).then((t) => { //Quite the familiar issue here
