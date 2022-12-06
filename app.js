@@ -156,8 +156,9 @@ app.route('/home/:user')
             }
             getData().then((arr) => {
                 return new Promise((resolve, reject) => {
-                    var tickets = 0;
-                    setTimeout(() => {
+                    
+                    async function getTickets(){
+                        let tickets = 0;
                         let sql = "SELECT * FROM Tickets WHERE team_id = ? AND ticket_status = 0";
                         for (let i = 0; i < arr.length; i++) {
                             db.promise().query(sql, [arr[i]])
@@ -166,6 +167,10 @@ app.route('/home/:user')
                                     console.log(tickets)
                                 }).catch(err => { console.log(err) })
                         }
+                        return tickets;
+                    }
+                    setTimeout(async () => {
+                        let tickets = await getTickets();
                         resolve(tickets)
                     }, 50)
                 }).then((t) => { //Quite the familiar issue here
