@@ -151,30 +151,29 @@ app.route('/home/:user')
                         for (let i = 0; i < rows.length; i++) {
                             arr.push(rows[i].team_id)
                         }
-                    }).catch(err => {console.log(err)})
+                    }).catch(err => { console.log(err) })
                 return arr;
             }
             getData().then((arr) => {
-                setTimeout(() => {
                 return new Promise((resolve, reject) => {
                     var tickets = 0;
+                    setTimeout(() => {
                         let sql = "SELECT * FROM Tickets WHERE team_id = ? AND ticket_status = 0";
                         for (let i = 0; i < arr.length; i++) {
                             db.promise().query(sql, [arr[i]])
                                 .then(([rows, fields]) => {
                                     tickets += rows.length;
                                     console.log(tickets)
-                                }).catch(err => {console.log(err)})
+                                }).catch(err => { console.log(err) })
                         }
                         resolve(tickets)
-                    
+                    }, 50)
                 }).then((t) => {
-                    setTimeout(()=> {
+                    setTimeout(() => {
                         console.log('Sending response which is ' + t)
                         res.send(t.toString())
-                    },75)
+                    }, 75)
                 })
-            }, 50)
             })
         })
     });
