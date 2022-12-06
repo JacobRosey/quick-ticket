@@ -170,7 +170,7 @@ app.route('/home/:user')
                         return tickets;
                     }
                     setTimeout(() => {
-                        resolve(getTickets)
+                        resolve(getTickets())
                     }, 100)
                 }).then((t) => {
                     console.log('Returning tickets which is ' + t)
