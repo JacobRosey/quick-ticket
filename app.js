@@ -162,7 +162,7 @@ app.route('/home/:user')
                         for (let i = 0; i < arr.length; i++) {
                             db.promise().query(sql, [arr[i]])
                                 .then(([rows, fields]) => {
-                                    tickets += rows.length;
+                                    tickets = rows.length;
                                     console.log(tickets)
                                 })
                         }
@@ -171,7 +171,7 @@ app.route('/home/:user')
                 })
             }).then((tickets) => {
                 setTimeout(()=> {
-                    console.log('Sending response which is' + tickets)
+                    console.log('Sending response which is ' + tickets)
                     res.send(tickets.toString())
                 },75)
             })
