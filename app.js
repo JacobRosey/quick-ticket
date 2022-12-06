@@ -157,8 +157,8 @@ app.route('/home/:user')
             getData().then((arr) => {
                 return new Promise((resolve, reject) => {
 
+                    let tickets = 0;
                     setTimeout(() => {
-                        let tickets = 0;
                         let sql = "SELECT * FROM Tickets WHERE team_id = ? AND ticket_status = 0";
                         for (let i = 0; i < arr.length; i++) {
                             db.promise().query(sql, [arr[i]])
@@ -167,8 +167,10 @@ app.route('/home/:user')
                                     console.log(tickets)
                                 }).catch(err => { console.log(err) })
                         }
-                        resolve(tickets);
                     }, 50)
+                    setTimeout(() => {
+                        resolve(tickets);
+                    },75)
                 }).then((t) => {
                     setTimeout(() => {
                         console.log('Returning tickets which is ' + t)
