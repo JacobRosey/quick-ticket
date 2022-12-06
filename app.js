@@ -174,6 +174,7 @@ app.route('/home/:user')
                         resolve(tickets)
                     }, 50)
                 }).then((t) => { //Quite the familiar issue here
+                    console.log('before timeout')
                     setTimeout(() => {
                         console.log('Sending response which is ' + t)
                         res.send(t.toString())
