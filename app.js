@@ -168,9 +168,9 @@ app.route('/home/:user')
                                 }).catch(err => { console.log(err) })
                         }
                     }, 50)
-                    //setTimeout(() => {
+                    setTimeout(() => {
                         resolve(tickets);
-                    //},75)
+                    },75)
                 }).then((t) => {
                    setTimeout(() => {
                         console.log('Returning tickets which is ' + t)
