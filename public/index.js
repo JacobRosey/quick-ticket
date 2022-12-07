@@ -182,8 +182,21 @@ function newTicket() {
     ajaxFunc('/newticket/' + user + '/' + team + '/' + title + '/' + prio + '/' + desc, 'POST', data)
 }
 
-function claimTicket(id) {
-    alert('you claimed the ticket with id number: ' + id);
+function changeTicketStatus(id) {
+    let active = window.location.href.replace("https://quick-ticket.herokuapp.com/", ""); 
+    switch(active){
+        case 'mytickets':
+            alert('you closed the ticket with id number: ' + id);
+            break;
+        case 'opentickets':
+            alert('you claimed the ticket with id number: ' + id);
+            break;
+        case 'closedtickets':
+            alert('you re-opened the ticket with id number: ' + id);
+            break;
+        default: 
+        alert('something went horribly wrong')
+    }
 }
 
 function deleteTeam(num) {
@@ -436,7 +449,7 @@ function useResponse(res) {
                             <p class="card-text">`+ res[i].ticket_desc + `</p>
                             <p class="card-text">Priority: `+ res[i].ticket_priority + `</p>
                             <a href="#" class="btn btn-primary">View Ticket</a>
-                            <a onClick="claimTicket(`+ res[i].ticket_id + `)" class="btn btn-primary">` + btnText + `</a>
+                            <a onClick="changeTicketStatus(`+ res[i].ticket_id + `)" class="btn btn-primary">` + btnText + `</a>
                         </div>
                         <div class="card-footer text-muted">
                             <b>Opened by:</b> `+ res[i].opened_by + ` <b>Status:</b> ` + status + `
