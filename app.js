@@ -787,11 +787,13 @@ app.route('/ticketstatus')
                 break;
             //To re-open a ticket
             case 'closedtickets':
-                db.promise().query("UPDATE Tickets SET ticket_holder = null, ticket_status = 0 WHERE ticket_id = " + id)
+                db.promise().query("UPDATE Tickets SET ticket_holder = null, ticket_status = 0 WHERE ticket_id = " + id);
+                res.send('Ticket re-opened');
                 break;
             //To close a ticket
             case 'mytickets':
-                db.promise().query("UPDATE Tickets SET ticket_holder = null, ticket_status = 2, closed_by ='"+user+"' WHERE ticket_id = " + id)
+                db.promise().query("UPDATE Tickets SET ticket_holder = null, ticket_status = 2, closed_by ='"+user+"' WHERE ticket_id = " + id);
+                res.send('Ticket closed');
                 break;
             default: res.send('Something went wrong');
         }
