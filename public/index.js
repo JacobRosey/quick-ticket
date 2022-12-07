@@ -31,6 +31,11 @@ function setActiveLink() {
             ajaxFunc('/home/' + user + '/', 'GET', user)
         }
 
+        if(active == 'performance'){
+            console.log('This is the performance page');
+            return;
+        }
+
         if (active.includes('ticket')) {
             document.getElementById('tickets').style.textDecoration = "underline"
             let navLink = document.getElementById('submenu1');
@@ -76,10 +81,6 @@ function setActiveLink() {
             container.innerHTML += `<h3>My Teams</h3>`
         }
     }
-    if(active == 'performance'){
-        console.log('This is the performance page')
-    }
-
 }
 
 function clickedLogo() {
