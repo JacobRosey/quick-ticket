@@ -77,7 +77,7 @@ function setActiveLink() {
         }
     }
     if(active == 'performance'){
-        alert('performance page')
+        console.log('This is the performance page')
     }
 
 }
