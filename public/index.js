@@ -335,7 +335,7 @@ function useResponse(res) {
         let count = document.getElementById('ticket-count');
         count.innerHTML = res;
     }
-    if(res == 'Ticket claimed'){alert(res)}
+    if(res == 'Ticket claimed'){alert(res); window.location.reload();}
     //If response is an array
     if (Array.isArray(res)) {
         if (res[0].hasOwnProperty('team_id') && res[0].hasOwnProperty('team_name')) {
