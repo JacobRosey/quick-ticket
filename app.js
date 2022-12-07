@@ -735,19 +735,22 @@ app.route('/ticketdata/:user/:status')
                         //For open/closed tickets
                         console.log(response)
                         if (status != 1) {
-                            for (let i = 0; i < response.length; i++) {
-                                db.promise().query("SELECT * FROM Tickets WHERE team_id = " + response[i] + " AND ticket_status = " + status)
-                                    .then(([rows, fields]) => {
-                                        arr.push(rows[0])
-                                        db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + arr[i].ticket_id)
-                                            .then(([rows, fields]) => {
-                                                arr.push(rows[0])
-                                            }).catch(err => console.log(err))
-                                    }).catch(err => console.log(err))
-                            }
-                            resolve(arr);
+                            setTimeout(() => {
+                                for (let i = 0; i < response.length; i++) {
+                                    db.promise().query("SELECT * FROM Tickets WHERE team_id = " + response[i] + " AND ticket_status = " + status)
+                                        .then(([rows, fields]) => {
+                                            arr.push(rows[0])
+                                            db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + arr[i].ticket_id)
+                                                .then(([rows, fields]) => {
+                                                    arr.push(rows[0])
+                                                }).catch(err => console.log(err))
+                                        }).catch(err => console.log(err))
+                                }
+                                resolve(arr);
+                            },100)
                         } else {
                             //For 'My Tickets'
+                            setTimeout(() => {
                             for (let i = 0; i < response.length; i++) {
                                 db.promise().query("SELECT * FROM Tickets WHERE team_id = " + response[i] + " AND ticket_holder = '" + user + "'")
                                     .then(([rows, fields]) => {
@@ -759,6 +762,7 @@ app.route('/ticketdata/:user/:status')
                                     }).catch(err => console.log(err))
                             }
                             resolve(arr);
+                        },100)
                         }
                     }, 50)
                 }).then((response) => {
