@@ -75,9 +75,9 @@ function setActiveLink() {
             ajaxFunc('/team/' + user + '', 'GET', user);
             container.innerHTML += `<h3>My Teams</h3>`
         }
-        if(active == 'performance'){
-            alert('performance page')
-        }
+    }
+    if(active == 'performance'){
+        alert('performance page')
     }
 
 }
