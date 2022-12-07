@@ -65,16 +65,16 @@
             margin-bottom: 2em;
         }
 
-        .container{
+        .container {
             margin-top: 3em;
         }
-        #breadcrumb-container{
+
+        #breadcrumb-container {
             font-weight: bolder;
             float: right;
             margin-bottom: 1em;
             text-decoration: underline;
         }
-        
     </style>
     <nav class="navbar navbar-expand-lg bg-dark" id="click">
         <div class="container-fluid">
@@ -130,24 +130,26 @@
                                     Team</span>
                             </a>
                         </li>
+                        <hr>
+                        <div class="dropdown pb-4" id="user-drop">
+                            <a href="#"
+                                class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                                id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="profimg.png" alt="profilepic" width="30" height="30" class="rounded-circle">
+                                <span class="d-none d-sm-inline mx-1" id="userN">Username</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark text-small shadow"
+                                aria-labelledby="dropdownUser1">
+                                <li><a class="dropdown-item" href="/newticket">New Ticket</a></li>
+                                <li><a class="dropdown-item" href="/mytickets">My Tickets</a></li>
+                                <li><a class="dropdown-item" href="/performance">Performance</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" onClick="logOut();">Sign out</a></li>
+                            </ul>
+                        </div>
                     </ul>
-                    <hr>
-                    <div class="dropdown pb-4" id="user-drop">
-                        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-                            id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="profimg.png" alt="profilepic" width="30" height="30" class="rounded-circle">
-                            <span class="d-none d-sm-inline mx-1" id="userN">Username</span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                            <li><a class="dropdown-item" href="/newticket">New Ticket</a></li>
-                            <li><a class="dropdown-item" href="/mytickets">My Tickets</a></li>
-                            <li><a class="dropdown-item" href="/performance">Performance</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" onClick="logOut();">Sign out</a></li>
-                        </ul>
-                    </div>
                 </div>
             </div>
             <div class="col py-3">
