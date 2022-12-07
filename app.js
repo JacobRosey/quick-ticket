@@ -121,7 +121,6 @@ app.route('/login/:user/:pass')
 
 app.route('/home/:user')
     .get(function (req, res, err) {
-        console.log('ELLO GUVNA');
         const user = req.params.user;
 
         const dbPromise = new Promise((resolve, reject) => {
@@ -780,5 +779,18 @@ app.route('/ticketstatus')
     .put(function (req, res, err) {
         const {user, id, active} = req.body;
         console.log(user, id, active);
-        res.send('Sending res')
+        switch(active){
+            //To claim a ticket
+            case 'opentickets':
+                db.promise().query("UPDATE Tickets SET ticket_holder = '"+user+"', ticket_status = 1 WHERE ticket_id = " + id);
+                res.send('Ticket claimed')
+                break;
+            //To re-open a ticket
+            case 'closedtickets':
+                break;
+            //To close a ticket
+            case 'mytickets':
+                break;
+            default: res.send('Something went wrong');
+        }
     })
