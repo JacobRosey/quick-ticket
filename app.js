@@ -777,7 +777,7 @@ app.route('/ticketdata/:user/:status')
     })
 
 app.route('/ticketstatus')
-    .post(function (req, res, err) {
+    .put(function (req, res, err) {
         const {user, id, active} = req.body;
         console.log(user, id, active);
         res.send('Sending res')
