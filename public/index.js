@@ -183,20 +183,14 @@ function newTicket() {
 }
 
 function changeTicketStatus(id) {
-    let active = window.location.href.replace("https://quick-ticket.herokuapp.com/", ""); 
-    switch(active){
-        case 'mytickets':
-            alert('you closed the ticket with id number: ' + id);
-            break;
-        case 'opentickets':
-            alert('you claimed the ticket with id number: ' + id);
-            break;
-        case 'closedtickets':
-            alert('you re-opened the ticket with id number: ' + id);
-            break;
-        default: 
-        alert('something went horribly wrong')
+    let active = window.location.href.replace("https://quick-ticket.herokuapp.com/", "");
+    let user = sessionStorage.getItem('user'); 
+    let data = {
+        "user":user,
+        "id": id,
+        "active":active
     }
+    ajaxFunc('/ticketstatus/', 'PUT', data)
 }
 
 function deleteTeam(num) {
