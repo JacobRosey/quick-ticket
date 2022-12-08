@@ -792,6 +792,7 @@ app.route('/ticketstatus')
             //To re-open a ticket
             case 'closedtickets':
                 db.promise().query("UPDATE Tickets SET ticket_holder = null, ticket_status = 0 WHERE ticket_id = " + id);
+                db.promise().query("UPDATE Users SET tickets_opened = tickets_opened + 1 WHERE user_name = '" + user + "'");
                 res.send('Ticket re-opened');
                 break;
             //To close a ticket
