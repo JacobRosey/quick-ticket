@@ -806,6 +806,14 @@ app.route('/ticketstatus')
 app.route('/performance/:user')
     .get(function (req, res, err) {
         const user = req.params;
-        console.log('performance route reached')
-        res.send(user)
+        let ticketsOpened;
+        let ticketsClosed;
+        db.promise().query("SELECT * FROM Users WHERE user_name = '"+ user +"'")
+            .then(([rows, fields]) => {
+                ticketsOpened = rows[0].tickets_opened;
+                ticketsClosed = rows[0].tickets_closed;
+            })
+        let arr = [ticketsOpened, ticketsClosed];
+        console.log(arr)
+        res.send(arr)
     })
