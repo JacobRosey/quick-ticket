@@ -809,8 +809,8 @@ app.route('/performance/:user')
         let arr = [];
         db.promise().query("SELECT * FROM Users WHERE user_name = '" + user + "'")
             .then(([rows, fields]) => {
-                arr.push(rows[0].tickets_opened);
-                arr.push(rows[0].tickets_closed);
+                arr.push(rows[0].tickets_opened.toString());
+                arr.push(rows[0].tickets_closed.toString());
             })
         setTimeout(() => {
             console.log(arr)
