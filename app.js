@@ -805,8 +805,9 @@ app.route('/ticketstatus')
     })
 app.route('/performance/:user')
     .get(function (req, res, err) {
-        const user = req.params;
-        db.promise().query("SELECT * FROM Users WHERE user_name = " + user + "")
+        const user = req.body;
+        console.log(user)
+        db.promise().query("SELECT * FROM Users WHERE user_name = '" + user + "'")
             .then(([rows, fields]) => {
                 console.log(rows)
             })
