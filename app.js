@@ -169,12 +169,12 @@ app.route('/home/:user')
                     }, 25)
                     setTimeout(() => {
                         resolve(tickets);
-                    },50)
+                    }, 50)
                 }).then((t) => {
-                   setTimeout(() => {
+                    setTimeout(() => {
                         console.log('Returning tickets which is ' + t)
                         res.send(t.toString());
-                    },75)
+                    }, 75)
                 })
             })
         })
@@ -611,7 +611,7 @@ app.route('/newticket/:user/:team/:title/:prio/:desc')
                                 }
                                 else {
                                     console.log('Ticket created');
-                                    db.promise().query("UPDATE Users SET tickets_opened = tickets_opened + 1 WHERE user_name = '" + user+"'");
+                                    db.promise().query("UPDATE Users SET tickets_opened = tickets_opened + 1 WHERE user_name = '" + user + "'");
                                     res.send('Ticket created');
                                 }
                             })
@@ -747,22 +747,22 @@ app.route('/ticketdata/:user/:status')
                                         }).catch(err => console.log(err))
                                 }
                                 resolve(arr);
-                            },100)
+                            }, 100)
                         } else {
                             //For 'My Tickets'
                             setTimeout(() => {
-                            for (let i = 0; i < response.length; i++) {
-                                db.promise().query("SELECT * FROM Tickets WHERE team_id = " + response[i] + " AND ticket_holder = '" + user + "'")
-                                    .then(([rows, fields]) => {
-                                        arr.push(rows[0])
-                                        db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + arr[i].ticket_id)
-                                            .then(([rows, fields]) => {
-                                                arr.push(rows[0])
-                                            }).catch(err => console.log(err))
-                                    }).catch(err => console.log(err))
-                            }
-                            resolve(arr);
-                        },100)
+                                for (let i = 0; i < response.length; i++) {
+                                    db.promise().query("SELECT * FROM Tickets WHERE team_id = " + response[i] + " AND ticket_holder = '" + user + "'")
+                                        .then(([rows, fields]) => {
+                                            arr.push(rows[0])
+                                            db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + arr[i].ticket_id)
+                                                .then(([rows, fields]) => {
+                                                    arr.push(rows[0])
+                                                }).catch(err => console.log(err))
+                                        }).catch(err => console.log(err))
+                                }
+                                resolve(arr);
+                            }, 100)
                         }
                     }, 50)
                 }).then((response) => {
@@ -781,12 +781,12 @@ app.route('/ticketdata/:user/:status')
 
 app.route('/ticketstatus')
     .put(function (req, res, err) {
-        const {user, id, active} = req.body;
+        const { user, id, active } = req.body;
         console.log(user, id, active);
-        switch(active){
+        switch (active) {
             //To claim a ticket
             case 'opentickets':
-                db.promise().query("UPDATE Tickets SET ticket_holder = '"+user+"', ticket_status = 1 WHERE ticket_id = " + id);
+                db.promise().query("UPDATE Tickets SET ticket_holder = '" + user + "', ticket_status = 1 WHERE ticket_id = " + id);
                 res.send('Ticket claimed')
                 break;
             //To re-open a ticket
@@ -796,15 +796,15 @@ app.route('/ticketstatus')
                 break;
             //To close a ticket
             case 'mytickets':
-                db.promise().query("UPDATE Tickets SET ticket_holder = null, ticket_status = 2, closed_by ='"+user+"' WHERE ticket_id = " + id);
+                db.promise().query("UPDATE Tickets SET ticket_holder = null, ticket_status = 2, closed_by ='" + user + "' WHERE ticket_id = " + id);
                 res.send('Ticket closed');
                 break;
             default: res.send('Something went wrong');
         }
     })
-app.route('/performance')
-.get(function (req, res, err) { 
-    const user = req.params;
-    console.log('performance route reached')
-    res.send(user)
-})
+app.route('/performance/:user')
+    .get(function (req, res, err) {
+        const user = req.params;
+        console.log('performance route reached')
+        res.send(user)
+    })
