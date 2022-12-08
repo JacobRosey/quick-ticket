@@ -819,5 +819,9 @@ app.route('/performance/:user')
                 console.log(rows.length);
                 arr.push(rows.length)
             })
-        res.send(arr)
+        setTimeout(() => {
+            console.log('sending res')
+            res.send(arr)
+        },50)
+        
     })
