@@ -346,6 +346,10 @@ function useResponse(res) {
         }
     }
     
+    if(active =='performance'){
+        alert(res.tickets_opened, ' ', res.tickets_closed)
+    }
+
     //If response is an array
     if (Array.isArray(res)) {
         if (res[0].hasOwnProperty('team_id') && res[0].hasOwnProperty('team_name')) {
