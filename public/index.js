@@ -33,6 +33,7 @@ function setActiveLink() {
         
         if(active == 'performance'){
             console.log('This is the performance page');
+            ajaxFunc('/performance/'+user+'/', 'GET', user)
             return;
         }
 

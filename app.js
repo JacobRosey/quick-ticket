@@ -802,3 +802,9 @@ app.route('/ticketstatus')
             default: res.send('Something went wrong');
         }
     })
+app.route('/performance')
+.get(function (req, res, err) { 
+    const user = req.params;
+    console.log('performance route reached')
+    res.send(user)
+})
