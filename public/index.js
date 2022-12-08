@@ -160,7 +160,6 @@ function getLogin() {
         ajaxFunc('/login/' + data.user + '/' + data.pass + '', "GET", data);
         checkForUser();
     }
-
 }
 
 function newTicket() {
