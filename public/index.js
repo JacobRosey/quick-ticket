@@ -351,7 +351,7 @@ function useResponse(res) {
         let closedHTML = document.getElementById('closed-html');
         openHTML.innerHTML += 
         `
-        You have opened a total of `+res.tickets_opened+`tickets.
+        You have opened a total of `+res.tickets_opened+` tickets.
         `;
         closedHTML.innerHTML +=
         `
