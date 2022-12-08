@@ -808,6 +808,6 @@ app.route('/performance/:user')
         const user = req.params;
         db.promise().query("SELECT * FROM Users WHERE user_name = '" + user + "'")
             .then(([rows, fields]) => {
-                console.log(rows[0])
+                console.log(rows)
             })
     })
