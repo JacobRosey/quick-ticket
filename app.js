@@ -808,9 +808,16 @@ app.route('/performance/:user')
     .get(function (req, res, err) {
         const user = req.params.user;
         console.log(user)
+        let arr = [];
         db.promise().query("SELECT * FROM Users WHERE user_name = '" + user + "'")
             .then(([rows, fields]) => {
                 console.log(rows[0])
-                res.send(rows[0])
+                arr.push(rows[0]);
             })
+        db.promise().query("SELECT * FROM Tickets WHERE ticket_holder = '"+ user + "'")
+            .then(([rows, fields]) => {
+                console.log(rows.length);
+                arr.push(rows.length)
+            })
+        res.send(arr)
     })
