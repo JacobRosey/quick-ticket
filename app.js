@@ -813,6 +813,6 @@ app.route('/performance/:user')
             })
         setTimeout(() => {
             console.log(arr)
-            res.send(JSON.parse(arr))
+            res.send(arr)
         },50)
     })
