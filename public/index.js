@@ -347,7 +347,16 @@ function useResponse(res) {
     }
     
     if(active =='performance'){
-        alert(res.tickets_opened, ' ', res.tickets_closed)
+        let openHTML = document.getElementById('open-html');
+        let closedHTML = document.getElementById('closed-html');
+        openHTML.innerHTML += 
+        `
+        You have opened a total of `+res.tickets_opened+`tickets.
+        `;
+        closedHTML.innerHTML +=
+        `
+        You have closed a total of `+res.tickets_closed+` tickets.
+        `
     }
 
     //If response is an array
