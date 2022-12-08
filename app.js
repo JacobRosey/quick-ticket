@@ -797,7 +797,7 @@ app.route('/ticketstatus')
             //To close a ticket
             case 'mytickets':
                 db.promise().query("UPDATE Tickets SET ticket_holder = null, ticket_status = 2, closed_by ='" + user + "' WHERE ticket_id = " + id);
-                db.promise().query("UPDATE Users SET tickets_closed = tickets_closed + 1 WHERE user_name = '"+ user + "'");
+                db.promise().query("UPDATE Users SET tickets_closed = tickets_closed + 1 WHERE user_name = '" + user + "'");
                 res.send('Ticket closed');
                 break;
             default: res.send('Something went wrong');
@@ -807,12 +807,13 @@ app.route('/performance/:user')
     .get(function (req, res, err) {
         const user = req.params;
         let arr = [];
-        db.promise().query("SELECT * FROM Users WHERE user_name = '"+ user +"'")
+        db.promise().query("SELECT * FROM Users WHERE user_name = '" + user + "'")
             .then(([rows, fields]) => {
-                let ticketsOpened = rows[0].tickets_opened;
-                let ticketsClosed = rows[0].tickets_closed;
-                arr.push(ticketsOpened, ticketsClosed);
+                arr.push(rows[0].tickets_opened);
+                arr.push(rows[0].tickets_closed);
             })
-        console.log(arr)
-        res.send(arr)
+        setTimeout(() => {
+            console.log(arr)
+            res.send(arr)
+        },50)
     })
