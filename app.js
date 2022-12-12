@@ -762,7 +762,7 @@ app.route('/ticketdata/:user/:status')
                                                 }).catch(err => console.log(err))
                                         }).catch(err => console.log(err))
                                 }*/
-                                await promise.all(response.map(async res => {
+                                await Promise.all(response.map(async res => {
                                     console.log(`${res}`)
                                 }))
                                 resolve(arr);
