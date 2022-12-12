@@ -757,8 +757,8 @@ app.route('/ticketdata/:user/:status')
                         }, 50)
                     } else {
                         //For 'My Tickets'
-                        
-                            Promise.all(response.map(async res => {
+                        setTimeout(async () => {
+                            await Promise.all(response.map(async res => {
                                 //let i = response.indexOf(res);
                                 console.log(`now getting tickets where ticket id = ${res}`)
                                 db.promise().query("SELECT * FROM Tickets WHERE team_id = " + res + " AND ticket_holder = '" + user + "'")
@@ -777,6 +777,7 @@ app.route('/ticketdata/:user/:status')
                                 })
                             }))
                             resolve(arr);
+                        }, 50)
                     }
 
                 }).then((response) => {
