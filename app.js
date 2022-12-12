@@ -747,7 +747,7 @@ app.route('/ticketdata/:user/:status')
                                         }).catch(err => console.log(err))
                                 }
                                 resolve(arr);
-                            }, 100)
+                            }, 50)
                         } else {
                             //For 'My Tickets'
                             setTimeout(() => {
@@ -762,9 +762,9 @@ app.route('/ticketdata/:user/:status')
                                         }).catch(err => console.log(err))
                                 }
                                 resolve(arr);
-                            }, 100)
+                            }, 50)
                         }
-                    }, 50)
+                    }, 25)
                 }).then((response) => {
                     setTimeout(() => {
                         console.log("returning res: " + JSON.stringify(response))
