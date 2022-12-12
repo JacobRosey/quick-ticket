@@ -750,7 +750,7 @@ app.route('/ticketdata/:user/:status')
                             }, 50)
                         } else {
                             //For 'My Tickets'
-                            setTimeout(async() => {
+                            setTimeout(async () => {
                                 /*for (let i = 0; i < response.length; i++) {
                                     db.promise().query("SELECT * FROM Tickets WHERE team_id = " + response[i] + " AND ticket_holder = '" + user + "'")
                                         .then(([rows, fields]) => {
@@ -763,7 +763,14 @@ app.route('/ticketdata/:user/:status')
                                         }).catch(err => console.log(err))
                                 }*/
                                 await Promise.all(response.map(async res => {
-                                    console.log(`${res}`)
+                                    db.promise().query("SELECT * FROM Tickets WHERE team_id = " + res + " AND ticket_holder = '" + user + "'")
+                                        .then(([rows, fields]) => {
+                                            arr.push(rows[0])
+                                            db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + arr[i].ticket_id)
+                                                .then(([rows, fields]) => {
+                                                    arr.push(rows[0])
+                                                }).catch(err => console.log(err))
+                                        }).catch(err => console.log(err))
                                 }))
                                 resolve(arr);
                             }, 50)
@@ -818,7 +825,7 @@ app.route('/performance/:user')
                 console.log(rows[0])
                 arr.push(rows[0]);
             })
-        db.promise().query("SELECT * FROM Tickets WHERE ticket_holder = '"+ user + "'")
+        db.promise().query("SELECT * FROM Tickets WHERE ticket_holder = '" + user + "'")
             .then(([rows, fields]) => {
                 console.log(rows.length);
                 arr.push(rows.length)
@@ -826,6 +833,6 @@ app.route('/performance/:user')
         setTimeout(() => {
             console.log('sending res')
             res.send(arr)
-        },50)
-        
+        }, 50)
+
     })
