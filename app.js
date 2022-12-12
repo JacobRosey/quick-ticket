@@ -765,17 +765,17 @@ app.route('/ticketdata/:user/:status')
                                     .then(([rows, fields]) => {
                                         console.log('pushing this row: ' + rows)
                                         arr.push(rows)
-                                    }).catch(err => console.log(err))
-                                
-                                console.log('Should be doing second .map now')
-                                arr.map(async row => {
-                                    db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + row.ticket_id)
-                                    .then(([rows, fields]) => {
-                                        console.log('Pushing this row: ' + rows[0])
-                                        console.log('Inside the second Promise.all')
-                                        arr.push(rows[0])
-                                    }).catch(err => console.log(err))
-                                })
+                                    }).then(() => {
+                                        console.log('Should be doing second .map now')
+                                        arr.map(async row => {
+                                            db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + row.ticket_id)
+                                                .then(([rows, fields]) => {
+                                                    console.log('Pushing this row: ' + rows[0])
+                                                    console.log('Inside the second promise')
+                                                    arr.push(rows[0])
+                                                }).catch(err => console.log(err))
+                                        })
+                                    })
                             }))
                             resolve(arr);
                         }, 50)
