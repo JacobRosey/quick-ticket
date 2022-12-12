@@ -761,19 +761,19 @@ app.route('/ticketdata/:user/:status')
                             await Promise.all(response.map(async res => {
                                 //let i = response.indexOf(res);
                                 console.log(`now getting tickets where ticket id = ${res}`)
+                                let index;
                                 db.promise().query("SELECT * FROM Tickets WHERE team_id = " + res + " AND ticket_holder = '" + user + "'")
                                     .then(([rows, fields]) => {
                                         console.log('pushing this row: ' + rows)
                                         arr.push(rows)
-                                        let index = arr.indexOf(rows);
-                                        console.log('Querying for this index: ' + index);
-                                        db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + arr[index].ticket_id)
-                                            .then(([rows, fields]) => {
-                                                console.log('Pushing this row: ' + rows[0])
-                                                console.log('Inside the second Promise.all')
-                                                arr.push(rows[0])
-                                            }).catch(err => console.log(err))
-
+                                        index = arr.indexOf(rows);
+                                    }).catch(err => console.log(err))
+                                console.log('Querying for this index: ' + index);
+                                db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + arr[index].ticket_id)
+                                    .then(([rows, fields]) => {
+                                        console.log('Pushing this row: ' + rows[0])
+                                        console.log('Inside the second Promise.all')
+                                        arr.push(rows[0])
                                     }).catch(err => console.log(err))
                             }))
                             resolve(arr);
