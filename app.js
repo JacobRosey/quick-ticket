@@ -750,8 +750,8 @@ app.route('/ticketdata/:user/:status')
                             }, 50)
                         } else {
                             //For 'My Tickets'
-                            setTimeout(() => {
-                                for (let i = 0; i < response.length; i++) {
+                            setTimeout(async() => {
+                                /*for (let i = 0; i < response.length; i++) {
                                     db.promise().query("SELECT * FROM Tickets WHERE team_id = " + response[i] + " AND ticket_holder = '" + user + "'")
                                         .then(([rows, fields]) => {
                                             arr.push(rows[0])
@@ -761,7 +761,10 @@ app.route('/ticketdata/:user/:status')
                                                     arr.push(rows[0])
                                                 }).catch(err => console.log(err))
                                         }).catch(err => console.log(err))
-                                }
+                                }*/
+                                await promise.all(response.map(async res => {
+                                    console.log(`${res}`)
+                                }))
                                 resolve(arr);
                             }, 50)
                         }
