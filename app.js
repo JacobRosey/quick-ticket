@@ -769,12 +769,16 @@ app.route('/ticketdata/:user/:status')
                                         .then(([rows, fields]) => {
                                             console.log('pushing this row: ' + rows)
                                             arr.push(rows)
-                                            db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + rows[0].ticket_id)
+                                        }).catch(err => console.log(err))
+                                }))
+                                await Promise.all(arr.map(async rows => {
+                                    let index = arr.indexOf(rows);
+                                    console.log('Querying for this index: ' + index);
+                                    db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + arr[index].ticket_id)
                                                 .then(([rows, fields]) => {
                                                     console.log('Pushing this row: ' + rows[0])
                                                     arr.push(rows[0])
                                                 }).catch(err => console.log(err))
-                                        }).catch(err => console.log(err))
                                 }))
                                 resolve(arr);
                             }, 50)
