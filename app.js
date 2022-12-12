@@ -765,9 +765,9 @@ app.route('/ticketdata/:user/:status')
                                     .then(([rows, fields]) => {
                                         console.log('pushing this row: ' + rows)
                                         arr.push(rows)
-                                        return i;
+                                        resolve(i);
                                     }).then((i) => {
-                                        console.log('Should be doing second .map now for ticket id '+ arr[i].ticket_id)
+                                        console.log('Should be doing second query now for ticket id '+ arr[i].ticket_id)
                                             db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + arr[i].ticket_id)
                                                 .then(([rows, fields]) => {
                                                     console.log('Pushing this row: ' + rows[0])
