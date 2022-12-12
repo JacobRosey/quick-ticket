@@ -767,6 +767,7 @@ app.route('/ticketdata/:user/:status')
                                         arr.push(rows)
                                     }).catch(err => console.log(err))
                                 
+                                console.log('Should be doing second .map now')
                                 arr.map(async row => {
                                     db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + row.ticket_id)
                                     .then(([rows, fields]) => {
