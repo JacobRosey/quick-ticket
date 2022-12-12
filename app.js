@@ -777,7 +777,7 @@ app.route('/ticketdata/:user/:status')
                                 })
                             }))
                             resolve(arr);
-                        }, 50)
+                        }, 150)
                     }
 
                 }).then((response) => {
