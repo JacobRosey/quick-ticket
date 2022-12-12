@@ -777,8 +777,8 @@ app.route('/ticketdata/:user/:status')
                                             arr.push(rows[0])
                                         }).catch(err => console.log(err))
                                 }))
+                                resolve(arr);
                             })
-                            resolve(arr);
                         }, 50)
                     }
 
