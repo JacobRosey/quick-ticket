@@ -783,7 +783,7 @@ app.route('/ticketdata/:user/:status')
 
                 }).then((response) => {
                     setTimeout(() => {
-                        response = [].concat(...response);
+                        //response = [].concat(...response);
                         console.log("returning res: " + JSON.stringify(response))
                         res.send(response)
                     }, 100)
