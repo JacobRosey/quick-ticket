@@ -759,22 +759,21 @@ app.route('/ticketdata/:user/:status')
                         //For 'My Tickets'
                         setTimeout(async () => {
                             await Promise.all(response.map(async res => {
-                                //let i = response.indexOf(res);
+                                let i = response.indexOf(res);
                                 console.log(`now getting tickets where ticket id = ${res}`)
                                 db.promise().query("SELECT * FROM Tickets WHERE team_id = " + res + " AND ticket_holder = '" + user + "'")
                                     .then(([rows, fields]) => {
                                         console.log('pushing this row: ' + rows)
                                         arr.push(rows)
-                                    }).then(() => {
+                                        return i;
+                                    }).then((i) => {
                                         console.log('Should be doing second .map now')
-                                        arr.map(async row => {
-                                            db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + row.ticket_id)
+                                            db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + arr[i].ticket_id)
                                                 .then(([rows, fields]) => {
                                                     console.log('Pushing this row: ' + rows[0])
                                                     console.log('Inside the second promise')
                                                     arr.push(rows[0])
-                                                }).catch(err => console.log(err))
-                                        })
+                                            }).catch(err => console.log(err))
                                     })
                             }))
                             resolve(arr);
