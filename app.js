@@ -740,10 +740,12 @@ app.route('/ticketdata/:user/:status')
                                     db.promise().query("SELECT * FROM Tickets WHERE team_id = " + response[i] + " AND ticket_status = " + status)
                                         .then(([rows, fields]) => {
                                             arr.push(rows[0])
+                                            setTimeout(() =>{
                                             db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + arr[i].ticket_id)
                                                 .then(([rows, fields]) => {
                                                     arr.push(rows[0])
                                                 }).catch(err => console.log(err))
+                                            },50)
                                         }).catch(err => console.log(err))
                                 }
                                 resolve(arr);
@@ -755,10 +757,12 @@ app.route('/ticketdata/:user/:status')
                                     db.promise().query("SELECT * FROM Tickets WHERE team_id = " + response[i] + " AND ticket_holder = '" + user + "'")
                                         .then(([rows, fields]) => {
                                             arr.push(rows[0])
+                                            setTimeout(() => {
                                             db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + arr[i].ticket_id)
                                                 .then(([rows, fields]) => {
                                                     arr.push(rows[0])
                                                 }).catch(err => console.log(err))
+                                            },50)
                                         }).catch(err => console.log(err))
                                 }
                                 resolve(arr);
