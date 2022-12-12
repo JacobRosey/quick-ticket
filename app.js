@@ -763,11 +763,14 @@ app.route('/ticketdata/:user/:status')
                                         }).catch(err => console.log(err))
                                 }*/
                                 await Promise.all(response.map(async res => {
+                                    console.log(`now getting tickets where ticket id = ${res}`)
                                     db.promise().query("SELECT * FROM Tickets WHERE team_id = " + res + " AND ticket_holder = '" + user + "'")
                                         .then(([rows, fields]) => {
+                                            console.log('pushing this row: ' + rows[0])
                                             arr.push(rows[0])
                                             db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + res.ticket_id)
                                                 .then(([rows, fields]) => {
+                                                    console.log('Pushing this row: ' + rows[0])
                                                     arr.push(rows[0])
                                                 }).catch(err => console.log(err))
                                         }).catch(err => console.log(err))
