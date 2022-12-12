@@ -765,20 +765,19 @@ app.route('/ticketdata/:user/:status')
                                     .then(([rows, fields]) => {
                                         console.log('pushing this row: ' + rows)
                                         arr.push(rows)
+                                        Promise.all(arr.map(async rows => {
+                                            let index = arr.indexOf(rows);
+                                            console.log('Querying for this index: ' + index);
+                                            db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + arr[index].ticket_id)
+                                                .then(([rows, fields]) => {
+                                                    console.log('Pushing this row: ' + rows[0])
+                                                    console.log('Inside the second Promise.all')
+                                                    arr.push(rows[0])
+                                                }).catch(err => console.log(err))
+                                        }))
                                     }).catch(err => console.log(err))
-                            })).then(async () => {
-                                await Promise.all(arr.map(async rows => {
-                                    let index = arr.indexOf(rows);
-                                    console.log('Querying for this index: ' + index);
-                                    db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + arr[index].ticket_id)
-                                        .then(([rows, fields]) => {
-                                            console.log('Pushing this row: ' + rows[0])
-                                            console.log('Inside the second Promise.all')
-                                            arr.push(rows[0])
-                                        }).catch(err => console.log(err))
-                                }))
-                                resolve(arr);
-                            })
+                            }))
+                            resolve(arr);
                         }, 50)
                     }
 
