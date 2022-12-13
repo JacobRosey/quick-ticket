@@ -760,11 +760,11 @@ app.route('/ticketdata/:user/:status')
                         setTimeout(async () => {
                             await Promise.all(response.map(async res => {
                                 console.log(`now getting tickets where ticket id = ${res}`)
-                                let index = 0;
+                                //let index = 0;
                                 await db.promise().query("SELECT * FROM Tickets WHERE team_id = " + res + " AND ticket_holder = '" + user + "'")
                                     .then(([rows, fields]) => {
                                         arr.push(rows)
-                                    }).then(() => {
+                                    })/*.then(() => {
                                         arr = [].concat(...arr);
                                         console.log('Now querying DB for this ticket id: ' + arr[index].ticket_id)
                                         db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + arr[index].ticket_id)
@@ -772,12 +772,20 @@ app.route('/ticketdata/:user/:status')
                                                 arr.push(rows)
                                                 index++;
                                             }).catch(err => console.log(err))
-                                    })
+                                    })*/
                             }))
                             resolve(arr);
                         }, 50)
                     }
-
+                }).then((arr) => {
+                    let data = []
+                    arr.forEach(async(row) => {
+                        await db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + row.ticket_id)
+                        .then(([rows, fields]) => {
+                            data.push(rows[0])
+                        })
+                    })
+                    console.log(data)
                 }).then((response) => {
                     setTimeout(() => {
                         response = [].concat(...response);
