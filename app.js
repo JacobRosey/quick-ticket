@@ -765,29 +765,29 @@ app.route('/ticketdata/:user/:status')
                                         console.log('pushing this row: ' + rows)
                                         arr.push(rows)
                                     }).catch(err => console.log(err))
-                                    
-                            })).then(() => {
-                                arr = [].concat(...arr);
-                                Promise.all(arr.map(async row => {
-                                    console.log('Now querying DB for this ticket id: ' + row.ticket_id)
-                                    db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + row.ticket_id)
-                                        .then(([rows, fields]) => {
-                                            console.log('Inside the second query')
-                                            console.log(rows)
-                                            arr.push(rows)
-                                    }).catch(err => console.log(err))
-                                }))
-                            })
+
+                            }))
                             resolve(arr);
                         }, 50)
                     }
 
-                }).then((response) => {
-                    setTimeout(() => {
-                        response = [].concat(...response);
-                        console.log("returning res: " + JSON.stringify(response))
-                        res.send(response)
+                }).then((arr) => {
+                    setTimeout(async () => {
+                        await Promise.all(arr.map(async row => {
+                            console.log('Now querying DB for this ticket id: ' + row.ticket_id)
+                            db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + row.ticket_id)
+                                .then(([rows, fields]) => {
+                                    console.log('Inside the second query')
+                                    console.log(rows)
+                                    arr.push(rows)
+                                }).catch(err => console.log(err))
+                        }))
+                        resolve(arr)
                     }, 150)
+                }).then((response) => {
+                    response = [].concat(...response);
+                    console.log("returning res: " + JSON.stringify(response))
+                    res.send(response)
                 })
 
             })
