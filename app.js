@@ -763,7 +763,6 @@ app.route('/ticketdata/:user/:status')
                                 let index = 0;
                                 await db.promise().query("SELECT * FROM Tickets WHERE team_id = " + res + " AND ticket_holder = '" + user + "'")
                                     .then(([rows, fields]) => {
-                                        console.log('pushing this row: ' + rows)
                                         arr.push(rows)
                                     }).then(async () => {
                                         arr = [].concat(...arr);
