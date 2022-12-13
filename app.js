@@ -772,7 +772,7 @@ app.route('/ticketdata/:user/:status')
                                                 console.log('Inside the second query')
                                                 console.log(rows)
                                                 arr.push(rows)
-                                                index++;
+                                                index = index+1;
                                             }).catch(err => console.log(err))
 
                                     })
