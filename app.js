@@ -767,13 +767,13 @@ app.route('/ticketdata/:user/:status')
                                 arr = [].concat(...arr);
                             }))
 
-                            await arr.forEach(async(row => {
+                            await arr.forEach(async (row) => {
                                 console.log('Now querying DB for this ticket id: ' + row.ticket_id)
                                 db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + row.ticket_id)
                                     .then(([rows, fields]) => {
                                         arr.push(rows)
                                     }).catch(err => console.log(err))
-                            }))
+                            })
                             resolve(arr);
                         }, 50)
                     }
