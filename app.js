@@ -785,9 +785,11 @@ app.route('/ticketdata/:user/:status')
                         resolve(arr)
                     }, 100)
                 }).then((response) => {
-                    response = [].concat(...response);
-                    console.log("returning res: " + JSON.stringify(response))
-                    res.send(response)
+                    setTimeout(() => {
+                        response = [].concat(...response);
+                        console.log("returning res: " + JSON.stringify(response))
+                        res.send(response)
+                    }, 150)
                 })
 
             })
