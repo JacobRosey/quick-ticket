@@ -743,8 +743,6 @@ app.route('/ticketdata/:user/:status')
                                         arr.push(rows)
                                     }).catch(err => console.log(err))
                             }))
-                        }, 50)
-                        setTimeout(async () => {
                             await Promise.all(arr.map(async rows => {
                                 let index = arr.indexOf(rows);
                                 console.log('Querying for this index: ' + index);
@@ -774,7 +772,7 @@ app.route('/ticketdata/:user/:status')
                                             db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + arr[i].ticket_id)
                                                 .then(([rows, fields]) => {
                                                     console.log('Inside the second query')
-                                                    console.log(rows[0].toJSON())
+                                                    console.log(rows.toJSON())
                                                     console.log('Pushing this row: ' + rows)
                                                     arr.push(rows)
                                             }).catch(err => console.log(err))
