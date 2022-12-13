@@ -729,7 +729,7 @@ app.route('/ticketdata/:user/:status')
                 return teamIDs;
             }
             getData().then((response) => {
-                return new Promise((resolve, reject) => {
+                return new Promise(async (resolve, reject) => {
                     let arr = []
                     //For open/closed tickets
                     console.log(response)
@@ -757,7 +757,7 @@ app.route('/ticketdata/:user/:status')
                         }, 100)
                     } else {
                         //For 'My Tickets'
-                        setTimeout(async () => {
+                        //setTimeout(async () => {
                             await Promise.all(response.map(async res => {
                                 console.log(`now getting tickets where ticket id = ${res}`)
                                 db.promise().query("SELECT * FROM Tickets WHERE team_id = " + res + " AND ticket_holder = '" + user + "'")
@@ -779,7 +779,7 @@ app.route('/ticketdata/:user/:status')
                                 }))
                             })
                             resolve(arr);
-                        }, 50)
+                        //}, 50)
                     }
 
                 }).then((response) => {
