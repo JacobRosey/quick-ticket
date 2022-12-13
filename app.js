@@ -769,7 +769,7 @@ app.route('/ticketdata/:user/:status')
                                     }).then((i) => {
                                         arr = [].concat(...arr);
                                         console.log('Should be doing second query now for index ' + i)
-                                            db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + arr[i].ticket_id)
+                                            db.query("SELECT * FROM Ticket_Data WHERE ticket_id = " + arr[i].ticket_id)
                                                 .then(([rows, fields]) => {
                                                     console.log('Inside the second query')
                                                     console.log(rows)
