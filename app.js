@@ -758,7 +758,9 @@ app.route('/ticketdata/:user/:status')
                     } else {
                         //For 'My Tickets'
                         setTimeout(async () => {
+                            let index = -1;
                             await Promise.all(response.map(async res => {
+                                index++;
                                 console.log(`now getting tickets where ticket id = ${res}`)
                                 db.promise().query("SELECT * FROM Tickets WHERE team_id = " + res + " AND ticket_holder = '" + user + "'")
                                     .then(([rows, fields]) => {
@@ -766,15 +768,15 @@ app.route('/ticketdata/:user/:status')
                                         arr.push(rows)
                                     }).then(() => {
                                         arr = [].concat(...arr);
-                                        arr.forEach(async row => {
-                                            console.log('Now querying DB for this ticket id: ' + row.ticket_id)
-                                            db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + row.ticket_id)
+                                        //arr.forEach(async row => {
+                                            console.log('Now querying DB for this ticket id: ' + arr[index].ticket_id)
+                                            db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + arr[index].ticket_id)
                                                 .then(([rows, fields]) => {
                                                     console.log('Inside the second query')
                                                     console.log(rows)
                                                     arr.push(rows)
                                             }).catch(err => console.log(err))
-                                        })
+                                        //})
                                     })
                                     
                             }))
