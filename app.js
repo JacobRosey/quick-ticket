@@ -773,7 +773,7 @@ app.route('/ticketdata/:user/:status')
                                                 .then(([rows, fields]) => {
                                                     console.log('Inside the second query')
                                                     console.log(rows)
-                                                    console.log('Pushing this row: ' + rows[0])
+                                                    console.log('Pushing this row: ' + rows[0][0])
                                                     arr.push(rows[0])
                                             }).catch(err => console.log(err))
                                     })
