@@ -742,6 +742,7 @@ app.route('/ticketdata/:user/:status')
                                         console.log('pushing this row: ' + rows)
                                         arr.push(rows)
                                     }).catch(err => console.log(err))
+                                    arr = [].concat(...arr)
                             }))
                             await arr.forEach(async (row) => {
                                 console.log('Now querying DB for this ticket id: ' + row.ticket_id)
