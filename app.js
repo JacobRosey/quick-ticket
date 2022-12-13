@@ -764,9 +764,9 @@ app.route('/ticketdata/:user/:status')
                                     .then(([rows, fields]) => {
                                         console.log('pushing this row: ' + rows)
                                         arr.push(rows)
-                                    }).then(async () => {
+                                    }).then(() => {
                                         arr = [].concat(...arr);
-                                        await Promise.all(arr.forEach(async row => {
+                                        arr.forEach(async row => {
                                             console.log('Now querying DB for this ticket id: ' + row.ticket_id)
                                             db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + row.ticket_id)
                                                 .then(([rows, fields]) => {
@@ -774,7 +774,7 @@ app.route('/ticketdata/:user/:status')
                                                     console.log(rows)
                                                     arr.push(rows)
                                             }).catch(err => console.log(err))
-                                        }))
+                                        })
                                     })
                                     
                             }))
