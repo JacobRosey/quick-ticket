@@ -765,18 +765,14 @@ app.route('/ticketdata/:user/:status')
                                     .then(([rows, fields]) => {
                                         arr.push(rows)
                                     }).then(() => {
-                                        setTimeout(() => {
-                                            arr = [].concat(...arr);
-                                            console.log('Now querying DB for this ticket id: ' + arr[index].ticket_id)
-                                            db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + arr[index].ticket_id)
-                                                .then(([rows, fields]) => {
-                                                    arr.push(rows)
-                                                    index++;
-                                                }).catch(err => console.log(err))
-
-                                        },25)
+                                        arr = [].concat(...arr);
+                                        console.log('Now querying DB for this ticket id: ' + arr[index].ticket_id)
+                                        db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + arr[index].ticket_id)
+                                            .then(([rows, fields]) => {
+                                                arr.push(rows)
+                                                index++;
+                                            }).catch(err => console.log(err))
                                     })
-
                             }))
                             resolve(arr);
                         }, 50)
