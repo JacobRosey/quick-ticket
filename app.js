@@ -783,7 +783,7 @@ app.route('/ticketdata/:user/:status')
                                 }).catch(err => console.log(err))
                         }))
                         resolve(arr)
-                    }, 150)
+                    }, 100)
                 }).then((response) => {
                     response = [].concat(...response);
                     console.log("returning res: " + JSON.stringify(response))
