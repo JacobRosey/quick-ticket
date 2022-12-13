@@ -732,14 +732,12 @@ app.route('/ticketdata/:user/:status')
                 return new Promise((resolve, reject) => {
                     let arr = []
                     //For open/closed tickets
-                    console.log(response)
                     if (status != 1) {
                         setTimeout(async () => {
                             await Promise.all(response.map(async res => {
                                 console.log(`now getting tickets where ticket id = ${res}`)
-                                db.promise().query("SELECT * FROM Tickets WHERE team_id = " + res + " AND ticket_status = '" + status + "'")
+                                await db.promise().query("SELECT * FROM Tickets WHERE team_id = " + res + " AND ticket_status = '" + status + "'")
                                     .then(([rows, fields]) => {
-                                        console.log('pushing this row: ' + rows)
                                         arr.push(rows)
                                     }).catch(err => console.log(err))
                                     arr = [].concat(...arr)
