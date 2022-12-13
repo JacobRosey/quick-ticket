@@ -765,7 +765,8 @@ app.route('/ticketdata/:user/:status')
                                         console.log('pushing this row: ' + rows)
                                         arr.push(rows)
                                     })
-                            })).then(async () => {
+                                    return arr;
+                            })).then(async (arr) => {
                                 arr = [].concat(...arr);
                                 await Promise.all(arr.map(async row => {
                                     console.log('Now querying DB for this ticket id: ' + row.ticket_id)
