@@ -758,7 +758,7 @@ app.route('/ticketdata/:user/:status')
                     } else {
                         //For 'My Tickets'
                         setTimeout(async () => {
-                            let index = 0;
+                            var index = 0;
                             await Promise.all(response.map(async res => {
                                 console.log(`now getting tickets where ticket id = ${res}`)
                                 db.promise().query("SELECT * FROM Tickets WHERE team_id = " + res + " AND ticket_holder = '" + user + "'")
