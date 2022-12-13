@@ -758,10 +758,8 @@ app.route('/ticketdata/:user/:status')
                     } else {
                         //For 'My Tickets'
                         setTimeout(async () => {
-                            let index = -1;
+                            let index = 0;
                             await Promise.all(response.map(async res => {
-                                index++;
-                                console.log('index is ' + index)
                                 console.log(`now getting tickets where ticket id = ${res}`)
                                 db.promise().query("SELECT * FROM Tickets WHERE team_id = " + res + " AND ticket_holder = '" + user + "'")
                                     .then(([rows, fields]) => {
@@ -775,6 +773,8 @@ app.route('/ticketdata/:user/:status')
                                                 console.log('Inside the second query')
                                                 console.log(rows)
                                                 arr.push(rows)
+                                                index++;
+                                                console.log('index is ' + index)
                                             }).catch(err => console.log(err))
 
                                     })
