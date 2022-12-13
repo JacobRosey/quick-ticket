@@ -759,22 +759,22 @@ app.route('/ticketdata/:user/:status')
                         //For 'My Tickets'
                         setTimeout(async () => {
                             await Promise.all(response.map(async res => {
-                                let i = response.indexOf(res);
                                 console.log(`now getting tickets where ticket id = ${res}`)
                                 db.promise().query("SELECT * FROM Tickets WHERE team_id = " + res + " AND ticket_holder = '" + user + "'")
                                     .then(([rows, fields]) => {
                                         console.log('pushing this row: ' + rows)
                                         arr.push(rows)
-                                        return i;
-                                    }).then((i) => {
+                                    }).then(async () => {
                                         arr = [].concat(...arr);
-                                        console.log('Now querying DB for this ticket id: ' + arr[i].ticket_id)
-                                            db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + arr[i].ticket_id)
+                                        await Promise.all(arr.map(async row => {
+                                            console.log('Now querying DB for this ticket id: ' + row.ticket_id)
+                                            db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + row.ticket_id)
                                                 .then(([rows, fields]) => {
                                                     console.log('Inside the second query')
                                                     console.log(rows)
                                                     arr.push(rows)
                                             }).catch(err => console.log(err))
+                                        }))
                                     })
                             }))
                             resolve(arr);
