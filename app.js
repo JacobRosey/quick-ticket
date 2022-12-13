@@ -765,25 +765,23 @@ app.route('/ticketdata/:user/:status')
                                         console.log('pushing this row: ' + rows)
                                         arr.push(rows)
                                     }).catch(err => console.log(err))
-
-                            }))
+                                    
+                            })).then(async () => {
+                                arr = [].concat(...arr);
+                                await Promise.all(arr.map(async row => {
+                                    console.log('Now querying DB for this ticket id: ' + row.ticket_id)
+                                    db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + row.ticket_id)
+                                        .then(([rows, fields]) => {
+                                            console.log('Inside the second query')
+                                            console.log(rows)
+                                            arr.push(rows)
+                                    }).catch(err => console.log(err))
+                                }))
+                            })
                             resolve(arr);
                         }, 50)
                     }
 
-                }).then((arr) => {
-                    setTimeout(async () => {
-                        await Promise.all(arr.map(async row => {
-                            console.log('Now querying DB for this ticket id: ' + row.ticket_id)
-                            db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + row.ticket_id)
-                                .then(([rows, fields]) => {
-                                    console.log('Inside the second query')
-                                    console.log(rows)
-                                    arr.push(rows)
-                                }).catch(err => console.log(err))
-                        }))
-                        resolve(arr)
-                    }, 100)
                 }).then((response) => {
                     setTimeout(() => {
                         response = [].concat(...response);
