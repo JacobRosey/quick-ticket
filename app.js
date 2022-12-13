@@ -775,6 +775,7 @@ app.route('/ticketdata/:user/:status')
                                                 arr.push(rows)
                                                 index++;
                                                 console.log('index is ' + index)
+                                                console.log(arr)
                                             }).catch(err => console.log(err))
 
                                     })
