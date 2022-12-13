@@ -766,15 +766,17 @@ app.route('/ticketdata/:user/:status')
                                         arr.push(rows)
                                     }).then(async () => {
                                         arr = [].concat(...arr);
+                                        let data = []
                                         await Promise.all(arr.map(async row => {
                                             console.log('Now querying DB for this ticket id: ' + row.ticket_id)
                                             db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + row.ticket_id)
                                                 .then(([rows, fields]) => {
                                                     console.log('Inside the second query')
                                                     console.log(rows)
-                                                    arr.push(rows)
+                                                    data.push(rows)
                                             }).catch(err => console.log(err))
                                         }))
+                                        arr.push(data)
                                     })
                                     
                             }))
