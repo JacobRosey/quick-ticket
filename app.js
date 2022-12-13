@@ -743,18 +743,15 @@ app.route('/ticketdata/:user/:status')
                                         arr.push(rows)
                                     }).catch(err => console.log(err))
                             }))
-                            await Promise.all(arr.map(async rows => {
-                                let index = arr.indexOf(rows);
-                                console.log('Querying for this index: ' + index);
-                                db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + arr[index].ticket_id)
+                            await arr.forEach(async (row) => {
+                                console.log('Now querying DB for this ticket id: ' + row.ticket_id)
+                                db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + row.ticket_id)
                                     .then(([rows, fields]) => {
-                                        console.log('Pushing this row: ' + rows[0]);
-                                        console.log('Inside the second Promise.all')
-                                        arr.push(rows[0])
+                                        arr.push(rows)
                                     }).catch(err => console.log(err))
-                            }))
+                            })
                             resolve(arr);
-                        }, 100)
+                        }, 50)
                     } else {
                         //For 'My Tickets'
                         setTimeout(async () => {
@@ -767,6 +764,8 @@ app.route('/ticketdata/:user/:status')
                                 arr = [].concat(...arr);
                             }))
 
+                            //Not sure why this works because I'm looping through each element of arr
+                            //while simultaneously adding elements to the arr. I expected an infinite loop
                             await arr.forEach(async (row) => {
                                 console.log('Now querying DB for this ticket id: ' + row.ticket_id)
                                 db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + row.ticket_id)
