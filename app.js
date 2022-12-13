@@ -772,7 +772,7 @@ app.route('/ticketdata/:user/:status')
                                             db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + row.ticket_id)
                                                 .then(([rows, fields]) => {
                                                     console.log('Inside the second query')
-                                                    console.log(rows)
+                                                    //console.log(rows)
                                                     data.push(rows)
                                             }).catch(err => console.log(err))
                                         }))
