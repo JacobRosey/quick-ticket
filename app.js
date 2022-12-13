@@ -743,6 +743,8 @@ app.route('/ticketdata/:user/:status')
                                         arr.push(rows)
                                     }).catch(err => console.log(err))
                             }))
+                        }, 50)
+                        setTimeout(async () => {
                             await Promise.all(arr.map(async rows => {
                                 let index = arr.indexOf(rows);
                                 console.log('Querying for this index: ' + index);
@@ -754,7 +756,7 @@ app.route('/ticketdata/:user/:status')
                                     }).catch(err => console.log(err))
                             }))
                             resolve(arr);
-                        }, 50)
+                        }, 100)
                     } else {
                         //For 'My Tickets'
                         setTimeout(async () => {
