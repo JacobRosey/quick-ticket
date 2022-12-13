@@ -255,8 +255,10 @@ function ajaxFunc(path, method, d) {
                     useResponse("Not on a team");
                     break;
                 default:
-                    console.log("response is " + response);
-                    useResponse(JSON.parse(response))
+                    setTimeout(() => {
+                        console.log("response is " + response);
+                        useResponse(JSON.parse(response))
+                    },100)
 
             }
         }
