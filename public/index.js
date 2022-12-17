@@ -341,13 +341,9 @@ function useResponse(res) {
         let count = document.getElementById('ticket-count');
         count.innerHTML = res;
     }
-    if(active.includes('ticket')){
-        //New ticket
-        if(res.includes('Ticket')){
-            alert(res); 
-            window.location.reload();
-        }
-        if (res[0].hasOwnProperty('team_id') && res[0].hasOwnProperty('team_name')) {
+    if(active == 'team'){
+        //My Teams
+        //if (res[0].hasOwnProperty('team_id') && res[0].hasOwnProperty('team_name')) {
 
             for (let i = 0; i < res.length; i++) {
                 container.innerHTML += `
@@ -369,7 +365,15 @@ function useResponse(res) {
                 </div>
                 `
             }
+        //}
+    }
+    if(active.includes('ticket')){
+        //New ticket created
+        if(res.includes('Ticket')){
+            alert(res); 
+            window.location.reload();
         }
+        //Before new ticket creation
         if (res[0] == 'team_names') {
             let teamSelectContainer = document.getElementById('team-select');
             //remove 'team_names' from arr, that only served to show there are multiple teams
