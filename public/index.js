@@ -342,32 +342,11 @@ function useResponse(res) {
         count.innerHTML = res;
     }
     if(active.includes('ticket')){
+        //New ticket
         if(res.includes('Ticket')){
             alert(res); 
             window.location.reload();
         }
-    }
-    
-    if(active =='performance'){
-        let openHTML = document.getElementById('open-html');
-        let closedHTML = document.getElementById('closed-html');
-        let holdHTML = document.getElementById('hold-html')
-        openHTML.innerHTML += 
-        `
-        You have opened a total of `+res[0].tickets_opened+` tickets.
-        `;
-        closedHTML.innerHTML +=
-        `
-        You have closed a total of `+res[0].tickets_closed+` tickets.
-        `
-        holdHTML.innerHTML += 
-        `
-        You are currently working on `+ res[1] +` tickets.
-        `
-    }
-
-    //If response is an array
-    if (Array.isArray(res)) {
         if (res[0].hasOwnProperty('team_id') && res[0].hasOwnProperty('team_name')) {
 
             for (let i = 0; i < res.length; i++) {
@@ -484,11 +463,31 @@ function useResponse(res) {
             }
         }
     }
-
+    
+    if(active =='performance'){
+        let openHTML = document.getElementById('open-html');
+        let closedHTML = document.getElementById('closed-html');
+        let holdHTML = document.getElementById('hold-html')
+        openHTML.innerHTML += 
+        `
+        You have opened a total of `+res[0].tickets_opened+` tickets.
+        `;
+        closedHTML.innerHTML +=
+        `
+        You have closed a total of `+res[0].tickets_closed+` tickets.
+        `
+        holdHTML.innerHTML += 
+        `
+        You are currently working on `+ res[1] +` tickets.
+        `
+    }
+    
+    //After deleting a team
     if (res == "Team deleted") {
         alert('team deleted')
         location.reload();
     }
+    //After creating a ticket
     if (res == "Ticket created") {
         alert(res);
         window.location.replace('/newticket')
