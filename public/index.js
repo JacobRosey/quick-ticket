@@ -452,7 +452,7 @@ function useResponse(res) {
                                 </span>
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title" style="margin-bottom:1em;">`+ res[i].ticket_title + `</h5>
+                            <h5 class="card-title" style="margin-bottom:1em; text-decoration: underline">`+ res[i].ticket_title + `</h5>
                             <p class="card-text style="margin-bottom:1em;">`+ res[i].ticket_desc + `</p>
                             <p class="card-text">Priority: `+ res[i].ticket_priority + `</p>
                             <a href="#" class="btn btn-primary">View Ticket</a>
