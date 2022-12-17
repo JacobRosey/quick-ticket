@@ -27,13 +27,13 @@ function setActiveLink() {
         text.style.fontWeight = 'bold';
         if (active !== 'home') {
             document.getElementById('home').style.fontWeight = 'normal'
-        } else{
+        } else {
             ajaxFunc('/home/' + user + '/', 'GET', user)
         }
-        
-        if(active == 'performance'){
+
+        if (active == 'performance') {
             console.log('This is the performance page');
-            ajaxFunc('/performance/'+user+'/', 'GET', user)
+            ajaxFunc('/performance/' + user + '/', 'GET', user)
             return;
         }
 
@@ -188,11 +188,11 @@ function newTicket() {
 
 function changeTicketStatus(id) {
     let active = window.location.href.replace("https://quick-ticket.herokuapp.com/", "");
-    let user = sessionStorage.getItem('user'); 
+    let user = sessionStorage.getItem('user');
     let data = {
-        "user":user,
+        "user": user,
         "id": id,
-        "active":active
+        "active": active
     }
     ajaxFunc('/ticketstatus/', 'PUT', data)
 }
@@ -258,7 +258,7 @@ function ajaxFunc(path, method, d) {
                     setTimeout(() => {
                         console.log("response is " + response);
                         useResponse(JSON.parse(response))
-                    },100)
+                    }, 100)
 
             }
         }
@@ -337,16 +337,15 @@ function useResponse(res) {
       </div>
         `
     }
-    if(active == 'home'){
+    if (active == 'home') {
         let count = document.getElementById('ticket-count');
         count.innerHTML = res;
     }
-    if(active == 'team'){
-        //My Teams
-        //if (res[0].hasOwnProperty('team_id') && res[0].hasOwnProperty('team_name')) {
+    if (active == 'team') {
 
-            for (let i = 0; i < res.length; i++) {
-                container.innerHTML += `
+        //My Teams
+        for (let i = 0; i < res.length; i++) {
+            container.innerHTML += `
                 <div class="col-sm">
                 <div class="team-info">
                 <div class="card" id="team-card"style="width: 18rem;">
@@ -364,13 +363,12 @@ function useResponse(res) {
                 </div>
                 </div>
                 `
-            }
-        //}
+        }
     }
-    if(active.includes('ticket')){
+    if (active.includes('ticket')) {
         //New ticket created
-        if(res.includes('Ticket')){
-            alert(res); 
+        if (res.includes('Ticket')) {
+            alert(res);
             window.location.reload();
         }
         //Before new ticket creation
@@ -398,28 +396,28 @@ function useResponse(res) {
         }
         if (res[0].hasOwnProperty('ticket_id')) {
             console.log('these are tickets');
-            
+
             //Remove null from array
-            res = res.filter(function (el) {return el!=null;})
+            res = res.filter(function (el) { return el != null; })
             console.log(res)
 
             //Consolidate ticket and ticket_data table values       
-            for(let i=0; i< res.length; i++){
-                for(let j=i+1; j<res.length; j++){
-                    if(res[i].ticket_id == res[j].ticket_id){
-                        console.log('Ticket IDs are a match! IDs = '+ res[i].ticket_id);
+            for (let i = 0; i < res.length; i++) {
+                for (let j = i + 1; j < res.length; j++) {
+                    if (res[i].ticket_id == res[j].ticket_id) {
+                        console.log('Ticket IDs are a match! IDs = ' + res[i].ticket_id);
                         res[i].ticket_desc = res[j].ticket_desc;
                         res[i].img_path = res[j].img_path;
                         res[i].ticket_priority = res[j].ticket_priority;
                         //Remove res[j] because we just took its data, no longer need it
                         res.splice(j, 1)
 
-                    } else{
-                        console.log('Ticket IDs do not match, skipping. IDs = ' + res[i].ticket_id +' '+ res[j].ticket_id)
+                    } else {
+                        console.log('Ticket IDs do not match, skipping. IDs = ' + res[i].ticket_id + ' ' + res[j].ticket_id)
                     }
                 }
             }
-            
+
             console.log("array before adding html elements: " + res)
             let container;
             let btnText;
@@ -467,25 +465,25 @@ function useResponse(res) {
             }
         }
     }
-    
-    if(active =='performance'){
+
+    if (active == 'performance') {
         let openHTML = document.getElementById('open-html');
         let closedHTML = document.getElementById('closed-html');
         let holdHTML = document.getElementById('hold-html')
-        openHTML.innerHTML += 
-        `
-        You have opened a total of `+res[0].tickets_opened+` tickets.
+        openHTML.innerHTML +=
+            `
+        You have opened a total of `+ res[0].tickets_opened + ` tickets.
         `;
         closedHTML.innerHTML +=
+            `
+        You have closed a total of `+ res[0].tickets_closed + ` tickets.
         `
-        You have closed a total of `+res[0].tickets_closed+` tickets.
-        `
-        holdHTML.innerHTML += 
-        `
-        You are currently working on `+ res[1] +` tickets.
+        holdHTML.innerHTML +=
+            `
+        You are currently working on `+ res[1] + ` tickets.
         `
     }
-    
+
     //After deleting a team
     if (res == "Team deleted") {
         alert('team deleted')
