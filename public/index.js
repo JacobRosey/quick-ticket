@@ -394,6 +394,7 @@ function useResponse(res) {
 
             }
         }
+        //My/Open/Closed tickets
         if (res[0].hasOwnProperty('ticket_id')) {
             console.log('these are tickets');
 
@@ -451,8 +452,8 @@ function useResponse(res) {
                                 </span>
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">`+ res[i].ticket_title + `</h5>
-                            <p class="card-text">`+ res[i].ticket_desc + `</p>
+                            <h5 class="card-title" style="margin-bottom:1em;">`+ res[i].ticket_title + `</h5>
+                            <p class="card-text style="margin-bottom:1em;">`+ res[i].ticket_desc + `</p>
                             <p class="card-text">Priority: `+ res[i].ticket_priority + `</p>
                             <a href="#" class="btn btn-primary">View Ticket</a>
                             <a onClick="changeTicketStatus(`+ res[i].ticket_id + `)" class="btn btn-primary">` + btnText + `</a>
