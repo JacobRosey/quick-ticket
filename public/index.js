@@ -458,9 +458,12 @@ function useResponse(res) {
                 console.log('My tickets got response');
             }
             for (let i = 0; i < res.length; i++) {
+                let leadIn;
                 if(res[i].ticket_desc.length > 60){
-                    var leadIn = res[i].ticket_desc.substr(0,60) + '...';
+                    leadIn = res[i].ticket_desc.substr(0,60) + '...';
                 } 
+                else leadIn = res[i].ticket_desc;
+                
                 container.innerHTML +=
                     `
                         <div class="card text-center">
