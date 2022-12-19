@@ -198,9 +198,18 @@ function changeTicketStatus(id) {
 }
 function viewTicket(id){
     alert('The ticket id is '+ id);
-    let description = document.getElementById('desc-id-'+id+'');
-    description.style.color = 'red';
-    //window.location.reload();
+    let leadIn = document.getElementById('desc-id-'+id+'');
+    let fullDesc = document.getElementById('full-desc');
+    let btnText = document.getElementById('view-ticket'+id+'');
+    if(leadIn.classList.contains('collapsed')){
+        leadIn.classList.remove('collapsed');
+        fullDesc.classList.add('collapsed');
+        btnText.innerHTML = 'Collapse Ticket'
+    } else {
+        leadIn.classList.add('collapsed');
+        fullDesc.classList.remove('collapsed');
+        btnText.innerHTML = 'Expand Ticket';
+    }
 }
 
 function deleteTeam(num) {
@@ -449,6 +458,7 @@ function useResponse(res) {
                 console.log('My tickets got response');
             }
             for (let i = 0; i < res.length; i++) {
+                let leadIn = res[i].ticket_desc.substr(0,60);
                 container.innerHTML +=
                     `
                         <div class="card text-center">
@@ -459,9 +469,9 @@ function useResponse(res) {
                         </div>
                         <div class="card-body">
                             <h5 class="card-title" style="margin-bottom:1em; text-decoration: underline">`+ res[i].ticket_title + `</h5>
-                            <p class="card-text" id="desc-id-`+res[i].ticket_id+`" style="margin-bottom:1em;">`+ res[i].ticket_desc + `</p>
+                            <p class="card-text" id="desc-id-`+res[i].ticket_id+`" style="margin-bottom:1em;">`+leadIn+`</p><p class="collapsed" id="full-desc">`+ res[i].ticket_desc + `</p>
                             <p class="card-text">Priority: `+ res[i].ticket_priority + `</p>
-                            <a onClick="viewTicket(`+res[i].ticket_id+`)" class="btn btn-primary">View Ticket</a>
+                            <a onClick="viewTicket(`+res[i].ticket_id+`)" class="btn btn-primary" id="view-ticket-`+id+`">Expand Ticket</a>
                             <a onClick="changeTicketStatus(`+ res[i].ticket_id + `)" class="btn btn-primary">` + btnText + `</a>
                         </div>
                         <div class="card-footer text-muted">
