@@ -196,6 +196,10 @@ function changeTicketStatus(id) {
     }
     ajaxFunc('/ticketstatus/', 'PUT', data)
 }
+function viewTicket(id){
+    alert('The ticket id is '+ id);
+    window.location.reload();
+}
 
 function deleteTeam(num) {
     //const teamInfoCards = document.getElementsByClassName('team-info');
@@ -455,7 +459,7 @@ function useResponse(res) {
                             <h5 class="card-title" style="margin-bottom:1em; text-decoration: underline">`+ res[i].ticket_title + `</h5>
                             <p class="card-text style="margin-bottom:1em;">`+ res[i].ticket_desc + `</p>
                             <p class="card-text">Priority: `+ res[i].ticket_priority + `</p>
-                            <a href="#" class="btn btn-primary">View Ticket</a>
+                            <a onClick="viewTicket(`+res[i].ticket_id+`)" class="btn btn-primary">View Ticket</a>
                             <a onClick="changeTicketStatus(`+ res[i].ticket_id + `)" class="btn btn-primary">` + btnText + `</a>
                         </div>
                         <div class="card-footer text-muted">
