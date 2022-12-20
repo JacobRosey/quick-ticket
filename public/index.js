@@ -197,9 +197,9 @@ function changeTicketStatus(id) {
     ajaxFunc('/ticketstatus/', 'PUT', data)
 }
 function viewTicket(id){
-    let leadIn = document.getElementById('desc-id-'+id+'');
-    let fullDesc = document.getElementById('full-desc');
-    let btnText = document.getElementById('view-ticket-'+id+'').innerHTML;
+    const leadIn = document.getElementById('desc-id-'+id+'');
+    const fullDesc = document.getElementById('full-desc');
+    var btnText = document.getElementById('view-ticket-'+id+'').innerHTML;
     if(leadIn.classList.contains('collapsed')){
         leadIn.classList.remove('collapsed');
         fullDesc.classList.add('collapsed');
@@ -472,7 +472,8 @@ function useResponse(res) {
                         </div>
                         <div class="card-body">
                             <h5 class="card-title" style="margin-bottom:1em; text-decoration: underline">`+ res[i].ticket_title + `</h5>
-                            <p class="card-text" id="desc-id-`+res[i].ticket_id+`" style="margin-bottom:1em;">`+leadIn+`</p><p class="collapsed" id="full-desc">`+ res[i].ticket_desc + `</p>
+                            <p class="card-text" id="desc-id-`+res[i].ticket_id+`" style="margin-bottom:1em;">`+leadIn+`</p>
+                            <p class="collapsed" id="full-desc">`+ res[i].ticket_desc + `</p>
                             <p class="card-text">Priority: `+ res[i].ticket_priority + `</p>
                             <a onClick="viewTicket(`+res[i].ticket_id+`)" class="btn btn-primary" id="view-ticket-`+res[i].ticket_id+`">Expand Ticket</a>
                             <a onClick="changeTicketStatus(`+ res[i].ticket_id + `)" class="btn btn-primary">` + btnText + `</a>
