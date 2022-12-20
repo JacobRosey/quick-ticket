@@ -199,15 +199,15 @@ function changeTicketStatus(id) {
 function viewTicket(id){
     const leadIn = document.getElementById('desc-id-'+id+'');
     const fullDesc = document.getElementById('full-desc');
-    var btnText = document.getElementById('view-ticket-'+id+'').innerHTML;
+    var btnText = document.getElementById('view-ticket-'+id+'');
     if(leadIn.classList.contains('collapsed')){
         leadIn.classList.remove('collapsed');
         fullDesc.classList.add('collapsed');
-        btnText = 'Collapse Ticket'
+        btnText.innerHTML = 'Collapse Ticket'
     } else {
         leadIn.classList.add('collapsed');
         fullDesc.classList.remove('collapsed');
-        btnText = 'Expand Ticket';
+        btnText.innerHTML = 'Expand Ticket';
     }
 }
 
