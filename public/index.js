@@ -196,11 +196,11 @@ function changeTicketStatus(id) {
     }
     ajaxFunc('/ticketstatus/', 'PUT', data)
 }
-function viewTicket(id){
-    const leadIn = document.getElementById('desc-id-'+id+'');
+function viewTicket(id) {
+    const leadIn = document.getElementById('desc-id-' + id + '');
     const fullDesc = document.getElementById('full-desc');
-    var btnText = document.getElementById('view-ticket-'+id+'');
-    if(leadIn.classList.contains('collapsed')){
+    var btnText = document.getElementById('view-ticket-' + id + '');
+    if (leadIn.classList.contains('collapsed')) {
         leadIn.classList.remove('collapsed');
         fullDesc.classList.add('collapsed');
         btnText.innerHTML = 'Collapse Ticket'
@@ -458,17 +458,17 @@ function useResponse(res) {
             for (let i = 0; i < res.length; i++) {
                 let leadIn;
                 let expandable;
-                if(res[i].ticket_desc.length > 60){
-                    leadIn = res[i].ticket_desc.substr(0,60) + '...';
+                if (res[i].ticket_desc.length > 60) {
+                    leadIn = res[i].ticket_desc.substr(0, 60) + '...';
                     expandable = true;
-                } 
+                }
                 else {
                     leadIn = res[i].ticket_desc;
                     expandable = false;
                 }
-                if(expandable == true){
+                if (expandable == true) {
                     container.innerHTML +=
-                    `
+                        `
                         <div class="card text-center">
                             <div class="card-header">
                                 <b>Ticket ID #`+ res[i].ticket_id + `</b> - <span class="text-muted">
@@ -477,20 +477,20 @@ function useResponse(res) {
                         </div>
                         <div class="card-body">
                             <h5 class="card-title" style="margin-bottom:1em; text-decoration: underline">`+ res[i].ticket_title + `</h5>
-                            <p class="card-text" id="desc-id-`+res[i].ticket_id+`" style="margin-bottom:1em;">`+leadIn+`</p>
+                            <p class="card-text" id="desc-id-`+ res[i].ticket_id + `" style="margin-bottom:1em;">` + leadIn + `</p>
                             <p class="collapsed" id="full-desc">`+ res[i].ticket_desc + `</p>
                             <p class="card-text">Priority: `+ res[i].ticket_priority + `</p>
-                            <a onClick="viewTicket(`+res[i].ticket_id+`)" class="btn btn-primary" id="view-ticket-`+res[i].ticket_id+`">Expand Ticket</a>
+                            <a onClick="viewTicket(`+ res[i].ticket_id + `)" class="btn btn-primary" id="view-ticket-` + res[i].ticket_id + `">Expand Ticket</a>
                             <a onClick="changeTicketStatus(`+ res[i].ticket_id + `)" class="btn btn-primary">` + btnText + `</a>
                         </div>
                         <div class="card-footer text-muted">
                             <b>Opened by:</b> `+ res[i].opened_by + ` <b>Status:</b> ` + status + `
                         </div>
-                    </div>
+                        </div>
                         `
                 } else {
                     container.innerHTML +=
-                    `
+                        `
                         <div class="card text-center">
                             <div class="card-header">
                                 <b>Ticket ID #`+ res[i].ticket_id + `</b> - <span class="text-muted">
@@ -499,19 +499,18 @@ function useResponse(res) {
                         </div>
                         <div class="card-body">
                             <h5 class="card-title" style="margin-bottom:1em; text-decoration: underline">`+ res[i].ticket_title + `</h5>
-                            <p class="card-text" id="desc-id-`+res[i].ticket_id+`" style="margin-bottom:1em;">`+leadIn+`</p>
-                            <p class="collapsed" id="full-desc">`+ res[i].ticket_desc + `</p>
+                            <p class="card-text" id="desc-id-`+ res[i].ticket_id + `" style="margin-bottom:1em;">` + leadIn + `</p>
                             <p class="card-text">Priority: `+ res[i].ticket_priority + `</p>
                             <a onClick="changeTicketStatus(`+ res[i].ticket_id + `)" class="btn btn-primary">` + btnText + `</a>
                         </div>
                         <div class="card-footer text-muted">
                             <b>Opened by:</b> `+ res[i].opened_by + ` <b>Status:</b> ` + status + `
                         </div>
-                    </div>
+                        </div>
                         `
-            }
                 }
-                
+            }
+
         }
     }
 
