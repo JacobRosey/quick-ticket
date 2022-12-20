@@ -197,7 +197,6 @@ function changeTicketStatus(id) {
     ajaxFunc('/ticketstatus/', 'PUT', data)
 }
 function viewTicket(id){
-    alert('The ticket id is '+ id);
     let leadIn = document.getElementById('desc-id-'+id+'');
     let fullDesc = document.getElementById('full-desc');
     let btnText = document.getElementById('view-ticket-'+id+'').innerHTML;
