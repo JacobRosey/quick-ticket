@@ -203,11 +203,11 @@ function viewTicket(id) {
     if (leadIn.classList.contains('collapsed')) {
         leadIn.classList.remove('collapsed');
         fullDesc.classList.add('collapsed');
-        btnText.innerHTML = 'Collapse Ticket'
+        btnText.innerHTML = 'Expand Ticket'
     } else {
         leadIn.classList.add('collapsed');
         fullDesc.classList.remove('collapsed');
-        btnText.innerHTML = 'Expand Ticket';
+        btnText.innerHTML = 'Collapse Ticket';
     }
 }
 
