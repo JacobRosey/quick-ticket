@@ -200,7 +200,7 @@ function viewTicket(id){
     alert('The ticket id is '+ id);
     let leadIn = document.getElementById('desc-id-'+id+'');
     let fullDesc = document.getElementById('full-desc');
-    let btnText = document.getElementById('view-ticket'+id+'').innerHTML;
+    let btnText = document.getElementById('view-ticket'+id+'').innerText;
     if(leadIn.classList.contains('collapsed')){
         leadIn.classList.remove('collapsed');
         fullDesc.classList.add('collapsed');
@@ -213,7 +213,6 @@ function viewTicket(id){
 }
 
 function deleteTeam(num) {
-    //const teamInfoCards = document.getElementsByClassName('team-info');
     const teamName = document.getElementsByClassName('team-name-span');
     //Replace whitespace, replace hyphen with space
     let string = teamName[num].innerHTML.trim().replace(/-/g, ' ');
