@@ -200,7 +200,7 @@ function viewTicket(id){
     alert('The ticket id is '+ id);
     let leadIn = document.getElementById('desc-id-'+id+'');
     let fullDesc = document.getElementById('full-desc');
-    let btnText = document.getElementById('view-ticket'+id+'').innerText;
+    let btnText = document.getElementById('view-ticket'+id+'').value;
     if(leadIn.classList.contains('collapsed')){
         leadIn.classList.remove('collapsed');
         fullDesc.classList.add('collapsed');
