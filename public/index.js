@@ -211,7 +211,7 @@ function viewTicket(id) {
     }
 }
 
-function leaveTeam() {
+function leaveTeam(num) {
     const teamName = document.getElementsByClassName('team-name-span');
     //Replace whitespace, replace hyphen with space
     let string = teamName[num].innerHTML.trim().replace(/-/g, ' ');
