@@ -211,6 +211,25 @@ function viewTicket(id) {
     }
 }
 
+function leaveTeam() {
+    const teamName = document.getElementsByClassName('team-name-span');
+    //Replace whitespace, replace hyphen with space
+    let string = teamName[num].innerHTML.trim().replace(/-/g, ' ');
+
+    if (confirm('Are you sure you want to leave this team: "' + string + '"? This will also delete all of your membership data such as tickets opened, closed, etc. This cannot be reversed.')) {
+        //Only admins can delete the team
+        const user = sessionStorage.getItem('user');
+        let data = {
+            "user": user,
+            "team": string.replace(/ /g, '-')
+        }
+        console.log(data)
+        ajaxFunc('/leave-team/:user', "PUT", data);
+
+
+    }
+}
+
 function deleteTeam(num) {
     const teamName = document.getElementsByClassName('team-name-span');
     //Replace whitespace, replace hyphen with space
