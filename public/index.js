@@ -372,7 +372,7 @@ function useResponse(res) {
                     <li class="list-group-item">Team Admin: <span id="admin-name" style="font-weight: 300;">`+ res[i].admin_name + `</span></li>
                 </ul>
                 <div style="display: flex; background-color: #f7f7f7;">
-                <a class="btn btn-danger" onClick="leaveTeam(`+ i + `)" role="button" style="font-weight: bold; width: 50%; line-height: 32.5px !important; background-color: #ff914c; color: white;"">Leave Team</a>
+                <a class="btn btn-secondary" onClick="leaveTeam(`+ i + `)" role="button" style="font-weight: bold; width: 50%; line-height: 32.5px !important;">Leave Team</a>
                 <a class="btn btn-danger" onClick="deleteTeam(`+ i + `)" role="button" style="font-weight: bold; width: 50%; line-height: 32.5px !important;">Delete Team</a>
                 </div>
                 </div>
