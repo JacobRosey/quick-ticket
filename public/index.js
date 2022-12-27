@@ -202,8 +202,8 @@ function viewTicket(id) {
     const fullDesc = document.getElementById('full-desc');
     var btnText = document.getElementById('view-ticket-' + id + '');
 
-    leadIn.style.transition = "height 2s ease";
-    fullDesc.style.transition = "height 2s ease";
+    leadIn.style.transition = "opacity 1s ease";
+    fullDesc.style.transition = "opacity 1s ease";
 
     // Delay the animation by 100 milliseconds
     setTimeout(function() {
