@@ -205,7 +205,7 @@ function viewTicket(id) {
     leadIn.style.transition = "height 0.5s ease";
     fullDesc.style.transition = "height 0.5s ease";
 
-    // Delay the animation by 50 milliseconds
+    // Delay the animation by 350 milliseconds
     setTimeout(function() {
         if (leadIn.classList.contains('collapsed')) {
             leadIn.classList.remove('collapsed');
@@ -216,7 +216,7 @@ function viewTicket(id) {
             fullDesc.classList.remove('collapsed');
             btnText.innerHTML = 'Collapse Ticket';
         }
-    }, 50);
+    }, 350);
 }
 
 function leaveTeam(num) {
