@@ -202,10 +202,10 @@ function viewTicket(id) {
     const fullDesc = document.getElementById('full-desc');
     var btnText = document.getElementById('view-ticket-' + id + '');
 
-    leadIn.style.transition = "height 0.5s ease";
-    fullDesc.style.transition = "height 0.5s ease";
+    leadIn.style.transition = "height 2s ease";
+    fullDesc.style.transition = "height 2s ease";
 
-    // Delay the animation by 350 milliseconds
+    // Delay the animation by 100 milliseconds
     setTimeout(function() {
         if (leadIn.classList.contains('collapsed')) {
             leadIn.classList.remove('collapsed');
@@ -216,7 +216,7 @@ function viewTicket(id) {
             fullDesc.classList.remove('collapsed');
             btnText.innerHTML = 'Collapse Ticket';
         }
-    }, 350);
+    }, 100);
 }
 
 function leaveTeam(num) {
