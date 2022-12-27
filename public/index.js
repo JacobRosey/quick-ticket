@@ -196,10 +196,16 @@ function changeTicketStatus(id) {
     }
     ajaxFunc('/ticketstatus/', 'PUT', data)
 }
+
 function viewTicket(id) {
     const leadIn = document.getElementById('desc-id-' + id + '');
     const fullDesc = document.getElementById('full-desc');
     var btnText = document.getElementById('view-ticket-' + id + '');
+
+    // Add a transition property to the elements
+    leadIn.style.transition = "height 0.5s ease";
+    fullDesc.style.transition = "height 0.5s ease";
+
     if (leadIn.classList.contains('collapsed')) {
         leadIn.classList.remove('collapsed');
         fullDesc.classList.add('collapsed');
