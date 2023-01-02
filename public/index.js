@@ -435,6 +435,45 @@ function useResponse(res) {
 
             }
         }
+        if (res.length == 0) {
+            let top;
+            let bottom;
+            let link;
+            let btn;
+            switch(active){
+                case 'opentickets':
+                    top = 'Your team currently has zero open tickets!';
+                    bottom = 'Go to the "new ticket" page and create a ticket for your team!'
+                    link = '/newticket';
+                    btn = 'New Ticket'
+                    break;
+                case 'mytickets':
+                    top = 'You are currently not assigned any tickets!';
+                    bottom = 'Go to the "open tickets" page and claim some tickets to work on!'
+                    link = '/opentickets';
+                    btn = 'Open Tickets'
+                    break;
+                case 'closedtickets':
+                    top = 'Your team currently has zero closed tickets!';
+                    bottom = 'Go to the "my tickets" page and complete a ticket so you can close it!'
+                    link = '/mytickets';
+                    btn = 'My Tickets'
+                    break;
+                default: window.location.reload();
+            }
+            container.innerHTML +=
+                `
+                <div class="jumbotron">
+                <span><i class="fs-4 bi-people"></i><p class="text-center" style="font-weight: bold;">`+top+`</p></span>
+                <p class="lead">`+bottom+`</p>
+                <hr class="my-4">
+                <p class="lead">
+                <a class="btn btn-primary btn-lg" href="`+link+`" role="button">Open Tickets</a>
+                </p>
+            </div>
+                `
+                return;
+        }
         //My/Open/Closed tickets
         if (res[0].hasOwnProperty('ticket_id')) {
             console.log('these are tickets');
@@ -482,19 +521,6 @@ function useResponse(res) {
                 btnText = 'Close Ticket';
                 status = 'In Progress'
                 console.log('My tickets got response');
-                if (res.length == 0) {
-                    container.innerHTML +=
-                        `
-                        <div class="jumbotron">
-                        <span><i class="fs-4 bi-people"></i><p class="text-center" style="font-weight: bold;">You don't currently hold any tickets!</p></span>
-                        <p class="lead">Go to the open tickets page and claim some tickets so you can get to work</p>
-                        <hr class="my-4">
-                        <p class="lead">
-                        <a class="btn btn-primary btn-lg" href="/opentickets" role="button">Open Tickets</a>
-                        </p>
-                    </div>
-                        `
-                }
             }
             for (let i = 0; i < res.length; i++) {
                 let leadIn;
