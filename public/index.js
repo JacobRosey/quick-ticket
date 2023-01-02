@@ -203,7 +203,7 @@ function viewTicket(id) {
     var btnText = document.getElementById('view-ticket-' + id + '');
 
     // Delay the animation by 100 milliseconds
-    setTimeout(function() {
+    setTimeout(function () {
         if (leadIn.classList.contains('collapsed')) {
             leadIn.classList.remove('collapsed');
             fullDesc.classList.add('collapsed');
@@ -481,6 +481,19 @@ function useResponse(res) {
                 btnText = 'Close Ticket';
                 status = 'In Progress'
                 console.log('My tickets got response');
+                if (res.length == 0) {
+                    container.innerHTML +=
+                        `
+                        <div class="jumbotron">
+                        <span><i class="fs-4 bi-people"></i><p class="text-center" style="font-weight: bold;">You don't currently hold any tickets!</p></span>
+                        <p class="lead">Go to the open tickets page and claim some tickets so you can get to work</p>
+                        <hr class="my-4">
+                        <p class="lead">
+                        <a class="btn btn-primary btn-lg" href="/opentickets" role="button">Open Tickets</a>
+                        </p>
+                    </div>
+                        `
+                }
             }
             for (let i = 0; i < res.length; i++) {
                 let leadIn;
