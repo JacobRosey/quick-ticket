@@ -463,6 +463,8 @@ function useResponse(res) {
                     btn = 'My Tickets'
                     container = document.getElementById('closed-tickets');
                     break;
+                case 'newticket':
+                    return;
                 default: window.location.reload();
             }
             container.innerHTML +=
