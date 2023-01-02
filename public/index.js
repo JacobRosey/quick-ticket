@@ -440,24 +440,28 @@ function useResponse(res) {
             let bottom;
             let link;
             let btn;
+            let container;
             switch(active){
                 case 'opentickets':
                     top = 'Your team currently has zero open tickets!';
                     bottom = 'Go to the "new ticket" page and create a ticket for your team!'
                     link = '/newticket';
-                    btn = 'New Ticket'
+                    btn = 'New Ticket';
+                    container = document.getElementById('open-tickets');
                     break;
                 case 'mytickets':
                     top = 'You are currently not assigned any tickets!';
                     bottom = 'Go to the "open tickets" page and claim some tickets to work on!'
                     link = '/opentickets';
                     btn = 'Open Tickets'
+                    container = document.getElementById('my-tickets');
                     break;
                 case 'closedtickets':
                     top = 'Your team currently has zero closed tickets!';
                     bottom = 'Go to the "my tickets" page and complete a ticket so you can close it!'
                     link = '/mytickets';
                     btn = 'My Tickets'
+                    container = document.getElementById('closed-tickets');
                     break;
                 default: window.location.reload();
             }
