@@ -373,6 +373,7 @@ function useResponse(res) {
         </p>
       </div>
         `
+        return;
     }
     if (active == 'home') {
         let count = document.getElementById('ticket-count');
