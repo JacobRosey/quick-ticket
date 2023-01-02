@@ -469,7 +469,7 @@ function useResponse(res) {
             }
             container.innerHTML +=
                 `
-                <div class="jumbotron" style="background-color: #f2f2f2;">
+                <div class="jumbotron">
                 <span><i class="fs-4 bi-people"></i><p class="text-center" style="font-weight: bold;">`+top+`</p></span>
                 <p class="lead">`+bottom+`</p>
                 <hr class="my-4">
