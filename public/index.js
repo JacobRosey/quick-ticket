@@ -467,12 +467,12 @@ function useResponse(res) {
             }
             container.innerHTML +=
                 `
-                <div class="jumbotron">
+                <div class="jumbotron" style="background-color: #f2f2f2;">
                 <span><i class="fs-4 bi-people"></i><p class="text-center" style="font-weight: bold;">`+top+`</p></span>
                 <p class="lead">`+bottom+`</p>
                 <hr class="my-4">
                 <p class="lead">
-                <a class="btn btn-primary btn-lg" href="`+link+`" role="button">Open Tickets</a>
+                <a class="btn btn-primary btn-lg" href="`+link+`" role="button">`+btn+`</a>
                 </p>
             </div>
                 `
