@@ -421,7 +421,7 @@ function useResponse(res) {
                     el[i].style.display = "none";
                 }
 
-                container.innerHTML += 
+                container[0].innerHTML += 
                 `
                 <div class="jumbotron">
                 <span><i class="fs-4 bi-people"></i><p class="text-center" style="font-weight: bold;">You cannot create a ticket because you're not on a team!</p></span>
