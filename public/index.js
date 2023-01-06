@@ -416,8 +416,7 @@ function useResponse(res) {
         if (res[0] == 'team_names') {
             if(res.length == 1){
                 const container = document.getElementsByClassName('container')
-                const form = document.getElementsByClassName('form-group');
-                form.style.display = "none";
+                document.getElementsByClassName('form-group').style.display = "none";
 
                 container.innerHTML += 
                 `
