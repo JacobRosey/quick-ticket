@@ -415,7 +415,23 @@ function useResponse(res) {
         //Before new ticket creation
         if (res[0] == 'team_names') {
             if(res.length == 1){
-                alert("You aint on a team bitch")
+                const container = document.getElementsByClassName('container')
+                const form = document.getElementsByClassName('form-group');
+                form.style.display = "none";
+
+                container.innerHTML += 
+                `
+                <div class="jumbotron">
+                <span><i class="fs-4 bi-people"></i><p class="text-center" style="font-weight: bold;">You cannot create a ticket because you're not on a team!</p></span>
+                <p class="lead">Go to the home page and join a team using the invitation code, or create a new one</p>
+                <hr class="my-4">
+                <p class="lead">
+                <a class="btn btn-primary btn-lg" href="/home" role="button">Home</a>
+                </p>
+                </div>
+                `
+                return;
+
             }
             let teamSelectContainer = document.getElementById('team-select');
             //remove 'team_names' from arr, that only served to show there are multiple teams
