@@ -414,6 +414,9 @@ function useResponse(res) {
         }
         //Before new ticket creation
         if (res[0] == 'team_names') {
+            if(res.length == 1){
+                alert("You aint on a team bitch")
+            }
             let teamSelectContainer = document.getElementById('team-select');
             //remove 'team_names' from arr, that only served to show there are multiple teams
             console.log(res);
