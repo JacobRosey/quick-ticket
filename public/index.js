@@ -414,6 +414,7 @@ function useResponse(res) {
         }
         //Before new ticket creation
         if (res[0] == 'team_names') {
+            console.log('length is: ' + res.length)
             if(res.length == 1){
                 const container = document.getElementsByClassName('container')
                 document.getElementsByClassName('form-group').style.display = "none";
