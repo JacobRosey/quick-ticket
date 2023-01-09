@@ -417,7 +417,9 @@ function useResponse(res) {
             if(res.length == 1){
                 const container = document.getElementsByClassName('container')
                 const form = document.getElementsByTagName('form');
+                const breadcrumb = document.getElementById('breadcrumb-container');
                 form[0].style.display = "none";
+                breadcrumb.style.display = "none";
 
                 container[0].innerHTML += 
                 `
