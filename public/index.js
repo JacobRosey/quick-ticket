@@ -491,7 +491,7 @@ function useResponse(res) {
             container.innerHTML +=
                 `
                 <div class="jumbotron">
-                <span><i class="fs-4 bi-people" style="clear: right;"></i><p class="text-center" style="font-weight: bold;">`+top+`</p></span>
+                <span><i class="fs-4 bi-people"></i><p class="text-center" style="font-weight: bold;">`+top+`</p></span>
                 <p class="lead">`+bottom+`</p>
                 <hr class="my-4">
                 <p class="lead">
