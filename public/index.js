@@ -462,6 +462,7 @@ function useResponse(res) {
             let link;
             let btn;
             let container;
+            let iconClass;
             switch(active){
                 case 'opentickets':
                     top = 'Your team currently has zero open tickets!';
@@ -469,6 +470,7 @@ function useResponse(res) {
                     link = '/newticket';
                     btn = 'New Ticket';
                     container = document.getElementById('open-tickets');
+                    iconClass = "bi bi-circle"; 
                     break;
                 case 'mytickets':
                     top = 'You are currently not assigned any tickets!';
@@ -476,6 +478,7 @@ function useResponse(res) {
                     link = '/opentickets';
                     btn = 'Open Tickets'
                     container = document.getElementById('my-tickets');
+                    iconClass = "bi bi-tag"
                     break;
                 case 'closedtickets':
                     top = 'Your team currently has zero closed tickets!';
@@ -483,15 +486,17 @@ function useResponse(res) {
                     link = '/mytickets';
                     btn = 'My Tickets'
                     container = document.getElementById('closed-tickets');
+                    iconClass = "bi bi-x-circle"
                     break;
                 case 'newticket':
+                    iconClass = "bi bi-plus-circle"
                     return;
                 default: window.location.reload();
             }
             container.innerHTML +=
                 `
                 <div class="jumbotron">
-                <span class="ms-1 d-sm-inline"><i class="fs-4 bi-people"></i><p class="text-center" style="font-weight: bold;">`+top+`</p></span>
+                <span class="ms-1 d-sm-inline"><i class=`+iconClass+`></i><p class="text-center" style="font-weight: bold;">`+top+`</p></span>
                 <p class="lead">`+bottom+`</p>
                 <hr class="my-4">
                 <p class="lead">
