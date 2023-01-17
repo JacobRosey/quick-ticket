@@ -424,7 +424,7 @@ function useResponse(res) {
                 container[0].innerHTML += 
                 `
                 <div class="jumbotron">
-                <div style="display:grid; style="grid-template-columns: 10px 50px;"><i class="bi bi-plus-circle"></i><p class="text-center" style="font-weight: bold;">You can't create a ticket; you're not on a team!</p></div>
+                <span><i class="bi bi-plus-circle"></i><p class="text-center" style="font-weight: bold; margin-top: -1em;">You can't create a ticket; you're not on a team!</p></span>
                 <p class="lead">Go to the home page and join a team using the invitation code, or create a new one</p>
                 <hr class="my-4">
                 <p class="lead">
