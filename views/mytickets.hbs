@@ -42,7 +42,19 @@
             opacity: 1;
             transition: opacity .5s ease-in-out;
         }
-        .btn {
+        
+        .collapsed{
+            visibility: hidden;
+            max-height: 0;
+            opacity: 0;
+            transition: opacity .5s ease-in-out;
+        }
+        .jumbotron{
+            background-color: #e9ecef;
+            padding: 1.5em;
+            padding-bottom: 3em;
+        }
+        .jumbotron .btn {
             background-color: #ff914c;
             color: white;
             font-weight: bold;
@@ -54,20 +66,9 @@
             font-size: .75em;
         }
 
-        .btn:hover {
+        .jumbotron .btn:hover {
             color: black;
             background-color: white;
-        }
-        .collapsed{
-            visibility: hidden;
-            max-height: 0;
-            opacity: 0;
-            transition: opacity .5s ease-in-out;
-        }
-        .jumbotron{
-            background-color: #e9ecef;
-            padding: 1.5em;
-            padding-bottom: 3em;
         }
         .list-group-item{
             font-weight: bolder;
