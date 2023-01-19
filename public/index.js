@@ -472,7 +472,7 @@ function useResponse(res) {
                     iconClass = "bi bi-circle"; 
                     break;
                 case 'mytickets':
-                    top = 'You are currently not assigned any tickets!';
+                    top = 'You are not currently assigned any tickets!';
                     bottom = 'Go to the "open tickets" page and claim some tickets to work on!'
                     link = '/opentickets';
                     btn = 'Open Tickets'
