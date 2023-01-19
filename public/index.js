@@ -363,7 +363,7 @@ function useResponse(res) {
     const container = document.getElementById('team-card-container');
     if (res == "Not on a team") {
         container.innerHTML += `
-        <div class="jumbotron" style="margin: auto; margin-top: 2em; max-width: 500px;">
+        <div class="jumbotron">
         <div style="display: flex; flex-direction: row;"><i class="fs-4 bi-people" style="margin-right: 15px;"></i><p class="text-center" style="font-weight: bold;">You are not a member of a team!</p></div>
         <p class="lead">Go to the home page and create a new team, or join an existing team using the team code!</p>
         <hr class="my-4">
