@@ -367,7 +367,6 @@ function useResponse(res) {
         <span><i class="fs-4 bi-people"></i><p class="text-center" style="font-weight: bold;">You are not a member of a team!</p></span>
         <p class="lead">Go to the home page and create a new team, or join an existing team using the team code!</p>
         <hr class="my-4">
-        <p>Ask your manager for the team code so you can get to work! If you create a new team, come back to this page to see the team code.</p>
         <p class="lead">
           <a class="btn btn-primary btn-lg" href="/home" role="button">Home Page</a>
         </p>
