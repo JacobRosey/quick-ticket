@@ -51,6 +51,7 @@
 
         .card-footer {
             background-color: rgba(0, 0, 0, 0.35) !important;
+            padding-bottom: 5em;
         }
 
         .card-header h3 {
@@ -150,7 +151,12 @@
                         Already have an account?<a href="/login">Sign In</a>
                     </div>
                 </div>
-                
+                {{#if success }}
+                <h4 class="alert alert-success mt-4">{{success}}</h4>
+                {{/if}}
+                {{#if failed }}
+                <h4 class="alert alert-danger mt-4">{{failed}}</h4>
+                {{/if}}
             </div>
         </div>
     </div>
