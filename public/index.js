@@ -368,7 +368,7 @@ function useResponse(res) {
         <p class="lead">Go to the home page and create a new team, or join an existing team using the team code!</p>
         <hr class="my-4">
         <p class="lead">
-          <a class="btn btn-primary btn-lg" href="/home" role="button" style="margin: 0 !important;">Home Page</a>
+          <a class="btn btn-primary btn-lg" href="/home" role="button" style="margin: 0;">Home Page</a>
         </p>
       </div>
         `
