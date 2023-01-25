@@ -5,7 +5,7 @@ function checkForUser() {
     
     ajaxFunc('/login/' + data.user + '/' + data.pass + '', "GET", data);
     */
-    
+
 
     let userN = document.getElementById('userN');
     let sideNav = document.getElementById('side-nav')
@@ -18,26 +18,38 @@ function checkForUser() {
     } else {
         sideNav.style.display = "none";
     }
-    
+
 }
 
 function rememberMe() {
     // Get the checkbox element
     var checkbox = document.getElementById("rememberMeCheckbox");
-  
+
     // Check if the checkbox is checked
     if (checkbox.checked) {
-      // Get the user's credentials
-      var username = document.getElementById("loginUser").value;
-      var password = document.getElementById("loginPass").value;
+        // Get the user's credentials
+        var username = document.getElementById("loginUser").value;
+        var password = document.getElementById("loginPass").value;
 
-      //Set the cookies - 30 day lifespan
-      setCookie("username", username, 30);
-      setCookie("password", password, 30);
+        //Set the cookies - 30 day lifespan
+        setCookie("username", username, 30);
+        setCookie("password", password, 30);
     } else {
-      // Delete the cookies
-      deleteCookie("username");
-      deleteCookie("password");
+        // Delete the cookies
+        deleteCookie("username");
+        deleteCookie("password");
+    }
+    // Function to set a cookie
+    function setCookie(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        var expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    // Function to delete a cookie
+    function deleteCookie(cname) {
+        setCookie(cname, "", -1);
     }
 }
 
@@ -227,7 +239,7 @@ function changeTicketStatus(id) {
 
 function viewTicket(id) {
     const leadIn = document.getElementById('desc-id-' + id + '');
-    const fullDesc = document.getElementById('full-desc-'+ id + '');
+    const fullDesc = document.getElementById('full-desc-' + id + '');
     var btnText = document.getElementById('view-ticket-' + id + '');
 
     // Delay the animation by 100 milliseconds
@@ -441,15 +453,15 @@ function useResponse(res) {
         }
         //Before new ticket creation
         if (res[0] == 'team_names') {
-            if(res.length == 1){
+            if (res.length == 1) {
                 const container = document.getElementsByClassName('container')
                 const form = document.getElementsByTagName('form');
                 const breadcrumb = document.getElementById('breadcrumb-container');
                 form[0].style.display = "none";
                 breadcrumb.style.display = "none";
 
-                container[0].innerHTML += 
-                `
+                container[0].innerHTML +=
+                    `
                 <div class="jumbotron">
                 <div style="display: flex; flex-direction: row;"><i class="bi bi-plus-circle" style="margin-right: 15px;"></i><p class="text-center" style="font-weight: bold;">You can't create a ticket; you're not on a team!</p></div>
                 <p class="lead">Go to the home page and join a team using the invitation code, or create a new one</p>
@@ -490,14 +502,14 @@ function useResponse(res) {
             let btn;
             let container;
             let iconClass;
-            switch(active){
+            switch (active) {
                 case 'opentickets':
                     top = 'Your team currently has zero open tickets!';
                     bottom = 'Go to the "new ticket" page and create a ticket for your team!'
                     link = '/newticket';
                     btn = 'New Ticket';
                     container = document.getElementById('open-tickets');
-                    iconClass = "bi bi-circle"; 
+                    iconClass = "bi bi-circle";
                     break;
                 case 'mytickets':
                     top = 'You are not currently assigned any tickets!';
@@ -522,15 +534,15 @@ function useResponse(res) {
             container.innerHTML +=
                 `
                 <div class="jumbotron">
-                <div style="display: flex; flex-direction: row;"><i class="`+iconClass+`" style="margin-right: 15px;"></i><p class="text-center" style="font-weight: bold;">`+top+`</p></div>
-                <p class="lead">`+bottom+`</p>
+                <div style="display: flex; flex-direction: row;"><i class="`+ iconClass + `" style="margin-right: 15px;"></i><p class="text-center" style="font-weight: bold;">` + top + `</p></div>
+                <p class="lead">`+ bottom + `</p>
                 <hr class="my-4">
                 <p class="lead">
-                <a class="btn" href="`+link+`" role="button">`+btn+`</a>
+                <a class="btn" href="`+ link + `" role="button">` + btn + `</a>
                 </p>
             </div>
                 `
-                return;
+            return;
         }
         //My/Open/Closed tickets
         if (res[0].hasOwnProperty('ticket_id')) {
@@ -603,7 +615,7 @@ function useResponse(res) {
                         <div class="card-body">
                             <h5 class="card-title" style="margin-bottom:1em; text-decoration: underline">`+ res[i].ticket_title + `</h5>
                             <p class="card-text" id="desc-id-`+ res[i].ticket_id + `" style="margin-bottom:1em;">` + leadIn + `</p>
-                            <p class=" card-text collapsed" id="full-desc-`+ res[i].ticket_id+`">`+ res[i].ticket_desc + `</p>
+                            <p class=" card-text collapsed" id="full-desc-`+ res[i].ticket_id + `">` + res[i].ticket_desc + `</p>
                             <p class="card-text">Priority: `+ res[i].ticket_priority + `</p>
                             <a onClick="viewTicket(`+ res[i].ticket_id + `)" class="btn btn-primary" id="view-ticket-` + res[i].ticket_id + `">Expand Ticket</a>
                             <a onClick="changeTicketStatus(`+ res[i].ticket_id + `)" class="btn btn-primary">` + btnText + `</a>
