@@ -6,7 +6,7 @@ function checkForUser() {
             "user": localStorage.getItem("username"),
             "pass": localStorage.getItem("password")
         }
-        alert(data.user + data.pass)
+        //alert(data.user + data.pass)
         ajaxFunc('/login/' + data.user + '/' + data.pass + '', "GET", data);
     }
 
