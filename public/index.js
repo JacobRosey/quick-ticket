@@ -190,7 +190,7 @@ function joinTeam() {
 function getLogin() {
     
     rememberMe();
-    
+
     let isLogged = sessionStorage.getItem('logged');
     console.log(isLogged)
     if (isLogged === 'true') {
@@ -209,24 +209,24 @@ function getLogin() {
         ajaxFunc('/login/' + data.user + '/' + data.pass + '', "GET", data);
         checkForUser();
     }
-}
-function rememberMe() {
-    // Get the checkbox element
-    var checkbox = document.getElementById("rememberMeCheckbox");
-
-    // Check if the checkbox is checked
-    if (checkbox.checked) {
-        // Get the user's credentials
-        var username = document.getElementById("loginUser").value;
-        var password = document.getElementById("loginPass").value;
-
-        //Set the cookies - 30 day lifespan
-        setCookie("username", username, 30);
-        setCookie("password", password, 30);
-    } else {
-        // Delete the cookies
-        deleteCookie("username");
-        deleteCookie("password");
+    function rememberMe() {
+        // Get the checkbox element
+        var checkbox = document.getElementById("rememberMeCheckbox");
+    
+        // Check if the checkbox is checked
+        if (checkbox.checked) {
+            // Get the user's credentials
+            var username = document.getElementById("loginUser").value;
+            var password = document.getElementById("loginPass").value;
+    
+            //Set the cookies - 30 day lifespan
+            setCookie("username", username, 30);
+            setCookie("password", password, 30);
+        } else {
+            // Delete the cookies
+            deleteCookie("username");
+            deleteCookie("password");
+        }
     }
 }
 
