@@ -13,6 +13,29 @@ function checkForUser() {
     }
 }
 
+function rememberMe() {
+    // Get the checkbox element
+    var checkbox = document.getElementById("rememberMeCheckbox");
+  
+    // Check if the checkbox is checked
+    if (checkbox.checked) {
+      // Get the user's credentials
+      var username = document.getElementById("loginUser").value;
+      var password = document.getElementById("loginPass").value;
+      var checked;
+  
+      // Store the credentials in local storage
+      localStorage.setItem("username", username);
+      localStorage.setItem("password", password);
+      localStorage.setItem("checked", checked)
+    } else {
+      // Remove the credentials from local storage
+      localStorage.removeItem("username");
+      localStorage.removeItem("password");
+      localStorage.removeItem("checked")
+    }
+}
+
 function setActiveLink() {
     //Get current page
     let active = window.location.href.replace("https://quick-ticket.herokuapp.com/", "");
