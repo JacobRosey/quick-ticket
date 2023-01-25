@@ -1,14 +1,11 @@
 //Checks if user is logged in
 function checkForUser() {
 
-    if(localStorage.getItem("username") === null  && localStorage.getItem("password")===null){
-        const data = {
-            "user": localStorage.getItem("username"),
-            "pass": localStorage.getItem("password")
-        }
-        //alert(data.user + data.pass)
-        ajaxFunc('/login/' + data.user + '/' + data.pass + '', "GET", data);
-    }
+    /*if(cookie exists){
+    
+    ajaxFunc('/login/' + data.user + '/' + data.pass + '', "GET", data);
+    */
+    
 
     let userN = document.getElementById('userN');
     let sideNav = document.getElementById('side-nav')
@@ -33,17 +30,14 @@ function rememberMe() {
       // Get the user's credentials
       var username = document.getElementById("loginUser").value;
       var password = document.getElementById("loginPass").value;
-      var checked = "checked";
-  
-      // Store the credentials in local storage
-      localStorage.setItem("username", username);
-      localStorage.setItem("password", password);
-      localStorage.setItem("checked", checked)
+
+      //Set the cookies - 30 day lifespan
+      setCookie("username", username, 30);
+      setCookie("password", password, 30);
     } else {
-      // Remove the credentials from local storage
-      localStorage.removeItem("username");
-      localStorage.removeItem("password");
-      localStorage.removeItem("checked")
+      // Delete the cookies
+      deleteCookie("username");
+      deleteCookie("password");
     }
 }
 
