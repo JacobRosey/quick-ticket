@@ -21,8 +21,8 @@ function checkForCookies() {
     var password = getCookie("password");
 
     if (username != "" && password != "") {
-        document.getElementById("username").value = username;
-        document.getElementById("password").value = password;
+        document.getElementById("loginUser").value = username;
+        document.getElementById("loginPass").value = password;
         document.getElementById("rememberMeCheckbox").checked = true;
     }
 }
