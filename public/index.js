@@ -1,7 +1,7 @@
 //Checks if user is logged in
 function checkForUser() {
 
-    if(localStorage.getItem("username"===null) && localStorage.getItem("password"===null)){
+    if(localStorage.getItem("username") === null  && localStorage.getItem("password")===null){
         const data = {
             "user": localStorage.getItem("username"),
             "pass": localStorage.getItem("password")
