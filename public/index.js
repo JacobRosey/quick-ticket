@@ -1,10 +1,7 @@
 //Checks if user is logged in
 function checkForUser() {
 
-    /*if(cookie exists){
-    
-    ajaxFunc('/login/' + data.user + '/' + data.pass + '', "GET", data);
-    */
+    checkForCookies();
 
 
     let userN = document.getElementById('userN');
@@ -18,6 +15,35 @@ function checkForUser() {
     } else {
         sideNav.style.display = "none";
     }
+}
+// Function to check for cookies on page load
+function checkForCookies() {
+    var username = getCookie("username");
+    var password = getCookie("password");
+
+    if (username != "" && password != "") {
+        document.getElementById("username").value = username;
+        document.getElementById("password").value = password;
+        document.getElementById("rememberMeCheckbox").checked = true;
+    }
+
+    // Function to get a cookie by name
+    function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
 
 }
 
