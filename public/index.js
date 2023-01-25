@@ -3,7 +3,6 @@ function checkForUser() {
 
     checkForCookies();
 
-
     let userN = document.getElementById('userN');
     let sideNav = document.getElementById('side-nav')
     let isLogged = sessionStorage.getItem('logged');
@@ -26,25 +25,35 @@ function checkForCookies() {
         document.getElementById("password").value = password;
         document.getElementById("rememberMeCheckbox").checked = true;
     }
+}
 
-    // Function to get a cookie by name
-    function getCookie(cname) {
-        var name = cname + "=";
-        var decodedCookie = decodeURIComponent(document.cookie);
-        var ca = decodedCookie.split(';');
-        for (var i = 0; i < ca.length; i++) {
-            var c = ca[i];
-            while (c.charAt(0) == ' ') {
-                c = c.substring(1);
-            }
-            if (c.indexOf(name) == 0) {
-                return c.substring(name.length, c.length);
-            }
+// Function to get a cookie by name
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
         }
-        return "";
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
     }
+    return "";
+}
+// Function to set a cookie
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
 
-
+// Function to delete a cookie
+function deleteCookie(cname) {
+    setCookie(cname, "", -1);
 }
 
 function rememberMe() {
@@ -64,18 +73,6 @@ function rememberMe() {
         // Delete the cookies
         deleteCookie("username");
         deleteCookie("password");
-    }
-    // Function to set a cookie
-    function setCookie(cname, cvalue, exdays) {
-        var d = new Date();
-        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-        var expires = "expires=" + d.toUTCString();
-        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-    }
-
-    // Function to delete a cookie
-    function deleteCookie(cname) {
-        setCookie(cname, "", -1);
     }
 }
 
