@@ -1,5 +1,14 @@
 //Checks if user is logged in
 function checkForUser() {
+
+    if(localStorage.getItem("username"===null) && localStorage.getItem("password"===null)){
+        const data = {
+            "user": localStorage.getItem("username"),
+            "pass": localStorage.getItem("password")
+        }
+        ajaxFunc('/login/' + data.user + '/' + data.pass + '', "GET", data);
+    }
+
     let userN = document.getElementById('userN');
     let sideNav = document.getElementById('side-nav')
     let isLogged = sessionStorage.getItem('logged');
@@ -11,6 +20,7 @@ function checkForUser() {
     } else {
         sideNav.style.display = "none";
     }
+    
 }
 
 function rememberMe() {
@@ -22,7 +32,7 @@ function rememberMe() {
       // Get the user's credentials
       var username = document.getElementById("loginUser").value;
       var password = document.getElementById("loginPass").value;
-      var checked;
+      var checked = "checked";
   
       // Store the credentials in local storage
       localStorage.setItem("username", username);
