@@ -1,7 +1,9 @@
 //Checks if user is logged in
 function checkForUser() {
 
-    checkForCookies();
+    if (window.location.href.replace("https://quick-ticket.herokuapp.com/", "") == 'login') {
+        checkForCookies();
+    }
 
     let userN = document.getElementById('userN');
     let sideNav = document.getElementById('side-nav')
