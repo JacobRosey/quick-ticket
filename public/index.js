@@ -27,35 +27,22 @@ function checkForCookies() {
         document.getElementById("loginPass").value = password;
         document.getElementById("rememberMeCheckbox").checked = true;
     }
-}
-
-// Function to get a cookie by name
-function getCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
+    // Function to get a cookie by name
+    function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
         }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
+        return "";
     }
-    return "";
-}
-// Function to set a cookie
-function setCookie(cname, cvalue, exdays) {
-    var d = new Date();
-    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-    var expires = "expires=" + d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-}
-
-// Function to delete a cookie
-function deleteCookie(cname) {
-    setCookie(cname, "", -1);
 }
 
 function setActiveLink() {
@@ -188,7 +175,7 @@ function joinTeam() {
 }
 
 function getLogin() {
-    
+
     rememberMe();
 
     let isLogged = sessionStorage.getItem('logged');
@@ -212,13 +199,13 @@ function getLogin() {
     function rememberMe() {
         // Get the checkbox element
         var checkbox = document.getElementById("rememberMeCheckbox");
-    
+
         // Check if the checkbox is checked
         if (checkbox.checked) {
             // Get the user's credentials
             var username = document.getElementById("loginUser").value;
             var password = document.getElementById("loginPass").value;
-    
+
             //Set the cookies - 30 day lifespan
             setCookie("username", username, 30);
             setCookie("password", password, 30);
@@ -227,6 +214,19 @@ function getLogin() {
             deleteCookie("username");
             deleteCookie("password");
         }
+        // Function to set a cookie
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        // Function to delete a cookie
+        function deleteCookie(cname) {
+            setCookie(cname, "", -1);
+        }
+
     }
 }
 
