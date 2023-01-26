@@ -853,10 +853,32 @@ app.route('/leave-team')
                         db.promise().query(sql, [teamID, userID])
                         .then(([rows,fields]) => {
                             console.log(rows)
-                            //If no rows are returned, user is not an admin and can leave
-                            //If a row is returned, user is an admin and needs to assign 
-                            //admin privileges to a team member
+                            //User is not admin, proceed with deleting from team
+                            if(rows.length === 0){
+                                sql = "DELETE FROM Members WHERE user_id = ? AND team_id = ?"
+                                db.promise().query(sql, [userID, teamID])
+                                .then(res.send('Successfully left the team!'))
+                            }
+                            //User is an admin, needs to assign admin privileges 
+                            //to a team member before leaving
+                            if(rows.length == 1){
+                                //Get all other team members
+                                var teamMembers = []
+                                sql = "SELECT * FROM Members WHERE team_id = ?"
+                                db.promise().query(sql, teamID)
+                                .then(async ([rows, fields]) => {
+                                    for(let i=0; i<rows.length; i++){
+                                        sql = "SELECT * FROM Users where user_id = ?"
+                                        await db.promise().query(sql, [rows[i].user_id])
+                                        .then(([rows, fields]) => {
+                                            teamMembers.push(rows[i].user_name)
+                                        })
+                                    }
 
+                                })
+
+                                res.send('Please choose new admin: ' + teamMembers, teamID)
+                            }
                         })
                     })
             })
