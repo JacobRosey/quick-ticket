@@ -839,5 +839,10 @@ app.route('/performance/:user')
 app.route('/leave-team')
     .put(function (req, res, err) {
         const { user, team } = req.body;
-        console.log('user and team: ' + user + team)
+        
+        let sql = "SELECT * FROM Teams WHERE team_name = ?"
+        db.promise().query(sql + user)
+            .then(([rows, fields]) => {
+                console.log(rows)
+            })
     })
