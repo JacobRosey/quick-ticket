@@ -849,10 +849,14 @@ app.route('/leave-team')
                     .then(([rows, fields]) => {
                         const teamID = rows[0].team_id;
                         console.log(userID, teamID);
-                        let sql = "SELECT * FROM Admins WHERE team_id = 44 AND user_id = 12 ;"
-                        db.promise().query(sql, teamID)
+                        let sql = "SELECT * FROM Admins WHERE team_id = ? AND user_id = ? ;"
+                        db.promise().query(sql, [teamID, userID])
                         .then(([rows,fields]) => {
                             console.log(rows)
+                            //If no rows are returned, user is not an admin and can leave
+                            //If a row is returned, user is an admin and needs to assign 
+                            //admin privileges to a team member
+
                         })
                     })
             })
