@@ -877,7 +877,7 @@ app.route('/leave-team')
 
                                 })
 
-                                res.send('New admin: ' + teamMembers, teamID)
+                                res.send('New admin: ' + teamMembers, teamID.toString())
                             }
                         })
                     })
