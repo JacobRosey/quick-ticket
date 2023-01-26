@@ -869,7 +869,7 @@ app.route('/leave-team')
                                     db.promise().query(sql, teamID)
                                         .then(async ([rows, fields]) => {
                                             for (let i = 0; i < rows.length; i++) {
-                                                console.log('looping through user IDs')
+                                                console.log('looping through user IDs. Now on :' + rows[i].user_id)
                                                 sql = "SELECT * FROM Users where user_id = ?"
                                                 await db.promise().query(sql, [rows[i].user_id])
                                                     .then(([rows, fields]) => {
