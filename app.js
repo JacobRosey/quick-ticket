@@ -840,16 +840,16 @@ app.route('/leave-team')
     .put(function (req, res, err) {
         const { user, team } = req.body;
         //Check to see if user is admin
-        let sql = "SELECT * FROM Users WHERE user_name = ?;"
+        let sql = "SELECT user_id FROM Users WHERE user_name = ?;"
         db.promise().query(sql, user)
             .then(([rows, fields]) => {
-                const userID = rows[0].user_id;
-                sql = "SELECT * FROM Teams WHERE team_name = ?;"
+                const userID = rows[0];
+                sql = "SELECT team_id FROM Teams WHERE team_name = ?;"
                 db.promise().query(sql, team)
                     .then(([rows, fields]) => {
-                        const teamID = rows[0].team_id;
+                        const teamID = rows[0];
                         console.log(userID, teamID);
-                        let sql = "SELECT * FROM Admins WHERE team_id = ? AND user_id = ?;"
+                        let sql = "SELECT * FROM Admins WHERE team_id = ? AND user_id = ? ;"
                         db.promise().query(sql, teamID, userID)
                         .then(([rows,fields]) => {
                             console.log(rows)
