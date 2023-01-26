@@ -447,30 +447,33 @@ function useResponse(res) {
     }
     if (active == 'team') {
 
-        //My Teams
-        for (let i = 0; i < res.length; i++) {
-            container.innerHTML += `
-                <div class="col-sm">
-                <div class="team-info">
-                <div class="card" id="team-card"style="width: 18rem;">
-                <div class="card-header" style="font-weight: bolder;">
-                <i class="fs-4 bi-people" style="margin-right: .25em;"></i><span class="team-name-span">
-                    `+ res[i].team_name + `
-                </span></div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item" id="team-code" >Invitation Code: <span style="font-weight: 300;">`+ res[i].team_code + `</span></li>
-                    <li class="list-group-item" id="member-count">Total Members: <span style="font-weight: 300;">` + res[i].member_count + `</span></li>
-                    <li class="list-group-item">Team Admin: <span id="admin-name" style="font-weight: 300;">`+ res[i].admin_name + `</span></li>
-                </ul>
-                <div class="btn-group" role="group" style="display: flex; background-color: #f7f7f7;">
-                <a class="btn btn-secondary" onClick="leaveTeam(`+ i + `)" role="button" style="font-weight: bold; width: 50%; line-height: 32.5px !important;">Leave Team</a>
-                <a class="btn btn-danger" onClick="deleteTeam(`+ i + `)" role="button" style="font-weight: bold; width: 50%; line-height: 32.5px !important;">Delete Team</a>
-                </div>
-                </div>
-                </div>
-                </div>
-                `
-        }
+        //On page load
+        if(!res.includes('New admin' || 'User deleted')){
+            for (let i = 0; i < res.length; i++) {
+                container.innerHTML += `
+                    <div class="col-sm">
+                    <div class="team-info">
+                    <div class="card" id="team-card"style="width: 18rem;">
+                    <div class="card-header" style="font-weight: bolder;">
+                    <i class="fs-4 bi-people" style="margin-right: .25em;"></i><span class="team-name-span">
+                        `+ res[i].team_name + `
+                    </span></div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" id="team-code" >Invitation Code: <span style="font-weight: 300;">`+ res[i].team_code + `</span></li>
+                        <li class="list-group-item" id="member-count">Total Members: <span style="font-weight: 300;">` + res[i].member_count + `</span></li>
+                        <li class="list-group-item">Team Admin: <span id="admin-name" style="font-weight: 300;">`+ res[i].admin_name + `</span></li>
+                    </ul>
+                    <div class="btn-group" role="group" style="display: flex; background-color: #f7f7f7;">
+                    <a class="btn btn-secondary" onClick="leaveTeam(`+ i + `)" role="button" style="font-weight: bold; width: 50%; line-height: 32.5px !important;">Leave Team</a>
+                    <a class="btn btn-danger" onClick="deleteTeam(`+ i + `)" role="button" style="font-weight: bold; width: 50%; line-height: 32.5px !important;">Delete Team</a>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    `
+            }
+        } else alert(res);
+        
     }
     if (active.includes('ticket')) {
         //New ticket created
