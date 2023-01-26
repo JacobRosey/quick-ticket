@@ -876,13 +876,14 @@ app.route('/leave-team')
                                                         teamMembers.push(rows[0].user_name)
                                                     })
                                             }
-                                            resolve(teamMembers, teamID)
+                                            teamMembers.push(teamID)
+                                            resolve(teamMembers)
 
-                                        }).then(teamMembers, teamID => {
+                                        }).then(teamMembers => {
                                             //Return other team member usernames and team id so admin can transfer
                                             //admin privileges
-                                            console.log(teamMembers + ' ' + teamID.toString())
-                                            //res.send(('New admin: ' + teamMembers + ' ' + teamID.toString()))
+                                            console.log(teamMembers)
+                                            res.send('New admin: ' + teamMembers)
                                         })
                                 }
                             })
