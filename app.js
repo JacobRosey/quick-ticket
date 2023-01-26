@@ -849,8 +849,8 @@ app.route('/leave-team')
                     .then(([rows, fields]) => {
                         const teamID = rows[0].team_id;
                         console.log(userID, teamID);
-                        let sql = "SELECT * FROM Admins WHERE team_id = ? AND user_id = ? ;"
-                        db.promise().query(sql, teamID, userID)
+                        let sql = "SELECT * FROM Admins WHERE team_id = ? AND user_id = 35 ;"
+                        db.promise().query(sql, teamID)
                         .then(([rows,fields]) => {
                             console.log(rows)
                         })
