@@ -4,6 +4,7 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
+const { resolve } = require('path/posix');
 
 const app = express();
 
@@ -851,38 +852,40 @@ app.route('/leave-team')
                         console.log(userID, teamID);
                         let sql = "SELECT * FROM Admins WHERE team_id = ? AND user_id = ? ;"
                         db.promise().query(sql, [teamID, userID])
-                        .then(([rows,fields]) => {
-                            console.log('There are ' + rows.length + ' rows. 0 if not admin, 1 if admin')
-                            //User is not admin, proceed with deleting from team
-                            if(rows.length === 0){
-                                sql = "DELETE FROM Members WHERE user_id = ? AND team_id = ?"
-                                db.promise().query(sql, [userID, teamID])
-                                .then(res.send('User deleted'))
-                            }
-                            //User is an admin, needs to assign admin privileges 
-                            //to a team member before leaving
-                            if(rows.length == 1){
-                                //Get all other team members
-                                var teamMembers = []
-                                sql = "SELECT * FROM Members WHERE team_id = ?"
-                                db.promise().query(sql, teamID)
-                                .then(async ([rows, fields]) => {
-                                    for(let i=0; i<rows.length; i++){
-                                        console.log('looping through user IDs')
-                                        sql = "SELECT * FROM Users where user_id = ?"
-                                        await db.promise().query(sql, [rows[i].user_id])
-                                        .then(([rows, fields]) => {
-                                            teamMembers.push(rows[0].user_name)
-                                        })
-                                    }
+                            .then(([rows, fields]) => {
+                                console.log('There are ' + rows.length + ' rows. 0 if not admin, 1 if admin')
+                                //User is not admin, proceed with deleting from team
+                                if (rows.length === 0) {
+                                    sql = "DELETE FROM Members WHERE user_id = ? AND team_id = ?"
+                                    db.promise().query(sql, [userID, teamID])
+                                        .then(res.send('User deleted'))
+                                }
+                                //User is an admin, needs to assign admin privileges 
+                                //to a team member before leaving
+                                if (rows.length == 1) {
+                                    //Get all other team members
+                                    var teamMembers = []
+                                    sql = "SELECT * FROM Members WHERE team_id = ?"
+                                    db.promise().query(sql, teamID)
+                                        .then(async ([rows, fields]) => {
+                                            for (let i = 0; i < rows.length; i++) {
+                                                console.log('looping through user IDs')
+                                                sql = "SELECT * FROM Users where user_id = ?"
+                                                await db.promise().query(sql, [rows[i].user_id])
+                                                    .then(([rows, fields]) => {
+                                                        teamMembers.push(rows[0].user_name)
+                                                    })
+                                            }
+                                            resolve(teamMembers, teamID)
 
-                                })
-                                //Return other team member usernames and team id so admin can transfer
-                                //admin privileges
-                                console.log('return response. arr:' + teamMembers + ' id: ' + teamID)
-                                res.status(200).send(('New admin: ' + teamMembers, teamID).toString())
-                            }
-                        })
+                                        }).then(teamMembers, teamID => {
+                                            //Return other team member usernames and team id so admin can transfer
+                                            //admin privileges
+                                            console.log('return response. arr:' + teamMembers + ' id: ' + teamID)
+                                            res.status(200).send(('New admin: ' + teamMembers, teamID).toString())
+                                        })
+                                }
+                            })
                     })
             })
     })
