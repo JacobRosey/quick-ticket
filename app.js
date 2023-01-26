@@ -869,7 +869,7 @@ app.route('/leave-team')
                                     db.promise().query(sql, teamID)
                                         .then(async ([rows, fields]) => {
                                             for (let i = 0; i < rows.length; i++) {
-                                                console.log('looping through user IDs. Now on :' + rows[i].user_id)
+                                                console.log('looping through user IDs. Now on: ' + rows[i].user_id)
                                                 sql = "SELECT * FROM Users where user_id = ?"
                                                 await db.promise().query(sql, [rows[i].user_id])
                                                     .then(([rows, fields]) => {
@@ -882,8 +882,8 @@ app.route('/leave-team')
                                         }).then(teamMembers => {
                                             //Return other team member usernames and team id so admin can transfer
                                             //admin privileges
-                                            console.log(teamMembers.toString())
-                                            res.send('New admin: ' + teamMembers.toString())
+                                            //console.log(teamMembers.toString())
+                                            res.send(teamMembers)
                                         })
                                 }
                             })
