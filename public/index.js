@@ -472,7 +472,10 @@ function useResponse(res) {
                     </div>
                     `
             }
-        } else alert(res);
+        } else{
+            alert(res);
+            window.location.reload();
+        }
         
     }
     if (active.includes('ticket')) {
