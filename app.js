@@ -876,7 +876,7 @@ app.route('/leave-team')
                                     }
 
                                 })
-                                res.status(200).send('New admin: ' + teamMembers, teamID.toString())
+                                res.status(200).send(('New admin: ' + teamMembers, teamID).toString())
                             }
                         })
                     })
