@@ -852,7 +852,7 @@ app.route('/leave-team')
                         let sql = "SELECT * FROM Admins WHERE team_id = ? AND user_id = ? ;"
                         db.promise().query(sql, [teamID, userID])
                         .then(([rows,fields]) => {
-                            console.log(rows)
+                            console.log('There are ' + rows.length + ' rows. 0 if not admin, 1 if admin')
                             //User is not admin, proceed with deleting from team
                             if(rows.length === 0){
                                 sql = "DELETE FROM Members WHERE user_id = ? AND team_id = ?"
@@ -876,6 +876,8 @@ app.route('/leave-team')
                                     }
 
                                 })
+                                //Return other team member usernames and team id so admin can transfer
+                                //admin privileges
                                 res.status(200).send(('New admin: ' + teamMembers, teamID).toString())
                             }
                         })
