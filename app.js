@@ -839,6 +839,7 @@ app.route('/performance/:user')
 app.route('/leave-team')
     .put(function (req, res, err) {
         const { user, team } = req.body;
+        //Check to see if user is admin
         let sql = "SELECT * FROM Users WHERE username = ?;"
         db.promise().query(sql, user)
             .then(([rows, fields]) => {
