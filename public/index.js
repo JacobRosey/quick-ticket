@@ -296,7 +296,7 @@ function leaveTeam(num) {
             "team": string.replace(/ /g, '-')
         }
         console.log(data)
-        ajaxFunc('/leave-team/:user', "PUT", data);
+        ajaxFunc('/leave-team/', "PUT", data);
 
 
     }
