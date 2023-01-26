@@ -843,11 +843,11 @@ app.route('/leave-team')
         let sql = "SELECT * FROM Users WHERE user_name = ?;"
         db.promise().query(sql, user)
             .then(([rows, fields]) => {
-                let userID = rows[0];
+                let userID = rows[0].user_id;
                 sql = "SELECT * FROM Teams WHERE team_name = ?;"
                 db.promise().query(sql, team)
                     .then(([rows, fields]) => {
-                        let teamID = rows[0];
+                        let teamID = rows[0].team_id;
                         let sql = "SELECT * FROM Admins WHERE team_id = ? AND user_id = ?;"
                         db.promise().query(sql, teamID, userID)
                         .then(([rows,fields]) => {
