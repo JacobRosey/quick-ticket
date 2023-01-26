@@ -871,7 +871,7 @@ app.route('/leave-team')
                                         sql = "SELECT * FROM Users where user_id = ?"
                                         await db.promise().query(sql, [rows[i].user_id])
                                         .then(([rows, fields]) => {
-                                            teamMembers.push(rows[i].user_name)
+                                            teamMembers.push(rows[0].user_name)
                                         })
                                     }
 
