@@ -840,8 +840,8 @@ app.route('/leave-team')
     .put(function (req, res, err) {
         const { user, team } = req.body;
         
-        let sql = "SELECT * FROM Teams WHERE team_name = "
-        db.promise().query(sql + team)
+        let sql = "SELECT * FROM Teams WHERE team_name = ?;"
+        db.promise().query(sql, team)
             .then(([rows, fields]) => {
                 console.log(rows)
             })
