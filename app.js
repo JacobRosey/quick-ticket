@@ -835,3 +835,9 @@ app.route('/performance/:user')
         }, 50)
 
     })
+
+app.route('/leave-team')
+    .put(function (req, res, err) {
+        const { user, team } = req.body;
+        console.log('user and team: ' + user + team)
+    })
