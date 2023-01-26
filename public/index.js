@@ -448,7 +448,7 @@ function useResponse(res) {
     if (active == 'team') {
 
         //On page load
-        if(!res.includes('New admin' || 'User deleted')){
+        if(!res.includes('New admin') && !res.includes('User deleted')){
             for (let i = 0; i < res.length; i++) {
                 container.innerHTML += `
                     <div class="col-sm">
