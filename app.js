@@ -881,8 +881,8 @@ app.route('/leave-team')
                                         }).then(teamMembers, teamID => {
                                             //Return other team member usernames and team id so admin can transfer
                                             //admin privileges
-                                            console.log('return response. arr:' + teamMembers + ' id: ' + teamID.toString())
-                                            res.status(200).send(('New admin: ' + teamMembers, teamID).toString())
+                                            console.log(teamMembers, teamID)
+                                            res.send(('New admin: ' + teamMembers, teamID).toString())
                                         })
                                 }
                             })
