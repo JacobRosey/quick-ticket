@@ -739,7 +739,7 @@ app.route('/ticketdata/:user/:status')
                                     .then(([rows, fields]) => {
                                         arr.push(rows)
                                     }).catch(err => console.log(err))
-                                    arr = [].concat(...arr)
+                                arr = [].concat(...arr)
                             }))
                             await arr.forEach(async (row) => {
                                 console.log('Now querying DB for this ticket id: ' + row.ticket_id)
@@ -839,10 +839,19 @@ app.route('/performance/:user')
 app.route('/leave-team')
     .put(function (req, res, err) {
         const { user, team } = req.body;
-        
-        let sql = "SELECT * FROM Teams WHERE team_name = ?;"
-        db.promise().query(sql, team)
+        let sql = "SELECT * FROM Users WHERE username = ?;"
+        db.promise.query(sql, user)
             .then(([rows, fields]) => {
-                console.log(rows)
+                let userID = rows[0];
+                sql = "SELECT * FROM Teams WHERE team_name = ?;"
+                db.promise().query(sql, team)
+                    .then(([rows, fields]) => {
+                        let teamID = rows[0];
+                        let sql = "SELECT * FROM Admins WHERE team_id = ? AND user_id = ?;"
+                        db.promise.query(sql, teamID, userID)
+                        .then(([rows,fields]) => {
+                            console.log(rows)
+                        })
+                    })
             })
     })
