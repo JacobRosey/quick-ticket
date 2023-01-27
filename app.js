@@ -877,6 +877,7 @@ app.route('/leave-team')
                                                     })
                                             }
                                             teamMembers.push(teamID)
+                                            console.log(teamMembers)
                                             resolve(teamMembers)
 
                                         }).then(teamMembers => {
