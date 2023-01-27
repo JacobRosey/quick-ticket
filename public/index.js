@@ -464,9 +464,10 @@ function useResponse(res) {
                 <div id="myModal" class="modal">
                 <div class="modal-content">
                     <span class="close">&times;</span>
+                    <span>You must assign admin privileges to a team member before leaving!</span>
                     <form id="admin-candidates">
                     
-                    <button type="submit">Log in</button>
+                    <button type="submit">Submit</button>
                     </form>
                 </div>
                 </div>
@@ -475,8 +476,8 @@ function useResponse(res) {
             for(let i=0; i<trueLength; i++){
                 radioBtns.innerHTML += 
                 `
-                <input type="radio" id="option-`+i+`" value="`+arr[i]+`">
-                <label for="option-`+i+`">`+arr[i]+`</label><br>
+                <input type="radio" id="option-`+i+`" value="`+arr[i]+`" name="new-admin">
+                <label for="option-`+i+`" name="new-admin">`+arr[i]+`</label><br>
                 `
             }
             // Get the button that opens the modal
