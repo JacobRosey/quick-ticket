@@ -459,7 +459,7 @@ function useResponse(res) {
             console.log('teamID is - ' + teamID);
             container.innerHTML +=
                 `
-                <button id="myBtn">Open Modal</button>
+                <button id="myBtn" style="visibility=hidden;">Open Modal</button>
                 <div id="myModal" class="modal">
                 <div class="modal-content">
                     <span class="close">&times;</span>
@@ -475,8 +475,9 @@ function useResponse(res) {
                 </div>
                 </div>
             `
-            // Get the button that opens the modal
+            // Get the button that opens the modal, click it
             var btn = document.getElementById("myBtn");
+            btn.click();
 
             // Get the modal
             var modal = document.getElementById("myModal");
