@@ -449,7 +449,7 @@ function useResponse(res) {
         if(res.includes('Members')){
             let arr = res.slice(12).split(',');
             console.log(arr)
-            if(res.length == 2){
+            if(arr.length == 2){
                 alert('You are the only member of this group - just delete it!')
                 return;
             }
