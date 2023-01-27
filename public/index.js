@@ -475,9 +475,9 @@ function useResponse(res) {
                 </div>
                 </div>
             `
-            // Get the button that opens the modal, click it
+            // Get the button that opens the modal
             var btn = document.getElementById("myBtn");
-            btn.click();
+            
 
             // Get the modal
             var modal = document.getElementById("myModal");
@@ -501,6 +501,8 @@ function useResponse(res) {
                     modal.style.display = "none";
                 }
             }
+            //Send click event to open modal
+            btn.click();
 
 
             return;
