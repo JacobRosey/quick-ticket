@@ -447,6 +447,8 @@ function useResponse(res) {
     }
     if (active == 'team') {
         if(res.includes('Members')){
+            let arr = res.slice(11);
+            console.log(arr)
             if(res.length == 2){
                 alert('You are the only member of this group - just delete it!')
                 return;
