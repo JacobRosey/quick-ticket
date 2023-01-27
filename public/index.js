@@ -464,10 +464,13 @@ function useResponse(res) {
                 <div id="myModal" class="modal">
                 <div class="modal-content">
                     <span class="close">&times;</span>
-                    <span>You must assign admin privileges to a team member before leaving!</span>
+                    <h5 class="modal-title">Leave Team</h5>
+                    <div class="modal-header">You must assign admin privileges to a team member before leaving!</div>
                     <form id="admin-candidates">
                     
-                    <button type="submit">Submit</button>
+                    <div class="modal-footer">
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                    </div>
                     </form>
                 </div>
                 </div>
