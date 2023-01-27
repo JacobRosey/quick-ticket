@@ -880,7 +880,7 @@ app.route('/leave-team')
                                             console.log(teamMembers)
                                             setTimeout(() => {
                                                 resolve(teamMembers.toString())
-                                            }, 25)
+                                            }, 100)
 
                                         }).then(teamMembers => {
                                             //Return other team member usernames and team id so admin can transfer
