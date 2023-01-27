@@ -879,7 +879,7 @@ app.route('/leave-team')
                                             teamMembers.push(teamID)
                                             setTimeout(() => {
                                                 console.log('Sending res ' + teamMembers)
-                                                res.send(teamMembers)
+                                                res.send('Members are:' + teamMembers)
                                             }, 150)
 
                                         })

@@ -472,6 +472,8 @@ function useResponse(res) {
                     </div>
                     `
             }
+        }else if(res.includes('Members')){
+            alert(res)
         }else {
             alert(res);
             window.location.reload();
