@@ -459,7 +459,7 @@ function useResponse(res) {
             console.log('teamID is - ' + teamID);
             container.innerHTML +=
                 `
-                <button id="myBtn" style="visibility=hidden;">Open Modal</button>
+                <button id="myBtn" style="visibility:hidden;">Open Modal</button>
                 <div id="myModal" class="modal">
                 <div class="modal-content">
                     <span class="close">&times;</span>
