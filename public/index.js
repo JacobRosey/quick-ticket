@@ -469,7 +469,7 @@ function useResponse(res) {
                     <form id="admin-candidates">
                     </form>
                     <div class="modal-footer">
-                    <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
+                    <button class="btn btn-primary btn-lg" type="submit">Submit</button>
                     </div>
                 </div>
                 </div>
