@@ -450,6 +450,10 @@ function useResponse(res) {
             alert(res)
             return;
         }
+        if(res.includes('left')){
+            let teamName = res.slice(21);
+            alert('Successfully left the following team: ' + teamName)
+        }
         //On page load
         if(!res.includes('New admin') && !res.includes('User deleted')){
             for (let i = 0; i < res.length; i++) {

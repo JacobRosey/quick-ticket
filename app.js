@@ -858,7 +858,7 @@ app.route('/leave-team')
                                 if (rows.length === 0) {
                                     sql = "DELETE FROM Members WHERE user_id = ? AND team_id = ?"
                                     db.promise().query(sql, [userID, teamID])
-                                        .then(res.send('User deleted'))
+                                        .then(res.send('You successfully left: ' + team))
                                 }
                                 //User is an admin, needs to assign admin privileges 
                                 //to a team member before leaving
