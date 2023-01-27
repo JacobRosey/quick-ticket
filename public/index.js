@@ -449,6 +449,7 @@ function useResponse(res) {
         if(res.includes('Members')){
             if(res.length == 1){
                 alert('You are the only member of this group - just delete it!')
+                return;
             }
             alert(res)
             return;
