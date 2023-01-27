@@ -455,7 +455,9 @@ function useResponse(res) {
                 return;
             }
             const teamID = arr[arr.length - 1];
+            const trueLength = arr.length - 1;
             const container = document.getElementById('team-container');
+            const radioBtns = document.getElementById('admin-candidates')
             console.log('teamID is - ' + teamID);
             container.innerHTML +=
                 `
@@ -463,18 +465,20 @@ function useResponse(res) {
                 <div id="myModal" class="modal">
                 <div class="modal-content">
                     <span class="close">&times;</span>
-                    <form>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
-                    <input type="checkbox" id="rememberMe" name="rememberMe">
-                    <label for="rememberMe">Remember me</label>
+                    <form id="admin-candidates">
+                    
                     <button type="submit">Log in</button>
                     </form>
                 </div>
                 </div>
             `
+            for(let i=0; i<trueLength; i++){
+                radioBtns.innerHTML += 
+                `
+                <input type="radio" id="option-`+i+`" value="`+arr[i]+`">
+                <label for="option-`+i+`">`+arr[i]+`</label><br>
+                `
+            }
             // Get the button that opens the modal
             var btn = document.getElementById("myBtn");
             
