@@ -446,7 +446,10 @@ function useResponse(res) {
         count.innerHTML = res;
     }
     if (active == 'team') {
-        alert(res)
+        if(res.includes('Members')){
+            alert(res)
+            return;
+        }
         //On page load
         if(!res.includes('New admin') && !res.includes('User deleted')){
             for (let i = 0; i < res.length; i++) {
@@ -471,12 +474,8 @@ function useResponse(res) {
                     </div>
                     </div>
                     `
+                    return;
             }
-        }else if(res.includes('Members')){
-            alert(res)
-        }else {
-            alert(res);
-            window.location.reload();
         }
         
     }
