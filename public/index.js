@@ -474,8 +474,8 @@ function useResponse(res) {
                     </div>
                     </div>
                     `
-                    return;
             }
+            return;
         }
         
     }
