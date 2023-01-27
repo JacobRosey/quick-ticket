@@ -457,7 +457,6 @@ function useResponse(res) {
             const teamID = arr[arr.length - 1];
             const trueLength = arr.length - 1;
             const container = document.getElementById('team-container');
-            const radioBtns = document.getElementById('admin-candidates')
             console.log('teamID is - ' + teamID);
             container.innerHTML +=
                 `
@@ -472,6 +471,7 @@ function useResponse(res) {
                 </div>
                 </div>
             `
+            const radioBtns = document.getElementById('admin-candidates')
             for(let i=0; i<trueLength; i++){
                 radioBtns.innerHTML += 
                 `
