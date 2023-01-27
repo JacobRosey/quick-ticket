@@ -878,7 +878,7 @@ app.route('/leave-team')
                                             }
                                             teamMembers.push(teamID)
                                             console.log(teamMembers)
-                                            resolve(teamMembers)
+                                            resolve(teamMembers.toString())
 
                                         }).then(teamMembers => {
                                             //Return other team member usernames and team id so admin can transfer
