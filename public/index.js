@@ -446,23 +446,47 @@ function useResponse(res) {
         count.innerHTML = res;
     }
     if (active == 'team') {
-        if(res.includes('Members')){
+        if (res.includes('Members')) {
             let arr = res.slice(12).split(',');
             console.log(arr)
-            if(arr.length == 2){
+            //If the user is the only member of the team
+            if (arr.length == 2) {
                 alert('You are the only member of this group - just delete it!')
                 return;
             }
+            const teamID = arr[arr.length - 1];
+            const container = document.getElementById('team-container');
+            console.log(arr);
+            container.innerHTML +=
+                `
+            <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <form>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <input type="checkbox" id="rememberMe" name="rememberMe">
+                <label for="rememberMe">Remember me</label>
+                <button type="submit">Log in</button>
+                </form>
+            </div>
+            </div>
+
+            `
+
+
             alert(res)
             return;
         }
-        if(res.includes('left')){
+        if (res.includes('left')) {
             let teamName = res.slice(21);
             alert('Successfully left the following team: ' + teamName);
             window.location.reload();
         }
         //On page load
-        if(!res.includes('New admin') && !res.includes('User deleted')){
+        if (!res.includes('New admin') && !res.includes('User deleted')) {
             for (let i = 0; i < res.length; i++) {
                 container.innerHTML += `
                     <div class="col-sm">
@@ -488,7 +512,7 @@ function useResponse(res) {
             }
             return;
         }
-        
+
     }
     if (active.includes('ticket')) {
         //New ticket created
