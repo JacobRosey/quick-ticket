@@ -877,7 +877,7 @@ app.route('/leave-team')
                                                     })
                                             }
                                             teamMembers.push(teamID)
-                                            console.log(teamMembers)
+                                            console.log('Before resolve - ' + teamMembers)
                                             setTimeout(() => {
                                                 resolve(teamMembers.toString())
                                             }, 100)
@@ -885,7 +885,7 @@ app.route('/leave-team')
                                         }).then(teamMembers => {
                                             //Return other team member usernames and team id so admin can transfer
                                             //admin privileges
-                                            console.log(teamMembers)
+                                            console.log('After resolve - '+ teamMembers)
                                             res.json(teamMembers)
                                         })
                                 }
