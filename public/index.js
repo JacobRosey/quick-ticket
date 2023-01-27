@@ -446,7 +446,7 @@ function useResponse(res) {
         count.innerHTML = res;
     }
     if (active == 'team') {
-
+        alert(res)
         //On page load
         if(!res.includes('New admin') && !res.includes('User deleted')){
             for (let i = 0; i < res.length; i++) {
