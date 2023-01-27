@@ -476,8 +476,6 @@ function useResponse(res) {
 
             `
 
-
-            alert(res)
             return;
         }
         if (res.includes('left')) {
