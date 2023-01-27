@@ -506,8 +506,9 @@ function useResponse(res) {
 
             // When the user clicks anywhere outside of the modal, close it
             window.onclick = function (event) {
-                if (event.target == modal) {
+                if (event.target !== modal) {
                     modal.style.display = "none";
+                    radioBtns.innerHTML = '';
                 }
             }
             //Send click event to open modal
