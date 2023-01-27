@@ -456,7 +456,7 @@ function useResponse(res) {
             }
             const teamID = arr[arr.length - 1];
             const container = document.getElementById('team-container');
-            console.log(arr);
+            console.log('teamID is - '+ teamID);
             container.innerHTML +=
                 `
             <div id="myModal" class="modal">
