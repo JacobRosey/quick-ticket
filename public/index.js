@@ -465,7 +465,7 @@ function useResponse(res) {
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <h5 class="modal-title">Leave Team</h5>
-                    <div class="modal-header">You must assign admin privileges to a team member before leaving!</div>
+                    <div class="modal-header">Please transfer admin privileges to a team member before leaving!</div>
                     <form id="admin-candidates">
                     </form>
                     <div class="modal-footer">
