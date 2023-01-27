@@ -472,7 +472,9 @@ function useResponse(res) {
                     </div>
                     `
             }
-        } else{
+        } else if(res == undefined){
+            alert('Something went wrong')
+        }else{
             alert(res);
             window.location.reload();
         }
