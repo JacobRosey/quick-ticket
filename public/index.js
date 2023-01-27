@@ -461,7 +461,7 @@ function useResponse(res) {
             container.innerHTML +=
                 `
                 <button id="myBtn" style="visibility:hidden;">Open Modal</button>
-                <div id="myModal" class="modal" style="width: 80%; position:absolute;">
+                <div id="myModal" class="modal">
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <h5 class="modal-title">Leave Team</h5>
