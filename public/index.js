@@ -467,11 +467,10 @@ function useResponse(res) {
                     <h5 class="modal-title">Leave Team</h5>
                     <div class="modal-header">You must assign admin privileges to a team member before leaving!</div>
                     <form id="admin-candidates">
-                    
+                    </form>
                     <div class="modal-footer">
                     <button class="btn btn-primary" type="submit">Submit</button>
                     </div>
-                    </form>
                 </div>
                 </div>
             `
