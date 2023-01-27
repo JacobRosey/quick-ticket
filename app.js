@@ -877,8 +877,8 @@ app.route('/leave-team')
                                                     })
                                             }
                                             teamMembers.push(teamID)
-                                            console.log('Before resolve - ' + teamMembers)
                                             setTimeout(() => {
+                                                console.log('Sending res ' + teamMembers)
                                                 res.send(teamMembers)
                                             }, 150)
 
