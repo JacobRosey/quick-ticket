@@ -480,9 +480,9 @@ function useResponse(res) {
                     </form>
                     </div>
                     </div>
-                    <div class="modal-footer">
+                </div>
+                <div class="modal-footer">
                     <button class="btn btn-primary btn-lg" type="submit">Submit</button>
-                    </div>
                 </div>
                 </div>
             `
