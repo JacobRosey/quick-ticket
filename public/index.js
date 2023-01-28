@@ -809,7 +809,9 @@ function transferAdminPriv(id) {
             return;
         }
         //If user clicks confirm without checking a radio btn
-        alert('You must select a new admin!')
+        if(i == inputs.length){
+            alert('You must select a new admin!')
+        }
     }
 }
 
