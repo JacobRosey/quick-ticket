@@ -502,7 +502,7 @@ function useResponse(res) {
                         </form>
                         </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-secondary btn-close" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
                         <button type="button" class="btn btn-primary" onClick="transferAdminPriv();">Confirm</button>
                         </div>
                     </div>
