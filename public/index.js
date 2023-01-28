@@ -502,7 +502,7 @@ function useResponse(res) {
                         </form>
                         </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" onClick="transferAdminPriv(`+teamID+`);">Confirm</button>
+                        <button type="button" class="btn btn-primary" onClick="transferAdminPriv(`+ teamID + `);">Confirm</button>
                         </div>
                     </div>
                     </div>
@@ -510,9 +510,18 @@ function useResponse(res) {
 `
             const radioBtns = document.getElementById('admin-candidates')
             for (let i = 0; i < trueLength; i++) {
+                if (i == 0) {
+                    //Check the first radio button by default
+                    radioBtns.innerHTML +=
+                        `
+                        <input type="radio" class="new-admin-inputs" value="` + arr[i] + `" name="new-admin" checked>
+                        <label for="option-`+ i + `" name="new-admin">` + arr[i] + `</label><br>
+                        `
+                    return;
+                }
                 radioBtns.innerHTML +=
                     `
-                <input type="radio" class="new-admin-inputs id="option-`+ i + `" value="` + arr[i] + `" name="new-admin">
+                <input type="radio" class="new-admin-inputs" value="` + arr[i] + `" name="new-admin">
                 <label for="option-`+ i + `" name="new-admin">` + arr[i] + `</label><br>
                 `
             }
@@ -820,10 +829,10 @@ function useResponse(res) {
     }
 }
 
-function transferAdminPriv(id){
+function transferAdminPriv(id) {
     let inputs = document.getElementsByClassName('new-admin-inputs');
-    for(let i=0; i<inputs.length; i++){
-        if(inputs[i].checked){
+    for (let i = 0; i < inputs.length; i++) {
+        if (inputs[i].checked) {
             const newAdmin = inputs[i].value;
             console.log(newAdmin, id);
             return;
