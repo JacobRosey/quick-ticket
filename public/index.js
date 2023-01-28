@@ -456,7 +456,8 @@ function useResponse(res) {
             }
             const currentUser = sessionStorage.getItem('username');
             const index = arr.indexOf(currentUser);
-            arr.splice(index, 1);
+            console.log(currentUser)
+            arr.splice(index, 0);
             const teamID = arr[arr.length - 1];
             const trueLength = arr.length - 1;
             const container = document.getElementById('team-container');
