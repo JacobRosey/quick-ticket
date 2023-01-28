@@ -454,6 +454,9 @@ function useResponse(res) {
                 alert('You are the only member of this group - just delete it!')
                 return;
             }
+            //Remove current user as option because they're the admin
+            //if i'm leaving a team i'm obviously not going to transfer 
+            //privileges to myself
             const currentUser = sessionStorage.getItem('user');
             const index = arr.indexOf(currentUser);
             console.log(currentUser)
