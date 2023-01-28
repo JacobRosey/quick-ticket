@@ -507,14 +507,15 @@ function useResponse(res) {
                     </div>
                     </div>
                 </div>
-`
+                `;
+
             const radioBtns = document.getElementById('admin-candidates')
             for (let i = 0; i < trueLength; i++) {
                 if (i == 0) {
                     //Check the first radio button by default
                     radioBtns.innerHTML +=
                         `
-                        <input type="radio" class="new-admin-inputs" value="` + arr[i] + `" name="new-admin" checked>
+                        <input type="radio" id="option-`+ i + `" class="new-admin-inputs" value="` + arr[i] + `" name="new-admin" checked>
                         <label for="option-`+ i + `" name="new-admin">` + arr[i] + `</label><br>
                         `
                     return;
