@@ -502,8 +502,8 @@ function useResponse(res) {
                         </form>
                         </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary">Cancel</button>
-                        <button type="button" class="btn btn-primary">Confirm</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary" onClick="transferAdminPriv();">Confirm</button>
                         </div>
                     </div>
                     </div>
@@ -513,7 +513,7 @@ function useResponse(res) {
             for (let i = 0; i < trueLength; i++) {
                 radioBtns.innerHTML +=
                     `
-                <input type="radio" id="option-`+ i + `" value="` + arr[i] + `" name="new-admin">
+                <input type="radio" class="new-admin-inputs id="option-`+ i + `" value="` + arr[i] + `" name="new-admin">
                 <label for="option-`+ i + `" name="new-admin">` + arr[i] + `</label><br>
                 `
             }
@@ -818,6 +818,17 @@ function useResponse(res) {
     if (res == "Ticket created") {
         alert(res);
         window.location.replace('/newticket')
+    }
+}
+
+function transferAdminPriv(){
+    let inputs = document.getElementsByClassName('new-admin-inputs');
+    for(let i=0; i<inputs.length; i++){
+        if(inputs[i].checked){
+            const newAdmin = inputs[i].value;
+            console.log(newAdmin);
+            return;
+        }
     }
 }
 
