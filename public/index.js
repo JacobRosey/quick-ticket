@@ -454,10 +454,10 @@ function useResponse(res) {
                 alert('You are the only member of this group - just delete it!')
                 return;
             }
-            const currentUser = sessionStorage.getItem('username');
+            const currentUser = sessionStorage.getItem('user');
             const index = arr.indexOf(currentUser);
             console.log(currentUser)
-            arr.splice(index, 0);
+            arr.splice(index, 1);
             const teamID = arr[arr.length - 1];
             const trueLength = arr.length - 1;
             const container = document.getElementById('team-container');
