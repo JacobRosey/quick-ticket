@@ -470,7 +470,7 @@ function useResponse(res) {
                 <button id="myBtn" style="visibility:hidden;">Open Modal</button>
                 <div id="myModal" class="modal">
                 <div class="modal-content">
-                <div class="modal-header">
+                    <div class="modal-header">
                     <h5 class="modal-title">Leave Team</h5>
                     <button type="button" id="close" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
@@ -480,9 +480,9 @@ function useResponse(res) {
                     </form>
                     </div>
                     </div>
-                </div>
-                <div class="modal-footer">
+                    <div class="modal-footer">
                     <button class="btn btn-primary btn-lg" type="submit">Submit</button>
+                    </div>
                 </div>
                 </div>
             `
