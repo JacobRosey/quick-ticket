@@ -490,15 +490,6 @@ function useResponse(res) {
 
             const radioBtns = document.getElementById('admin-candidates')
             for (let i = 0; i < trueLength; i++) {
-                /*if (i == 0) {
-                    //Check the first radio button by default
-                    radioBtns.innerHTML +=
-                        `
-                        <input type="radio" id="option-`+ i + `" class="new-admin-inputs" value="` + arr[i] + `" name="new-admin" checked>
-                        <label for="option-`+ i + `" name="new-admin">` + arr[i] + `</label><br>
-                        `
-                    return;
-                }*/
                 radioBtns.innerHTML +=
                     `
                     <input type="radio" class="new-admin-inputs" value="` + arr[i] + `" name="new-admin">
@@ -817,6 +808,8 @@ function transferAdminPriv(id) {
             console.log(newAdmin, id);
             return;
         }
+        //If user clicks confirm without checking a radio btn
+        alert('You must select a new admin!')
     }
 }
 
