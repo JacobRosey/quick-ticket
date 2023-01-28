@@ -502,8 +502,7 @@ function useResponse(res) {
                         </form>
                         </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary btn-close" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
-                        <button type="button" class="btn btn-primary" onClick="transferAdminPriv();">Confirm</button>
+                        <button type="button" class="btn btn-primary" onClick="transferAdminPriv(`+teamID+`);">Confirm</button>
                         </div>
                     </div>
                     </div>
@@ -821,12 +820,12 @@ function useResponse(res) {
     }
 }
 
-function transferAdminPriv(){
+function transferAdminPriv(id){
     let inputs = document.getElementsByClassName('new-admin-inputs');
     for(let i=0; i<inputs.length; i++){
         if(inputs[i].checked){
             const newAdmin = inputs[i].value;
-            console.log(newAdmin);
+            console.log(newAdmin, id);
             return;
         }
     }
