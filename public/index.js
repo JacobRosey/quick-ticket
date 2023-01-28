@@ -470,9 +470,12 @@ function useResponse(res) {
                 <button id="myBtn" style="visibility:hidden;">Open Modal</button>
                 <div id="myModal" class="modal">
                 <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <h5 class="modal-title">Leave Team</h5>
-                    <div class="modal-header">Please transfer admin privileges to a team member before leaving!</div>
+                <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                    <button type="button" id="close" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <p>Please transfer admin privileges to a team member before leaving!</p>
+                    </div>
                     <form id="admin-candidates">
                     </form>
                     <div class="modal-footer">
@@ -482,22 +485,21 @@ function useResponse(res) {
                 </div>
             `
             const radioBtns = document.getElementById('admin-candidates')
-            for(let i=0; i<trueLength; i++){
-                radioBtns.innerHTML += 
-                `
-                <input type="radio" id="option-`+i+`" value="`+arr[i]+`" name="new-admin">
-                <label for="option-`+i+`" name="new-admin">`+arr[i]+`</label><br>
+            for (let i = 0; i < trueLength; i++) {
+                radioBtns.innerHTML +=
+                    `
+                <input type="radio" id="option-`+ i + `" value="` + arr[i] + `" name="new-admin">
+                <label for="option-`+ i + `" name="new-admin">` + arr[i] + `</label><br>
                 `
             }
             // Get the button that opens the modal
             var btn = document.getElementById("myBtn");
-            
 
             // Get the modal
             var modal = document.getElementById("myModal");
 
             // Get the <span> element that closes the modal
-            var span = document.getElementsByClassName("close")[0];
+            var close = document.getElementById("close");
 
             // When JS sends button click, open the modal 
             btn.onclick = function () {
@@ -505,7 +507,7 @@ function useResponse(res) {
             }
 
             // When the user clicks on <span> (x), close the modal
-            span.onclick = function () {
+            close.onclick = function () {
                 modal.style.display = "none";
                 //Clear out past options from form
                 radioBtns.innerHTML = '';
