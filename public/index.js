@@ -521,9 +521,9 @@ function useResponse(res) {
                 }
                 radioBtns.innerHTML +=
                     `
-                <input type="radio" class="new-admin-inputs" value="` + arr[i] + `" name="new-admin">
-                <label for="option-`+ i + `" name="new-admin">` + arr[i] + `</label><br>
-                `
+                    <input type="radio" class="new-admin-inputs" value="` + arr[i] + `" name="new-admin">
+                    <label for="option-`+ i + `" name="new-admin">` + arr[i] + `</label><br>
+                    `
             }
             // Get the button that opens the modal
             var btn = document.getElementById("myBtn");
