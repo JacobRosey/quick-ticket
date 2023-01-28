@@ -489,7 +489,7 @@ function useResponse(res) {
                 `*/
                 `
                 <button id="myBtn" style="visibility:hidden;">Open Modal</button>
-                <div class="modal fade" id="myModal" data-bs-backdrop="static">
+                <div class="modal fade" id="myModal">
                     <div class="modal-dialog">
                     <div class="modal-content">
                     <div class="modal-header">
@@ -502,6 +502,7 @@ function useResponse(res) {
                         </form>
                         </div>
                     <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary">Cancel</button>
                         <button type="button" class="btn btn-primary">Confirm</button>
                         </div>
                     </div>
