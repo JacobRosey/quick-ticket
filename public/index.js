@@ -488,6 +488,7 @@ function useResponse(res) {
                     </div>
                 `*/
                 `
+                <button id="myBtn" style="visibility:hidden;">Open Modal</button>
                 <div class="modal">
                     <div class="modal-dialog">
                     <div class="modal-content">
