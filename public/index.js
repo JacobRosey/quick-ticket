@@ -477,9 +477,9 @@ function useResponse(res) {
                     <div class="modal-body">
                     <p>Please transfer admin privileges to a team member before leaving!</p>
                     </div>
-                    </div>
                     <form id="admin-candidates">
                     </form>
+                    </div>
                     <div class="modal-footer">
                     <button class="btn btn-primary btn-lg" type="submit">Submit</button>
                     </div>
