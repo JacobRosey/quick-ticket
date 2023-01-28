@@ -474,9 +474,9 @@ function useResponse(res) {
                     <h5 class="modal-title">Leave Team</h5>
                     <button type="button" id="close" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    </div>
                     <div class="modal-body">
                     <p>Please transfer admin privileges to a team member before leaving!</p>
+                    </div>
                     </div>
                     <form id="admin-candidates">
                     </form>
