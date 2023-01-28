@@ -466,27 +466,6 @@ function useResponse(res) {
             const container = document.getElementById('team-container');
             console.log('teamID is - ' + teamID);
             container.innerHTML +=
-                /*
-                    `
-                    <button id="myBtn" style="visibility:hidden;">Open Modal</button>
-                    <div id="myModal" class="modal">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                        <h5 class="modal-title">Leave Team</h5>
-                        <button type="button" id="close" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                        <p>Please transfer admin privileges to a team member before leaving!</p>
-                        <form id="admin-candidates">
-                        </form>
-                        </div>
-                        </div>
-                        <div class="modal-footer">
-                        <button class="btn btn-primary" type="submit">Confirm</button>
-                        </div>
-                    </div>
-                    </div>
-                `*/
                 `
                 <button id="myBtn" style="visibility:hidden;">Open Modal</button>
                 <div class="modal" id="myModal">
@@ -511,7 +490,7 @@ function useResponse(res) {
 
             const radioBtns = document.getElementById('admin-candidates')
             for (let i = 0; i < trueLength; i++) {
-                if (i == 0) {
+                /*if (i == 0) {
                     //Check the first radio button by default
                     radioBtns.innerHTML +=
                         `
@@ -519,7 +498,7 @@ function useResponse(res) {
                         <label for="option-`+ i + `" name="new-admin">` + arr[i] + `</label><br>
                         `
                     return;
-                }
+                }*/
                 radioBtns.innerHTML +=
                     `
                     <input type="radio" class="new-admin-inputs" value="` + arr[i] + `" name="new-admin">
