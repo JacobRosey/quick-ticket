@@ -901,7 +901,7 @@ app.route('/admin-transfer')
                 db.promise().query(sql, newAdmin)
                     .then(([rows, fields]) => {
                         const newAdminID = rows[0].user_id;
-                        sql = "UPDATE Admins SET user_id = ?, WHERE user_id = ? AND team_id = ?"
+                        sql = "UPDATE Admins SET user_id = ?, WHERE user_id = ? AND team_id = ?;"
                         db.promise().query(sql, [oldAdminID, newAdminID, teamID])
                             .then(([rows, fields])=>{
                                 console.log(rows);
