@@ -5,6 +5,7 @@ const path = require('path');
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
 const { resolve } = require('path/posix');
+const { DH_UNABLE_TO_CHECK_GENERATOR } = require('constants');
 
 const app = express();
 
@@ -900,8 +901,12 @@ app.route('/admin-transfer')
                 db.promise().query(sql, newAdmin)
                     .then(([rows, fields]) => {
                         const newAdminID = rows[0].user_id;
-                        console.log('Should now have both ids..');
-                        console.log(oldAdminID + ' ' + newAdminID);
+                        sql = "UPDATE Admins SET user_id = ?, WHERE user_id = ? AND team_id = ?"
+                        db.promise().query(sql, [oldAdminID, newAdminID, teamID])
+                            .then(([rows, fields])=>{
+                                console.log(rows);
+                                res.send('Admin privileges transferred from ' + oldAdmin + ' to ' + newAdmin);
+                            })
                     })
                 
             })
