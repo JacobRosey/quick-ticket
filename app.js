@@ -905,7 +905,7 @@ app.route('/admin-transfer')
                         db.promise().query(sql, [newAdminID, oldAdminID, teamID])
                             .then(([rows, fields])=>{
                                 console.log(rows);
-                                sql = "DELETE * FROM Members WHERE user_id = ? AND team_id = ?";
+                                sql = "DELETE FROM Members WHERE user_id = ? AND team_id = ?";
                                 db.promise().query(sql, [oldAdmin, teamID])
                                     .then(([rows, fields]) => {
                                         console.log(rows);
