@@ -889,7 +889,7 @@ app.route('/leave-team')
             })
     })
 
-app.route('admin-transfer')
+app.route('/admin-transfer')
     .put(function (req, res, err) {
         const {oldAdmin, newAdmin, teamID} = req.body;
 
