@@ -810,7 +810,7 @@ function transferAdminPriv(id) {
             let data = {
                 "oldAdmin": oldAdmin,
                 "newAdmin": newAdmin,
-                "teamID": teamID
+                "teamID": id
             }
             //Do AJAX request to transfer admin priv and delete old admin 
             ajaxFunc('/admin-transfer', "PUT", data)
