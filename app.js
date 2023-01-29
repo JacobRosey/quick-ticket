@@ -905,7 +905,12 @@ app.route('/admin-transfer')
                         db.promise().query(sql, [oldAdminID, newAdminID, teamID])
                             .then(([rows, fields])=>{
                                 console.log(rows);
-                                res.send('Admin privileges transferred from ' + oldAdmin + ' to ' + newAdmin);
+                                sql = "DELETE * FROM Members WHERE user_id = ? AND team_id = ?";
+                                db.promise().query(sql, [oldAdmin, teamID])
+                                    .then(([rows, fields]) => {
+                                        console.log(rows);
+                                        res.send('Admin privileges transferred from ' + oldAdmin + ' to ' + newAdmin + '. ' + oldAdmin + ' has left the team.');
+                                    })
                             })
                     })
                 
