@@ -492,7 +492,7 @@ function useResponse(res) {
             for (let i = 0; i < trueLength; i++) {
                 radioBtns.innerHTML +=
                     `
-                    <input type="radio" class="new-admin-inputs" value="` + arr[i] + `" name="new-admin">
+                    <input type="radio" id="option-`+ i + `" class="new-admin-inputs" value="` + arr[i] + `" name="new-admin">
                     <label for="option-`+ i + `" name="new-admin">` + arr[i] + `</label><br>
                     `
             }
@@ -802,15 +802,24 @@ function useResponse(res) {
 
 function transferAdminPriv(id) {
     let inputs = document.getElementsByClassName('new-admin-inputs');
+    const oldAdmin = sessionStorage.getItem('user');
     for (let i = 0; i < inputs.length; i++) {
         if (inputs[i].checked) {
             const newAdmin = inputs[i].value;
             console.log(newAdmin, id);
+            let data = {
+                "oldAdmin": oldAdmin,
+                "newAdmin": newAdmin,
+                "teamID": teamID
+            }
+            //Do AJAX request to transfer admin priv and delete old admin 
+            ajaxFunc('/admin-transfer', "PUT", data)
             return;
         }
         //If user clicks confirm without checking a radio btn
         if(i == inputs.length-1){
             alert('You must select a new admin!')
+            return;
         }
     }
 }

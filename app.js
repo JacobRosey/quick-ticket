@@ -888,3 +888,21 @@ app.route('/leave-team')
                     })
             })
     })
+
+app.route('transfer-admin')
+    .put(function (req, res, err) {
+        const {oldAdmin, newAdmin, teamID} = req.body;
+
+        let sql = "SELECT * FROM Users WHERE user_name = ?"
+        db.promise().query(sql, oldAdmin)
+            .then(([rows, fields]) => {
+                const oldAdminID = rows[0].user_id;
+                db.promise().query(sql, newAdmin)
+                    .then(([rows, fields]) => {
+                        const newAdminID = rows[0].user_id;
+                        console.log('Should now have both ids..');
+                        console.log(oldAdminID + ' ' + newAdminID);
+                    })
+                
+            })
+    })
