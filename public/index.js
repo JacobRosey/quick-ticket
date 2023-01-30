@@ -451,7 +451,7 @@ function useResponse(res) {
             console.log(arr)
             //If the user is the only member of the team
             if (arr.length == 2) {
-                alert('You are the only member of this group - just delete it!')
+                alert('You are the only member of this team - just delete it!')
                 return;
             }
             //Remove current user as option because they're the admin
@@ -530,7 +530,7 @@ function useResponse(res) {
 
             return;
         }
-        if (res.includes('left')) {
+        if (res.includes('left') && res[0] == 'Y') {
             let teamName = res.slice(21);
             alert('Successfully left the following team: ' + teamName);
             window.location.reload();
