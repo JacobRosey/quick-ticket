@@ -249,8 +249,7 @@ function newTicket() {
         "desc": encodeURIComponent(desc)
     }
 
-    //Not sure if this is where I need to encodeURIcomponent or not but... figure dat out
-    ajaxFunc('/newticket/' + user + '/' + team + '/' + title + '/' + prio + '/' + desc, 'POST', data)
+    ajaxFunc('/newticket', 'POST', data)
 }
 
 function changeTicketStatus(id) {

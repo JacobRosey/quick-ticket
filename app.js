@@ -573,15 +573,10 @@ app.route('/delete-team/:user')
         //res.send('user is ' + user);
     })
 
-app.route('/newticket/:user/:team/:title/:prio/:desc')
+app.route('/newticket')
     .post(function (req, res, err) {
         //Need to decodeURIcomponent on parameters here
-        const { encodedUser, encodedTeam, encodedTitle, encodedPrio, encodedDesc } = req.params;
-        const user = decodeURIComponent(encodedUser);
-        const team = decodeURIComponent(encodedTeam);
-        const title = decodeURIComponent(encodedTitle);
-        const prio = decodeURIComponent(encodedPrio);
-        const desc = decodeURIComponent(encodedDesc);
+        const { user, team, title, prio, desc } = req.body
 
         console.log(user + team + prio + title + desc);
 
