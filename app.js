@@ -576,7 +576,7 @@ app.route('/delete-team/:user')
 app.route('/newticket')
     .post(function (req, res, err) {
         //Need to decodeURIcomponent on parameters here
-        const { user, team, title, prio, desc } = req.body
+        const { user, team, title, prio, desc } = req.body;
 
         console.log(user + team + prio + title + desc);
 
