@@ -242,11 +242,11 @@ function newTicket() {
     }
 
     let data = {
-        "user": encodeURIComponent(user),
-        "team": encodeURIComponent(team),
-        "title": encodeURIComponent(title),
-        "prio": encodeURIComponent(prio),
-        "desc": encodeURIComponent(desc)
+        "encodedUser": encodeURIComponent(user),
+        "encodedTeam": encodeURIComponent(team),
+        "encodedTitle": encodeURIComponent(title),
+        "encodedPrio": encodeURIComponent(prio),
+        "encodedDesc": encodeURIComponent(desc)
     }
 
     ajaxFunc('/newticket', 'POST', data)
