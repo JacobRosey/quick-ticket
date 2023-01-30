@@ -892,7 +892,7 @@ app.route('/leave-team')
 
 app.route('/admin-transfer')
     .put(function (req, res, err) {
-        const {oldAdmin, newAdmin, teamID} = req.body;
+        const { oldAdmin, newAdmin, teamID } = req.body;
 
         let sql = "SELECT * FROM Users WHERE user_name = ?"
         db.promise().query(sql, oldAdmin)
@@ -903,19 +903,30 @@ app.route('/admin-transfer')
                         const newAdminID = rows[0].user_id;
                         sql = "UPDATE Admins SET user_id = ? WHERE user_id = ? AND team_id = ?;"
                         db.promise().query(sql, [newAdminID, oldAdminID, teamID])
-                            .then(([rows, fields])=>{
+                            .then(([rows, fields]) => {
                                 console.log(rows);
                                 //Doesn't actually leave team?? :L
                                 sql = "DELETE FROM Members WHERE user_id = ? AND team_id = ?;";
                                 setTimeout(() => {
-                                    db.promise().query(sql, [oldAdmin, teamID])
-                                    .then(([rows, fields]) => {
-                                        console.log(rows)
-                                        res.send('Admin privileges transferred from ' + oldAdmin + ' to ' + newAdmin + '. ' + oldAdmin + ' has left the team.');
-                                    })
+                                    db.promise().beginTransaction()
+                                        .then(() => {
+                                            sql = "DELETE FROM Members WHERE user_id = ? AND team_id = ?;";
+                                            return db.promise().query(sql, [oldAdmin, teamID]);
+                                        })
+                                        .then(([rows, fields]) => {
+                                            console.log(rows);
+                                            res.send('Admin privileges transferred from ' + oldAdmin + ' to ' + newAdmin + '. ' + oldAdmin + ' has left the team.');
+                                            return db.promise().commit();
+                                        })
+                                        .catch(err => {
+                                            console.error(err);
+                                            db.promise().rollback();
+                                            res.send(err);
+                                        });
+
                                 }, 150)
                             })
                     })
-                
+
             })
     })
