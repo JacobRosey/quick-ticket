@@ -426,7 +426,6 @@ function ajaxFunc(path, method, d) {
 
 function useResponse(res) {
     const active = window.location.href.replace("https://quick-ticket.herokuapp.com/", "");
-    alert(res)
     //If this is the team page load response
     const container = document.getElementById('team-card-container');
     if (res == "Not on a team") {
