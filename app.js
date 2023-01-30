@@ -906,7 +906,7 @@ app.route('/admin-transfer')
                             .then(([rows, fields])=>{
                                 console.log(rows);
                                 //Doesn't actually leave team?? :L
-                                sql = "DELETE FROM Members WHERE user_id = ? AND team_id = ?";
+                                sql = "DELETE FROM Members WHERE user_id = ? AND team_id = ?;";
                                 db.promise().query(sql, [oldAdmin, teamID])
                                     .then(([rows, fields]) => {
                                         console.log(rows)
