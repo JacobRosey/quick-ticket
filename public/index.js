@@ -446,7 +446,10 @@ function useResponse(res) {
         count.innerHTML = res;
     }
     if (active == 'team') {
-        
+        if(res.includes('Admin privileges')){
+            alert(res);
+            window.location.reload();
+        }
         if (res.includes('Members')) {
             let arr = res.slice(12).split(',');
             console.log(arr)
