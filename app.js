@@ -606,15 +606,15 @@ app.route('/newticket/:user/:team/:title/:prio/:desc')
                             console.log(err)
                             res.send('Ticket creation failed')
                         } else {
-
-                            db.query('INSERT INTO Ticket_Data (ticket_id, ticket_desc, ticket_priority) VALUES (@last_id,"' + db.escape(desc) + '","' + db.escape(prio) + '");', (err, result) => {
+                            let sql = 'INSERT INTO Ticket_Data (ticket_id, ticket_desc, ticket_priority) VALUES (@last_id, ?, ?)'
+                            db.query(sql, [db.escape(desc), db.escape(prio)], (err, result) => {
                                 if (err) {
                                     console.log(err);
                                     res.send('Ticket creation failed')
                                 }
                                 else {
                                     console.log('Ticket created');
-                                    db.promise().query("UPDATE Users SET tickets_opened = tickets_opened + 1 WHERE user_name = '" + user + "'");
+                                    db.promise().query("UPDATE Users SET tickets_opened = tickets_opened + 1 WHERE user_name = ?'", [user]);
                                     res.send('Ticket created');
                                 }
                             })
