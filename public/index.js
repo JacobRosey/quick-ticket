@@ -446,21 +446,23 @@ function useResponse(res) {
         count.innerHTML = res;
     }
     if (active == 'team') {
+        //Admin leaving team
         if(res.includes('Admin privileges')){
             alert(res);
             window.location.reload();
+            return;
         }
+        //User leaving team
         if (res.includes('Members')) {
             let arr = res.slice(12).split(',');
             console.log(arr)
-            //If the user is the only member of the team
+            //If the admin is the only member of the team
             if (arr.length == 2) {
                 alert('You are the only member of this team - just delete it!')
                 return;
             }
             //Remove current user as option because they're the admin
-            //if i'm leaving a team i'm obviously not going to transfer 
-            //privileges to myself
+            //if i'm leaving a team I can't transfer privileges to myself
             const currentUser = sessionStorage.getItem('user');
             const index = arr.indexOf(currentUser);
             console.log(currentUser)
@@ -534,8 +536,8 @@ function useResponse(res) {
 
             return;
         }
-        //Spaghetti
-        if (res.includes('left') && res[0] == 'Y') {
+        //Non-admin left team
+        if (res.includes('left')) {
             let teamName = res.slice(21);
             alert('Successfully left the following team: ' + teamName);
             window.location.reload();
