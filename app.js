@@ -909,7 +909,7 @@ app.route('/admin-transfer')
                                 db.promise().beginTransaction()
                                     .then(() => {
                                         sql = "DELETE FROM Members WHERE user_id = ? AND team_id = ?;";
-                                        return db.promise().query(sql, [oldAdmin, teamID]);
+                                        return db.promise().query(sql, [oldAdminID, teamID]);
                                     })
                                     .then(([rows, fields]) => {
                                         console.log(rows);
