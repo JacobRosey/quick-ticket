@@ -446,6 +446,11 @@ function useResponse(res) {
         count.innerHTML = res;
     }
     if (active == 'team') {
+        const resArr = res.split(" ");
+        if(resArr[0] == 'Admin'){
+            alert(res);
+            window.location.reload();
+        }
         if (res.includes('Members')) {
             let arr = res.slice(12).split(',');
             console.log(arr)
