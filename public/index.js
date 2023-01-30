@@ -530,6 +530,7 @@ function useResponse(res) {
 
             return;
         }
+        //Spaghetti
         if (res.includes('left') && res[0] == 'Y') {
             let teamName = res.slice(21);
             alert('Successfully left the following team: ' + teamName);
