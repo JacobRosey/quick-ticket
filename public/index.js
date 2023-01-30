@@ -231,11 +231,11 @@ function getLogin() {
 }
 
 function newTicket() {
-    let user = sessionStorage.getItem('user');
-    let team = document.getElementById('team-select-input').value;
-    let title = document.getElementById('ticketTitle').value;
-    let prio = document.getElementById('ticketPriority').value;
-    let desc = document.getElementById('ticketDesc').value;
+    let user = encodeURIComponent(sessionStorage.getItem('user'));
+    let team = encodeURIComponent(document.getElementById('team-select-input').value);
+    let title = encodeURIComponent(document.getElementById('ticketTitle').value);
+    let prio = encodeURIComponent(document.getElementById('ticketPriority').value);
+    let desc = encodeURIComponent(document.getElementById('ticketDesc').value);
 
     if (title.trim() == '' || desc.trim() == '') {
         return alert("Please fill out the form properly!")
@@ -249,7 +249,6 @@ function newTicket() {
         "desc": desc
     }
 
-    //Not sure if this is where I need to encodeURIcomponent or not but... figure dat out
     ajaxFunc('/newticket/' + user + '/' + team + '/' + title + '/' + prio + '/' + desc, 'POST', data)
 }
 
