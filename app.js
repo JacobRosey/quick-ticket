@@ -907,11 +907,13 @@ app.route('/admin-transfer')
                                 console.log(rows);
                                 //Doesn't actually leave team?? :L
                                 sql = "DELETE FROM Members WHERE user_id = ? AND team_id = ?;";
-                                db.promise().query(sql, [oldAdmin, teamID])
+                                setTimeout(() => {
+                                    db.promise().query(sql, [oldAdmin, teamID])
                                     .then(([rows, fields]) => {
                                         console.log(rows)
                                         res.send('Admin privileges transferred from ' + oldAdmin + ' to ' + newAdmin + '. ' + oldAdmin + ' has left the team.');
                                     })
+                                }, 150)
                             })
                     })
                 
