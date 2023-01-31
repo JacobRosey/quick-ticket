@@ -458,7 +458,7 @@ function useResponse(res) {
             window.location.reload();
             return;
         }
-        if(res.includes('Team deleted')){
+        if(res == "Team deleted"){
             alert(res);
             window.location.reload();
             return;
