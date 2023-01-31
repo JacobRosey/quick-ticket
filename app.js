@@ -568,7 +568,7 @@ app.route('/newticket')
         const title = decodeURIComponent(encodedTitle);
         const prio = decodeURIComponent(encodedPrio);
         const desc = decodeURIComponent(encodedDesc);
-        
+
         console.log(user + team + prio + title + desc);
 
         const dbPromise = new Promise((resolve, reject) => {
@@ -668,15 +668,11 @@ app.route('/get-teams/:user')
                     }, 50)
                 }).then((response) => {
                     setTimeout(() => {
-                        if (response.length == 1) {
-                            //If there's only 1 team we don't need to add
-                            //a team selection input to new ticket form
-                            res.send(JSON.stringify('Only 1 team'));
-                        } else {
-                            response.unshift('team_names')
-                            console.log("returning res: " + response)
-                            res.send(JSON.stringify(response))
-                        }
+
+                        response.unshift('team_names')
+                        console.log("returning res: " + response)
+                        res.send(JSON.stringify(response))
+
                         //return team names here
                     }, 100)
                 })
