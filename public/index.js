@@ -445,20 +445,25 @@ function useResponse(res) {
         count.innerHTML = res;
     }
     if (active == 'team') {
-        //Admin leaving team
+        //Admin successfully left team
         if(res.includes('Admin privileges')){
             alert(res);
             window.location.reload();
             return;
         }
-        //Non-admin left team
+        //Non-admin leaving team
         if (res.includes('You successfully left')) {
             let teamName = res.slice(21);
             alert('Successfully left the following team: ' + teamName);
             window.location.reload();
             return;
         }
-        //User leaving team
+        if(res.includes('Team deleted')){
+            alert(res);
+            window.location.reload();
+            return;
+        }
+        //Admin leaving team
         if (res.includes('Members')) {
             let arr = res.slice(12).split(',');
             console.log(arr)
