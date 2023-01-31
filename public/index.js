@@ -445,6 +445,12 @@ function useResponse(res) {
         count.innerHTML = res;
     }
     if (active == 'team') {
+        //Admin deleted team
+        if(res == "Team deleted"){
+            alert(res);
+            window.location.reload();
+            return;
+        }
         //Admin successfully left team
         if(res.includes('Admin privileges')){
             alert(res);
@@ -455,11 +461,6 @@ function useResponse(res) {
         if (res.includes('You successfully left')) {
             let teamName = res.slice(21);
             alert('Successfully left the following team: ' + teamName);
-            window.location.reload();
-            return;
-        }
-        if(res == "Team deleted"){
-            alert(res);
             window.location.reload();
             return;
         }
