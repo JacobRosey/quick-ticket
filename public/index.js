@@ -451,6 +451,13 @@ function useResponse(res) {
             window.location.reload();
             return;
         }
+        //Non-admin left team
+        if (res.includes('You successfully left')) {
+            let teamName = res.slice(21);
+            alert('Successfully left the following team: ' + teamName);
+            window.location.reload();
+            return;
+        }
         //User leaving team
         if (res.includes('Members')) {
             let arr = res.slice(12).split(',');
@@ -535,12 +542,7 @@ function useResponse(res) {
 
             return;
         }
-        //Non-admin left team
-        if (res.includes('left')) {
-            let teamName = res.slice(21);
-            alert('Successfully left the following team: ' + teamName);
-            window.location.reload();
-        }
+
         //On page load
         if (!res.includes('New admin') && !res.includes('User deleted')) {
             for (let i = 0; i < res.length; i++) {
