@@ -207,20 +207,6 @@ app.route('/index/:admin/:team')
             })
         });
         dbPromise.then(() => {
-            /*
-            db.query(`
-            INSERT INTO Teams (team_name, team_code) 
-            VALUES ('`+ team + `', '` + teamCode + `'); 
-            SET @last_id = (SELECT LAST_INSERT_ID()); 
-            INSERT INTO Admins (user_id, team_id) VALUES 
-            (`+userID+`, @last_id);
-            `, (err, result) => {
-                if(err){
-                    console.log(err)
-                } else {console.log(result)}
-            })
-            console.log(admin, team, teamCode)
-            res.send("SUCCESS!")*/
             db.promise().query('SELECT * FROM Teams WHERE team_name = "' + team + '"')
                 .then(([rows, fields]) => {
                     if (rows.length > 0) {
