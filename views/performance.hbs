@@ -65,17 +65,17 @@
             margin: 0 auto;
         }
 
-        #peformance-chart tbody {
+        #performance-chart tbody {
             overflow-y: hidden;
             /* remove this to see how it works */
         }
 
-        #peformance-chart tbody th {
+        #performance-chart tbody th {
             background-color: #fff;
             z-index: 1;
         }
 
-        #peformance-chart tbody td {
+        #performance-chart tbody td {
             animation: moving-bars 4s linear infinite;
         }
 
@@ -95,30 +95,6 @@
     </style>
 
     <div class="container">
-        <!--
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-                <h1 class="display-4">My Performance</h1>
-                <div class="card">
-                    <h5 class="card-title">My Tickets</h5>
-                    <p class="card-text" id="hold-html">
-                    </p>
-                    <a href="/mytickets" class="btn">View Tickets</a>
-                </div>
-                <div class="card">
-                    <h5 class="card-title">Tickets Closed</h5>
-                    <p class="card-text" id="closed-html">
-                    </p>
-                    <a href="/closedtickets" class="btn">View Tickets</a>
-                </div>
-                <div class="card">
-                    <h5 class="card-title">Tickets Opened</h5>
-                    <p class="card-text" id="open-html"></p>
-                    <a href="/newticket" class="btn">New Ticket</a>
-                </div>
-            </div> 
-        </div>
-    </div> -->
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
                 <h1 class="display-4">My Performance</h1>
@@ -134,7 +110,8 @@
                         </tr>
                         <tr>
                             <th scope="row"> <i class="bi bi-x-circle" style="transform: scale(1.5)"
-                                    data-toggle="tooltip" data-placement="top" title="Tickets Closed"></i></th>
+                                    data-toggle="tooltip" data-placement="top" title="Tickets Closed"></i>
+                            </th>
                             <td id="closed-html"></td>
                         </tr>
                         <tr>
