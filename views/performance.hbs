@@ -59,10 +59,34 @@
             font-weight: bold;
         }
 
-        #bar-example-1 {
+        #performance-chart {
             height: 200px;
             max-width: 300px;
             margin: 0 auto;
+        }
+
+        #peformance-chart tbody {
+            overflow-y: hidden;
+            /* remove this to see how it works */
+        }
+
+        #peformance-chart tbody th {
+            background-color: #fff;
+            z-index: 1;
+        }
+
+        #peformance-chart tbody td {
+            animation: moving-bars 4s linear infinite;
+        }
+
+        @keyframes moving-bars {
+            0% {
+                transform: translateY(100%);
+            }
+
+            15% {
+                transform: translateY(0);
+            }
         }
 
         footer {
@@ -98,22 +122,25 @@
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
                 <h1 class="display-4">My Performance</h1>
-                <table id="bar-example-1" class="charts-css bar show-heading show-labels">
+                <table id="performance-chart" class="charts-css bar show-heading show-labels">
                     <caption>All-Time Statistics</caption>
                     <tbody>
                         <tr>
                             <th scope="row">
-                               <i class="bi bi-tag" style="transform: scale(1.5)" data-toggle="tooltip" data-placement="top" title="My Tickets"></i>
+                                <i class="bi bi-tag" style="transform: scale(1.5)" data-toggle="tooltip"
+                                    data-placement="top" title="My Tickets"></i>
                             </th>
                             <td id="hold-html"></td>
                         </tr>
                         <tr>
-                            <th scope="row"> <i class="bi bi-x-circle" style="transform: scale(1.5)" data-toggle="tooltip" data-placement="top" title="Tickets Closed"></i></th>
+                            <th scope="row"> <i class="bi bi-x-circle" style="transform: scale(1.5)"
+                                    data-toggle="tooltip" data-placement="top" title="Tickets Closed"></i></th>
                             <td id="closed-html"></td>
                         </tr>
                         <tr>
                             <th scope="row">
-                                <i class="bi bi-circle" style="transform: scale(1.5)" data-toggle="tooltip" data-placement="top" title="Tickets Opened"></i>
+                                <i class="bi bi-circle" style="transform: scale(1.5)" data-toggle="tooltip"
+                                    data-placement="top" title="Tickets Opened"></i>
                             </th>
                             <td id="open-html"></td>
                         </tr>
