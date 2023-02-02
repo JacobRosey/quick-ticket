@@ -785,12 +785,23 @@ function useResponse(res) {
     }
 
     if (active == 'performance') {
+
+         //Get the number that will give perspective to the chart
+        //chart will be readable whether topOfRange is 9 or 200
+        var topOfRange = Math.max(res[0].tickets_opened, res[0].tickets_closed, res[1]);
+        topOfRange  = topOfRange * 1.25;
+
         let openHTML = document.getElementById('open-html');
         let closedHTML = document.getElementById('closed-html');
         let holdHTML = document.getElementById('hold-html')
         openHTML.innerHTML += res[0].tickets_opened;
         closedHTML.innerHTML += res[0].tickets_closed;
         holdHTML.innerHTML += res[1]; 
+
+        openHTML.style = "--size: calc("+ res[0].tickets_opened + " / " + topOfRange + ")" 
+        closedHTML.style = "--size: calc("+ res[0].tickets_closed + " / " + topOfRange + ")"
+        holdHTML.style = "--size: calc("+ res[1] + " / " + topOfRange + ")"
+
     }
 
     //After deleting a team
