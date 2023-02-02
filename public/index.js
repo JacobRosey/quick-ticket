@@ -798,7 +798,7 @@ function useResponse(res) {
         closedHTML.innerHTML += res[0].tickets_closed;
         holdHTML.innerHTML += res[1];
 
-        openHTML.style = "--size: calc(" + res[0].tickets_opened + " / " + topOfRange + "); --color: #198753;"
+        openHTML.style = "--size: calc(" + res[0].tickets_opened + " / " + topOfRange + "); --color: #8fdd7f;"
         closedHTML.style = "--size: calc(" + res[0].tickets_closed + " / " + topOfRange + "); --color: #f56c68;"
         holdHTML.style = "--size: calc(" + res[1] + " / " + topOfRange + "); --color: #ffe687;"
 
