@@ -77,15 +77,15 @@
         }
 
         #performance-chart tbody td {
-            animation: moving-bars 1s ease-out .1s;
+            animation: moving-bars 1s ease-out;
         }
 
         @keyframes moving-bars {
-            0% {
-                transform: translateX(10%);
+            from {
+                transform: translateX(0%);
             }
 
-            15% {
+            to {
                 transform: translateX(100%);
             }
         }
