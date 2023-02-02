@@ -819,11 +819,6 @@ function useResponse(res) {
                             </th>
                             <td id="closed-html" style="--color: #f56c68; --size: calc(` + res[0].tickets_closed + ` / ` + topOfRange + `);">` + res[0].tickets_closed + `&nbsp;&nbsp;</td>
                         </tr> 
-                        <tr>
-                            <th scope="row">
-                            <p style="font-size: smaller; width: 100%;">Note: may include stats from teams that have been left or deleted</span>
-                            </th>
-                        </tr>
                     </tbody>
                 </table>
         `
