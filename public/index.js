@@ -810,9 +810,11 @@ function useResponse(res) {
                 var tooltipElement = document.createElement('div');
                 tooltipElement.innerHTML = tooltip;
                 tooltipElement.style.position = 'absolute';
-                tooltipElement.style.backgroundColor = 'black';
-                tooltipElement.style.width='250px';
-                tooltipElement.style.color = 'white';
+                tooltipElement.style.backgroundColor = '#ccc';
+                tooltipElement.style.width='150px';
+                tooltipElement.style.border='1px solid #ff914c';
+                tooltipElement.style.borderRadius = '1em'
+                tooltipElement.style.color = 'black';
                 tooltipElement.style.padding = '5px 10px';
                 this.appendChild(tooltipElement);
             });
