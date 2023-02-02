@@ -786,7 +786,13 @@ function useResponse(res) {
 
     if (active == 'performance') {
 
+        //Get the number that will give perspective to the chart
+        //chart will be readable whether topOfRange is 9 or 200
+        var topOfRange = Math.max(res[0].tickets_opened, res[0].tickets_closed, res[1]);
+        topOfRange = topOfRange * 1.25;
+
         const container = document.getElementById('chart-container');
+        
         container.innerHTML += 
         `
         <h1 class="display-4">My Performance</h1>
@@ -798,28 +804,25 @@ function useResponse(res) {
                                 <i class="bi bi-tag" style="transform: scale(1.5)" data-toggle="tooltip"
                                     data-placement="top" title="My Tickets"></i>
                             </th>
-                            <td id="hold-html" style="--color: #85bbff"></td>
+                            <td id="hold-html" style="--color: #85bbff;--size: calc("` + res[1]+ `" / "` + topOfRange + `");">`+ res[1] + `&nbsp;&nbsp;</td>
                         </tr>
                         <tr>
                             <th scope="row">
                                 <i class="bi bi-circle" style="transform: scale(1.5)" data-toggle="tooltip"
                                     data-placement="top" title="Tickets Opened"></i>
                             </th>
-                            <td id="open-html" style="--color: #8fdd7f;"></td>
+                            <td id="open-html" style="--color: #8fdd7f; --size:calc("` + res[0].tickets_opened + `" / "` + topOfRange + `");"> `+res[0].tickets_opened + `&nbsp;&nbsp;</td>
                         </tr>
                         <tr>
                             <th scope="row"> <i class="bi bi-x-circle" style="transform: scale(1.5)"
                                     data-toggle="tooltip" data-placement="top" title="Tickets Closed"></i>
                             </th>
-                            <td id="closed-html" style="--color: #f56c68;"></td>
+                            <td id="closed-html" style="--color: #f56c68; --size: calc("` + res[0].tickets_closed + `" / "` + topOfRange + `");">`+ res[0].tickets_closed + `&nbsp;&nbsp;</td>
                         </tr> 
                     </tbody>
                 </table>
         `
-        //Get the number that will give perspective to the chart
-        //chart will be readable whether topOfRange is 9 or 200
-        var topOfRange = Math.max(res[0].tickets_opened, res[0].tickets_closed, res[1]);
-        topOfRange = topOfRange * 1.25;
+        
 
         let openHTML = document.getElementById('open-html');
         let closedHTML = document.getElementById('closed-html');
