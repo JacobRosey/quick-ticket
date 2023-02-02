@@ -65,34 +65,6 @@
             margin: 0 auto;
         }
 
-        /* Tooltip container */
-        .tooltip {
-            position: relative;
-            display: inline-block;
-            border-bottom: 1px dotted black;
-            /* If you want dots under the hoverable text */
-        }
-
-        /* Tooltip text */
-        .tooltip .tooltiptext {
-            visibility: hidden;
-            width: 120px;
-            background-color: black;
-            color: #fff;
-            text-align: center;
-            padding: 5px 0;
-            border-radius: 6px;
-
-            /* Position the tooltip text - see examples below! */
-            position: absolute;
-            z-index: 1;
-        }
-
-        /* Show the tooltip text when you mouse over the tooltip container */
-        .tooltip:hover .tooltiptext {
-            visibility: visible;
-        }
-
         footer {
             width: 100%;
         }
@@ -131,22 +103,17 @@
                     <tbody>
                         <tr>
                             <th scope="row">
-                                <div class="tooltip" style="width: 50px;"><span class="tooltiptext">My Tickets</span></div><i
-                                    class="bi bi-tag"></i>
+                               <i class="bi bi-tag" style="transform: scale(1.5)"></i>
                             </th>
                             <td id="hold-html"></td>
                         </tr>
                         <tr>
-                            <th scope="row">
-                                <div class="tooltip" style="width: 50px;"><span class="tooltiptext">Tickets Closed</span></div><i
-                                    class="bi bi-x-circle"></i>
-                            </th>
+                            <th scope="row"> <i class="bi bi-x-circle" style="transform: scale(1.5)"></i></th>
                             <td id="closed-html"></td>
                         </tr>
                         <tr>
                             <th scope="row">
-                                <div class="tooltip" style="width: 50px;"><span class="tooltiptext">Tickets Opened</span></div><i
-                                    class="bi bi-circle"></i>
+                                <i class="bi bi-circle" style="transform: scale(1.5)"></i>
                             </th>
                             <td id="open-html"></td>
                         </tr>
