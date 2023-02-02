@@ -811,6 +811,7 @@ function useResponse(res) {
                 tooltipElement.innerHTML = tooltip;
                 tooltipElement.style.position = 'absolute';
                 tooltipElement.style.backgroundColor = 'black';
+                tooltipElement.style.width='250px';
                 tooltipElement.style.color = 'white';
                 tooltipElement.style.padding = '5px 10px';
                 this.appendChild(tooltipElement);
