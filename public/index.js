@@ -798,9 +798,9 @@ function useResponse(res) {
         closedHTML.innerHTML += res[0].tickets_closed;
         holdHTML.innerHTML += res[1];
 
-        openHTML.style = "--size: calc(" + res[0].tickets_opened + " / " + topOfRange + ")"
-        closedHTML.style = "--size: calc(" + res[0].tickets_closed + " / " + topOfRange + ")"
-        holdHTML.style = "--size: calc(" + res[1] + " / " + topOfRange + ")"
+        openHTML.style = "--size: calc(" + res[0].tickets_opened + " / " + topOfRange + "); z-index: 0;"
+        closedHTML.style = "--size: calc(" + res[0].tickets_closed + " / " + topOfRange + "); z-index: 0;"
+        holdHTML.style = "--size: calc(" + res[1] + " / " + topOfRange + "); z-index: 0;"
 
 
         var tooltips = document.querySelectorAll('[data-toggle="tooltip"]');
