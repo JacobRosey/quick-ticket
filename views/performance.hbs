@@ -26,18 +26,6 @@
             text-align: left;
         }
 
-        .card {
-            margin: auto;
-            margin-bottom: 1em;
-            max-width: 600px;
-            height: 150px;
-        }
-
-        .card-title {
-            font-weight: bold;
-            margin: auto;
-        }
-
         .card-text {
             margin: auto;
         }
@@ -63,10 +51,15 @@
             height: 200px;
             max-width: 300px;
             margin: 0 auto;
-            border: 1px dashed black;
+            border: 1px solid black;
             background-color: #f2f2f2;
             padding: 5px;
         }
+        caption{
+            color: white;
+            font-weight: bold;
+        }
+
         i{
             background-color: none;
             padding: 0;
@@ -108,20 +101,20 @@
                                 <i class="bi bi-tag" style="transform: scale(1.5)" data-toggle="tooltip"
                                     data-placement="top" title="My Tickets"></i>
                             </th>
-                            <td id="hold-html"></td>
+                            <td id="hold-html" style="--color: rgb(82, 231, 231);"></td>
                         </tr>
                         <tr>
                             <th scope="row"> <i class="bi bi-x-circle" style="transform: scale(1.5)"
                                     data-toggle="tooltip" data-placement="top" title="Tickets Closed"></i>
                             </th>
-                            <td id="closed-html"></td>
+                            <td id="closed-html" style="--color: rgb(218, 221, 63);"></td>
                         </tr>
                         <tr>
                             <th scope="row">
                                 <i class="bi bi-circle" style="transform: scale(1.5)" data-toggle="tooltip"
                                     data-placement="top" title="Tickets Opened"></i>
                             </th>
-                            <td id="open-html"></td>
+                            <td id="open-html" style="--color: #ff914c;"></td>
                         </tr>
                     </tbody>
                 </table>
