@@ -807,8 +807,6 @@ function useResponse(res) {
         for (var i = 0; i < tooltips.length; i++) {
             tooltips[i].addEventListener('mouseenter', function () {
                 var tooltip = this.getAttribute('title');
-                //disable default browser tooltip
-                this.setAttribute('title', '');
                 var tooltipElement = document.createElement('div');
                 tooltipElement.innerHTML = tooltip;
                 tooltipElement.style.position = 'absolute';
