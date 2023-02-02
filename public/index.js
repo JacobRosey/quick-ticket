@@ -822,20 +822,6 @@ function useResponse(res) {
                     </tbody>
                 </table>
         `
-        
-
-        let openHTML = document.getElementById('open-html');
-        let closedHTML = document.getElementById('closed-html');
-        let holdHTML = document.getElementById('hold-html')
-        //Spaces added because charts.css doesn't let me add margin/padding
-        openHTML.innerHTML += res[0].tickets_opened + '&nbsp;&nbsp;';
-        closedHTML.innerHTML += res[0].tickets_closed + '&nbsp;&nbsp;';
-        holdHTML.innerHTML += res[1] + '&nbsp;&nbsp;';
-
-        openHTML.style = "--size: calc(" + res[0].tickets_opened + " / " + topOfRange + "); --color: #8fdd7f;"
-        closedHTML.style = "--size: calc(" + res[0].tickets_closed + " / " + topOfRange + "); --color: #f56c68;"
-        holdHTML.style = "--size: calc(" + res[1] + " / " + topOfRange + "); --color: #85bbff;"
-
     }
 
     //After deleting a team
