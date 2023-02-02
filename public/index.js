@@ -786,6 +786,36 @@ function useResponse(res) {
 
     if (active == 'performance') {
 
+        const container = document.getElementById('chart-container');
+        container.innerHTML += 
+        `
+        <h1 class="display-4">My Performance</h1>
+                <table id="performance-chart" class="charts-css bar show-heading show-labels">
+                    <caption>All-Time Statistics</caption>
+                    <tbody>
+                        <tr>
+                            <th scope="row">
+                                <i class="bi bi-tag" style="transform: scale(1.5)" data-toggle="tooltip"
+                                    data-placement="top" title="My Tickets"></i>
+                            </th>
+                            <td id="hold-html" style="--color: #85bbff"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <i class="bi bi-circle" style="transform: scale(1.5)" data-toggle="tooltip"
+                                    data-placement="top" title="Tickets Opened"></i>
+                            </th>
+                            <td id="open-html" style="--color: #8fdd7f;"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"> <i class="bi bi-x-circle" style="transform: scale(1.5)"
+                                    data-toggle="tooltip" data-placement="top" title="Tickets Closed"></i>
+                            </th>
+                            <td id="closed-html" style="--color: #f56c68;"></td>
+                        </tr> 
+                    </tbody>
+                </table>
+        `
         //Get the number that will give perspective to the chart
         //chart will be readable whether topOfRange is 9 or 200
         var topOfRange = Math.max(res[0].tickets_opened, res[0].tickets_closed, res[1]);
