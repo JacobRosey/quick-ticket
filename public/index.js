@@ -821,7 +821,7 @@ function useResponse(res) {
                         </tr> 
                         <tr>
                             <th scope="row">
-                            <p style="font-size: smaller;">Note: may include stats from teams that have been left or deleted</span>
+                            <p style="font-size: smaller; width: 100%;">Note: may include stats from teams that have been left or deleted</span>
                             </th>
                         </tr>
                     </tbody>
