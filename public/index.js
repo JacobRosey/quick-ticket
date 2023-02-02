@@ -788,18 +788,9 @@ function useResponse(res) {
         let openHTML = document.getElementById('open-html');
         let closedHTML = document.getElementById('closed-html');
         let holdHTML = document.getElementById('hold-html')
-        openHTML.innerHTML +=
-        `
-        You have opened a total of `+ res[0].tickets_opened + ` tickets.
-        `;
-        closedHTML.innerHTML +=
-        `
-        You have closed a total of `+ res[0].tickets_closed + ` tickets.
-        `;
-        holdHTML.innerHTML +=
-        `
-        You are currently working on `+ res[1] + ` tickets.
-        `;
+        openHTML.innerHTML += res[0].tickets_opened;
+        closedHTML.innerHTML += res[0].tickets_closed;
+        holdHTML.innerHTML += res[1]; 
     }
 
     //After deleting a team
