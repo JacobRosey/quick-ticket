@@ -819,6 +819,7 @@ function useResponse(res) {
                 this.removeChild(this.lastChild);
               });
             }
+            console.log(tooltips.length);
           });
           
     }
