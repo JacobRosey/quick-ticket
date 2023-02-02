@@ -792,9 +792,9 @@ function useResponse(res) {
         topOfRange = topOfRange * 1.25;
 
         const container = document.getElementById('chart-container');
-        
-        container.innerHTML += 
-        `
+
+        container.innerHTML +=
+            `
         <h1 class="display-4">My Performance</h1>
                 <table id="performance-chart" class="charts-css bar show-heading show-labels">
                     <caption>All-Time Statistics</caption>
@@ -804,23 +804,25 @@ function useResponse(res) {
                                 <i class="bi bi-tag" style="transform: scale(1.5)" data-toggle="tooltip"
                                     data-placement="top" title="My Tickets"></i>
                             </th>
-                            <td id="hold-html" style="--color: #85bbff;--size: calc(` + res[1]+ ` / ` + topOfRange + `);">`+ res[1] + `&nbsp;&nbsp;</td>
+                            <td id="hold-html" style="--color: #85bbff;--size: calc(` + res[1] + ` / ` + topOfRange + `);">` + res[1] + `&nbsp;&nbsp;</td>
                         </tr>
                         <tr>
                             <th scope="row">
                                 <i class="bi bi-circle" style="transform: scale(1.5)" data-toggle="tooltip"
                                     data-placement="top" title="Tickets Opened"></i>
                             </th>
-                            <td id="open-html" style="--color: #8fdd7f; --size:calc(` + res[0].tickets_opened + ` / ` + topOfRange + `);"> `+res[0].tickets_opened + `&nbsp;&nbsp;</td>
+                            <td id="open-html" style="--color: #8fdd7f; --size:calc(` + res[0].tickets_opened + ` / ` + topOfRange + `);"> ` + res[0].tickets_opened + `&nbsp;&nbsp;</td>
                         </tr>
                         <tr>
                             <th scope="row"> <i class="bi bi-x-circle" style="transform: scale(1.5)"
                                     data-toggle="tooltip" data-placement="top" title="Tickets Closed"></i>
                             </th>
-                            <td id="closed-html" style="--color: #f56c68; --size: calc(` + res[0].tickets_closed + ` / ` + topOfRange + `);">`+ res[0].tickets_closed + `&nbsp;&nbsp;</td>
+                            <td id="closed-html" style="--color: #f56c68; --size: calc(` + res[0].tickets_closed + ` / ` + topOfRange + `);">` + res[0].tickets_closed + `&nbsp;&nbsp;</td>
                         </tr> 
                         <tr>
-                        <span style="font-size: smaller;">Note: may include stats from teams that have been left or deleted</span>
+                            <th scope="row">
+                            <p style="font-size: smaller;">Note: may include stats from teams that have been left or deleted</span>
+                            </th>
                         </tr>
                     </tbody>
                 </table>
