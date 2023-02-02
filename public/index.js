@@ -795,9 +795,9 @@ function useResponse(res) {
         let closedHTML = document.getElementById('closed-html');
         let holdHTML = document.getElementById('hold-html')
         //Spaces added because charts.css doesn't let me add margin/padding
-        openHTML.innerHTML += res[0].tickets_opened + '&nbsp;';
-        closedHTML.innerHTML += res[0].tickets_closed + '&nbsp;';
-        holdHTML.innerHTML += res[1] + '&nbsp;';
+        openHTML.innerHTML += res[0].tickets_opened + '&nbsp;&nbsp;';
+        closedHTML.innerHTML += res[0].tickets_closed + '&nbsp;&nbsp;';
+        holdHTML.innerHTML += res[1] + '&nbsp;&nbsp;';
 
         openHTML.style = "--size: calc(" + res[0].tickets_opened + " / " + topOfRange + "); --color: #8fdd7f;"
         closedHTML.style = "--size: calc(" + res[0].tickets_closed + " / " + topOfRange + "); --color: #f56c68;"
