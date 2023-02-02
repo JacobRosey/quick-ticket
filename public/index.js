@@ -817,7 +817,7 @@ function useResponse(res) {
                 tooltipElement.style.color = 'black';
                 tooltipElement.style.zIndex = '99999';
                 tooltipElement.style.padding = '5px 10px';
-                tooltipElement.style.left = this.offsetLeft - tooltipElement.offsetWidth - 5 + 'px';
+                tooltipElement.style.left = this.offsetLeft - tooltipElement.offsetWidth - 75 + 'px';
                 tooltipElement.style.top = this.offsetTop + this.offsetHeight / 2 - tooltipElement.offsetHeight / 2 + 'px';
                 this.appendChild(tooltipElement);
             });
