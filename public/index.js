@@ -446,13 +446,13 @@ function useResponse(res) {
     }
     if (active == 'team') {
         //Admin deleted team
-        if(res == "Team deleted"){
+        if (res == "Team deleted") {
             alert(res);
             window.location.reload();
             return;
         }
         //Admin successfully left team
-        if(res.includes('Admin privileges')){
+        if (res.includes('Admin privileges')) {
             alert(res);
             window.location.reload();
             return;
@@ -786,26 +786,26 @@ function useResponse(res) {
 
     if (active == 'performance') {
 
-         //Get the number that will give perspective to the chart
+        //Get the number that will give perspective to the chart
         //chart will be readable whether topOfRange is 9 or 200
         var topOfRange = Math.max(res[0].tickets_opened, res[0].tickets_closed, res[1]);
-        topOfRange  = topOfRange * 1.25;
+        topOfRange = topOfRange * 1.25;
 
         let openHTML = document.getElementById('open-html');
         let closedHTML = document.getElementById('closed-html');
         let holdHTML = document.getElementById('hold-html')
         openHTML.innerHTML += res[0].tickets_opened;
         closedHTML.innerHTML += res[0].tickets_closed;
-        holdHTML.innerHTML += res[1]; 
+        holdHTML.innerHTML += res[1];
 
-        openHTML.style = "--size: calc("+ res[0].tickets_opened + " / " + topOfRange + ")" 
-        closedHTML.style = "--size: calc("+ res[0].tickets_closed + " / " + topOfRange + ")"
-        holdHTML.style = "--size: calc("+ res[1] + " / " + topOfRange + ")"
+        openHTML.style = "--size: calc(" + res[0].tickets_opened + " / " + topOfRange + ")"
+        closedHTML.style = "--size: calc(" + res[0].tickets_closed + " / " + topOfRange + ")"
+        holdHTML.style = "--size: calc(" + res[1] + " / " + topOfRange + ")"
 
-        document.addEventListener('DOMContentLoaded', function() {
-            var tooltips = document.querySelectorAll('[data-toggle="tooltip"]');
-            for (var i = 0; i < tooltips.length; i++) {
-              tooltips[i].addEventListener('mouseenter', function() {
+
+        var tooltips = document.querySelectorAll('[data-toggle="tooltip"]');
+        for (var i = 0; i < tooltips.length; i++) {
+            tooltips[i].addEventListener('mouseenter', function () {
                 var tooltip = this.getAttribute('title');
                 var tooltipElement = document.createElement('div');
                 tooltipElement.innerHTML = tooltip;
@@ -814,14 +814,14 @@ function useResponse(res) {
                 tooltipElement.style.color = 'white';
                 tooltipElement.style.padding = '5px 10px';
                 this.appendChild(tooltipElement);
-              });
-              tooltips[i].addEventListener('mouseleave', function() {
+            });
+            tooltips[i].addEventListener('mouseleave', function () {
                 this.removeChild(this.lastChild);
-              });
-            }
-            console.log(tooltips.length);
-          });
-          
+            });
+        }
+        console.log(tooltips.length);
+
+
     }
 
     //After deleting a team
@@ -853,7 +853,7 @@ function transferAdminPriv(id) {
             return;
         }
         //If user clicks confirm without checking a radio btn
-        if(i == inputs.length-1){
+        if (i == inputs.length - 1) {
             alert('You must select a new admin!')
             return;
         }
