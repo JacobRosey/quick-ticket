@@ -802,32 +802,6 @@ function useResponse(res) {
         closedHTML.style = "--size: calc(" + res[0].tickets_closed + " / " + topOfRange + ");"
         holdHTML.style = "--size: calc(" + res[1] + " / " + topOfRange + ");"
 
-
-        var tooltips = document.querySelectorAll('[data-toggle="tooltip"]');
-        for (var i = 0; i < tooltips.length; i++) {
-            tooltips[i].addEventListener('mouseenter', function () {
-                var tooltip = this.getAttribute('title');
-                var tooltipElement = document.createElement('div');
-                tooltipElement.innerHTML = tooltip;
-                tooltipElement.style.position = 'absolute';
-                tooltipElement.style.width='150px';
-                tooltipElement.style.border='1px solid #ff914c';
-                tooltipElement.style.borderRadius = '.25em'
-                tooltipElement.style.backgroundColor = '#ccc';
-                tooltipElement.style.color = 'black';
-                tooltipElement.style.zIndex = '99999';
-                tooltipElement.style.padding = '5px 10px';
-                tooltipElement.style.left = this.offsetLeft - tooltipElement.offsetWidth - 175 + 'px';
-                tooltipElement.style.top = this.offsetTop + this.offsetHeight / 1 - tooltipElement.offsetHeight / 2 + 'px';
-                this.appendChild(tooltipElement);
-            });
-            tooltips[i].addEventListener('mouseleave', function () {
-                this.removeChild(this.lastChild);
-            });
-        }
-        console.log(tooltips.length);
-
-
     }
 
     //After deleting a team
