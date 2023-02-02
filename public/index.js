@@ -807,6 +807,8 @@ function useResponse(res) {
         for (var i = 0; i < tooltips.length; i++) {
             tooltips[i].addEventListener('mouseenter', function () {
                 var tooltip = this.getAttribute('title');
+                //disable default browser tooltip
+                this.setAttribute('title', '');
                 var tooltipElement = document.createElement('div');
                 tooltipElement.innerHTML = tooltip;
                 tooltipElement.style.position = 'absolute';
@@ -815,7 +817,7 @@ function useResponse(res) {
                 tooltipElement.style.borderRadius = '.25em'
                 tooltipElement.style.backgroundColor = '#ccc';
                 tooltipElement.style.color = 'black';
-                tooltipElement.style.zIndex = '999';
+                tooltipElement.style.zIndex = '99999';
                 tooltipElement.style.padding = '5px 10px';
                 this.appendChild(tooltipElement);
             });
