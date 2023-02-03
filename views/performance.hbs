@@ -61,6 +61,7 @@
         i{
             background-color: none;
             padding: 0;
+            animation: spinning-icons 1s ease-out;
         }
 
         td{
@@ -84,6 +85,16 @@
 
             to {
                 transform: scaleX(100%);
+            }
+        }
+
+        @keyframes spinning-icons {
+            from{
+                rotate(0deg);
+            }
+
+            to{
+                rotate(360deg);
             }
         }
 
