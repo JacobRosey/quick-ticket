@@ -587,7 +587,7 @@ app.route('/newticket')
             //START TRANSACTION still not working
             //neither is multiple statements in 1 query
             let sql = 'INSERT INTO Tickets (team_id, ticket_title, ticket_status, opened_by, creation_date) VALUES (?, ?, ?, ?, ?);'
-            db.query(sql, [id[0].team_id, db.escape(title), 0, db.escape(user), db.escape(timestamp)], (err, result) => {
+            db.query(sql, [id[0].team_id, db.escape(title), 0, db.escape(user), timestamp], (err, result) => {
                 if (err) {
                     console.log(err)
                     res.send('Ticket creation failed')
