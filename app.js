@@ -582,7 +582,7 @@ app.route('/newticket')
         })
         dbPromise.then((id) => {
             console.log(id[0].team_id);
-            let timestamp = new Date().toISOString().slice(0, 19).replace('T', ' ');
+            const timestamp = new Date().toISOString().slice(0, 19).replace('T', ' ');
             console.log(timestamp);
             //START TRANSACTION still not working
             //neither is multiple statements in 1 query
