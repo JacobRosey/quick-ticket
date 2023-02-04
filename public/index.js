@@ -706,8 +706,7 @@ function useResponse(res) {
             for(let i=0; i<res.length; i++){
                 if(res[i].creation_date !== null){
                     res[i].creation_date = new Date(res[i].creation_date);
-                    res[i].creation_date.toString().split(' ');
-                    res[i].creation_date = res[i].creation_date.slice(0, 4);
+                    res[i].creation_date.toString().split(' ').slice(0, 4);
                 }
             }
 
