@@ -707,6 +707,7 @@ function useResponse(res) {
                 if(res[i].creation_date !== null){
                     let localTime = new Date(res[i].creation_date);
                     localTime = localTime.split(' ').shift();
+                    res[i].creation_date = localTime;
                 }
             }
 
