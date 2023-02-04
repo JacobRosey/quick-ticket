@@ -702,10 +702,11 @@ function useResponse(res) {
                 }
             }
 
-            //Convert UTC timestamps to readable format
+            //Convert UTC timestamps to local time in readable format
             for(let i=0; i<res.length; i++){
                 if(res[i].creation_date !== null){
-                    res[i].creation_date = new Date(res[i].creation_date)
+                    let localTime = new Date(res[i].creation_date);
+                    localTime = localTime.split(' ').shift();
                 }
             }
 
