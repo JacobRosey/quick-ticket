@@ -705,7 +705,7 @@ function useResponse(res) {
             //Convert UTC timestamps to readable format
             for(let i=0; i<res.length; i++){
                 if(res[i].creation_date !== null){
-                    res[i].creation_date = res[i].creation_date.toString();
+                    res[i].creation_date = new Date(res[i].creation_date)
                 }
             }
 
