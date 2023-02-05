@@ -705,8 +705,14 @@ function useResponse(res) {
             //Convert UTC timestamps to local time in readable format
             for(let i=0; i<res.length; i++){
                 if(res[i].creation_date !== null){
-                    res[i].creation_date = new Date(res[i].creation_date);
-                    res[i].creation_date = res[i].creation_date.toString().split(' ').slice(0, 4).toString().replaceAll(',', ' ');
+                    let date = new Date(res[i].creation_date);
+                    date = date.toString().split(' ').slice(0, 4).toString().replaceAll(',', ' ');
+                    //Current format is 'Fri Feb 03 2023'
+                    //Change to 'Friday 2/3/23'
+                    const options = { weekday: 'long', year: '2-digit', month: '2-digit', day: '2-digit' };
+                    res[i].creation_date = date.toLocaleDateString('en-US', options);
+
+
                 }
             }
 
