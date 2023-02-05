@@ -706,7 +706,7 @@ function useResponse(res) {
             for(let i=0; i<res.length; i++){
                 if (res[i].creation_date !== null) {
                     let creationDate = new Date(res[i].creation_date);
-                    let dateString = creationDate.toString().split(' ').slice(0, 4).toString().replace(/,/g, ' ');
+                    let dateString = creationDate.toString().split(' ').slice(0, 4).toString().replaceAll(',', ' ');
                     //Current format is 'Fri Feb 03 2023'
                     //Change to 'Friday 2/3/23'
                     const options = { weekday: 'long', year: '2-digit', month: '2-digit', day: '2-digit' };
