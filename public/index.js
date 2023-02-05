@@ -710,7 +710,7 @@ function useResponse(res) {
                     //Current format is 'Fri Feb 03 2023'
                     //Change to 'Friday 2/3/23'
                     const options = { weekday: 'long', year: '2-digit', month: '2-digit', day: '2-digit' };
-                    res[i].creation_date = res[i].creation_date.toLocaleDateString('en-US', options);
+                    res[i].creation_date.toLocaleDateString('en-US', options);
 
 
                 }
