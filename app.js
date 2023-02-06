@@ -813,15 +813,20 @@ app.route('/performance/:user')
         const user = req.params.user;
         console.log(user)
         let arr = [];
-        db.promise().query("SELECT * FROM Users WHERE user_name = '" + user + "'")
+        db.promise().query("SELECT * FROM Users WHERE user_name = ?", [user])
             .then(([rows, fields]) => {
                 console.log(rows[0]);
                 arr.push(rows[0]);
             })
-        db.promise().query("SELECT * FROM Tickets WHERE ticket_holder = '" + user + "'")
+        db.promise().query("SELECT * FROM Tickets WHERE ticket_holder = ?", [user])
             .then(([rows, fields]) => {
                 console.log(rows.length);
                 arr.push(rows.length);
+            })
+        db.promise().query("SELECT * FROM Tickets WHERE opened_by = ? OR closed_by = ?", [user]) 
+            .then(([rows, fields]) => {
+                console.log(rows.length);
+                arr.push(rows)
             })
         setTimeout(() => {
             console.log('sending res')
