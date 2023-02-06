@@ -855,21 +855,26 @@ function useResponse(res) {
                 </table>
         `;
         //Check if a ticket's closed/opened date was within the past month
-        function isWithinPastMonth(date) {
-            if (typeof date === 'string') {
-                date = new Date(date);
+        function isWithinPastMonth(dateString) {
+            const date = new Date(dateString);
+            if (isNaN(date.getTime())) {
+              return false;
             }
+          
             const currentDate = new Date();
             const lastMonth = new Date();
             lastMonth.setMonth(currentDate.getMonth() - 1);
-
+          
             return date.getTime() >= lastMonth.getTime() && date.getTime() <= currentDate.getTime();
-        }
+          }
+          
         //Check if a tickets closed/opened date was within the past week
-        function isWithinPastWeek(date) {
-            if (typeof date === 'string') {
-                date = new Date(date);
-            }
+        function isWithinPastWeek(dateString) {
+            const date = new Date(dateString);
+            if (isNaN(date.getTime())) {
+                return false;
+              }
+            
             const currentDate = new Date();
             const lastWeek = new Date();
             lastWeek.setWeek(currentDate.getWeek() - 1);
