@@ -785,22 +785,24 @@ app.route('/ticketstatus')
     .put(function (req, res, err) {
         const { user, id, active } = req.body;
         console.log(user, id, active);
+        //Get current date for either opened or closed date
+        const date = new Date();
         switch (active) {
             //To claim a ticket
             case 'opentickets':
-                db.promise().query("UPDATE Tickets SET ticket_holder = '" + user + "', ticket_status = 1 WHERE ticket_id = " + id);
+                db.promise().query("UPDATE Tickets SET ticket_holder = ?, ticket_status = 1 WHERE ticket_id = ?" [user, id]);
                 res.send('Ticket claimed')
                 break;
             //To re-open a ticket
             case 'closedtickets':
-                db.promise().query("UPDATE Tickets SET ticket_holder = null, ticket_status = 0 WHERE ticket_id = " + id);
-                db.promise().query("UPDATE Users SET tickets_opened = tickets_opened + 1 WHERE user_name = '" + user + "'");
+                db.promise().query("UPDATE Tickets SET ticket_holder = null, ticket_status = 0, creation_date = ? WHERE ticket_id = ?", [date, id]);
+                db.promise().query("UPDATE Users SET tickets_opened = tickets_opened + 1 WHERE user_name = ?", [user]);
                 res.send('Ticket re-opened');
                 break;
             //To close a ticket
             case 'mytickets':
-                db.promise().query("UPDATE Tickets SET ticket_holder = null, ticket_status = 2, closed_by ='" + user + "' WHERE ticket_id = " + id);
-                db.promise().query("UPDATE Users SET tickets_closed = tickets_closed + 1 WHERE user_name = '" + user + "'");
+                db.promise().query("UPDATE Tickets SET ticket_holder = null, ticket_status = 2, closed_by = ?, closed_date = ? WHERE ticket_id = ?"[user, date, id]);
+                db.promise().query("UPDATE Users SET tickets_closed = tickets_closed + 1 WHERE user_name = ?"[user]);
                 res.send('Ticket closed');
                 break;
             default: res.send('Something went wrong');

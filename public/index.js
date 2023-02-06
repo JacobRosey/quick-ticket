@@ -719,13 +719,14 @@ function useResponse(res) {
                     //Change to 'Friday 2/3/23'
                     const options = { weekday: 'long', year: '2-digit', month: '2-digit', day: '2-digit' };
                     res[i].creation_date = new Date(dateString).toLocaleDateString('en-US', options);
-                  }                  
+                }                  
             }
 
             console.log("array before adding html elements: " + res)
             let container;
             let btnText;
             let status;
+            let closedOrCreated;
             //Need to check if this is "my tickets", "closed tickets" or "open tickets" to know 
             //what to do with response
             if (active == 'opentickets') {
@@ -748,6 +749,12 @@ function useResponse(res) {
             for (let i = 0; i < res.length; i++) {
                 let leadIn;
                 let expandable;
+                if(status == 'Open'){
+                    closedOrCreated = 'Created: ' + res[i].creation_date + '';
+                } else if (status == 'Closed'){
+                    closedOrCreated = 'Closed: ' + res[i].closed_date + '';
+                }
+    
                 if (res[i].ticket_desc.length > 60) {
                     leadIn = res[i].ticket_desc.substr(0, 60) + '...';
                     expandable = true;
@@ -762,7 +769,7 @@ function useResponse(res) {
                         <div class="card text-center">
                             <div class="card-header">
                                 <b>Ticket ID #`+ res[i].ticket_id + `</b> - <span class="text-muted">
-                                Created: `+ res[i].creation_date + `
+                                `+closedOrCreated+`
                                 </span>
                         </div>
                         <div class="card-body">
