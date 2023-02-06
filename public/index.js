@@ -552,6 +552,9 @@ function useResponse(res) {
         //On page load
         if (!res.includes('New admin') && !res.includes('User deleted')) {
             for (let i = 0; i < res.length; i++) {
+                if(res == undefined){
+                    return window.location.reload();
+                }
                 container.innerHTML += `
                     <div class="col-sm">
                     <div class="team-info">
