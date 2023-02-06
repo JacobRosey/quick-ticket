@@ -856,6 +856,9 @@ function useResponse(res) {
         `;
         //Check if a ticket's closed/opened date was within the past month
         function isWithinPastMonth(date) {
+            if (typeof date === 'string') {
+                date = new Date(date);
+            }
             const currentDate = new Date();
             const lastMonth = new Date();
             lastMonth.setMonth(currentDate.getMonth() - 1);
@@ -864,6 +867,9 @@ function useResponse(res) {
         }
         //Check if a tickets closed/opened date was within the past week
         function isWithinPastWeek(date) {
+            if (typeof date === 'string') {
+                date = new Date(date);
+            }
             const currentDate = new Date();
             const lastWeek = new Date();
             lastWeek.setWeek(currentDate.getWeek() - 1);
@@ -876,20 +882,20 @@ function useResponse(res) {
         var pastMonthClosed = [];
         var pastWeekClosed = [];
         //Get opened dates
-        for(let i=0; i<res[2].length; i++){
-            if(isWithinPastMonth(res[2][i].opened_date)){
+        for (let i = 0; i < res[2].length; i++) {
+            if (isWithinPastMonth(res[2][i].opened_date)) {
                 pastMonthDates.push(res[2][i].opened_date)
             }
-            if(isWithinPastWeek(res[2][i].opened_date)){
+            if (isWithinPastWeek(res[2][i].opened_date)) {
                 pastWeekDates.push(res[2][i].opened_date)
             }
         }
-        for(i=0; i<res[2].length; i++){
-            if(res[2][i].closed_date != null){
-                if(isWithinPastMonth(res[2][i].closed_date)){
+        for (i = 0; i < res[2].length; i++) {
+            if (res[2][i].closed_date != null) {
+                if (isWithinPastMonth(res[2][i].closed_date)) {
                     pastMonthClosed.push(res[2][i].closed_date)
                 }
-                if(isWithinPastWeek(res[2][i].closed_date)){
+                if (isWithinPastWeek(res[2][i].closed_date)) {
                     pastWeekClosed.push(res[2][i].closed_date)
                 }
             }
