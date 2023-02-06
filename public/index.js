@@ -732,7 +732,7 @@ function useResponse(res) {
             let container;
             let btnText;
             let status;
-            let closedOrCreated;
+            let closedOrOpened;
             //Need to check if this is "my tickets", "closed tickets" or "open tickets" to know 
             //what to do with response
             if (active == 'opentickets') {
@@ -756,9 +756,9 @@ function useResponse(res) {
                 let leadIn;
                 let expandable;
                 if(status == 'Open'){
-                    closedOrCreated = 'Created: ' + res[i].creation_date + '';
+                    closedOrOpened = 'Opened: ' + res[i].creation_date + '';
                 } else if (status == 'Closed'){
-                    closedOrCreated = 'Closed: ' + res[i].closed_date + '';
+                    closedOrOpened = 'Closed: ' + res[i].closed_date + '';
                 }
     
                 if (res[i].ticket_desc.length > 60) {
@@ -775,7 +775,7 @@ function useResponse(res) {
                         <div class="card text-center">
                             <div class="card-header">
                                 <b>Ticket ID #`+ res[i].ticket_id + `</b> - <span class="text-muted">
-                                `+closedOrCreated+`
+                                `+closedOrOpened+`
                                 </span>
                         </div>
                         <div class="card-body">
@@ -797,7 +797,7 @@ function useResponse(res) {
                         <div class="card text-center">
                             <div class="card-header">
                                 <b>Ticket ID #`+ res[i].ticket_id + `</b> - <span class="text-muted">
-                                `+closedOrCreated+`
+                                `+closedOrOpened+`
                                 </span>
                         </div>
                         <div class="card-body">
