@@ -552,6 +552,7 @@ function useResponse(res) {
         //On page load
         if (!res.includes('New admin') && !res.includes('User deleted')) {
             for (let i = 0; i < res.length; i++) {
+                //if team admin: undefined
                 if(res == []){
                     return window.location.reload();
                 }
