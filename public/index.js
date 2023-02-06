@@ -552,7 +552,7 @@ function useResponse(res) {
         //On page load
         if (!res.includes('New admin') && !res.includes('User deleted')) {
             for (let i = 0; i < res.length; i++) {
-                if(res == undefined){
+                if(res == []){
                     return window.location.reload();
                 }
                 container.innerHTML += `
