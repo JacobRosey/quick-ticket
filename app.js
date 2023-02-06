@@ -823,7 +823,7 @@ app.route('/performance/:user')
                 console.log(rows.length);
                 arr.push(rows.length);
             })
-        db.promise().query("SELECT * FROM Tickets WHERE opened_by = ? OR closed_by = ?", [user]) 
+        db.promise().query("SELECT * FROM Tickets WHERE opened_by = ? OR closed_by = ?", [user, user]) 
             .then(([rows, fields]) => {
                 console.log(rows.length);
                 arr.push(rows)
