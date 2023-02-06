@@ -553,7 +553,7 @@ function useResponse(res) {
         if (!res.includes('New admin') && !res.includes('User deleted')) {
             for (let i = 0; i < res.length; i++) {
                 //if team admin: undefined
-                if(res == []){
+                if (res == []) {
                     return window.location.reload();
                 }
                 container.innerHTML += `
@@ -706,7 +706,7 @@ function useResponse(res) {
                 }
             }
 
-            for(let i=0; i<res.length; i++){
+            for (let i = 0; i < res.length; i++) {
                 //Remove quotations at start and end of title/description/priority
                 res[i].ticket_title = res[i].ticket_title.slice(1, -1);
                 res[i].ticket_desc = res[i].ticket_desc.slice(1, -1);
@@ -719,13 +719,13 @@ function useResponse(res) {
                     //Change to 'Friday 02/03/23'
                     const options = { weekday: 'long', year: '2-digit', month: '2-digit', day: '2-digit' };
                     res[i].creation_date = new Date(dateString).toLocaleDateString('en-US', options);
-                }    
-                if (res[i].closed_date != null){
+                }
+                if (res[i].closed_date != null) {
                     let closedDate = new Date(res[i].closed_date);
                     let dateString = closedDate.toString().split(' ').slice(0, 4).toString().replaceAll(',', ' ');
                     const options = { weekday: 'long', year: '2-digit', month: '2-digit', day: '2-digit' };
                     res[i].closed_date = new Date(dateString).toLocaleDateString('en-US', options);
-                }              
+                }
             }
 
             console.log("array before adding html elements: " + res)
@@ -755,12 +755,12 @@ function useResponse(res) {
             for (let i = 0; i < res.length; i++) {
                 let leadIn;
                 let expandable;
-                if(status == 'Open' || status == 'In Progress'){
+                if (status == 'Open' || status == 'In Progress') {
                     closedOrOpened = 'Opened: ' + res[i].creation_date + '';
-                } else if (status == 'Closed'){
+                } else if (status == 'Closed') {
                     closedOrOpened = 'Closed: ' + res[i].closed_date + '';
                 }
-    
+
                 if (res[i].ticket_desc.length > 60) {
                     leadIn = res[i].ticket_desc.substr(0, 60) + '...';
                     expandable = true;
@@ -775,7 +775,7 @@ function useResponse(res) {
                         <div class="card text-center">
                             <div class="card-header">
                                 <b>Ticket ID #`+ res[i].ticket_id + `</b> - <span class="text-muted">
-                                `+closedOrOpened+`
+                                `+ closedOrOpened + `
                                 </span>
                         </div>
                         <div class="card-body">
@@ -797,7 +797,7 @@ function useResponse(res) {
                         <div class="card text-center">
                             <div class="card-header">
                                 <b>Ticket ID #`+ res[i].ticket_id + `</b> - <span class="text-muted">
-                                `+closedOrOpened+`
+                                `+ closedOrOpened + `
                                 </span>
                         </div>
                         <div class="card-body">
@@ -822,9 +822,9 @@ function useResponse(res) {
         //Get the number that will give perspective to the chart
         //chart will be readable whether topOfRange is 9 or 200
         var topOfRange = Math.max(res[0].tickets_opened, res[0].tickets_closed, res[1]) * 1.25;
-        console.log(res);
-        const container = document.getElementById('chart-container');
 
+        //Create chart for all-time statistics
+        const container = document.getElementById('chart-container');
         container.innerHTML +=
             `
         <h1 class="display-4">My Performance</h1>
@@ -853,7 +853,51 @@ function useResponse(res) {
                         </tr> 
                     </tbody>
                 </table>
-        `
+        `;
+        //Check if a ticket's closed/opened date was within the past month
+        function isWithinPastMonth(date) {
+            const currentDate = new Date();
+            const lastMonth = new Date();
+            lastMonth.setMonth(currentDate.getMonth() - 1);
+
+            return date.getTime() >= lastMonth.getTime() && date.getTime() <= currentDate.getTime();
+        }
+        //Check if a tickets closed/opened date was within the past week
+        function isWithinPastWeek(date) {
+            const currentDate = new Date();
+            const lastWeek = new Date();
+            lastWeek.setWeek(currentDate.getWeek() - 1);
+
+            return date.getTime() >= lastWeek.getTime() && date.getTime() <= currentDate.getTime();
+        }
+
+        var pastMonthOpened = [];
+        var pastWeekOpened = [];
+        var pastMonthClosed = [];
+        var pastWeekClosed = [];
+        //Get opened dates
+        for(let i=0; i<res[2].length; i++){
+            if(isWithinPastMonth(res[2][i].opened_date)){
+                pastMonthDates.push(res[2][i].opened_date)
+            }
+            if(isWithinPastWeek(res[2][i].opened_date)){
+                pastWeekDates.push(res[2][i].opened_date)
+            }
+        }
+        for(i=0; i<res[2].length; i++){
+            if(res[2][i].closed_date != null){
+                if(isWithinPastMonth(res[2][i].closed_date)){
+                    pastMonthClosed.push(res[2][i].closed_date)
+                }
+                if(isWithinPastWeek(res[2][i].closed_date)){
+                    pastWeekClosed.push(res[2][i].closed_date)
+                }
+            }
+        }
+        console.log(pastMonthOpened, pastMonthClosed, pastWeekOpened, pastWeekClosed);
+
+
+        //Create recent activity chart for actions completed in the past week/month
     }
 
     //After deleting a team
