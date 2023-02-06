@@ -888,11 +888,11 @@ function useResponse(res) {
         var pastWeekClosed = [];
         //Get opened dates
         for (let i = 0; i < res[2].length; i++) {
-            if (isWithinPastMonth(res[2][i].opened_date)) {
-                pastMonthDates.push(res[2][i].opened_date)
+            if (isWithinPastMonth(res[2][i].creation_date)) {
+                pastMonthOpened.push(res[2][i].creation_date)
             }
-            if (isWithinPastWeek(res[2][i].opened_date)) {
-                pastWeekDates.push(res[2][i].opened_date)
+            if (isWithinPastWeek(res[2][i].creation_date)) {
+                pastWeekOpened.push(res[2][i].creation_date)
             }
         }
         for (i = 0; i < res[2].length; i++) {
