@@ -755,7 +755,7 @@ function useResponse(res) {
             for (let i = 0; i < res.length; i++) {
                 let leadIn;
                 let expandable;
-                if(status == 'Open'){
+                if(status == 'Open' || status == 'In Progress'){
                     closedOrOpened = 'Opened: ' + res[i].creation_date + '';
                 } else if (status == 'Closed'){
                     closedOrOpened = 'Closed: ' + res[i].closed_date + '';
