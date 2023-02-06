@@ -704,9 +704,9 @@ function useResponse(res) {
 
             for(let i=0; i<res.length; i++){
                 //Remove quotations at start and end of title/description/priority
-                res.ticket_title = res.ticket_title.toString().slice(1, -1);
-                res.ticket_desc = res.ticket_desc.toString().slice(1, -1);
-                res.ticket_priority = res.ticket_priority.toString().slice(1, -1);
+                res[i].ticket_title = res[i].ticket_title.slice(1, -1);
+                res[i].ticket_desc = res[i].ticket_desc.slice(1, -1);
+                res[i].ticket_priority = res[i].ticket_priority.slice(1, -1);
                 //Convert UTC timestamps to local time in readable format
                 if (res[i].creation_date !== null) {
                     let creationDate = new Date(res[i].creation_date);
