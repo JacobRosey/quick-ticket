@@ -877,7 +877,7 @@ function useResponse(res) {
             
             const currentDate = new Date();
             const lastWeek = new Date();
-            lastWeek.setWeek(currentDate.getWeek() - 1);
+            lastWeek.setDate(currentDate.getDate() - 7);
 
             return date.getTime() >= lastWeek.getTime() && date.getTime() <= currentDate.getTime();
         }
