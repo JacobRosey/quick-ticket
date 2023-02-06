@@ -716,10 +716,16 @@ function useResponse(res) {
                     let creationDate = new Date(res[i].creation_date);
                     let dateString = creationDate.toString().split(' ').slice(0, 4).toString().replaceAll(',', ' ');
                     //Current format is 'Fri Feb 03 2023'
-                    //Change to 'Friday 2/3/23'
+                    //Change to 'Friday 02/03/23'
                     const options = { weekday: 'long', year: '2-digit', month: '2-digit', day: '2-digit' };
                     res[i].creation_date = new Date(dateString).toLocaleDateString('en-US', options);
-                }                  
+                }    
+                if (res[i].closed_date != null){
+                    let closedDate = new Date(res[i].closed_date);
+                    let dateString = closedDate.toString().split(' ').slice(0, 4).toString().replaceAll(',', ' ');
+                    const options = { weekday: 'long', year: '2-digit', month: '2-digit', day: '2-digit' };
+                    res[i].closed_date = new Date(dateString).toLocaleDateString('en-US', options);
+                }              
             }
 
             console.log("array before adding html elements: " + res)
@@ -791,7 +797,7 @@ function useResponse(res) {
                         <div class="card text-center">
                             <div class="card-header">
                                 <b>Ticket ID #`+ res[i].ticket_id + `</b> - <span class="text-muted">
-                                Created: `+ res[i].creation_date + `
+                                `+closedOrCreated+`
                                 </span>
                         </div>
                         <div class="card-body">
