@@ -962,7 +962,7 @@ function useResponse(res) {
         let keys = Object.keys(arr);
         topOfRange = getTopOfRange(arr, keys);
         console.log('top of range: ' + topOfRange);
-        console.log('arr: ' + arr);
+        console.log(arr);
         console.log('keys: '+ keys);
 
         //Append to activity chart the actions completed in the past week
