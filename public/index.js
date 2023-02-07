@@ -858,28 +858,48 @@ function useResponse(res) {
         function isWithinPastMonth(dateString) {
             const date = new Date(dateString);
             if (isNaN(date.getTime())) {
-              return false;
+                return false;
             }
-          
+
             const currentDate = new Date();
             const lastMonth = new Date();
             lastMonth.setMonth(currentDate.getMonth() - 1);
-          
+
             return date.getTime() >= lastMonth.getTime() && date.getTime() <= currentDate.getTime();
-          }
-          
+        }
+
         //Check if a tickets closed/opened date was within the past week
         function isWithinPastWeek(dateString) {
             const date = new Date(dateString);
             if (isNaN(date.getTime())) {
                 return false;
-              }
-            
+            }
+
             const currentDate = new Date();
             const lastWeek = new Date();
             lastWeek.setDate(currentDate.getDate() - 7);
 
             return date.getTime() >= lastWeek.getTime() && date.getTime() <= currentDate.getTime();
+        }
+
+        function getDailyActions(dates) {
+            const dateCounts = {};
+
+            for (const dateString of dates) {
+                const date = new Date(dateString);
+                if (isNaN(date.getTime())) {
+                    continue;
+                }
+
+                const day = date.getDate();
+                if (day in dateCounts) {
+                    dateCounts[day] += 1;
+                } else {
+                    dateCounts[day] = 1;
+                }
+            }
+
+            return dateCounts;
         }
 
         var pastMonthOpened = [];
@@ -895,6 +915,8 @@ function useResponse(res) {
                 pastWeekOpened.push(res[2][i].creation_date)
             }
         }
+        //Tested this by setting a ticket's opened date to 1/3 (today is 2/6)
+        //Seems to work as intended with a sample size of a whopping 1
         for (i = 0; i < res[2].length; i++) {
             if (res[2][i].closed_date != null) {
                 if (isWithinPastMonth(res[2][i].closed_date)) {
@@ -907,8 +929,26 @@ function useResponse(res) {
         }
         console.log(pastMonthOpened, pastMonthClosed, pastWeekOpened, pastWeekClosed);
 
+        //Create recent activity chart for actions completed in the past week
+        container.innerHTML +=
+            `
+        <table class="charts-css line multiple show-data-on-hover show-labels show-primary-axis show-data-axes">
+            <tbody id ="past-week-chart">
+            </tbody>
+        </table>
+        `;
 
-        //Create recent activity chart for actions completed in the past week/month
+        let arr = getDailyActions(pastWeekOpened);
+        const pastWeekChart = document.getElementById('past-week-chart');
+        //Get topOfRange for the highest occurence of tickets opened OR closed in a day
+        
+        //Append to activity chart the actions completed in the past week
+        for (let i = 0; i < arr.length; i++) {
+            pastWeekChart.innerHTML +=
+                `
+                <p>This is a paragraph tag for testing purposes </p>
+                `
+        }
     }
 
     //After deleting a team
