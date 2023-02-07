@@ -916,7 +916,7 @@ function useResponse(res) {
                     maxDateString = key;
                 }
             }
-            return [maxCount, maxDateString];
+            return maxCount;
         }
 
         var pastMonthOpened = [];
@@ -961,15 +961,21 @@ function useResponse(res) {
         let arr = getDailyActions(pastWeekOpened);
         let keys = Object.keys(arr);
         topOfRange = getTopOfRange(arr, keys);
-        console.log(topOfRange)
+        console.log('top of range: ' + topOfRange);
+        console.log('arr: ' + arr);
+        console.log('keys: '+ keys);
 
         //Append to activity chart the actions completed in the past week
         for (const key of keys) {
             pastWeekChart.innerHTML +=
                 `
                 <tr>
+                    <th scope="row">
+                        Example Date       
+                    </th>
                     <td style="--start: 0.0; --size: 0.4"> <span class="data"> `+ arr[key] + ` </span> </td>
                 </tr>
+                
                 `
         }
     }
