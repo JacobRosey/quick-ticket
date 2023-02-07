@@ -868,7 +868,7 @@ function useResponse(res) {
             return date.getTime() >= lastMonth.getTime() && date.getTime() <= currentDate.getTime();
         }
 
-        //Check if a tickets closed/opened date was within the past week
+        //Check if a ticket's closed/opened date was within the past week
         function isWithinPastWeek(dateString) {
             const date = new Date(dateString);
             if (isNaN(date.getTime())) {
@@ -882,6 +882,8 @@ function useResponse(res) {
             return date.getTime() >= lastWeek.getTime() && date.getTime() <= currentDate.getTime();
         }
 
+        //Returns object array where the key is the date and the value
+        //is the number of occurences on that date
         function getDailyActions(dates) {
             const dateCounts = {};
 
@@ -938,17 +940,21 @@ function useResponse(res) {
         </table>
         `;
 
-        let arr = getDailyActions(pastWeekOpened);
         const pastWeekChart = document.getElementById('past-week-chart');
-        //Get topOfRange for the highest occurence of tickets opened OR closed in a day
-        console.log(arr)
+
+        let arr = getDailyActions(pastWeekOpened);
+        let keys = Object.keys(arr);
+        console.log(arr, keys);
+
         //Append to activity chart the actions completed in the past week
-        /*for (let i = 0; i < arr.length; i++) {
+        for (const key of keys) {
             pastWeekChart.innerHTML +=
                 `
-                <p>This is a paragraph tag for testing purposes </p>
+                <tr>
+                    <td style="--start: 0.0; --size: 0.4"> <span class="data"> `+ key +` </span> </td>
+                </tr>
                 `
-        }*/
+        }
     }
 
     //After deleting a team
