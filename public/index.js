@@ -973,7 +973,7 @@ function useResponse(res) {
                 `
                 <tr>
                     <th scope="row">
-                        `+arr[index]+`      
+                        `+keys[index]+`      
                     </th>
                     <td style="--start: 0.0; --size: 0.4"> <span class="data"> `+ arr[key] + ` </span> </td>
                 </tr>
