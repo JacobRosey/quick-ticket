@@ -891,11 +891,11 @@ function useResponse(res) {
                     continue;
                 }
 
-                const day = date.getDate();
-                if (day in dateCounts) {
-                    dateCounts[day] += 1;
+                const key = date.toDateString();
+                if (key in dateCounts) {
+                    dateCounts[key] += 1;
                 } else {
-                    dateCounts[day] = 1;
+                    dateCounts[key] = 1;
                 }
             }
 
