@@ -941,14 +941,14 @@ function useResponse(res) {
         let arr = getDailyActions(pastWeekOpened);
         const pastWeekChart = document.getElementById('past-week-chart');
         //Get topOfRange for the highest occurence of tickets opened OR closed in a day
-        
+        console.log(arr)
         //Append to activity chart the actions completed in the past week
-        for (let i = 0; i < arr.length; i++) {
+        /*for (let i = 0; i < arr.length; i++) {
             pastWeekChart.innerHTML +=
                 `
                 <p>This is a paragraph tag for testing purposes </p>
                 `
-        }
+        }*/
     }
 
     //After deleting a team
