@@ -949,7 +949,7 @@ function useResponse(res) {
         //Create recent activity chart for actions completed in the past week
         container.innerHTML +=
             `
-        <table class="charts-css line multiple show-heading">
+        <table class="charts-css line multiple show-heading show-labels">
         <caption>Past Week's Statistics</caption>
             <tbody id="past-week-chart">
             </tbody>
@@ -966,12 +966,16 @@ function useResponse(res) {
         console.log('keys: '+ keys);
 
         //Append to activity chart the actions completed in the past week
+        //Need to figure out how to set the labels and sizes
+        //May need to reconsolidate arr and keys to make it easier to access
+        let index = 0;
         for (const key of keys) {
+            index++;
             pastWeekChart.innerHTML +=
                 `
                 <tr>
                     <th scope="row">
-                        Example Date       
+                        `+arr[index]+`      
                     </th>
                     <td style="--start: 0.0; --size: 0.4"> <span class="data"> `+ arr[key] + ` </span> </td>
                 </tr>
