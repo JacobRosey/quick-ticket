@@ -968,7 +968,6 @@ function useResponse(res) {
         //May need to reconsolidate arr and keys to make it easier to access
         var index = 0;
         for (const key of keys) {
-            index++;
             pastWeekChart.innerHTML +=
                 `
                 <tr>
@@ -979,6 +978,7 @@ function useResponse(res) {
                 </tr>
                 
                 `
+                index++;
         }
     }
 
