@@ -907,13 +907,11 @@ function useResponse(res) {
         function getTopOfRange(arr, keys) {
 
             let maxCount = 0;
-            let maxDateString = "";
 
             for (const key of keys) {
                 const count = arr[key];
                 if (count > maxCount) {
                     maxCount = count;
-                    maxDateString = key;
                 }
             }
             return maxCount;
@@ -968,14 +966,14 @@ function useResponse(res) {
         //Append to activity chart the actions completed in the past week
         //Need to figure out how to set the labels and sizes
         //May need to reconsolidate arr and keys to make it easier to access
-        let index = 0;
+        var index = 0;
         for (const key of keys) {
             index++;
             pastWeekChart.innerHTML +=
                 `
                 <tr>
                     <th scope="row">
-                        `+arr[index].toString();+`      
+                        `+arr[index]+`      
                     </th>
                     <td style="--start: 0.0; --size: 0.4"> <span class="data"> `+ arr[key] + ` </span> </td>
                 </tr>
