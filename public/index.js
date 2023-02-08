@@ -980,7 +980,7 @@ function useResponse(res) {
                 if (index == 0 || index == keys.length - 1) {
                     pastWeekChart.innerHTML +=
                         `
-                <tr id="table-row-"`+index+`">
+                <tr id="table-row-`+index+`">
                     <th scope="row">
                         `+ keys[index] + `      
                     </th>
@@ -990,7 +990,7 @@ function useResponse(res) {
                 } else {
                     pastWeekChart.innerHTML +=
                         `
-                <tr id="table-row-"`+index+`">
+                <tr id="table-row-`+index+`">
                     <td class="past-week-td" style="--start:`+ lastDecimal + `; --size: ` + decimal + `"> <span class="data"> ` + arr[key] + ` </span> </td>
                 </tr>
                 `
