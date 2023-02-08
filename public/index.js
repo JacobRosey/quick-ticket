@@ -980,7 +980,7 @@ function useResponse(res) {
                 if (index == 0 || index == keys.length - 1) {
                     pastWeekChart.innerHTML +=
                         `
-                <tr>
+                <tr id=table-row-"`+index+`">
                     <th scope="row">
                         `+ keys[index] + `      
                     </th>
@@ -990,7 +990,7 @@ function useResponse(res) {
                 } else {
                     pastWeekChart.innerHTML +=
                         `
-                <tr>
+                <tr id="table-row-"`+index+`">
                     <td class="past-week-td" style="--start:`+ lastDecimal + `; --size: ` + decimal + `"> <span class="data"> ` + arr[key] + ` </span> </td>
                 </tr>
                 `
@@ -1008,6 +1008,7 @@ function useResponse(res) {
             index = 0;
             lastDecimal = undefined;
             for (const key of keys) {
+                let currentIndex = document.getElementById('table-row-' + index)
                 //Get 'size' css attribute for line graph
                 decimal = Math.max(0.0, arr[key] / topOfRange)
                 //Change date format for smaller labels
@@ -1017,7 +1018,7 @@ function useResponse(res) {
                     lastDecimal = decimal;
                 }
                 
-                pastWeekChart.innerHTML +=
+                currentIndex.innerHTML +=
                     `
                     <tr>
                         <td class="past-week-td" style="--start:`+ lastDecimal + `; --size: ` + decimal + `"> <span class="data"> ` + arr[key] + ` </span> </td>
