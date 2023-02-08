@@ -981,9 +981,7 @@ function useResponse(res) {
             pastWeekChart.innerHTML +=
                 `
                 <tr>
-                    <th scope="row">
-                        `+ keys[index] + `      
-                    </th>
+                    
                     <td class="past-week-td" style="--start:`+ lastDecimal + `; --size: ` + decimal + `"> <span class="data"> ` + arr[key] + ` </span> </td>
                 </tr>
                 
