@@ -359,7 +359,6 @@ function ajaxFunc(path, method, d) {
                     break;
                 default:
                     setTimeout(() => {
-                        console.log("response is " + response);
                         useResponse(JSON.parse(response))
                     }, 100)
 
