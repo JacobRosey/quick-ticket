@@ -967,17 +967,25 @@ function useResponse(res) {
         //Need to figure out how to set the labels and sizes
         //May need to reconsolidate arr and keys to make it easier to access
         var index = 0;
+        let decimal = 0.0;
+        let lastDecimal;
         for (const key of keys) {
+            decimal = max(0.0, arr[key]/topOfRange)
+            //for first iteration
+            if(lastDecimal == undefined){
+                lastDecimal =decimal;
+            }
             pastWeekChart.innerHTML +=
                 `
                 <tr>
                     <th scope="row">
                         `+keys[index]+`      
                     </th>
-                    <td style="--start: 0.0; --size: 0.4"> <span class="data"> `+ arr[key] + ` </span> </td>
+                    <td style="--start:`+lastDecimal+`; --size: `+decimal+`"> <span class="data"> `+ arr[key] + ` </span> </td>
                 </tr>
                 
                 `
+                lastDecimal = decimal;
                 index++;
         }
     }
