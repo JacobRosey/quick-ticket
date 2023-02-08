@@ -1000,6 +1000,35 @@ function useResponse(res) {
                 lastDecimal = decimal;
                 index++;
             }
+
+            arr = getDailyActions(pastWeekClosed);
+            keys = Object.keys(arr);
+            topOfRange = getTopOfRange(arr, keys);
+
+            index = 0;
+            lastDecimal = undefined;
+            for (const key of keys) {
+                //Get 'size' css attribute for line graph
+                decimal = Math.max(0.0, arr[key] / topOfRange)
+                //Change date format for smaller labels
+                keys[index] = keys[index].substring(4, keys[index].length - 4)
+                //for first iteration
+                if (lastDecimal == undefined) {
+                    lastDecimal = decimal;
+                }
+                
+                pastWeekChart.innerHTML +=
+                    `
+                    <tr>
+                        <td class="past-week-td" style="--start:`+ lastDecimal + `; --size: ` + decimal + `"> <span class="data"> ` + arr[key] + ` </span> </td>
+                    </tr>
+                    `;
+                
+
+                lastDecimal = decimal;
+                index++;
+            }
+
         }
 
         createAllTimeChart();
