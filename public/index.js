@@ -948,7 +948,7 @@ function useResponse(res) {
         container.innerHTML +=
             `
         <table class="charts-css line multiple show-heading show-labels">
-        <caption>Past Week's Statistics</caption>
+            <caption>Past Week's Statistics</caption>
             <tbody id="past-week-chart">
             </tbody>
         </table>
@@ -972,6 +972,7 @@ function useResponse(res) {
         for (const key of keys) {
             decimal = Math.max(0.0, arr[key]/topOfRange)
             //for first iteration
+            keys[index] = keys[index].substring(4, keys[index].length - 4)
             if(lastDecimal == undefined){
                 lastDecimal =decimal;
             }
