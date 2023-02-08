@@ -948,7 +948,7 @@ function useResponse(res) {
         container.innerHTML +=
             `
         <table class="charts-css line multiple show-heading show-labels">
-            <caption>Past Week's Statistics</caption>
+            <thead><caption>Past Week's Statistics</caption></thead>
             <tbody id="past-week-chart">
             </tbody>
         </table>
@@ -981,10 +981,10 @@ function useResponse(res) {
             pastWeekChart.innerHTML +=
                 `
                 <tr>
-                <td style="--start:`+lastDecimal+`; --size: `+decimal+`"> <span class="data"> `+ arr[key] + ` </span> </td>
                     <th scope="row">
                         `+keys[index]+`      
-                    </th>  
+                    </th>
+                    <td style="--start:`+lastDecimal+`; --size: `+decimal+`"> <span class="data"> `+ arr[key] + ` </span> </td>
                 </tr>
                 
                 `
