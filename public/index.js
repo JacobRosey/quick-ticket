@@ -947,12 +947,12 @@ function useResponse(res) {
         //Create recent activity chart for actions completed in the past week
         container.innerHTML +=
             `
-        <table class="charts-css line multiple show-heading show-labels">
-            <caption>Past Week Statistics</caption>
-            <tbody id="past-week-chart">
-            </tbody>
-        </table>
-        `;
+            <table class="charts-css line multiple show-heading">
+                <caption>Past Week Statistics</caption>
+                <tbody id="past-week-chart">
+                </tbody>
+            </table>
+            `;
 
         const pastWeekChart = document.getElementById('past-week-chart');
 
@@ -978,14 +978,26 @@ function useResponse(res) {
             if (lastDecimal == undefined) {
                 lastDecimal = decimal;
             }
-            pastWeekChart.innerHTML +=
+            if(index == 0 || index == keys.length - 1){
+                pastWeekChart.innerHTML +=
                 `
                 <tr>
-                    
+                    <th scope="row">
+                        `+ keys[index] + `      
+                    </th>
                     <td class="past-week-td" style="--start:`+ lastDecimal + `; --size: ` + decimal + `"> <span class="data"> ` + arr[key] + ` </span> </td>
                 </tr>
-                
                 `
+            } else {
+                pastWeekChart.innerHTML +=
+                `
+                <tr>
+                    <td class="past-week-td" style="--start:`+ lastDecimal + `; --size: ` + decimal + `"> <span class="data"> ` + arr[key] + ` </span> </td>
+                </tr>
+                `
+            }
+            
+                
             lastDecimal = decimal;
             index++;
         }
