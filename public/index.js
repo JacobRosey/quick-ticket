@@ -950,6 +950,7 @@ function useResponse(res) {
             let topOfRange = getTopOfRange(arr, keys);
 
             //Create recent activity chart for actions completed in the past week
+            const container = document.getElementById('chart-container');
             container.innerHTML +=
                 `
             <table class="charts-css line multiple show-heading show-labels">
