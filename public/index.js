@@ -947,7 +947,7 @@ function useResponse(res) {
         //Create recent activity chart for actions completed in the past week
         container.innerHTML +=
             `
-            <table class="charts-css line multiple show-heading">
+            <table class="charts-css line multiple show-heading show-labels">
                 <caption>Past Week Statistics</caption>
                 <tbody id="past-week-chart">
                 </tbody>
