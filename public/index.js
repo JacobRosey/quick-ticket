@@ -819,42 +819,42 @@ function useResponse(res) {
 
         //Get the number that will give perspective to the chart
         //chart will be readable whether topOfRange is 9 or 200
-        var topOfRange = Math.max(res[0].tickets_opened, res[0].tickets_closed, res[1]) * 1.25;
+        function createAllTimeChart() {
+            var topOfRange = Math.max(res[0].tickets_opened, res[0].tickets_closed, res[1]) * 1.25;
 
-        for (let i = 0; i < res[2].length; i++) {
-            console.log(res[2][i].creation_date)
+            //Create chart for all-time statistics
+            const container = document.getElementById('chart-container');
+            container.innerHTML +=
+                `
+            <h1 class="display-4">My Performance</h1>
+                    <table id="performance-chart" class="charts-css bar show-heading show-labels">
+                        <caption>All-Time Statistics</caption>
+                        <tbody>
+                            <tr>
+                                <th scope="row">
+                                    <i class="bi bi-tag" style="transform: scale(1.5)" data-toggle="tooltip"
+                                        data-placement="top" title="My Tickets"></i>
+                                </th>
+                                <td id="hold-html" style="--color: #85bbff;--size: calc(` + res[1] + ` / ` + topOfRange + `);">` + res[1] + `&nbsp;&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <i class="bi bi-circle" style="transform: scale(1.5)" data-toggle="tooltip"
+                                        data-placement="top" title="Tickets Opened"></i>
+                                </th>
+                                <td id="open-html" style="--color: #8fdd7f; --size:calc(` + res[0].tickets_opened + ` / ` + topOfRange + `);"> ` + res[0].tickets_opened + `&nbsp;&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"> <i class="bi bi-x-circle" style="transform: scale(1.5)"
+                                        data-toggle="tooltip" data-placement="top" title="Tickets Closed"></i>
+                                </th>
+                                <td id="closed-html" style="--color: #f56c68; --size: calc(` + res[0].tickets_closed + ` / ` + topOfRange + `);">` + res[0].tickets_closed + `&nbsp;&nbsp;</td>
+                            </tr> 
+                        </tbody>
+                    </table>
+            `;
         }
-        //Create chart for all-time statistics
-        const container = document.getElementById('chart-container');
-        container.innerHTML +=
-            `
-        <h1 class="display-4">My Performance</h1>
-                <table id="performance-chart" class="charts-css bar show-heading show-labels">
-                    <caption>All-Time Statistics</caption>
-                    <tbody>
-                        <tr>
-                            <th scope="row">
-                                <i class="bi bi-tag" style="transform: scale(1.5)" data-toggle="tooltip"
-                                    data-placement="top" title="My Tickets"></i>
-                            </th>
-                            <td id="hold-html" style="--color: #85bbff;--size: calc(` + res[1] + ` / ` + topOfRange + `);">` + res[1] + `&nbsp;&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <i class="bi bi-circle" style="transform: scale(1.5)" data-toggle="tooltip"
-                                    data-placement="top" title="Tickets Opened"></i>
-                            </th>
-                            <td id="open-html" style="--color: #8fdd7f; --size:calc(` + res[0].tickets_opened + ` / ` + topOfRange + `);"> ` + res[0].tickets_opened + `&nbsp;&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <th scope="row"> <i class="bi bi-x-circle" style="transform: scale(1.5)"
-                                    data-toggle="tooltip" data-placement="top" title="Tickets Closed"></i>
-                            </th>
-                            <td id="closed-html" style="--color: #f56c68; --size: calc(` + res[0].tickets_closed + ` / ` + topOfRange + `);">` + res[0].tickets_closed + `&nbsp;&nbsp;</td>
-                        </tr> 
-                    </tbody>
-                </table>
-        `;
+
         //Check if a ticket's closed/opened date was within the past month
         function isWithinPastMonth(dateString) {
             const date = new Date(dateString);
@@ -947,11 +947,11 @@ function useResponse(res) {
         function createWeeklyChart() {
             let arr = getDailyActions(pastWeekOpened);
             let keys = Object.keys(arr);
-            topOfRange = getTopOfRange(arr, keys);
+            let topOfRange = getTopOfRange(arr, keys);
 
             //Create recent activity chart for actions completed in the past week
             container.innerHTML +=
-            `
+                `
             <table class="charts-css line multiple show-heading show-labels">
             <caption>Past Week Statistics</caption>
                 <tbody id="past-week-chart">
@@ -1001,7 +1001,7 @@ function useResponse(res) {
             }
         }
 
-
+        createAllTimeChart();
         createWeeklyChart();
     }
 
