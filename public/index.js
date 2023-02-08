@@ -953,6 +953,10 @@ function useResponse(res) {
             const container = document.getElementById('chart-container');
             container.innerHTML +=
                 `
+                <ul class="charts-css legend legend-square">
+                <li>Tickets Opened</li>
+                <li>Tickets Closed</li>
+                </ul>
             <table class="charts-css line show-heading multiple show-labels">
             <caption>Past Week Statistics</caption>
                 <tbody id="past-week-chart">
