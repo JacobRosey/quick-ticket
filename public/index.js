@@ -980,7 +980,7 @@ function useResponse(res) {
                 if (index == 0 || index == keys.length - 1) {
                     pastWeekChart.innerHTML +=
                         `
-                <tr id=table-row-"`+index+`">
+                <tr id="table-row-"`+index+`">
                     <th scope="row">
                         `+ keys[index] + `      
                     </th>
