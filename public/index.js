@@ -821,7 +821,7 @@ function useResponse(res) {
         //chart will be readable whether topOfRange is 9 or 200
         var topOfRange = Math.max(res[0].tickets_opened, res[0].tickets_closed, res[1]) * 1.25;
 
-        for(let i=0; i < res[2].length; i++){
+        for (let i = 0; i < res[2].length; i++) {
             console.log(res[2][i].creation_date)
         }
         //Create chart for all-time statistics
@@ -917,7 +917,7 @@ function useResponse(res) {
             }
             return maxCount;
         }
-        
+
         var pastMonthOpened = [];
         var pastWeekOpened = [];
         var pastMonthClosed = [];
@@ -948,7 +948,7 @@ function useResponse(res) {
         container.innerHTML +=
             `
         <table class="charts-css line multiple show-heading show-labels">
-        <caption>Past Week Statistics</caption>
+            <caption>Past Week Statistics</caption>
             <tbody id="past-week-chart">
             </tbody>
         </table>
@@ -961,7 +961,7 @@ function useResponse(res) {
         topOfRange = getTopOfRange(arr, keys);
         console.log('top of range: ' + topOfRange);
         console.log(arr);
-        console.log('keys: '+ keys);
+        console.log('keys: ' + keys);
 
         //Append to activity chart the actions completed in the past week
         //Need to figure out how to set the labels and sizes
@@ -971,25 +971,25 @@ function useResponse(res) {
         let lastDecimal;
         for (const key of keys) {
             //Get 'size' css attribute for line graph
-            decimal = Math.max(0.0, arr[key]/topOfRange)
+            decimal = Math.max(0.0, arr[key] / topOfRange)
             //Change date format for smaller labels
             keys[index] = keys[index].substring(4, keys[index].length - 4)
             //for first iteration
-            if(lastDecimal == undefined){
+            if (lastDecimal == undefined) {
                 lastDecimal = decimal;
             }
             pastWeekChart.innerHTML +=
                 `
                 <tr>
                     <th scope="row">
-                        `+keys[index]+`      
+                        `+ keys[index] + `      
                     </th>
-                    <td style="--start:`+lastDecimal+`; --size: `+decimal+`"> <span class="data"> `+ arr[key] + ` </span> </td>
+                    <td style="--start:`+ lastDecimal + `; --size: ` + decimal + `"> <span class="data"> ` + arr[key] + ` </span> </td>
                 </tr>
                 
                 `
-                lastDecimal = decimal;
-                index++;
+            lastDecimal = decimal;
+            index++;
         }
     }
 
