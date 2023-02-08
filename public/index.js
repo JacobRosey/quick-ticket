@@ -975,7 +975,7 @@ function useResponse(res) {
             keys[index] = keys[index].substring(4, keys[index].length - 4)
             //for first iteration
             if(lastDecimal == undefined){
-                lastDecimal = 0.0;
+                lastDecimal = decimal;
             }
             pastWeekChart.innerHTML +=
                 `
