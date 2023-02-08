@@ -829,7 +829,8 @@ app.route('/performance/:user')
                 arr.push(rows)
             })
         setTimeout(() => {
-            console.log('sending res')
+            console.log('Here is the response')
+            console.log(arr)
             res.send(arr)
         }, 50)
 
