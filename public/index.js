@@ -944,43 +944,41 @@ function useResponse(res) {
             }
         }
 
-        //Create recent activity chart for actions completed in the past week
-        container.innerHTML +=
+        function createWeeklyChart() {
+            let arr = getDailyActions(pastWeekOpened);
+            let keys = Object.keys(arr);
+            topOfRange = getTopOfRange(arr, keys);
+
+            //Create recent activity chart for actions completed in the past week
+            container.innerHTML +=
             `
             <table class="charts-css line multiple show-heading show-labels">
-                <caption>Past Week Statistics</caption>
+            <caption>Past Week Statistics</caption>
                 <tbody id="past-week-chart">
                 </tbody>
             </table>
             `;
 
-        const pastWeekChart = document.getElementById('past-week-chart');
+            const pastWeekChart = document.getElementById('past-week-chart');
 
-        let arr = getDailyActions(pastWeekOpened);
-        let keys = Object.keys(arr);
-        topOfRange = getTopOfRange(arr, keys);
-        console.log('top of range: ' + topOfRange);
-        console.log(arr);
-        console.log('keys: ' + keys);
-
-        //Append to activity chart the actions completed in the past week
-        //Need to figure out how to set the labels and sizes
-        //May need to reconsolidate arr and keys to make it easier to access
-        var index = 0;
-        let decimal = 0.0;
-        let lastDecimal;
-        for (const key of keys) {
-            //Get 'size' css attribute for line graph
-            decimal = Math.max(0.0, arr[key] / topOfRange)
-            //Change date format for smaller labels
-            keys[index] = keys[index].substring(4, keys[index].length - 4)
-            //for first iteration
-            if (lastDecimal == undefined) {
-                lastDecimal = decimal;
-            }
-            if(index == 0 || index == keys.length - 1){
-                pastWeekChart.innerHTML +=
-                `
+            //Append to activity chart the actions completed in the past week
+            //Need to figure out how to set the labels and sizes
+            //May need to reconsolidate arr and keys to make it easier to access
+            var index = 0;
+            let decimal = 0.0;
+            let lastDecimal;
+            for (const key of keys) {
+                //Get 'size' css attribute for line graph
+                decimal = Math.max(0.0, arr[key] / topOfRange)
+                //Change date format for smaller labels
+                keys[index] = keys[index].substring(4, keys[index].length - 4)
+                //for first iteration
+                if (lastDecimal == undefined) {
+                    lastDecimal = decimal;
+                }
+                if (index == 0 || index == keys.length - 1) {
+                    pastWeekChart.innerHTML +=
+                        `
                 <tr>
                     <th scope="row">
                         `+ keys[index] + `      
@@ -988,19 +986,23 @@ function useResponse(res) {
                     <td class="past-week-td" style="--start:`+ lastDecimal + `; --size: ` + decimal + `"> <span class="data"> ` + arr[key] + ` </span> </td>
                 </tr>
                 `
-            } else {
-                pastWeekChart.innerHTML +=
-                `
+                } else {
+                    pastWeekChart.innerHTML +=
+                        `
                 <tr>
                     <td class="past-week-td" style="--start:`+ lastDecimal + `; --size: ` + decimal + `"> <span class="data"> ` + arr[key] + ` </span> </td>
                 </tr>
                 `
+                }
+
+
+                lastDecimal = decimal;
+                index++;
             }
-            
-                
-            lastDecimal = decimal;
-            index++;
         }
+
+
+        createWeeklyChart();
     }
 
     //After deleting a team
