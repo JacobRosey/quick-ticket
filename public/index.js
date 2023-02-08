@@ -958,11 +958,12 @@ function useResponse(res) {
             <caption>Past Week Statistics</caption>
                 <tbody id="past-week-chart">
                 </tbody>
-                <ul class="charts-css legend legend-square">
+                
+            </table>
+            <ul class="charts-css legend legend-square">
                 <li>Tickets Opened</li>
                 <li>Tickets Closed</li>
                 </ul>
-            </table>
             `;
 
             const pastWeekChart = document.getElementById('past-week-chart');
