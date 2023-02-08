@@ -822,7 +822,7 @@ function useResponse(res) {
         //chart will be readable whether topOfRange is 9 or 200
         var topOfRange = Math.max(res[0].tickets_opened, res[0].tickets_closed, res[1]) * 1.25;
 
-        for(let i=0; i > res[2].length; i++){
+        for(let i=0; i < res[2].length; i++){
             console.log(res[2][i].creation_date)
         }
         //Create chart for all-time statistics
