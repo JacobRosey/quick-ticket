@@ -953,7 +953,7 @@ function useResponse(res) {
             const container = document.getElementById('chart-container');
             container.innerHTML +=
                 `
-            <table class="charts-css line multiple show-heading show-labels">
+            <table class="charts-css line show-heading multiple show-labels">
             <caption>Past Week Statistics</caption>
                 <tbody id="past-week-chart">
                 </tbody>
