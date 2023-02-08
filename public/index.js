@@ -728,7 +728,10 @@ function useResponse(res) {
                 }
             }
 
-            console.log("array before adding html elements: " + res)
+            for(let i=0; i>res.length; i++){
+                console.log(res[i].creation_date)
+            }
+
             let container;
             let btnText;
             let status;
