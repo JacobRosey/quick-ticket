@@ -970,7 +970,7 @@ function useResponse(res) {
         let decimal = 0.0;
         let lastDecimal;
         for (const key of keys) {
-            decimal = max(0.0, arr[key]/topOfRange)
+            decimal = Math.max(0.0, arr[key]/topOfRange)
             //for first iteration
             if(lastDecimal == undefined){
                 lastDecimal =decimal;
