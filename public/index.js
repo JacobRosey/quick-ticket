@@ -1008,7 +1008,7 @@ function useResponse(res) {
             index = 0;
             lastDecimal = undefined;
             for (const key of keys) {
-                let currentIndex = document.getElementById("table-row-" + index+"")
+                let currentIndex = document.getElementById("table-row-" + index)
                 //Get 'size' css attribute for line graph
                 decimal = Math.max(0.0, arr[key] / topOfRange)
                 //Change date format for smaller labels
