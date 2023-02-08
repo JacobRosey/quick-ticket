@@ -728,10 +728,6 @@ function useResponse(res) {
                 }
             }
 
-            for(let i=0; i>res.length; i++){
-                console.log(res[i].creation_date)
-            }
-
             let container;
             let btnText;
             let status;
@@ -919,7 +915,9 @@ function useResponse(res) {
             }
             return maxCount;
         }
-
+        for(let i=0; i>res.length; i++){
+            console.log(res[i].creation_date)
+        }
         var pastMonthOpened = [];
         var pastWeekOpened = [];
         var pastMonthClosed = [];
