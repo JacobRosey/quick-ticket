@@ -948,7 +948,7 @@ function useResponse(res) {
         container.innerHTML +=
             `
         <table class="charts-css line multiple show-heading show-labels">
-            <thead><caption>Past Week's Statistics</caption></thead>
+            <caption>Past Week's Statistics</caption>
             <tbody id="past-week-chart">
             </tbody>
         </table>
