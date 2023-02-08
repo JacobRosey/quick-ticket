@@ -822,6 +822,9 @@ function useResponse(res) {
         //chart will be readable whether topOfRange is 9 or 200
         var topOfRange = Math.max(res[0].tickets_opened, res[0].tickets_closed, res[1]) * 1.25;
 
+        for(let i=0; i > res[2].length; i++){
+            console.log(res[2][i].creation_date)
+        }
         //Create chart for all-time statistics
         const container = document.getElementById('chart-container');
         container.innerHTML +=
@@ -915,9 +918,7 @@ function useResponse(res) {
             }
             return maxCount;
         }
-        for(let i=0; i>res.length; i++){
-            console.log(res[i].creation_date)
-        }
+        
         var pastMonthOpened = [];
         var pastWeekOpened = [];
         var pastMonthClosed = [];
@@ -943,7 +944,6 @@ function useResponse(res) {
                 }
             }
         }
-        console.log(pastMonthOpened, pastMonthClosed, pastWeekOpened, pastWeekClosed);
 
         //Create recent activity chart for actions completed in the past week
         container.innerHTML +=
