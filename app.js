@@ -801,7 +801,7 @@ app.route('/ticketstatus')
                 break;
             //To close a ticket
             case 'mytickets':
-                db.promise().query("UPDATE Tickets SET ticket_holder = null, ticket_status = 2, closed_by = ?, closed_date = ? WHERE ticket_id = ?", [user, date, id]);
+                db.promise().query("UPDATE Tickets SET ticket_holder = null, ticket_status = 2, closed_by = ?, closed_date = ? WHERE ticket_id = ?", [db.escape(user), date, id]);
                 db.promise().query("UPDATE Users SET tickets_closed = tickets_closed + 1 WHERE user_name = ?", [user]);
                 res.send('Ticket closed');
                 break;
