@@ -984,7 +984,7 @@ function useResponse(res) {
                     <th scope="row">
                         `+ keys[index] + `      
                     </th>
-                    <td style="--start:`+ lastDecimal + `; --size: ` + decimal + `"> <span class="data"> ` + arr[key] + ` </span> </td>
+                    <td class="past-week-td" style="--start:`+ lastDecimal + `; --size: ` + decimal + `"> <span class="data"> ` + arr[key] + ` </span> </td>
                 </tr>
                 
                 `
