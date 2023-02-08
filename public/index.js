@@ -970,16 +970,18 @@ function useResponse(res) {
         let decimal = 0.0;
         let lastDecimal;
         for (const key of keys) {
+            //Get 'size' css attribute for line graph
             decimal = Math.max(0.0, arr[key]/topOfRange)
-            //for first iteration
+            //Change date format for smaller labels
             keys[index] = keys[index].substring(4, keys[index].length - 4)
+            //for first iteration
             if(lastDecimal == undefined){
-                lastDecimal =decimal;
+                lastDecimal = decimal;
             }
             pastWeekChart.innerHTML +=
                 `
                 <tr>
-                    <th scope="row">
+                    <th scope="col">
                         `+keys[index]+`      
                     </th>
                     <td style="--start:`+lastDecimal+`; --size: `+decimal+`"> <span class="data"> `+ arr[key] + ` </span> </td>
