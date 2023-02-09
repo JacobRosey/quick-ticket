@@ -932,10 +932,19 @@ function useResponse(res) {
                 }
             });
 
+            //Custom sorting algorithm written by my trusty AI sidekick
             const sortedKeys = Array.from(keys).sort((a, b) => {
-                const dateA = new Date(a.split(" ").slice(1).join(" "));
-                const dateB = new Date(b.split(" ").slice(1).join(" "));
-                return dateA - dateB;
+                const dateA = a.split(" ").slice(1).join(" ");
+                const dateB = b.split(" ").slice(1).join(" ");
+                const [dayA, monthA, yearA] = dateA.split(" ");
+                const [dayB, monthB, yearB] = dateB.split(" ");
+                if (yearA !== yearB) {
+                  return yearA - yearB;
+                }
+                if (monthA !== monthB) {
+                  return months.indexOf(monthA) - months.indexOf(monthB);
+                }
+                return dayA - dayB;
               });
             
               const sortedObject1 = {};
