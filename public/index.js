@@ -920,10 +920,7 @@ function useResponse(res) {
 
         //Adds missing keys from each array and sorts by date
         function mergeObjectArrays(array1, array2) {
-            if (!Array.isArray(array1) || !Array.isArray(array2)) {
-              return [array1, array2];
-            }
-          
+        
             const keys = new Set();
             array1.forEach(item => {
               keys.add(Object.keys(item)[0]);
