@@ -922,34 +922,36 @@ function useResponse(res) {
         function mergeObjects(object1, object2) {
             const keys = new Set(Object.keys(object1));
             Object.keys(object2).forEach(key => keys.add(key));
-          
+
             keys.forEach(key => {
-              if (!object1.hasOwnProperty(key)) {
-                object1[key] = 0;
-              }
-              if (!object2.hasOwnProperty(key)) {
-                object2[key] = 0;
-              }
+                if (!object1.hasOwnProperty(key)) {
+                    object1[key] = 0;
+                }
+                if (!object2.hasOwnProperty(key)) {
+                    object2[key] = 0;
+                }
             });
 
             const sortedKeys = Array.from(keys).sort((a, b) => {
                 const dateA = new Date(a);
-                const dateB = new Date(b);
-                return dateA - dateB;
-              });
-            
-              const sortedObject1 = {};
-              const sortedObject2 = {};
-              sortedKeys.forEach(key => {
+                const dateB = new Date(b + ', ' + (new Date()).getFullYear());
+                const dateC = new Date(b);
+                const dateD = new Date(b + ', ' + (new Date()).getFullYear());
+                return dateA - dateB || dateC - dateD;
+            });
+
+            const sortedObject1 = {};
+            const sortedObject2 = {};
+            sortedKeys.forEach(key => {
                 sortedObject1[key] = object1[key];
                 sortedObject2[key] = object2[key];
-              });
-            
-              return [sortedObject1, sortedObject2];
-          }
-          
-          
-          
+            });
+
+            return [sortedObject1, sortedObject2];
+        }
+
+
+
 
         var pastMonthOpened = [];
         var pastWeekOpened = [];
@@ -1007,7 +1009,7 @@ function useResponse(res) {
             let closedRange = getTopOfRange(closedArr, closedKeys);
             var topOfRange;
 
-            if(openRange >= closedRange){
+            if (openRange >= closedRange) {
                 topOfRange = openRange;
             } else {
                 topOfRange = closedRange;
