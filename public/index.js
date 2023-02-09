@@ -931,12 +931,8 @@ function useResponse(res) {
                     object2[key] = 0;
                 }
             });
-            let mergedObj = {
-                ...object1,
-                ...object2
-            }
 
-            return mergedObj;
+            return [object1, object2];
         }
 
 
@@ -1004,8 +1000,8 @@ function useResponse(res) {
                 topOfRange = closedRange;
             }
 
-            let mergedObj = mergeObjects(openedArr, closedArr);
-            console.log(mergedObj)
+            let mergedObjects = mergeObjects(openedArr, closedArr);
+            console.log(mergedObjects)
 
             let openedDecimal = 0.0;
             let closedDecimal = 0.0;
