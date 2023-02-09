@@ -918,53 +918,23 @@ function useResponse(res) {
             return maxCount;
         }
 
-        //Adds missing keys from each array and sorts by date
-        function mergeObjectArrays(array1, array2) {
-            console.log(array1, array2)
-            if (!Array.isArray(array1) || !Array.isArray(array2)) {
-              return [array1, array2];
-            }
+        //Adds missing keys from each object and sorts by date
+        function mergeObjects(object1, object2) {
+            const keys = new Set(Object.keys(object1));
+            Object.keys(object2).forEach(key => keys.add(key));
           
-            const keys = new Set();
-            array1.forEach(item => {
-              keys.add(Object.keys(item)[0]);
-            });
-            array2.forEach(item => {
-              keys.add(Object.keys(item)[0]);
-            });
-          
-            array1.forEach(item1 => {
-              const key = Object.keys(item1)[0];
-              keys.delete(key);
-              keys.forEach(missingKey => {
-                array1.push({ [missingKey]: 0 });
-              });
-              keys.add(key);
+            keys.forEach(key => {
+              if (!object1.hasOwnProperty(key)) {
+                object1[key] = 0;
+              }
+              if (!object2.hasOwnProperty(key)) {
+                object2[key] = 0;
+              }
             });
           
-            array2.forEach(item2 => {
-              const key = Object.keys(item2)[0];
-              keys.delete(key);
-              keys.forEach(missingKey => {
-                array2.push({ [missingKey]: 0 });
-              });
-              keys.add(key);
-            });
-          
-            array1.sort((a, b) => {
-              const aKey = Object.keys(a)[0];
-              const bKey = Object.keys(b)[0];
-              return new Date(aKey) - new Date(bKey);
-            });
-          
-            array2.sort((a, b) => {
-              const aKey = Object.keys(a)[0];
-              const bKey = Object.keys(b)[0];
-              return new Date(aKey) - new Date(bKey);
-            });
-          
-            return [array1, array2];
+            return [object1, object2];
           }
+          
           
           
 
@@ -1032,7 +1002,7 @@ function useResponse(res) {
 
             console.log(openedArr, closedArr, topOfRange)
 
-            let twoDimensionalArray = mergeObjectArrays(openedArr, closedArr);
+            let twoDimensionalArray = mergeObjects(openedArr, closedArr);
             console.log(twoDimensionalArray)
 
 
