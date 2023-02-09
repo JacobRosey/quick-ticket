@@ -931,8 +931,12 @@ function useResponse(res) {
                     object2[key] = 0;
                 }
             });
+            let mergedObj = {
+                ...object1,
+                ...object2
+            }
 
-            return [object1, object2];
+            return mergedObj;
         }
 
 
@@ -1000,19 +1004,23 @@ function useResponse(res) {
                 topOfRange = closedRange;
             }
 
-            let twoDimensionalArray = mergeObjects(openedArr, closedArr);
-            console.log(twoDimensionalArray[0])
+            let mergedObj = mergeObjects(openedArr, closedArr);
+            console.log(mergedObj)
 
             let openedDecimal = 0.0;
             let closedDecimal = 0.0;
             let lastOpened;
             let lastClosed;
             let index = 0;
+            //Somethign like the below
+            /*
             for(const key in twoDimensionalArray[1]){
                 if(!twoDimensionalArray[0].hasOwnProperty(key)){
                     twoDimensionalArray[0][key] = 0;
                 }
-                Object.keys(twoDimensionalArray.forEach(function(key){
+                for(const key of keys){
+
+                
                     if (lastOpened == undefined) {
                         lastOpened = openedDecimal;
                     }
@@ -1029,10 +1037,13 @@ function useResponse(res) {
 
                     </tr>
                     `;
-                }))
+                
                 lastDecimal = decimal;
                 index++
             }
+            }
+            */
+        
 
 
             /*let arr = getDailyActions(pastWeekOpened);
