@@ -931,7 +931,7 @@ function useResponse(res) {
                 object2[key] = 0;
               }
             });
-            
+
             const sortedKeys = Array.from(keys).sort((a, b) => {
                 const dateA = new Date(a);
                 const dateB = new Date(b);
@@ -1012,8 +1012,6 @@ function useResponse(res) {
             } else {
                 topOfRange = closedRange;
             }
-
-            console.log(openedArr, closedArr, topOfRange)
 
             let twoDimensionalArray = mergeObjects(openedArr, closedArr);
             console.log(twoDimensionalArray)
