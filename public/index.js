@@ -918,9 +918,8 @@ function useResponse(res) {
             return maxCount;
         }
 
-        //Adds missing keys from each object and sorts by date
+        //Adds missing keys from each object 
         function mergeObjects(object1, object2) {
-            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
             const keys = new Set(Object.keys(object1));
             Object.keys(object2).forEach(key => keys.add(key));
 
@@ -933,29 +932,7 @@ function useResponse(res) {
                 }
             });
 
-            //Custom sorting algorithm written by my trusty AI sidekick
-            const sortedKeys = Array.from(keys).sort((a, b) => {
-                const dateA = a.split(" ").slice(1).join(" ");
-                const dateB = b.split(" ").slice(1).join(" ");
-                const [dayA, monthA, yearA] = dateA.split(" ");
-                const [dayB, monthB, yearB] = dateB.split(" ");
-                if (yearA !== yearB) {
-                    return yearA - yearB;
-                }
-                if (monthA !== monthB) {
-                    return months.indexOf(monthA) - months.indexOf(monthB);
-                }
-                return dayA - dayB;
-            });
-
-            const sortedObject1 = {};
-            const sortedObject2 = {};
-            sortedKeys.forEach(key => {
-                sortedObject1[key] = object1[key];
-                sortedObject2[key] = object2[key];
-            });
-
-            return [sortedObject1, sortedObject2];
+            return [object1, object2];
         }
 
 
