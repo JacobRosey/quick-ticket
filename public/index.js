@@ -1012,7 +1012,7 @@ function useResponse(res) {
                 if(!twoDimensionalArray[0].hasOwnProperty(key)){
                     twoDimensionalArray[0][key] = 0;
                 }
-                Object.keys(twoDimensionalArray[0][key].sort().forEach(function(key){
+                Object.keys(twoDimensionalArray[0][key].forEach(function(key){
                     if (lastOpened == undefined) {
                         lastOpened = openedDecimal;
                     }
