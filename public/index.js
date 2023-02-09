@@ -1001,7 +1001,7 @@ function useResponse(res) {
             }
 
             let twoDimensionalArray = mergeObjects(openedArr, closedArr);
-            console.log(twoDimensionalArray)
+            console.log(twoDimensionalArray[0])
 
             let openedDecimal = 0.0;
             let closedDecimal = 0.0;
