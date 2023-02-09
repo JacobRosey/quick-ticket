@@ -932,20 +932,29 @@ function useResponse(res) {
                 }
             });
 
-            const sortedKeys = Array.from(keys).sort((a, b) => {
+            const keys1 = Object.keys(object1);
+            const keys2 = Object.keys(object2);
+        
+            const allKeys = new Set([...keys1, ...keys2]);
+        
+            const sortedKeys = Array.from(allKeys).sort((a, b) => {
                 const dateA = new Date(a);
                 const dateB = new Date(b);
                 return dateA - dateB;
             });
-
+        
             const sortedObject1 = {};
             const sortedObject2 = {};
-
+        
             sortedKeys.forEach(key => {
-                sortedObject1[key] = object1[key];
-                sortedObject2[key] = object2[key];
+                if (keys1.includes(key)) {
+                    sortedObject1[key] = object1[key];
+                }
+                if (keys2.includes(key)) {
+                    sortedObject2[key] = object2[key];
+                }
             });
-
+        
             return [sortedObject1, sortedObject2];
         }
 
