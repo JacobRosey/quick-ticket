@@ -945,7 +945,38 @@ function useResponse(res) {
         }
 
         function createWeeklyChart() {
-            let arr = getDailyActions(pastWeekOpened);
+
+            //Create recent activity chart for actions completed in the past week
+            const container = document.getElementById('chart-container');
+            container.innerHTML +=
+                `
+                
+            <table class="charts-css line show-heading multiple show-labels">
+            <caption>Past Week Statistics</caption>
+                <tbody id="past-week-chart">
+                </tbody>
+                
+            </table>
+            <ul class="charts-css legend legend-square">
+                <li>Tickets Opened</li>
+                <li>Tickets Closed</li>
+                </ul>
+            `;
+
+            const pastWeekChart = document.getElementById('past-week-chart');
+
+
+            let openedArr = getDailyActions(pastWeekOpened);
+            let openedKeys = Object.keys(openedArr);
+            let openRange = getTopOfRange(openedArr, openedKeys);
+            let closedArr = getDailyActions(pastWeekClosed);
+            let closedKeys = Object.keys(closedArr);
+            let closedRange = getTopOfRange(closedArr, closedKeys);
+
+            console.log(openedArr, closedArr)
+
+
+            /*let arr = getDailyActions(pastWeekOpened);
             let keys = Object.keys(arr);
             let topOfRange = getTopOfRange(arr, keys);
 
@@ -1007,6 +1038,7 @@ function useResponse(res) {
                 index++;
             }
 
+            
             arr = getDailyActions(pastWeekClosed);
             keys = Object.keys(arr);
             //topOfRange = getTopOfRange(arr, keys);
@@ -1034,7 +1066,7 @@ function useResponse(res) {
 
                 lastDecimal = decimal;
                 index++;
-            }
+            }*/
 
         }
 
