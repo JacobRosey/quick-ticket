@@ -933,21 +933,17 @@ function useResponse(res) {
             });
 
             const sortedKeys = Array.from(keys).sort((a, b) => {
-                const dateA = new Date(a);
-                const dateB = new Date(b + ', ' + (new Date()).getFullYear());
-                const dateC = new Date(b);
-                const dateD = new Date(b + ', ' + (new Date()).getFullYear());
-                return dateA - dateB || dateC - dateD;
-            });
-
-            const sortedObject1 = {};
-            const sortedObject2 = {};
-            sortedKeys.forEach(key => {
+                return new Date(a) - new Date(b);
+              });
+            
+              const sortedObject1 = {};
+              const sortedObject2 = {};
+              sortedKeys.forEach(key => {
                 sortedObject1[key] = object1[key];
                 sortedObject2[key] = object2[key];
-            });
-
-            return [sortedObject1, sortedObject2];
+              });
+            
+              return [sortedObject1, sortedObject2];
         }
 
 
