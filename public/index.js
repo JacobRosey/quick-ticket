@@ -1003,6 +1003,37 @@ function useResponse(res) {
             let twoDimensionalArray = mergeObjects(openedArr, closedArr);
             console.log(twoDimensionalArray)
 
+            let openedDecimal = 0.0;
+            let closedDecimal = 0.0;
+            let lastOpened;
+            let lastClosed;
+            let index = 0;
+            for(const key in twoDimensionalArray[1]){
+                if(!twoDimensionalArray[0].hasOwnProperty(key)){
+                    twoDimensionalArray[0][key] = 0;
+                }
+                Object.keys(twoDimensionalArray[0].sort().forEach(function(key){
+                    if (lastOpened == undefined) {
+                        lastOpened = openedDecimal;
+                    }
+                    if(lastClosed == undefined){
+                        lastClosed = closedDecimal
+                    }
+                    openedDecimal = Math.max(0.0, twoDimensionalArray[0][key] / topOfRange);
+                    closedDecimal = openedDecimal = Math.max(0.0, twoDimensionalArray[1][key] / topOfRange)
+                    pastWeekChart.innerHTML += 
+                    `
+                    <tr id="table-row-`+index+`">
+                        <td class="past-week-td" style="--start:`+ lastOpened + `; --size: ` + openedDecimal + `"> <span class="data"> ` + twoDimensionalArray[0][key] + ` </span> </td>
+                        <td class="past-week-td" style="--start:`+ lastClosed + `; --size: ` + closedDecimal + `"> <span class="data"> ` + twoDimensionalArray[1][key] + ` </span> </td>
+
+                    </tr>
+                    `;
+                }))
+                lastDecimal = decimal;
+                index++
+            }
+
 
             /*let arr = getDailyActions(pastWeekOpened);
             let keys = Object.keys(arr);
