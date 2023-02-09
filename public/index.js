@@ -933,7 +933,9 @@ function useResponse(res) {
             });
 
             const sortedKeys = Array.from(keys).sort((a, b) => {
-                return new Date(a) - new Date(b);
+                const dateA = new Date(a.split(" ").slice(1).join(" "));
+                const dateB = new Date(b.split(" ").slice(1).join(" "));
+                return dateA - dateB;
               });
             
               const sortedObject1 = {};
