@@ -918,6 +918,25 @@ function useResponse(res) {
             return maxCount;
         }
 
+        function mergeObjectArrays(array1, array2) {
+            const keys = new Set([...array1.map(item => Object.keys(item)), ...array2.map(item => Object.keys(item))].flat());
+          
+            array1.forEach(item1 => {
+              keys.forEach(key => {
+                item1[key] = item1[key] || 0;
+              });
+            });
+            
+            array2.forEach(item2 => {
+              keys.forEach(key => {
+                item2[key] = item2[key] || 0;
+              });
+            });
+          
+            return [array1, array2];
+          }
+          
+
         var pastMonthOpened = [];
         var pastWeekOpened = [];
         var pastMonthClosed = [];
@@ -972,8 +991,18 @@ function useResponse(res) {
             let closedArr = getDailyActions(pastWeekClosed);
             let closedKeys = Object.keys(closedArr);
             let closedRange = getTopOfRange(closedArr, closedKeys);
+            var topOfRange;
+
+            if(openRange >= closedRange){
+                topOfRange = openRange;
+            } else {
+                topOfRange = closedRange;
+            }
 
             console.log(openedArr, closedArr)
+
+            let twoDimensionalArray = mergeObjectArrays(openedArr, closedArr);
+            console.log(twoDimensionalArray)
 
 
             /*let arr = getDailyActions(pastWeekOpened);
