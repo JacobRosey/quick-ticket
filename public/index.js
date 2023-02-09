@@ -931,8 +931,21 @@ function useResponse(res) {
                 object2[key] = 0;
               }
             });
-          
-            return [object1, object2];
+            
+            const sortedKeys = Array.from(keys).sort((a, b) => {
+                const dateA = new Date(a);
+                const dateB = new Date(b);
+                return dateA - dateB;
+              });
+            
+              const sortedObject1 = {};
+              const sortedObject2 = {};
+              sortedKeys.forEach(key => {
+                sortedObject1[key] = object1[key];
+                sortedObject2[key] = object2[key];
+              });
+            
+              return [sortedObject1, sortedObject2];
           }
           
           
