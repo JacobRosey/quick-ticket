@@ -920,6 +920,7 @@ function useResponse(res) {
 
         //Adds missing keys from each object and sorts by date
         function mergeObjects(object1, object2) {
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
             const keys = new Set(Object.keys(object1));
             Object.keys(object2).forEach(key => keys.add(key));
 
