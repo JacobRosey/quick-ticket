@@ -939,22 +939,22 @@ function useResponse(res) {
                 const [dayA, monthA, yearA] = dateA.split(" ");
                 const [dayB, monthB, yearB] = dateB.split(" ");
                 if (yearA !== yearB) {
-                  return yearA - yearB;
+                    return yearA - yearB;
                 }
                 if (monthA !== monthB) {
-                  return months.indexOf(monthA) - months.indexOf(monthB);
+                    return months.indexOf(monthA) - months.indexOf(monthB);
                 }
                 return dayA - dayB;
-              });
-            
-              const sortedObject1 = {};
-              const sortedObject2 = {};
-              sortedKeys.forEach(key => {
+            });
+
+            const sortedObject1 = {};
+            const sortedObject2 = {};
+            sortedKeys.forEach(key => {
                 sortedObject1[key] = object1[key];
                 sortedObject2[key] = object2[key];
-              });
-            
-              return [sortedObject1, sortedObject2];
+            });
+
+            return [sortedObject1, sortedObject2];
         }
 
 
