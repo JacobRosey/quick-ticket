@@ -988,12 +988,12 @@ function useResponse(res) {
             const pastWeekChart = document.getElementById('past-week-chart');
 
 
-            let openedObj = getDailyActions(pastWeekOpened);
-            let openedKeys = Object.keys(openedObj);
-            let openRange = getTopOfRange(openedObj, openedKeys);
-            let closedObj = getDailyActions(pastWeekClosed);
-            let closedKeys = Object.keys(closedObj);
-            let closedRange = getTopOfRange(closedObj, closedKeys);
+            let openedArr = getDailyActions(pastWeekOpened);
+            let openedKeys = Object.keys(openedArr);
+            let openRange = getTopOfRange(openedArr, openedKeys);
+            let closedArr = getDailyActions(pastWeekClosed);
+            let closedKeys = Object.keys(closedArr);
+            let closedRange = getTopOfRange(closedArr, closedKeys);
             var topOfRange;
 
             if (openRange >= closedRange) {
@@ -1002,11 +1002,8 @@ function useResponse(res) {
                 topOfRange = closedRange;
             }
 
-            let mergedObjects = mergeObjects(openedObj, closedObj);
-            openedObj = mergedObjects[0];
-            closedObj = mergedObjects[1];
-            console.log(openedObj)
-            console.log(closedObj)
+            let mergedObjects = mergeObjects(openedArr, closedArr);
+            console.log(mergedObjects)
 
             let openedDecimal = 0.0;
             let closedDecimal = 0.0;
