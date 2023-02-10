@@ -902,14 +902,17 @@ function useResponse(res) {
                 }
             }
 
-            const dateKeys = Object.keys(dateCounts);
-            dateKeys.sort((a, b) => new Date(a) - new Date(b));
-
-            const sortedDateCounts = {};
-            dateKeys.forEach(key => {
-                sortedDateCounts[key] = dateCounts[key];
+            const sortedKeys = Object.keys(dateCounts).sort((a, b) => {
+                const dateA = new Date(a);
+                const dateB = new Date(b);
+                return dateA.getTime() - dateB.getTime();
             });
-
+        
+            const sortedDateCounts = {};
+            for (const key of sortedKeys) {
+                sortedDateCounts[key] = dateCounts[key];
+            }
+        
             return sortedDateCounts;
         }
 
