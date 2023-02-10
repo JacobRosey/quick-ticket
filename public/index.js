@@ -937,13 +937,13 @@ function useResponse(res) {
                     <i class="bi bi-circle" style="transform: scale(1.5)" data-toggle="tooltip"
                         data-placement="top" title="Tickets Opened"></i>
                     </th>
-                        <td style="--color: #ff914c;--size: calc(` + pastWeekOpened.length + ` / ` + topOfRange + `); margin: .75em; width: 50%;">` + pastWeekOpened.length + `&nbsp;&nbsp;</td>
+                        <td style="--color: #ff914c;--size: calc(` + pastWeekOpened.length + ` / ` + topOfRange + `); margin: .75em; width: 30%;">` + pastWeekOpened.length + `&nbsp;&nbsp;</td>
                     </tr>
                     <tr>
                     <th scope="col"> <i class="bi bi-x-circle" style="transform: scale(1.5)"
                     data-toggle="tooltip" data-placement="top" title="Tickets Closed"></i>
                     </th>
-                        <td style="--color: #c084f5;--size: calc(` + pastWeekClosed.length + ` / ` + topOfRange + `); margin: .75em; width: 50%;">` + pastWeekClosed.length + `&nbsp;&nbsp;</td>
+                        <td style="--color: #c084f5;--size: calc(` + pastWeekClosed.length + ` / ` + topOfRange + `); margin: .75em; width: 30%;">` + pastWeekClosed.length + `&nbsp;&nbsp;</td>
                     </tr>
                     </tbody> 
                 </table>
