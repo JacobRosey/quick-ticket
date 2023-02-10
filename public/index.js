@@ -894,15 +894,16 @@ function useResponse(res) {
                     continue;
                 }
 
-                const key = date.toDateString();
-                if (key in dateCounts) {
-                    dateCounts[key] += 1;
-                } else {
-                    dateCounts[key] = 1;
-                }
-            }
+                const dateKeys = Object.keys(dateCounts);
+                dateKeys.sort((a, b) => new Date(a) - new Date(b));
 
-            return dateCounts;
+                const sortedDateCounts = {};
+                dateKeys.forEach(key => {
+                    sortedDateCounts[key] = dateCounts[key];
+                });
+
+                return sortedDateCounts;
+            }
         }
 
         function getTopOfRange(arr, keys) {
