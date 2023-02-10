@@ -882,19 +882,6 @@ function useResponse(res) {
 
             return date.getTime() >= lastWeek.getTime() && date.getTime() <= currentDate.getTime();
         }
-         
-        function getTopOfRange(arr) {
-
-            let maxCount = 0;
-
-            for (let i=0; i<arr.length; i++) {
-                const count = arr[i];
-                if (count > maxCount) {
-                    maxCount = count;
-                }
-            }
-            return maxCount;
-        }
 
         var pastMonthOpened = [];
         var pastWeekOpened = [];
@@ -938,148 +925,44 @@ function useResponse(res) {
             `;
 
             const pastWeekChart = document.getElementById('past-week-chart');
-
-
-            let openRange = getTopOfRange(pastWeekOpened);
-            let closedRange = getTopOfRange(pastWeekClosed);
             var topOfRange;
 
-            if (openRange >= closedRange) {
-                topOfRange = openRange;
+            if (pastWeekOpened.length >= pastWeekClosed.length) {
+                topOfRange = pastWeekOpened.length * 1.25;
             } else {
-                topOfRange = closedRange;
+                topOfRange = pastWeekClosed.length * 1.25;
+            }
+
+            for (let i = 0; i < pastWeekOpened.length; i++) {
+                const date = pastWeekOpened[i]
+                const dateString = (date.getMonth() + 1).toString().padStart(2, "0") + "-" + date.getDate().toString().padStart(2, "0") + "-" + date.getFullYear();
+                pastWeekOpened[i] = dateString;
+            }
+            for (i=0; i<pastWeekClosed.length; i++){
+                const date = pastWeekClosed[i]
+                const dateString = (date.getMonth() + 1).toString().padStart(2, "0") + "-" + date.getDate().toString().padStart(2, "0") + "-" + date.getFullYear();
+                pastWeekClosed[i] = dateString;
             }
 
             console.log(topOfRange)
             console.log(pastWeekOpened)
             console.log(pastWeekClosed)
 
-            //Somethign like the below
-            /*
-            for(const key in twoDimensionalArray[1]){
-                if(!twoDimensionalArray[0].hasOwnProperty(key)){
-                    twoDimensionalArray[0][key] = 0;
-                }
-                for(const key of keys){
-
-                
-                    if (lastOpened == undefined) {
-                        lastOpened = openedDecimal;
-                    }
-                    if(lastClosed == undefined){
-                        lastClosed = closedDecimal
-                    }
-                    openedDecimal = Math.max(0.0, twoDimensionalArray[0][key] / topOfRange);
-                    closedDecimal = openedDecimal = Math.max(0.0, twoDimensionalArray[1][key] / topOfRange)
-                    pastWeekChart.innerHTML += 
-                    `
-                    <tr id="table-row-`+index+`">
-                        <td class="past-week-td" style="--start:`+ lastOpened + `; --size: ` + openedDecimal + `"> <span class="data"> ` + twoDimensionalArray[0][key] + ` </span> </td>
-                        <td class="past-week-td" style="--start:`+ lastClosed + `; --size: ` + closedDecimal + `"> <span class="data"> ` + twoDimensionalArray[1][key] + ` </span> </td>
-
-                    </tr>
-                    `;
-                
-                lastDecimal = decimal;
-                index++
-            }
-            }
-            */
-
-
-
-            /*let arr = getDailyActions(pastWeekOpened);
-            let keys = Object.keys(arr);
-            let topOfRange = getTopOfRange(arr, keys);
-
-            //Create recent activity chart for actions completed in the past week
-            const container = document.getElementById('chart-container');
-            container.innerHTML +=
+            pastWeekChart.innerHTML +=
                 `
-                
-            <table class="charts-css line show-heading multiple show-labels">
-            <caption>Past Week Statistics</caption>
-                <tbody id="past-week-chart">
-                </tbody>
-                
-            </table>
-            <ul class="charts-css legend legend-square">
-                <li>Tickets Opened</li>
-                <li>Tickets Closed</li>
-                </ul>
-            `;
-
-            const pastWeekChart = document.getElementById('past-week-chart');
-
-            //Append to activity chart the actions completed in the past week
-            //Need to figure out how to set the labels and sizes
-            //May need to reconsolidate arr and keys to make it easier to access
-            var index = 0;
-            let decimal = 0.0;
-            let lastDecimal;
-            for (const key of keys) {
-                //Get 'size' css attribute for line graph
-                decimal = Math.max(0.0, arr[key] / topOfRange)
-                //Change date format for smaller labels
-                keys[index] = keys[index].substring(4, keys[index].length - 4)
-                //for first iteration
-                if (lastDecimal == undefined) {
-                    lastDecimal = decimal;
-                }
-                if (index == 0 || index == keys.length - 1) {
-                    pastWeekChart.innerHTML +=
-                        `
-                <tr id="table-row-`+index+`">
+                <tr>
                     <th scope="row">
-                        `+ keys[index] + `      
+                       Tickets Opened     
                     </th>
-                    <td class="past-week-td" style="--start:`+ lastDecimal + `; --size: ` + decimal + `"> <span class="data"> ` + arr[key] + ` </span> </td>
+                    <td style="--color: #85bbff;--size: calc(` + pastWeekOpened.length + ` / ` + topOfRange + `);">` + pastWeekOpened.length + `&nbsp;&nbsp;</td>
                 </tr>
-                `
-                } else {
-                    pastWeekChart.innerHTML +=
-                        `
-                <tr id="table-row-`+index+`">
-                    <td class="past-week-td" style="--start:`+ lastDecimal + `; --size: ` + decimal + `"> <span class="data"> ` + arr[key] + ` </span> </td>
+                <tr>
+                    <th scope="row">
+                       Tickets Closed     
+                    </th>
+                    <td style="--color: #85bbff;--size: calc(` + pastWeekClosed.length + ` / ` + topOfRange + `);">` + pastWeekClosed.length + `&nbsp;&nbsp;</td>
                 </tr>
-                `
-                }
-
-
-                lastDecimal = decimal;
-                index++;
-            }
-
-            
-            arr = getDailyActions(pastWeekClosed);
-            keys = Object.keys(arr);
-            //topOfRange = getTopOfRange(arr, keys);
-
-            index = 0;
-            lastDecimal = undefined;
-            for (const key of keys) {
-                let currentIndex = document.getElementById("table-row-" + index)
-                //Get 'size' css attribute for line graph
-                decimal = Math.max(0.0, arr[key] / topOfRange)
-                //Change date format for smaller labels
-                keys[index] = keys[index].substring(4, keys[index].length - 4)
-                //for first iteration
-                if (lastDecimal == undefined) {
-                    lastDecimal = decimal;
-                }
-                
-                currentIndex.innerHTML +=
-                    `
-                    <tr>
-                        <td class="past-week-td" style="--start:`+ lastDecimal + `; --size: ` + decimal + `"> <span class="data"> ` + arr[key] + ` </span> </td>
-                    </tr>
-                    `;
-                
-
-                lastDecimal = decimal;
-                index++;
-            }*/
-
+                `;
         }
 
         createAllTimeChart();
