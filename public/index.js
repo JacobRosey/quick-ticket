@@ -940,13 +940,13 @@ function useResponse(res) {
                 `
                 <caption>Past Week Statistics</caption>
                 <tr>
-                    <th scope="col">
+                    <th scope="row">
                        Tickets Opened     
                     </th>
                     <td style="--color: #85bbff;--size: calc(` + pastWeekOpened.length + ` / ` + topOfRange + `);">` + pastWeekOpened.length + `&nbsp;&nbsp;</td>
                 </tr>
                 <tr>
-                    <th scope="col">
+                    <th scope="row">
                        Tickets Closed     
                     </th>
                     <td style="--color: #85bbff;--size: calc(` + pastWeekClosed.length + ` / ` + topOfRange + `);">` + pastWeekClosed.length + `&nbsp;&nbsp;</td>
