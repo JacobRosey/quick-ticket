@@ -934,15 +934,16 @@ function useResponse(res) {
                 
                     <caption>Past Week Statistics</caption>
                     <tr>
-                        <th scope="row">
-                        Tickets Opened     
-                        </th>
+                    <th scope="row">
+                    <i class="bi bi-circle" style="transform: scale(1.5)" data-toggle="tooltip"
+                        data-placement="top" title="Tickets Opened"></i>
+                    </th>
                         <td style="--color: #ff914c;--size: calc(` + pastWeekOpened.length + ` / ` + topOfRange + `);">` + pastWeekOpened.length + `&nbsp;&nbsp;</td>
                     </tr>
                     <tr>
-                        <th scope="row">
-                        Tickets Closed     
-                        </th>
+                    <th scope="row"> <i class="bi bi-x-circle" style="transform: scale(1.5)"
+                    data-toggle="tooltip" data-placement="top" title="Tickets Closed"></i>
+                    </th>
                         <td style="--color: #c084f5;--size: calc(` + pastWeekClosed.length + ` / ` + topOfRange + `);">` + pastWeekClosed.length + `&nbsp;&nbsp;</td>
                     </tr>
                     </tbody> 
