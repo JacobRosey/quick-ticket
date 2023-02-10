@@ -989,11 +989,11 @@ function useResponse(res) {
 
 
             let openedObj = getDailyActions(pastWeekOpened);
-            let openedKeys = Object.keys(openedArr);
-            let openRange = getTopOfRange(openedArr, openedKeys);
+            let openedKeys = Object.keys(openedObj);
+            let openRange = getTopOfRange(openedObj, openedKeys);
             let closedObj = getDailyActions(pastWeekClosed);
-            let closedKeys = Object.keys(closedArr);
-            let closedRange = getTopOfRange(closedArr, closedKeys);
+            let closedKeys = Object.keys(closedObj);
+            let closedRange = getTopOfRange(closedObj, closedKeys);
             var topOfRange;
 
             if (openRange >= closedRange) {
