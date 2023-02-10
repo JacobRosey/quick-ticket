@@ -943,7 +943,7 @@ function useResponse(res) {
                         <th scope="row">
                         Tickets Closed     
                         </th>
-                        <td style="--color: #7CFF01;--size: calc(` + pastWeekClosed.length + ` / ` + topOfRange + `);">` + pastWeekClosed.length + `&nbsp;&nbsp;</td>
+                        <td style="--color: #c084f5;--size: calc(` + pastWeekClosed.length + ` / ` + topOfRange + `);">` + pastWeekClosed.length + `&nbsp;&nbsp;</td>
                     </tr>
                     </tbody> 
                 </table>
