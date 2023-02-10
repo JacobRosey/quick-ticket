@@ -940,10 +940,8 @@ function useResponse(res) {
             const pastWeekChart = document.getElementById('past-week-chart');
 
 
-            let openedArr = getDailyActions(pastWeekOpened);
-            let openRange = getTopOfRange(openedArr, openedKeys);
-            let closedArr = getDailyActions(pastWeekClosed);
-            let closedRange = getTopOfRange(closedArr, closedKeys);
+            let openRange = getTopOfRange(pastWeekOpened);
+            let closedRange = getTopOfRange(pastWeekClosed);
             var topOfRange;
 
             if (openRange >= closedRange) {
