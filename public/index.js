@@ -907,12 +907,12 @@ function useResponse(res) {
                 const dateB = new Date(b);
                 return dateA.getTime() - dateB.getTime();
             });
-        
+
             const sortedDateCounts = {};
             for (const key of sortedKeys) {
                 sortedDateCounts[key] = dateCounts[key];
             }
-        
+
             return sortedDateCounts;
         }
 
@@ -931,10 +931,8 @@ function useResponse(res) {
 
         //Adds missing keys from each object 
         function mergeObjects(object1, object2) {
-            const keys = new Set(Object.keys(object1));
-            console.log('here are the keys')
-            console.log(keys)
-            Object.keys(object2).forEach(key => keys.add(key));
+            let keys = [...new Set(Object.keys(object1).concat(Object.keys(object2)))];
+            keys = keys.sort((a, b) => new Date(a) - new Date(b));
 
             keys.forEach(key => {
                 if (!object1.hasOwnProperty(key)) {
