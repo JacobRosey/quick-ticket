@@ -911,19 +911,6 @@ function useResponse(res) {
 
         function createWeeklyChart() {
 
-            //Create recent activity chart for actions completed in the past week
-            const container = document.getElementById('chart-container');
-            container.innerHTML +=
-                `
-                
-            <table class="charts-css column show-heading show-labels" id="past-week-chart">
-                <tbody>
-                </tbody>
-                
-            </table>
-            `;
-
-            const pastWeekChart = document.getElementById('past-week-chart');
             var topOfRange;
 
             if (pastWeekOpened.length >= pastWeekClosed.length) {
@@ -936,21 +923,30 @@ function useResponse(res) {
             console.log(pastWeekOpened)
             console.log(pastWeekClosed)
 
-            pastWeekChart.innerHTML +=
+
+            //Create recent activity chart for actions completed in the past week
+            const container = document.getElementById('chart-container');
+
+            container.innerHTML +=
                 `
-                <caption>Past Week Statistics</caption>
-                <tr>
-                    <th scope="row">
-                       Tickets Opened     
-                    </th>
-                    <td style="--color: #85bbff;--size: calc(` + pastWeekOpened.length + ` / ` + topOfRange + `);">` + pastWeekOpened.length + `&nbsp;&nbsp;</td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                       Tickets Closed     
-                    </th>
-                    <td style="--color: #85bbff;--size: calc(` + pastWeekClosed.length + ` / ` + topOfRange + `);">` + pastWeekClosed.length + `&nbsp;&nbsp;</td>
-                </tr>
+                <table class="charts-css column show-heading show-labels" id="past-week-chart">
+                    <tbody>
+                
+                    <caption>Past Week Statistics</caption>
+                    <tr>
+                        <th scope="row">
+                        Tickets Opened     
+                        </th>
+                        <td style="--color: #85bbff;--size: calc(` + pastWeekOpened.length + ` / ` + topOfRange + `);">` + pastWeekOpened.length + `&nbsp;&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                        Tickets Closed     
+                        </th>
+                        <td style="--color: #85bbff;--size: calc(` + pastWeekClosed.length + ` / ` + topOfRange + `);">` + pastWeekClosed.length + `&nbsp;&nbsp;</td>
+                    </tr>
+                    </tbody> 
+                </table>
                 `;
         }
 
