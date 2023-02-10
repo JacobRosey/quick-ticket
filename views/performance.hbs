@@ -94,7 +94,7 @@
         }
 
         #past-week-chart tbody td {
-            animation: moving-bars 1s ease-out;
+            animation: moving-columns 1s ease-out;
             transform-origin: left;
         }
 
@@ -104,6 +104,15 @@
             }
 
             to {
+                transform: scaleX(100%);
+            }
+        }
+
+        @keyframes moving-columns {
+            from{
+                transform: scaleY(0);
+            }
+            to{
                 transform: scaleX(100%);
             }
         }
