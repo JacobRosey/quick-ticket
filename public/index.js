@@ -886,7 +886,7 @@ function useResponse(res) {
         //Returns object array where the key is the date and the value
         //is the number of occurences on that date
         function getDailyActions(dates) {
-            const dateCounts = [];
+            const dateCounts = {};
 
             for (const dateString of dates) {
                 const date = new Date(dateString);
