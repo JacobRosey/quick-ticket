@@ -937,13 +937,13 @@ function useResponse(res) {
                         <th scope="row">
                         Tickets Opened     
                         </th>
-                        <td style="--color: #85bbff;--size: calc(` + pastWeekOpened.length + ` / ` + topOfRange + `);">` + pastWeekOpened.length + `&nbsp;&nbsp;</td>
+                        <td style="--color: #ff914c;--size: calc(` + pastWeekOpened.length + ` / ` + topOfRange + `);">` + pastWeekOpened.length + `&nbsp;&nbsp;</td>
                     </tr>
                     <tr>
                         <th scope="row">
                         Tickets Closed     
                         </th>
-                        <td style="--color: #85bbff;--size: calc(` + pastWeekClosed.length + ` / ` + topOfRange + `);">` + pastWeekClosed.length + `&nbsp;&nbsp;</td>
+                        <td style="--color: #ffe687;--size: calc(` + pastWeekClosed.length + ` / ` + topOfRange + `);">` + pastWeekClosed.length + `&nbsp;&nbsp;</td>
                     </tr>
                     </tbody> 
                 </table>
