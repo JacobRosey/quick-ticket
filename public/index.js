@@ -882,40 +882,7 @@ function useResponse(res) {
 
             return date.getTime() >= lastWeek.getTime() && date.getTime() <= currentDate.getTime();
         }
-
-        //Returns object array where the key is the date and the value
-        //is the number of occurences on that date
-        function getDailyActions(dates) {
-            const dateCounts = {};
-
-            for (const dateString of dates) {
-                const date = new Date(dateString);
-                if (isNaN(date.getTime())) {
-                    continue;
-                }
-
-                const key = date.toDateString();
-                if (key in dateCounts) {
-                    dateCounts[key] += 1;
-                } else {
-                    dateCounts[key] = 1;
-                }
-            }
-
-            const sortedKeys = Object.keys(dateCounts).sort((a, b) => {
-                const dateA = new Date(a);
-                const dateB = new Date(b);
-                return dateA.getTime() - dateB.getTime();
-            });
-        
-            const sortedDateCounts = {};
-            for (const key of sortedKeys) {
-                sortedDateCounts[key] = dateCounts[key];
-            }
-        
-            return sortedDateCounts;
-        }
-
+         
         function getTopOfRange(arr, keys) {
 
             let maxCount = 0;
@@ -928,28 +895,6 @@ function useResponse(res) {
             }
             return maxCount;
         }
-
-        //Adds missing keys from each object 
-        function mergeObjects(object1, object2) {
-            const keys = new Set(Object.keys(object1));
-            console.log('here are the keys')
-            console.log(keys)
-            Object.keys(object2).forEach(key => keys.add(key));
-
-            keys.forEach(key => {
-                if (!object1.hasOwnProperty(key)) {
-                    object1[key] = 0;
-                }
-                if (!object2.hasOwnProperty(key)) {
-                    object2[key] = 0;
-                }
-            });
-
-            return [object1, object2];
-        }
-
-
-
 
         var pastMonthOpened = [];
         var pastWeekOpened = [];
@@ -984,26 +929,20 @@ function useResponse(res) {
             container.innerHTML +=
                 `
                 
-            <table class="charts-css line show-heading multiple show-labels">
+            <table class="charts-css bar show-heading show-labels">
             <caption>Past Week Statistics</caption>
                 <tbody id="past-week-chart">
                 </tbody>
                 
             </table>
-            <ul class="charts-css legend legend-square">
-                <li>Tickets Opened</li>
-                <li>Tickets Closed</li>
-                </ul>
             `;
 
             const pastWeekChart = document.getElementById('past-week-chart');
 
 
             let openedArr = getDailyActions(pastWeekOpened);
-            let openedKeys = Object.keys(openedArr);
             let openRange = getTopOfRange(openedArr, openedKeys);
             let closedArr = getDailyActions(pastWeekClosed);
-            let closedKeys = Object.keys(closedArr);
             let closedRange = getTopOfRange(closedArr, closedKeys);
             var topOfRange;
 
@@ -1013,14 +952,10 @@ function useResponse(res) {
                 topOfRange = closedRange;
             }
 
-            let mergedObjects = mergeObjects(openedArr, closedArr);
-            console.log(mergedObjects)
+            console.log(topOfRange)
+            console.log(pastWeekOpened)
+            console.log(pastWeekClosed)
 
-            let openedDecimal = 0.0;
-            let closedDecimal = 0.0;
-            let lastOpened;
-            let lastClosed;
-            let index = 0;
             //Somethign like the below
             /*
             for(const key in twoDimensionalArray[1]){
