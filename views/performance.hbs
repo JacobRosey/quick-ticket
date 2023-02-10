@@ -62,12 +62,6 @@
             background-color: #f2f2f2;
             padding: 10px;
         }
-        .past-week-td{
-            float: left;
-        }
-        #past-week-chart.line{
-            --labels-size: .5rem;
-        }
 
         caption {
             color: black;
@@ -90,6 +84,16 @@
         }
 
         #performance-chart tbody td {
+            animation: moving-bars 1s ease-out;
+            transform-origin: left;
+        }
+
+        #past-week-chart tbody th {
+            background-color: #f2f2f2;
+            z-index: 1;
+        }
+
+        #past-week-chart tbody td {
             animation: moving-bars 1s ease-out;
             transform-origin: left;
         }
