@@ -930,9 +930,8 @@ function useResponse(res) {
             container.innerHTML +=
                 `
                 <table class="charts-css column show-heading show-labels" id="past-week-chart">
-                    <tbody>
-                
-                    <caption>Past Week Statistics</caption>
+                <caption>Past Week Statistics</caption>    
+                <tbody>
                     <tr>
                     <th scope="col">
                     <i class="bi bi-circle" style="transform: scale(1.5)" data-toggle="tooltip"
