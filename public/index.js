@@ -933,17 +933,6 @@ function useResponse(res) {
                 topOfRange = pastWeekClosed.length * 1.25;
             }
 
-            for (let i = 0; i < pastWeekOpened.length; i++) {
-                const date = pastWeekOpened[i]
-                const dateString = (date.getMonth() + 1).toString().padStart(2, "0") + "-" + date.getDate().toString().padStart(2, "0") + "-" + date.getFullYear();
-                pastWeekOpened[i] = dateString;
-            }
-            for (i=0; i<pastWeekClosed.length; i++){
-                const date = pastWeekClosed[i]
-                const dateString = (date.getMonth() + 1).toString().padStart(2, "0") + "-" + date.getDate().toString().padStart(2, "0") + "-" + date.getFullYear();
-                pastWeekClosed[i] = dateString;
-            }
-
             console.log(topOfRange)
             console.log(pastWeekOpened)
             console.log(pastWeekClosed)
