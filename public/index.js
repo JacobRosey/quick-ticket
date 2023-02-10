@@ -934,10 +934,6 @@ function useResponse(res) {
                 }
             });
 
-
-
-
-
             return [object1, object2];
         }
 
@@ -992,10 +988,10 @@ function useResponse(res) {
             const pastWeekChart = document.getElementById('past-week-chart');
 
 
-            let openedArr = getDailyActions(pastWeekOpened);
+            let openedObj = getDailyActions(pastWeekOpened);
             let openedKeys = Object.keys(openedArr);
             let openRange = getTopOfRange(openedArr, openedKeys);
-            let closedArr = getDailyActions(pastWeekClosed);
+            let closedObj = getDailyActions(pastWeekClosed);
             let closedKeys = Object.keys(closedArr);
             let closedRange = getTopOfRange(closedArr, closedKeys);
             var topOfRange;
@@ -1006,8 +1002,11 @@ function useResponse(res) {
                 topOfRange = closedRange;
             }
 
-            let mergedObjects = mergeObjects(openedArr, closedArr);
-            console.log(mergedObjects)
+            let mergedObjects = mergeObjects(openedObj, closedObj);
+            openedObj = mergedObjects[0];
+            closedObj = mergedObjects[1];
+            console.log(openedObj)
+            console.log(closedObj)
 
             let openedDecimal = 0.0;
             let closedDecimal = 0.0;
