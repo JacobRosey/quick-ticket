@@ -916,7 +916,7 @@ function useResponse(res) {
             container.innerHTML +=
                 `
                 
-            <table class="charts-css bar show-heading show-labels" id="past-week-chart">
+            <table class="charts-css column show-heading show-labels" id="past-week-chart">
                 <tbody>
                 </tbody>
                 
@@ -940,13 +940,13 @@ function useResponse(res) {
                 `
                 <caption>Past Week Statistics</caption>
                 <tr>
-                    <th scope="row">
+                    <th scope="col">
                        Tickets Opened     
                     </th>
                     <td style="--color: #85bbff;--size: calc(` + pastWeekOpened.length + ` / ` + topOfRange + `);">` + pastWeekOpened.length + `&nbsp;&nbsp;</td>
                 </tr>
                 <tr>
-                    <th scope="row">
+                    <th scope="col">
                        Tickets Closed     
                     </th>
                     <td style="--color: #85bbff;--size: calc(` + pastWeekClosed.length + ` / ` + topOfRange + `);">` + pastWeekClosed.length + `&nbsp;&nbsp;</td>
