@@ -883,12 +883,12 @@ function useResponse(res) {
             return date.getTime() >= lastWeek.getTime() && date.getTime() <= currentDate.getTime();
         }
          
-        function getTopOfRange(arr, keys) {
+        function getTopOfRange(arr) {
 
             let maxCount = 0;
 
-            for (const key of keys) {
-                const count = arr[key];
+            for (let i=0; i<arr.length; i++) {
+                const count = arr[i];
                 if (count > maxCount) {
                     maxCount = count;
                 }
