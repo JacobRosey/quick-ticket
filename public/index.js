@@ -339,9 +339,11 @@ function ajaxFunc(path, method, d) {
             //State whether login was successful or not
             var response = xhr.responseText;
             if(response === undefined){
-                return window.location.reload();
+                window.location.reload();
+                return;
             } if(response.length === 0){
-                return window.location.reload();
+                window.location.reload();
+                return;
             }
             switch (response) {
                 case "Login Successful!":
@@ -414,9 +416,11 @@ function ajaxFunc(path, method, d) {
             //State whether login was successful or not
             var response = xhr.responseText;
             if(response === undefined){
-                return window.location.reload();
+                window.location.reload();
+                return;
             } if(response.length === 0){
-                return window.location.reload();
+                window.location.reload();
+                return;
             }
             if (response == "User is not an admin") {
                 alert("You don't have permission to delete this team!")
