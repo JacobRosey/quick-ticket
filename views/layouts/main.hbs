@@ -7,15 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quick Ticket</title>
     <link rel="icon" href="quick.png" type="image/x-icon">
-    <script>
-        const toggleButton = document.querySelector('a[data-toggle="collapse"]');
-        const submenu = document.querySelector('#submenu1');
-
-        toggleButton.addEventListener('click', function (event) {
-            event.preventDefault();
-            submenu.classList.toggle('show');
-        });
-    </script>
 </head>
 
 <body>
@@ -107,15 +98,13 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#submenu1" data-toggle="collapse" class="nav-link px-0 align-middle">
-                                <i class="fs-4 bi-ticket-perforated"></i>
-                                <span class="ms-1 d-none d-sm-inline" id="tickets">Tickets</span>
-                            </a>
-                            <ul class="collapse nav flex-column ms-1" id="submenu1" data-parent="#menu">
+                            <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                <i class="fs-4 bi-ticket-perforated"></i> <span class="ms-1 d-none d-sm-inline"
+                                    id="tickets">Tickets</span> </a>
+                            <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                                 <li class="w-100">
-                                    <a href="/newticket" class="nav-link px-0"> <i class="bi bi-plus-circle"
-                                            style="margin-right: 10px;"></i><span class="d-none d-sm-inline"
-                                            id="newticket">New Ticket</span>
+                                    <a href="/newticket" class="nav-link px-0"> <i class="bi bi-plus-circle" style="margin-right: 10px;"></i><span
+                                            class="d-none d-sm-inline" id="newticket">New Ticket</span>
                                     </a>
                                 </li>
                                 <li>
@@ -129,9 +118,8 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/closedtickets" class="nav-link px-0"><i class="bi bi-x-circle"
-                                            style="margin-right: 10px;"></i><span class="d-none d-sm-inline"
-                                            id="closedtickets">Closed
+                                    <a href="/closedtickets" class="nav-link px-0"><i class="bi bi-x-circle" style="margin-right: 1px;"></i><span
+                                            class="d-none d-sm-inline" id="closedtickets">Closed
                                             Tickets</span>
                                     </a>
                                 </li>
@@ -140,7 +128,7 @@
                         <li>
                             <a href="/team" class="nav-link px-0 align-middle">
                                 <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline" id="team">My
-                                    Teams</span>
+                                    Team</span>
                             </a>
                         </li>
                         <hr>
