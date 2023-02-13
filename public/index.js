@@ -935,13 +935,13 @@ function useResponse(res) {
                     <tr>
                     <th scope="col">
                     <i class="bi bi-circle" style="transform: scale(1.5)" data-toggle="tooltip"
-                        data-placement="top" title="Tickets Opened"></i>
+                        data-placement="top" title="Tickets Opened" style="margin-top: .5em;></i>
                     </th>
                         <td style="--color: #ff914c;--size: calc(` + pastWeekOpened.length + ` / ` + topOfRange + `); margin-left: 1em; margin-right: 1em; ">` + pastWeekOpened.length + `&nbsp;&nbsp;</td>
                     </tr>
                     <tr>
                     <th scope="col"> <i class="bi bi-x-circle" style="transform: scale(1.5)"
-                    data-toggle="tooltip" data-placement="top" title="Tickets Closed"></i>
+                    data-toggle="tooltip" data-placement="top" title="Tickets Closed" style="margin-top: .5em;"></i>
                     </th>
                         <td style="--color: #c084f5;--size: calc(` + pastWeekClosed.length + ` / ` + topOfRange + `); margin-left: 1em; margin-right: 1em;">` + pastWeekClosed.length + `&nbsp;&nbsp;</td>
                     </tr>
