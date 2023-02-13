@@ -7,6 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quick Ticket</title>
     <link rel="icon" href="quick.png" type="image/x-icon">
+    <script>
+        const toggleButton = document.querySelector('a[data-toggle="collapse"]');
+        const submenu = document.querySelector('#submenu1');
+
+        toggleButton.addEventListener('click', function (event) {
+            event.preventDefault();
+            submenu.classList.toggle('show');
+        });
+    </script>
 </head>
 
 <body>
