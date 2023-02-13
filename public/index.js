@@ -338,7 +338,9 @@ function ajaxFunc(path, method, d) {
             } else console.log('status ' + xhr.status)
             //State whether login was successful or not
             var response = xhr.responseText;
-            if(response == undefined || response.length == 0){
+            if(response === undefined){
+                return window.location.reload();
+            } if(response.length === 0){
                 return window.location.reload();
             }
             switch (response) {
@@ -411,7 +413,9 @@ function ajaxFunc(path, method, d) {
             } else console.log('status ' + xhr.status)
             //State whether login was successful or not
             var response = xhr.responseText;
-            if(response == undefined || response.length == 0){
+            if(response === undefined){
+                return window.location.reload();
+            } if(response.length === 0){
                 return window.location.reload();
             }
             if (response == "User is not an admin") {
