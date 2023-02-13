@@ -338,6 +338,9 @@ function ajaxFunc(path, method, d) {
             } else console.log('status ' + xhr.status)
             //State whether login was successful or not
             var response = xhr.responseText;
+            if(response == undefined || response.length == 0){
+                return window.location.reload();
+            }
             switch (response) {
                 case "Login Successful!":
                     //Redirect to the home page after successful login
@@ -408,6 +411,9 @@ function ajaxFunc(path, method, d) {
             } else console.log('status ' + xhr.status)
             //State whether login was successful or not
             var response = xhr.responseText;
+            if(response == undefined || response.length == 0){
+                return window.location.reload();
+            }
             if (response == "User is not an admin") {
                 alert("You don't have permission to delete this team!")
             } else {
@@ -551,10 +557,6 @@ function useResponse(res) {
         //On page load
         if (!res.includes('New admin') && !res.includes('User deleted')) {
             for (let i = 0; i < res.length; i++) {
-                //if team admin: undefined
-                if (res == []) {
-                    return window.location.reload();
-                }
                 container.innerHTML += `
                     <div class="col-sm">
                     <div class="team-info">
