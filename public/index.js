@@ -988,7 +988,7 @@ function useResponse(res) {
 
             container.innerHTML +=
                 `
-                <table class="charts-css column show-heading show-labels" id="past-month-chart">
+                <table class="charts-css bar show-heading show-labels" id="past-month-chart">
                 <caption>Past Month Statistics</caption>    
                 <tbody>
                     <tr>
