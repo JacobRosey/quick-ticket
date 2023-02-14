@@ -896,6 +896,8 @@ function useResponse(res) {
             return date.getTime() >= lastWeek.getTime() && date.getTime() <= currentDate.getTime();
         }
 
+        //Need to move these inside the createMonthly/createWeekly chart functions
+
         var pastMonthOpened = [];
         var pastWeekOpened = [];
         var pastMonthClosed = [];
@@ -933,13 +935,17 @@ function useResponse(res) {
             }
 
             console.log(topOfRange)
-            console.log(pastWeekOpened)
-            console.log(pastWeekClosed)
+            console.log(pastMonthOpened)
+            console.log(pastMonthClosed)
 
 
             //Create recent activity chart for actions completed in the past week
             const container = document.getElementById('chart-container');
 
+            //To deal with zero values in tickets opened/closed just do something like
+            //let calc = pastMonthOpened.length / topOfRange
+            //if calc == 0 calc = .25
+            //--size: calc('+ calc + ')
             container.innerHTML +=
                 `
                 <table class="charts-css column show-heading show-labels" id="past-week-chart">
@@ -963,8 +969,50 @@ function useResponse(res) {
                 `;
         }
 
+        function createMonthlyChart(){
+
+            var topOfRange;
+
+            if (pastMonthOpened.length >= pastMonthClosed.length) {
+                topOfRange = pastMonthOpened.length * 1.25;
+            } else {
+                topOfRange = pastMonthClosed.length * 1.25;
+            }
+
+            console.log(topOfRange)
+            console.log(pastMonthOpened)
+            console.log(pastMonthClosed)
+
+            //Create recent activity chart for actions completed in the past month
+            const container = document.getElementById('chart-container');
+
+            container.innerHTML +=
+                `
+                <table class="charts-css column show-heading show-labels" id="past-month-chart">
+                <caption>Past Month Statistics</caption>    
+                <tbody>
+                    <tr>
+                    <th scope="col">
+                    <i class="bi bi-circle" style="transform: scale(1.5)" data-toggle="tooltip"
+                        data-placement="top" title="Tickets Opened"></i>
+                    </th>
+                        <td style="--color: #ff914c;--size: calc(` + pastMonthOpened.length + ` / ` + topOfRange + `); margin-left: 1em; margin-right: 1em; margin-bottom: .5em;">` + pastMonthOpened.length + `&nbsp;&nbsp;</td>
+                    </tr>
+                    <tr>
+                    <th scope="col"> <i class="bi bi-x-circle" style="transform: scale(1.5)"
+                    data-toggle="tooltip" data-placement="top" title="Tickets Closed"></i>
+                    </th>
+                        <td style="--color: #c084f5;--size: calc(` + pastMonthClosed.length + ` / ` + topOfRange + `); margin-left: 1em; margin-right: 1em; margin-bottom: .5em;">` + pastMonthClosed.length + `&nbsp;&nbsp;</td>
+                    </tr>
+                    </tbody> 
+                </table>
+                `;
+
+        }
+
         createAllTimeChart();
         createWeeklyChart();
+        createMonthlyChart();
     }
 
     //After deleting a team
