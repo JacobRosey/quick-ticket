@@ -848,20 +848,20 @@ function useResponse(res) {
                                     <i class="bi bi-tag" style="transform: scale(1.5)" data-toggle="tooltip"
                                         data-placement="top" title="My Tickets"></i>
                                 </th>
-                                <td id="hold-html" style="--color: #85bbff;--size: calc(` + res[1] + ` / ` + topOfRange + `);">` + res[1] + `&nbsp;&nbsp; margin-top: .25em; margin-bottom: .25em;</td>
+                                <td id="hold-html" style="--color: #85bbff;--size: calc(` + res[1] + ` / ` + topOfRange + `); margin-top: .25em; margin-bottom: .25em;">` + res[1] + `&nbsp;&nbsp;</td>
                             </tr>
                             <tr>
                                 <th scope="row">
                                     <i class="bi bi-circle" style="transform: scale(1.5)" data-toggle="tooltip"
                                         data-placement="top" title="Tickets Opened"></i>
                                 </th>
-                                <td id="open-html" style="--color: #8fdd7f; --size:calc(` + res[0].tickets_opened + ` / ` + topOfRange + `);"> ` + res[0].tickets_opened + `&nbsp;&nbsp; margin-top: .25em; margin-bottom: .25em;</td>
+                                <td id="open-html" style="--color: #8fdd7f; --size:calc(` + res[0].tickets_opened + ` / ` + topOfRange + `); margin-top: .25em; margin-bottom: .25em;"> ` + res[0].tickets_opened + `&nbsp;&nbsp;</td>
                             </tr>
                             <tr>
                                 <th scope="row"> <i class="bi bi-x-circle" style="transform: scale(1.5)"
                                         data-toggle="tooltip" data-placement="top" title="Tickets Closed"></i>
                                 </th>
-                                <td id="closed-html" style="--color: #f56c68; --size: calc(` + res[0].tickets_closed + ` / ` + topOfRange + `);">` + res[0].tickets_closed + `&nbsp;&nbsp; margin-top: .25em; margin-bottom: .25em;</td>
+                                <td id="closed-html" style="--color: #f56c68; --size: calc(` + res[0].tickets_closed + ` / ` + topOfRange + `); margin-top: .25em; margin-bottom: .25em;">` + res[0].tickets_closed + `&nbsp;&nbsp;</td>
                             </tr> 
                         </tbody>
                     </table>
