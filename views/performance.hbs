@@ -67,6 +67,16 @@
             padding: 10px;
         }
 
+        #past-month-chart {
+            width: 75%;
+            max-width: 400px;
+            height: 200px;
+            margin: 0 auto;
+            border: 1px solid black;
+            background-color: #f2f2f2;
+            padding: 10px;
+        }
+
         caption {
             color: black;
             font-weight: bold;
@@ -98,6 +108,16 @@
         }
 
         #past-week-chart tbody td {
+            animation: moving-columns 1s ease-out;
+            transform-origin: bottom;
+        }
+
+        #past-month-chart tbody th {
+            background-color: #f2f2f2;
+            z-index: 1;
+        }
+
+        #past-month-chart tbody td {
             animation: moving-columns 1s ease-out;
             transform-origin: bottom;
         }
