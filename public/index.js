@@ -848,7 +848,7 @@ function useResponse(res) {
                                     <i class="bi bi-tag" style="transform: scale(1.5)" data-toggle="tooltip"
                                         data-placement="top" title="My Tickets"></i>
                                 </th>
-                                <td id="hold-html" style="--color: #85bbff;--size: calc(` + res[1] + ` / ` + topOfRange + `);">` + res[1] + `&nbsp;&nbsp;</td>
+                                <td id="hold-html" style="--color: #85bbff;--size: calc(` + res[1] + ` / ` + topOfRange + `);">` + res[1] + `&nbsp;&nbsp; margin-top: .25em; margin-bottom: .25em;</td>
                             </tr>
                             <tr>
                                 <th scope="row">
