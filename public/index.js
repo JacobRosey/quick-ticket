@@ -1002,7 +1002,7 @@ function useResponse(res) {
                     <th scope="col"> <i class="bi bi-x-circle" style="transform: scale(1.5)"
                     data-toggle="tooltip" data-placement="top" title="Tickets Closed"></i>
                     </th>
-                        <td style="--color: #ffe687;--size: calc(` + pastMonthClosed.length + ` / ` + topOfRange + `); margin-left: 1em; margin-right: 1em; margin-bottom: .5em;">` + pastMonthClosed.length + `&nbsp;&nbsp;</td>
+                        <td style="--color: #87dd7f;--size: calc(` + pastMonthClosed.length + ` / ` + topOfRange + `); margin-left: 1em; margin-right: 1em; margin-bottom: .5em;">` + pastMonthClosed.length + `&nbsp;&nbsp;</td>
                     </tr>
                     </tbody> 
                 </table>
