@@ -934,11 +934,6 @@ function useResponse(res) {
                 topOfRange = pastWeekClosed.length * 1.25;
             }
 
-            console.log(topOfRange)
-            console.log(pastMonthOpened)
-            console.log(pastMonthClosed)
-
-
             //Create recent activity chart for actions completed in the past week
             const container = document.getElementById('chart-container');
 
@@ -952,14 +947,14 @@ function useResponse(res) {
                 <caption>Past Week Statistics</caption>    
                 <tbody>
                     <tr>
-                    <th scope="col">
+                    <th scope="row">
                     <i class="bi bi-circle" style="transform: scale(1.5)" data-toggle="tooltip"
                         data-placement="top" title="Tickets Opened"></i>
                     </th>
                         <td style="--color: #f56c68;--size: calc(` + pastWeekOpened.length + ` / ` + topOfRange + `); margin-left: 1em; margin-right: 1em; margin-bottom: .5em;">` + pastWeekOpened.length + `&nbsp;&nbsp;</td>
                     </tr>
                     <tr>
-                    <th scope="col"> <i class="bi bi-x-circle" style="transform: scale(1.5)"
+                    <th scope="row"> <i class="bi bi-x-circle" style="transform: scale(1.5)"
                     data-toggle="tooltip" data-placement="top" title="Tickets Closed"></i>
                     </th>
                         <td style="--color: #87dd7f;--size: calc(` + pastWeekClosed.length + ` / ` + topOfRange + `); margin-left: 1em; margin-right: 1em; margin-bottom: .5em;">` + pastWeekClosed.length + `&nbsp;&nbsp;</td>
@@ -979,10 +974,6 @@ function useResponse(res) {
                 topOfRange = pastMonthClosed.length * 1.25;
             }
 
-            console.log(topOfRange)
-            console.log(pastMonthOpened)
-            console.log(pastMonthClosed)
-
             //Create recent activity chart for actions completed in the past month
             const container = document.getElementById('chart-container');
 
@@ -992,14 +983,14 @@ function useResponse(res) {
                 <caption>Past Month Statistics</caption>    
                 <tbody>
                     <tr>
-                    <th scope="col">
+                    <th scope="row">
                     <i class="bi bi-circle" style="transform: scale(1.5)" data-toggle="tooltip"
                         data-placement="top" title="Tickets Opened"></i>
                     </th>
                         <td style="--color: #f56c68;--size: calc(` + pastMonthOpened.length + ` / ` + topOfRange + `); margin-left: 1em; margin-right: 1em; margin-bottom: .5em;">` + pastMonthOpened.length + `&nbsp;&nbsp;</td>
                     </tr>
                     <tr>
-                    <th scope="col"> <i class="bi bi-x-circle" style="transform: scale(1.5)"
+                    <th scope="row"> <i class="bi bi-x-circle" style="transform: scale(1.5)"
                     data-toggle="tooltip" data-placement="top" title="Tickets Closed"></i>
                     </th>
                         <td style="--color: #87dd7f;--size: calc(` + pastMonthClosed.length + ` / ` + topOfRange + `); margin-left: 1em; margin-right: 1em; margin-bottom: .5em;">` + pastMonthClosed.length + `&nbsp;&nbsp;</td>
