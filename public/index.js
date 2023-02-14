@@ -848,20 +848,20 @@ function useResponse(res) {
                                     <i class="bi bi-tag" style="transform: scale(1.5)" data-toggle="tooltip"
                                         data-placement="top" title="My Tickets"></i>
                                 </th>
-                                <td id="hold-html" style="--color: #85bbff;--size: calc(` + res[1] + ` / ` + topOfRange + `); margin-top: .1em; margin-bottom: .1em; border-top-right-radius: 15px; border-bottom-right-radius: 15px;">` + res[1] + `&nbsp;&nbsp;</td>
+                                <td id="hold-html" style="--color: #85bbff;--size: calc(` + res[1] + ` / ` + topOfRange + `); margin-top: .1em; margin-bottom: .1em; border-top-right-radius: 10px; border-bottom-right-radius: 10px;">` + res[1] + `&nbsp;&nbsp;</td>
                             </tr>
                             <tr>
                                 <th scope="row">
                                     <i class="bi bi-circle" style="transform: scale(1.5)" data-toggle="tooltip"
                                         data-placement="top" title="Tickets Opened"></i>
                                 </th>
-                                <td id="open-html" style="--color: #8fdd7f; --size:calc(` + res[0].tickets_opened + ` / ` + topOfRange + `); margin-top: .1em; margin-bottom: .1em; border-top-right-radius: 15px; border-bottom-right-radius: 15px;"> ` + res[0].tickets_opened + `&nbsp;&nbsp;</td>
+                                <td id="open-html" style="--color: #8fdd7f; --size:calc(` + res[0].tickets_opened + ` / ` + topOfRange + `); margin-top: .1em; margin-bottom: .1em; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"> ` + res[0].tickets_opened + `&nbsp;&nbsp;</td>
                             </tr>
                             <tr>
                                 <th scope="row"> <i class="bi bi-x-circle" style="transform: scale(1.5)"
                                         data-toggle="tooltip" data-placement="top" title="Tickets Closed"></i>
                                 </th>
-                                <td id="closed-html" style="--color: #f56c68; --size: calc(` + res[0].tickets_closed + ` / ` + topOfRange + `); margin-top: .1em; margin-bottom: .1em; border-top-right-radius: 15px; border-bottom-right-radius: 15px;">` + res[0].tickets_closed + `&nbsp;&nbsp;</td>
+                                <td id="closed-html" style="--color: #f56c68; --size: calc(` + res[0].tickets_closed + ` / ` + topOfRange + `); margin-top: .1em; margin-bottom: .1em; border-top-right-radius: 10px; border-bottom-right-radius: 10px;">` + res[0].tickets_closed + `&nbsp;&nbsp;</td>
                             </tr> 
                         </tbody>
                     </table>
@@ -951,13 +951,13 @@ function useResponse(res) {
                     <i class="bi bi-circle" style="transform: scale(1.5)" data-toggle="tooltip"
                         data-placement="top" title="Tickets Opened"></i>
                     </th>
-                        <td style="--color: #f56c68;--size: calc(` + pastWeekOpened.length + ` / ` + topOfRange + `); margin-top: .25em; margin-bottom: .25em; border-top-right-radius: 15px; border-bottom-right-radius: 15px;">` + pastWeekOpened.length + `&nbsp;&nbsp;</td>
+                        <td style="--color: #f56c68;--size: calc(` + pastWeekOpened.length + ` / ` + topOfRange + `); margin-top: .25em; margin-bottom: .25em; border-top-right-radius: 10px; border-bottom-right-radius: 10px;">` + pastWeekOpened.length + `&nbsp;&nbsp;</td>
                     </tr>
                     <tr>
                     <th scope="row"> <i class="bi bi-x-circle" style="transform: scale(1.5)"
                     data-toggle="tooltip" data-placement="top" title="Tickets Closed"></i>
                     </th>
-                        <td style="--color: #87dd7f;--size: calc(` + pastWeekClosed.length + ` / ` + topOfRange + `); margin-top: .25em; margin-bottom: .25em; border-top-right-radius: 15px; border-bottom-right-radius: 15px;">` + pastWeekClosed.length + `&nbsp;&nbsp;</td>
+                        <td style="--color: #87dd7f;--size: calc(` + pastWeekClosed.length + ` / ` + topOfRange + `); margin-top: .25em; margin-bottom: .25em; border-top-right-radius: 10px; border-bottom-right-radius: 10px;">` + pastWeekClosed.length + `&nbsp;&nbsp;</td>
                     </tr>
                     </tbody> 
                 </table>
@@ -987,13 +987,13 @@ function useResponse(res) {
                     <i class="bi bi-circle" style="transform: scale(1.5)" data-toggle="tooltip"
                         data-placement="top" title="Tickets Opened"></i>
                     </th>
-                        <td style="--color: #f56c68;--size: calc(` + pastMonthOpened.length + ` / ` + topOfRange + `); margin-top: .25em; margin-bottom: .25em; border-top-right-radius: 15px; border-bottom-right-radius: 15px;">` + pastMonthOpened.length + `&nbsp;&nbsp;</td>
+                        <td style="--color: #f56c68;--size: calc(` + pastMonthOpened.length + ` / ` + topOfRange + `); margin-top: .25em; margin-bottom: .25em; border-top-right-radius: 10px; border-bottom-right-radius: 10px;">` + pastMonthOpened.length + `&nbsp;&nbsp;</td>
                     </tr>
                     <tr>
                     <th scope="row"> <i class="bi bi-x-circle" style="transform: scale(1.5)"
                     data-toggle="tooltip" data-placement="top" title="Tickets Closed"></i>
                     </th>
-                        <td style="--color: #87dd7f;--size: calc(` + pastMonthClosed.length + ` / ` + topOfRange + `); margin-top: .25em; margin-bottom: .25em; border-top-right-radius: 15px; border-bottom-right-radius: 15px;">` + pastMonthClosed.length + `&nbsp;&nbsp;</td>
+                        <td style="--color: #87dd7f;--size: calc(` + pastMonthClosed.length + ` / ` + topOfRange + `); margin-top: .25em; margin-bottom: .25em; border-top-right-radius: 10px; border-bottom-right-radius: 10px;">` + pastMonthClosed.length + `&nbsp;&nbsp;</td>
                     </tr>
                     </tbody> 
                 </table>
