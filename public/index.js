@@ -75,6 +75,7 @@ function setActiveLink() {
             navLink.className = "nav flex-column ms-1 collapse show";
             navLink.setAttribute("aria-expanded", "true");
             let ticketLink = document.getElementById('tickets-submenu');
+            ticketLink.removeAttribute('href');
             ticketLink.removeAttribute('data-bs-toggle');
             if (active == 'closedtickets') {
                 console.log('Starting ajaxfunction on closedtickets page load');
