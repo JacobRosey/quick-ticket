@@ -848,20 +848,20 @@ function useResponse(res) {
                                     <i class="bi bi-tag" style="transform: scale(1.5)" data-toggle="tooltip"
                                         data-placement="top" title="My Tickets"></i>
                                 </th>
-                                <td id="hold-html" style="--color: #85bbff;--size: calc(` + res[1] + ` / ` + topOfRange + `); margin-top: .1em; margin-bottom: .1em;">` + res[1] + `&nbsp;&nbsp;</td>
+                                <td id="hold-html" style="--color: #85bbff;--size: calc(` + res[1] + ` / ` + topOfRange + `); margin-top: .1em; margin-bottom: .1em; border-top-right-radius: 5px; border-bottom-right-radius: 5px;">` + res[1] + `&nbsp;&nbsp;</td>
                             </tr>
                             <tr>
                                 <th scope="row">
                                     <i class="bi bi-circle" style="transform: scale(1.5)" data-toggle="tooltip"
                                         data-placement="top" title="Tickets Opened"></i>
                                 </th>
-                                <td id="open-html" style="--color: #8fdd7f; --size:calc(` + res[0].tickets_opened + ` / ` + topOfRange + `); margin-top: .1em; margin-bottom: .1em;"> ` + res[0].tickets_opened + `&nbsp;&nbsp;</td>
+                                <td id="open-html" style="--color: #8fdd7f; --size:calc(` + res[0].tickets_opened + ` / ` + topOfRange + `); margin-top: .1em; margin-bottom: .1em; border-top-right-radius: 5px; border-bottom-right-radius: 5px;"> ` + res[0].tickets_opened + `&nbsp;&nbsp;</td>
                             </tr>
                             <tr>
                                 <th scope="row"> <i class="bi bi-x-circle" style="transform: scale(1.5)"
                                         data-toggle="tooltip" data-placement="top" title="Tickets Closed"></i>
                                 </th>
-                                <td id="closed-html" style="--color: #f56c68; --size: calc(` + res[0].tickets_closed + ` / ` + topOfRange + `); margin-top: .1em; margin-bottom: .1em;">` + res[0].tickets_closed + `&nbsp;&nbsp;</td>
+                                <td id="closed-html" style="--color: #f56c68; --size: calc(` + res[0].tickets_closed + ` / ` + topOfRange + `); margin-top: .1em; margin-bottom: .1em; border-top-right-radius: 5px; border-bottom-right-radius: 5px;">` + res[0].tickets_closed + `&nbsp;&nbsp;</td>
                             </tr> 
                         </tbody>
                     </table>
@@ -951,13 +951,13 @@ function useResponse(res) {
                     <i class="bi bi-circle" style="transform: scale(1.5)" data-toggle="tooltip"
                         data-placement="top" title="Tickets Opened"></i>
                     </th>
-                        <td style="--color: #f56c68;--size: calc(` + pastWeekOpened.length + ` / ` + topOfRange + `); margin-top: .25em; margin-bottom: .25em;">` + pastWeekOpened.length + `&nbsp;&nbsp;</td>
+                        <td style="--color: #f56c68;--size: calc(` + pastWeekOpened.length + ` / ` + topOfRange + `); margin-top: .25em; margin-bottom: .25em; border-top-right-radius: 5px; border-bottom-right-radius: 5px;">` + pastWeekOpened.length + `&nbsp;&nbsp;</td>
                     </tr>
                     <tr>
                     <th scope="row"> <i class="bi bi-x-circle" style="transform: scale(1.5)"
                     data-toggle="tooltip" data-placement="top" title="Tickets Closed"></i>
                     </th>
-                        <td style="--color: #87dd7f;--size: calc(` + pastWeekClosed.length + ` / ` + topOfRange + `); margin-top: .25em; margin-bottom: .25em;">` + pastWeekClosed.length + `&nbsp;&nbsp;</td>
+                        <td style="--color: #87dd7f;--size: calc(` + pastWeekClosed.length + ` / ` + topOfRange + `); margin-top: .25em; margin-bottom: .25em; border-top-right-radius: 5px; border-bottom-right-radius: 5px;">` + pastWeekClosed.length + `&nbsp;&nbsp;</td>
                     </tr>
                     </tbody> 
                 </table>
@@ -987,13 +987,13 @@ function useResponse(res) {
                     <i class="bi bi-circle" style="transform: scale(1.5)" data-toggle="tooltip"
                         data-placement="top" title="Tickets Opened"></i>
                     </th>
-                        <td style="--color: #f56c68;--size: calc(` + pastMonthOpened.length + ` / ` + topOfRange + `); margin-top: .25em; margin-bottom: .25em;">` + pastMonthOpened.length + `&nbsp;&nbsp;</td>
+                        <td style="--color: #f56c68;--size: calc(` + pastMonthOpened.length + ` / ` + topOfRange + `); margin-top: .25em; margin-bottom: .25em; border-top-right-radius: 5px; border-bottom-right-radius: 5px;">` + pastMonthOpened.length + `&nbsp;&nbsp;</td>
                     </tr>
                     <tr>
                     <th scope="row"> <i class="bi bi-x-circle" style="transform: scale(1.5)"
                     data-toggle="tooltip" data-placement="top" title="Tickets Closed"></i>
                     </th>
-                        <td style="--color: #87dd7f;--size: calc(` + pastMonthClosed.length + ` / ` + topOfRange + `); margin-top: .25em; margin-bottom: .25em;">` + pastMonthClosed.length + `&nbsp;&nbsp;</td>
+                        <td style="--color: #87dd7f;--size: calc(` + pastMonthClosed.length + ` / ` + topOfRange + `); margin-top: .25em; margin-bottom: .25em; border-top-right-radius: 5px; border-bottom-right-radius: 5px;">` + pastMonthClosed.length + `&nbsp;&nbsp;</td>
                     </tr>
                     </tbody> 
                 </table>
