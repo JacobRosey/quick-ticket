@@ -855,13 +855,13 @@ function useResponse(res) {
                                     <i class="bi bi-circle" style="transform: scale(1.5)" data-toggle="tooltip"
                                         data-placement="top" title="Tickets Opened"></i>
                                 </th>
-                                <td id="open-html" style="--color: #8fdd7f; --size:calc(` + res[0].tickets_opened + ` / ` + topOfRange + `);"> ` + res[0].tickets_opened + `&nbsp;&nbsp;</td>
+                                <td id="open-html" style="--color: #8fdd7f; --size:calc(` + res[0].tickets_opened + ` / ` + topOfRange + `);"> ` + res[0].tickets_opened + `&nbsp;&nbsp; margin-top: .25em; margin-bottom: .25em;</td>
                             </tr>
                             <tr>
                                 <th scope="row"> <i class="bi bi-x-circle" style="transform: scale(1.5)"
                                         data-toggle="tooltip" data-placement="top" title="Tickets Closed"></i>
                                 </th>
-                                <td id="closed-html" style="--color: #f56c68; --size: calc(` + res[0].tickets_closed + ` / ` + topOfRange + `);">` + res[0].tickets_closed + `&nbsp;&nbsp;</td>
+                                <td id="closed-html" style="--color: #f56c68; --size: calc(` + res[0].tickets_closed + ` / ` + topOfRange + `);">` + res[0].tickets_closed + `&nbsp;&nbsp; margin-top: .25em; margin-bottom: .25em;</td>
                             </tr> 
                         </tbody>
                     </table>
@@ -951,13 +951,13 @@ function useResponse(res) {
                     <i class="bi bi-circle" style="transform: scale(1.5)" data-toggle="tooltip"
                         data-placement="top" title="Tickets Opened"></i>
                     </th>
-                        <td style="--color: #f56c68;--size: calc(` + pastWeekOpened.length + ` / ` + topOfRange + `); margin-left: 1em; margin-right: 1em; margin-bottom: .5em;">` + pastWeekOpened.length + `&nbsp;&nbsp;</td>
+                        <td style="--color: #f56c68;--size: calc(` + pastWeekOpened.length + ` / ` + topOfRange + `); margin-top: .25em; margin-bottom: .25em;">` + pastWeekOpened.length + `&nbsp;&nbsp;</td>
                     </tr>
                     <tr>
                     <th scope="row"> <i class="bi bi-x-circle" style="transform: scale(1.5)"
                     data-toggle="tooltip" data-placement="top" title="Tickets Closed"></i>
                     </th>
-                        <td style="--color: #87dd7f;--size: calc(` + pastWeekClosed.length + ` / ` + topOfRange + `); margin-left: 1em; margin-right: 1em; margin-bottom: .5em;">` + pastWeekClosed.length + `&nbsp;&nbsp;</td>
+                        <td style="--color: #87dd7f;--size: calc(` + pastWeekClosed.length + ` / ` + topOfRange + `); margin-top: .25em; margin-bottom: .25em;">` + pastWeekClosed.length + `&nbsp;&nbsp;</td>
                     </tr>
                     </tbody> 
                 </table>
@@ -987,13 +987,13 @@ function useResponse(res) {
                     <i class="bi bi-circle" style="transform: scale(1.5)" data-toggle="tooltip"
                         data-placement="top" title="Tickets Opened"></i>
                     </th>
-                        <td style="--color: #f56c68;--size: calc(` + pastMonthOpened.length + ` / ` + topOfRange + `); margin-left: 1em; margin-right: 1em; margin-bottom: .5em;">` + pastMonthOpened.length + `&nbsp;&nbsp;</td>
+                        <td style="--color: #f56c68;--size: calc(` + pastMonthOpened.length + ` / ` + topOfRange + `); margin-top: .25em; margin-bottom: .25em;">` + pastMonthOpened.length + `&nbsp;&nbsp;</td>
                     </tr>
                     <tr>
                     <th scope="row"> <i class="bi bi-x-circle" style="transform: scale(1.5)"
                     data-toggle="tooltip" data-placement="top" title="Tickets Closed"></i>
                     </th>
-                        <td style="--color: #87dd7f;--size: calc(` + pastMonthClosed.length + ` / ` + topOfRange + `); margin-left: 1em; margin-right: 1em; margin-bottom: .5em;">` + pastMonthClosed.length + `&nbsp;&nbsp;</td>
+                        <td style="--color: #87dd7f;--size: calc(` + pastMonthClosed.length + ` / ` + topOfRange + `); margin-top: .25em; margin-bottom: .25em;">` + pastMonthClosed.length + `&nbsp;&nbsp;</td>
                     </tr>
                     </tbody> 
                 </table>
