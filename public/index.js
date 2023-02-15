@@ -852,9 +852,9 @@ function useResponse(res) {
                 calcClosed = res[0].tickets_closed / topOfRange;
             }
             if(res[1] === 0){
-                calcTotal = .1
+                calcTotal = .1;
             } else{
-                calcTotal = res[1] / topOfRange
+                calcTotal = res[1] / topOfRange;
             }
 
             //Create chart for all-time statistics
