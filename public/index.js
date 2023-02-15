@@ -849,10 +849,10 @@ function useResponse(res) {
             } else {
                 calcClosed = res[0].tickets_closed / topOfRange;
             }
-            if(res[1].length === 0){
+            if(res[1] === 0){
                 calcTotal = .1
             } else{
-                calcTotal = res[1].length / topOfRange
+                calcTotal = res[1] / topOfRange
             }
 
             //Create chart for all-time statistics
@@ -963,7 +963,7 @@ function useResponse(res) {
             } else {
                 calcOpened = pastWeekOpened.length / topOfRange;
             }
-            if(pastWeekClosed === 0){
+            if(pastWeekClosed.length === 0){
                 calcClosed = .1;
             } else {
                 calcClosed = pastWeekClosed.length / topOfRange;
@@ -1013,7 +1013,7 @@ function useResponse(res) {
             } else {
                 calcOpened = pastMonthOpened.length / topOfRange;
             }
-            if(pastMonthClosed === 0){
+            if(pastMonthClosed.length === 0){
                 calcClosed = .1;
             } else {
                 calcClosed = pastMonthClosed.length / topOfRange;
