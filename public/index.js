@@ -835,6 +835,26 @@ function useResponse(res) {
         function createAllTimeChart() {
             var topOfRange = Math.max(res[0].tickets_opened, res[0].tickets_closed, res[1]) * 1.25;
 
+            let calcOpened;
+            let calcClosed;
+            let calcTotal
+
+            if(res[0].tickets_opened.length === 0){
+                calcOpened = .1;
+            } else {
+                calcOpened = res[0].tickets_opened.length / topOfRange;
+            }
+            if(res[0].tickets_closed.length === 0){
+                calcClosed = .1;
+            } else {
+                calcClosed = res[0].tickets_closed.length / topOfRange;
+            }
+            if(res[1].length === 0){
+                calcTotal = .1
+            } else{
+                calcTotal = res[1].length / topOfRange
+            }
+
             //Create chart for all-time statistics
             const container = document.getElementById('chart-container');
             container.innerHTML +=
@@ -934,21 +954,17 @@ function useResponse(res) {
                 topOfRange = pastWeekClosed.length * 1.25;
             }
 
-            //To deal with zero values in tickets opened/closed just do something like
-            //let calc = pastMonthOpened.length / topOfRange
-            //if calc == 0 calc = .25
-            //--size: calc('+ calc + ')
-
+            //To deal with zero values in tickets opened/closed
             let calcOpened;
             let calcClosed;
 
             if(pastWeekOpened.length === 0){
-                calcOpened = .05;
+                calcOpened = .1;
             } else {
                 calcOpened = pastWeekOpened.length / topOfRange;
             }
             if(pastWeekClosed === 0){
-                calcClosed = .05;
+                calcClosed = .1;
             } else {
                 calcClosed = pastWeekClosed.length / topOfRange;
             }
@@ -987,6 +1003,20 @@ function useResponse(res) {
                 topOfRange = pastMonthOpened.length * 1.25;
             } else {
                 topOfRange = pastMonthClosed.length * 1.25;
+            }
+
+            let calcOpened;
+            let calcClosed;
+
+            if(pastMonthOpened.length === 0){
+                calcOpened = .1;
+            } else {
+                calcOpened = pastMonthOpened.length / topOfRange;
+            }
+            if(pastMonthClosed === 0){
+                calcClosed = .1;
+            } else {
+                calcClosed = pastMonthClosed.length / topOfRange;
             }
 
             //Create recent activity chart for actions completed in the past month
