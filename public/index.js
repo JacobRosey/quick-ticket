@@ -837,17 +837,17 @@ function useResponse(res) {
 
             let calcOpened;
             let calcClosed;
-            let calcTotal
+            let calcTotal;
 
-            if(res[0].tickets_opened.length === 0){
+            if(res[0].tickets_opened === 0){
                 calcOpened = .1;
             } else {
-                calcOpened = res[0].tickets_opened.length / topOfRange;
+                calcOpened = res[0].tickets_opened / topOfRange;
             }
-            if(res[0].tickets_closed.length === 0){
+            if(res[0].tickets_closed === 0){
                 calcClosed = .1;
             } else {
-                calcClosed = res[0].tickets_closed.length / topOfRange;
+                calcClosed = res[0].tickets_closed / topOfRange;
             }
             if(res[1].length === 0){
                 calcTotal = .1
