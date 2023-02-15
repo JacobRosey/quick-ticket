@@ -934,13 +934,28 @@ function useResponse(res) {
                 topOfRange = pastWeekClosed.length * 1.25;
             }
 
-            //Create recent activity chart for actions completed in the past week
-            const container = document.getElementById('chart-container');
-
             //To deal with zero values in tickets opened/closed just do something like
             //let calc = pastMonthOpened.length / topOfRange
             //if calc == 0 calc = .25
             //--size: calc('+ calc + ')
+
+            let calcOpened;
+            let calcClosed;
+
+            if(pastWeekOpened.length === 0){
+                calcOpened = .25;
+            } else {
+                calcOpened = pastWeekOpened.length / topOfRange;
+            }
+            if(pastWeekClosed === 0){
+                calcClosed = .25;
+            } else {
+                calcClosed = pastWeekClosed.length / topOfRange;
+            }
+
+            //Create recent activity chart for actions completed in the past week
+            const container = document.getElementById('chart-container');
+
             container.innerHTML +=
                 `
                 <table class="charts-css bar show-heading show-labels" id="past-week-chart">
@@ -951,13 +966,13 @@ function useResponse(res) {
                     <i class="bi bi-circle" style="transform: scale(1.5)" data-toggle="tooltip"
                         data-placement="top" title="Tickets Opened"></i>
                     </th>
-                        <td style="--color: #f56c68;--size: calc(` + pastWeekOpened.length + ` / ` + topOfRange + `); margin-top: .25em; margin-bottom: .25em; border-top-right-radius: 10px; border-bottom-right-radius: 10px;">` + pastWeekOpened.length + `&nbsp;&nbsp;</td>
+                        <td style="--color: #f56c68;--size: calc(` + calcOpened + `); margin-top: .25em; margin-bottom: .25em; border-top-right-radius: 10px; border-bottom-right-radius: 10px;">` + pastWeekOpened.length + `&nbsp;&nbsp;</td>
                     </tr>
                     <tr>
                     <th scope="row"> <i class="bi bi-x-circle" style="transform: scale(1.5)"
                     data-toggle="tooltip" data-placement="top" title="Tickets Closed"></i>
                     </th>
-                        <td style="--color: #87dd7f;--size: calc(` + pastWeekClosed.length + ` / ` + topOfRange + `); margin-top: .25em; margin-bottom: .25em; border-top-right-radius: 10px; border-bottom-right-radius: 10px;">` + pastWeekClosed.length + `&nbsp;&nbsp;</td>
+                        <td style="--color: #87dd7f;--size: calc(` + calcClosed + `); margin-top: .25em; margin-bottom: .25em; border-top-right-radius: 10px; border-bottom-right-radius: 10px;">` + pastWeekClosed.length + `&nbsp;&nbsp;</td>
                     </tr>
                     </tbody> 
                 </table>
