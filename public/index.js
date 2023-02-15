@@ -842,17 +842,17 @@ function useResponse(res) {
             if(res[0].tickets_opened === 0){
                 calcOpened = .1;
             } else {
-                calcOpened = res[0].tickets_opened / topOfRange;
+                calcOpened = (res[0].tickets_opened / topOfRange);
             }
             if(res[0].tickets_closed === 0){
                 calcClosed = .1;
             } else {
-                calcClosed = res[0].tickets_closed / topOfRange;
+                calcClosed = (res[0].tickets_closed / topOfRange);
             }
             if(res[1] === 0){
                 calcTotal = .1
             } else{
-                calcTotal = res[1] / topOfRange
+                calcTotal = (res[1] / topOfRange)
             }
 
             //Create chart for all-time statistics
