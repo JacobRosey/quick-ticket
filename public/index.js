@@ -943,12 +943,12 @@ function useResponse(res) {
             let calcClosed;
 
             if(pastWeekOpened.length === 0){
-                calcOpened = .25;
+                calcOpened = .05;
             } else {
                 calcOpened = pastWeekOpened.length / topOfRange;
             }
             if(pastWeekClosed === 0){
-                calcClosed = .25;
+                calcClosed = .05;
             } else {
                 calcClosed = pastWeekClosed.length / topOfRange;
             }
