@@ -17,11 +17,20 @@
 <body>
 
     <style>
-        
-        #chart-container{
+        #chart-container {
             margin-top: 5em;
             overflow: auto;
             height: 550px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 80vh;
+        }
+
+        /* Remove top margin/padding on columns */
+        .col {
+            margin-top: 0;
+            padding-top: 0;
         }
 
         .btn {
@@ -71,7 +80,7 @@
             padding: 10px;
         }
 
-        table{
+        table {
             border-radius: 10px;
             min-width: 300px;
         }
@@ -125,6 +134,7 @@
             from {
                 transform: scaleX(0);
             }
+
             to {
                 transform: scaleX(100%);
             }
@@ -147,7 +157,7 @@
 
     <div class="container">
         <div id="breadcrumb-container">
-                <h3>My Performance</h3>
+            <h3>My Performance</h3>
         </div>
         <div class="jumbotron jumbotron-fluid">
             <div class="container row" id="chart-container">
