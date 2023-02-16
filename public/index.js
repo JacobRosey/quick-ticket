@@ -975,7 +975,7 @@ function useResponse(res) {
 
             container.innerHTML +=
                 `
-                <table class="charts-css bar show-heading show-labels" id="past-week-chart" style="margin-bottom: 1em;">
+                <table class="charts-css bar show-heading show-labels" id="past-week-chart" style="margin-top: 2em;margin-bottom: 1em;">
                 <caption>Past Week Statistics</caption>    
                 <tbody>
                     <tr>
