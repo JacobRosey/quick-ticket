@@ -857,10 +857,6 @@ function useResponse(res) {
                 calcTotal = res[1] / topOfRange;
             }
 
-            console.log(calcOpened, calcClosed, calcTotal)
-            console.log(res[0].tickets_opened, res[0].tickets_closed, res[1])
-            console.log(topOfRange)
-
             //Create chart for all-time statistics
             const container = document.getElementById('chart-container');
             container.innerHTML +=
@@ -874,20 +870,20 @@ function useResponse(res) {
                                     <i class="bi bi-tag" style="transform: scale(1.5)" data-toggle="tooltip"
                                         data-placement="top" title="My Tickets"></i>
                                 </th>
-                                <td id="hold-html" style="--color: #85bbff;--size: calc(` + calcOpened + `); margin-top: .1em; margin-bottom: .1em; border-top-right-radius: 10px; border-bottom-right-radius: 10px;">` + res[1] + `&nbsp;&nbsp;</td>
+                                <td id="hold-html" style="--color: #85bbff;--size: calc(` + calcTotal+ `); margin-top: .1em; margin-bottom: .1em; border-top-right-radius: 10px; border-bottom-right-radius: 10px;">` + res[1] + `&nbsp;&nbsp;</td>
                             </tr>
                             <tr>
                                 <th scope="row">
                                     <i class="bi bi-circle" style="transform: scale(1.5)" data-toggle="tooltip"
                                         data-placement="top" title="Tickets Opened"></i>
                                 </th>
-                                <td id="open-html" style="--color: #8fdd7f; --size:calc(` + calcClosed + `); margin-top: .1em; margin-bottom: .1em; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"> ` + res[0].tickets_opened + `&nbsp;&nbsp;</td>
+                                <td id="open-html" style="--color: #8fdd7f; --size:calc(` + calcOpened + `); margin-top: .1em; margin-bottom: .1em; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"> ` + res[0].tickets_opened + `&nbsp;&nbsp;</td>
                             </tr>
                             <tr>
                                 <th scope="row"> <i class="bi bi-x-circle" style="transform: scale(1.5)"
                                         data-toggle="tooltip" data-placement="top" title="Tickets Closed"></i>
                                 </th>
-                                <td id="closed-html" style="--color: #f56c68; --size: calc(` + calcTotal + `); margin-top: .1em; margin-bottom: .1em; border-top-right-radius: 10px; border-bottom-right-radius: 10px;">` + res[0].tickets_closed + `&nbsp;&nbsp;</td>
+                                <td id="closed-html" style="--color: #f56c68; --size: calc(` + calcClosed + `); margin-top: .1em; margin-bottom: .1em; border-top-right-radius: 10px; border-bottom-right-radius: 10px;">` + res[0].tickets_closed + `&nbsp;&nbsp;</td>
                             </tr> 
                         </tbody>
                     </table>
