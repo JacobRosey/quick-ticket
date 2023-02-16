@@ -861,7 +861,7 @@ function useResponse(res) {
             const container = document.getElementById('chart-container');
             container.innerHTML +=
                 `
-            <h3>My Performance</h3>
+            <h3 id="breadcrumb-container">My Performance</h3>
                     <table id="performance-chart" class="charts-css bar show-heading show-labels">
                         <caption>All-Time Statistics</caption>
                         <tbody>
