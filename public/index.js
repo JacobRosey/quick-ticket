@@ -858,6 +858,8 @@ function useResponse(res) {
             }
 
             console.log(calcOpened, calcClosed, calcTotal)
+            console.log(res[0].tickets_opened, res[0].tickets_closed, res[1])
+            console.log(topOfRange)
 
             //Create chart for all-time statistics
             const container = document.getElementById('chart-container');
