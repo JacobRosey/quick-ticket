@@ -830,67 +830,6 @@ function useResponse(res) {
 
     if (active == 'performance') {
 
-        //Get the number that will give perspective to the chart
-        //chart will be readable whether topOfRange is 9 or 200
-        function createAllTimeChart() {
-            var topOfRange = Math.max(res[0].tickets_opened, res[0].tickets_closed, res[1]) * 1.25;
-
-            let calcOpened;
-            let calcClosed;
-            let calcTotal;
-
-            //For some reason the topOfRange no longer works correctly 
-            //for this chart
-            if(res[0].tickets_opened === 0){
-                calcOpened = .1;
-            } else {
-                calcOpened = res[0].tickets_opened / topOfRange;
-            }
-            if(res[0].tickets_closed === 0){
-                calcClosed = .1;
-            } else {
-                calcClosed = res[0].tickets_closed / topOfRange;
-            }
-            if(res[1] === 0){
-                calcTotal = .1;
-            } else{
-                calcTotal = res[1] / topOfRange;
-            }
-
-            //Create chart for all-time statistics
-            const container = document.getElementById('chart-container');
-            container.innerHTML +=
-                `
-                <div class="col-lg">
-                    <table id="performance-chart" class="charts-css bar show-heading show-labels" style="margin: .5em auto .5em auto;">
-                        <caption>All-Time Statistics</caption>
-                        <tbody>
-                            <tr>
-                                <th scope="row">
-                                    <i class="bi bi-tag" style="transform: scale(1.5)" data-toggle="tooltip"
-                                        data-placement="top" title="My Tickets"></i>
-                                </th>
-                                <td id="hold-html" style="--color: #85bbff;--size: calc(` + calcTotal+ `); margin-top: .1em; margin-bottom: .1em; border-top-right-radius: 10px; border-bottom-right-radius: 10px;">` + res[1] + `&nbsp;&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <i class="bi bi-circle" style="transform: scale(1.5)" data-toggle="tooltip"
-                                        data-placement="top" title="Tickets Opened"></i>
-                                </th>
-                                <td id="open-html" style="--color: #8fdd7f; --size:calc(` + calcOpened + `); margin-top: .1em; margin-bottom: .1em; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"> ` + res[0].tickets_opened + `&nbsp;&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <th scope="row"> <i class="bi bi-x-circle" style="transform: scale(1.5)"
-                                        data-toggle="tooltip" data-placement="top" title="Tickets Closed"></i>
-                                </th>
-                                <td id="closed-html" style="--color: #f56c68; --size: calc(` + calcClosed + `); margin-top: .1em; margin-bottom: .1em; border-top-right-radius: 10px; border-bottom-right-radius: 10px;">` + res[0].tickets_closed + `&nbsp;&nbsp;</td>
-                            </tr> 
-                        </tbody>
-                    </table>
-                </div>
-            `;
-        }
-
         //Check if a ticket's closed/opened date was within the past month
         function isWithinPastMonth(dateString) {
             const date = new Date(dateString);
@@ -1053,9 +992,67 @@ function useResponse(res) {
 
         }
 
-        createAllTimeChart();
+        function createAllTimeChart() {
+            
+            var topOfRange = Math.max(res[0].tickets_opened, res[0].tickets_closed, res[1]) * 1.25;
+
+            let calcOpened;
+            let calcClosed;
+            let calcTotal;
+
+            if(res[0].tickets_opened === 0){
+                calcOpened = .1;
+            } else {
+                calcOpened = res[0].tickets_opened / topOfRange;
+            }
+            if(res[0].tickets_closed === 0){
+                calcClosed = .1;
+            } else {
+                calcClosed = res[0].tickets_closed / topOfRange;
+            }
+            if(res[1] === 0){
+                calcTotal = .1;
+            } else{
+                calcTotal = res[1] / topOfRange;
+            }
+
+            //Create chart for all-time statistics
+            const container = document.getElementById('chart-container');
+            container.innerHTML +=
+                `
+                <div class="col-lg">
+                    <table id="performance-chart" class="charts-css bar show-heading show-labels" style="margin: .5em auto .5em auto;">
+                        <caption>All-Time Statistics</caption>
+                        <tbody>
+                            <tr>
+                                <th scope="row">
+                                    <i class="bi bi-tag" style="transform: scale(1.5)" data-toggle="tooltip"
+                                        data-placement="top" title="My Tickets"></i>
+                                </th>
+                                <td id="hold-html" style="--color: #85bbff;--size: calc(` + calcTotal+ `); margin-top: .1em; margin-bottom: .1em; border-top-right-radius: 10px; border-bottom-right-radius: 10px;">` + res[1] + `&nbsp;&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <i class="bi bi-circle" style="transform: scale(1.5)" data-toggle="tooltip"
+                                        data-placement="top" title="Tickets Opened"></i>
+                                </th>
+                                <td id="open-html" style="--color: #8fdd7f; --size:calc(` + calcOpened + `); margin-top: .1em; margin-bottom: .1em; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"> ` + res[0].tickets_opened + `&nbsp;&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"> <i class="bi bi-x-circle" style="transform: scale(1.5)"
+                                        data-toggle="tooltip" data-placement="top" title="Tickets Closed"></i>
+                                </th>
+                                <td id="closed-html" style="--color: #f56c68; --size: calc(` + calcClosed + `); margin-top: .1em; margin-bottom: .1em; border-top-right-radius: 10px; border-bottom-right-radius: 10px;">` + res[0].tickets_closed + `&nbsp;&nbsp;</td>
+                            </tr> 
+                        </tbody>
+                    </table>
+                </div>
+            `;
+        }
+
         createWeeklyChart();
         createMonthlyChart();
+        createAllTimeChart();
     }
 
     //After deleting a team
