@@ -84,7 +84,7 @@ function setActiveLink() {
                     "status": 2
                 }
                 ajaxFunc('/ticketdata/' + data.user + '/' + data.status, 'GET', data);
-                container.innerHTML += `<h3>Closed Tickets</h3>`
+                container.innerHTML += `<h1>Closed Tickets</h1>`
             }
             if (active == 'newticket') {
                 console.log('Starting ajaxfunction on newticket page load');
