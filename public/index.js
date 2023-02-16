@@ -862,7 +862,7 @@ function useResponse(res) {
             container.innerHTML +=
                 `
                 <div class="col-lg">
-                    <table id="performance-chart" class="charts-css bar show-heading show-labels" style="margin-top: 1em;margin-bottom: 1em;">
+                    <table id="performance-chart" class="charts-css bar show-heading show-labels">
                         <caption>All-Time Statistics</caption>
                         <tbody>
                             <tr>
@@ -978,7 +978,7 @@ function useResponse(res) {
             container.innerHTML +=
                 `
                 <div class="col-lg">
-                <table class="charts-css bar show-heading show-labels" id="past-week-chart" style= "margin-top:1em; margin-bottom: 1em;">
+                <table class="charts-css bar show-heading show-labels" id="past-week-chart">
                 <caption>Past Week Statistics</caption>    
                 <tbody>
                     <tr>
@@ -1030,7 +1030,7 @@ function useResponse(res) {
             container.innerHTML +=
                 `
                 <div class="col-lg">
-                <table class="charts-css bar show-heading show-labels" id="past-month-chart" style="margin-top: 1em; margin-bottom: 1em;">
+                <table class="charts-css bar show-heading show-labels" id="past-month-chart">
                 <caption>Past Month Statistics</caption>    
                 <tbody>
                     <tr>
