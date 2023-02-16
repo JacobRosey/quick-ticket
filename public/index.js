@@ -84,7 +84,7 @@ function setActiveLink() {
                     "status": 2
                 }
                 ajaxFunc('/ticketdata/' + data.user + '/' + data.status, 'GET', data);
-                container.innerHTML += `<h1>Closed Tickets</h1>`
+                container.innerHTML += `<h3>Closed Tickets</h3>`
             }
             if (active == 'newticket') {
                 console.log('Starting ajaxfunction on newticket page load');
@@ -861,7 +861,7 @@ function useResponse(res) {
             const container = document.getElementById('chart-container');
             container.innerHTML +=
                 `
-            <h1 class="display-4">My Performance</h1>
+            <h3 class="display-4">My Performance</h3>
                     <table id="performance-chart" class="charts-css bar show-heading show-labels">
                         <caption>All-Time Statistics</caption>
                         <tbody>
