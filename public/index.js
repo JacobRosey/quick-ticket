@@ -857,6 +857,8 @@ function useResponse(res) {
                 calcTotal = res[1] / topOfRange;
             }
 
+            console.log(calcOpened, calcClosed, calcTotal)
+
             //Create chart for all-time statistics
             const container = document.getElementById('chart-container');
             container.innerHTML +=
