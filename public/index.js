@@ -861,7 +861,7 @@ function useResponse(res) {
             const container = document.getElementById('chart-container');
             container.innerHTML +=
                 `
-                <div class="col-sm">
+                <div class="col-md">
                     <table id="performance-chart" class="charts-css bar show-heading show-labels" style="margin-top: 2em;margin-bottom: 1em;">
                         <caption>All-Time Statistics</caption>
                         <tbody>
@@ -977,7 +977,7 @@ function useResponse(res) {
 
             container.innerHTML +=
                 `
-                <div class="col-sm">
+                <div class="col-md">
                 <table class="charts-css bar show-heading show-labels" id="past-week-chart" style= "margin-bottom: 1em;">
                 <caption>Past Week Statistics</caption>    
                 <tbody>
@@ -1029,7 +1029,7 @@ function useResponse(res) {
 
             container.innerHTML +=
                 `
-                <div class="col-sm">
+                <div class="col-md">
                 <table class="charts-css bar show-heading show-labels" id="past-month-chart">
                 <caption>Past Month Statistics</caption>    
                 <tbody>
