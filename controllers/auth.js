@@ -35,6 +35,7 @@ exports.register = async (req, res) => {
         await db.query('INSERT INTO Users SET ?', { user_name: user, user_hash: hashedPass });
 
         // Redirect to the login page with a success message
+        console.log(res)
         res.redirect('/login?success=Registration%20successful.%20Please%20log%20in.');
 
     } catch (err) {
