@@ -47,6 +47,11 @@ app.use('/register', require('./routes/pages'));
 app.use('/auth', require('./routes/auth'));
 
 
+app.get('/login', (req, res) => {
+    const success = req.query.success;
+    res.render('login', { success });
+  });
+
 
 //This is where i'll put a global func to get userID at some point
 /*
@@ -76,10 +81,6 @@ function getUser(u) {
 
 app.route('/login/:user/:pass')
     .get(function (req, res, err) {
-        if(req.query.success){
-            const success = req.query.success;
-            res.render('login', {success})
-        }
         var pword;
         if (err) {
             console.log(err);
