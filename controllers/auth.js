@@ -38,7 +38,7 @@ exports.register = async (req, res) => {
                     res.redirect('https://quick-ticket.herokuapp.com/register?failed=' + encodeURIComponent(failed));
                 } else {
                     let success = "Registration successful! Please log in."
-                    res.redirect('/login?success=?' + encodeURIComponent(success))
+                    res.redirect('/login?success=' + encodeURIComponent(success))
                 }
             });
         }
