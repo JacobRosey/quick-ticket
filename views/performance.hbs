@@ -17,9 +17,11 @@
 <body>
 
     <style>
-        html, body{
+        html,
+        body {
             overflow-x: hidden;
         }
+
         #chart-container {
             overflow: auto;
             display: flex;
@@ -123,6 +125,16 @@
         #past-month-chart tbody td {
             animation: moving-bars 1s ease-out;
             transform-origin: left;
+        }
+
+        footer {
+            width: 110vw;
+            margin-left: -1em;
+            margin-right: -1em;
+        }
+
+        footer ul{
+            margin-right: 1em;
         }
 
         @keyframes moving-bars {
