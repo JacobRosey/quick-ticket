@@ -40,16 +40,17 @@
             max-width: 400px;
             background-color: rgba(0, 0, 0, 0.35) !important;
         }
-        .card-header{
-            background-color: rgba(0,0,0,0.35) !important;
+
+        .card-header {
+            background-color: rgba(0, 0, 0, 0.35) !important;
         }
 
         .card-body {
             background-color: rgba(0, 0, 0, 0.35) !important;
         }
 
-        .card-footer{
-            background-color: rgba(0,0,0,0.35) !important;
+        .card-footer {
+            background-color: rgba(0, 0, 0, 0.35) !important;
             padding-bottom: 0;
         }
 
@@ -70,7 +71,7 @@
             margin-top: .5em;
         }
 
-        .form-control{
+        .form-control {
             height: 40px;
             margin-top: .5em;
         }
@@ -116,10 +117,12 @@
             margin-left: 4px;
             color: white !important;
         }
-        .links a:hover{
+
+        .links a:hover {
             color: #ff914c !important;
         }
-        footer{
+
+        footer {
             position: fixed;
             bottom: 0;
             width: 100%;
@@ -144,7 +147,8 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="password" name="password" id="loginPass" class="form-control" placeholder="password">
+                            <input type="password" name="password" id="loginPass" class="form-control"
+                                placeholder="password">
                         </div>
                         <div class="row align-items-center remember">
                             <input type="checkbox" id="rememberMeCheckbox">Remember Me
@@ -162,6 +166,12 @@
             </div>
         </div>
     </div>
+    {{#if success }}
+    <h4 class="alert alert-success mt-4">{{success}}</h4>
+    {{/if}}
+    {{#if failed }}
+    <h4 class="alert alert-danger mt-4">{{failed}}</h4>
+    {{/if}}
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
