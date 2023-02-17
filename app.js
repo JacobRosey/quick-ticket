@@ -43,8 +43,9 @@ app.listen(port, () => {
 //Define Routes
 app.use('/', require('./routes/pages'));
 app.use('/login', require('./routes/pages'));
-app.use('/auth', require('./routes/auth'));
 app.use('/register', require('./routes/pages'));
+app.use('/auth', require('./routes/auth'));
+
 
 
 //This is where i'll put a global func to get userID at some point

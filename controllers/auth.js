@@ -35,7 +35,7 @@ exports.register = async (req, res) => {
                 if (err) {
                     console.log(err);
                     let failed = "Registration failed! Please try again"
-                    res.redirect('https://quick-ticket.herokuapp.com/register?failed=' + encodeURIComponent(failed));
+                    res.redirect('/register?failed=' + encodeURIComponent(failed));
                 } else {
                     let success = "Registration successful! Please log in."
                     res.redirect('/login?success=?' + encodeURIComponent(success))
