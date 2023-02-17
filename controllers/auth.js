@@ -35,8 +35,10 @@ exports.register = async (req, res) => {
                 if (err) {
                     console.log(err);
                     res.redirect('/registration?failed=registration-failed');
+                    delete req.session.failed;
                 } else {
-                    res.redirect('/login?success=registration-successful');  
+                    res.redirect('/login?success=registration-successful');
+                    delete req.session.success;  
                 }
             });
         }
