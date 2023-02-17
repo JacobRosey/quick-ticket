@@ -116,11 +116,9 @@
         }
     </style>
     <div class="container">
-            <% if (typeof failed !== 'undefined' && failed === 'registration-failed') { %>
-            <div class="alert alert-danger mt-4" role="alert">
-                Registration failed! Please try again.
-            </div>
-            <% } %>
+        {{#if failed}}
+        <div class="alert alert-danger">{{ failed }}</div>
+        {{/if}}
         <div class="d-flex justify-content-center h-100">
             <div class="card">
                 <div class="card-header">
