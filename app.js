@@ -76,6 +76,10 @@ function getUser(u) {
 
 app.route('/login/:user/:pass')
     .get(function (req, res, err) {
+        if(req.query.success){
+            const success = req.query.success;
+            res.render('login', {success})
+        }
         var pword;
         if (err) {
             console.log(err);
