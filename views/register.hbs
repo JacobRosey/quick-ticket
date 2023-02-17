@@ -104,16 +104,25 @@
             margin-left: 4px;
             color: white !important;
         }
-        .links a:hover{
+
+        .links a:hover {
             color: #ff914c !important;
         }
-        footer{
+
+        footer {
             position: fixed;
             bottom: 0;
             width: 100%;
         }
     </style>
     <div class="container">
+        <script>
+            <% if (typeof failed !== 'undefined' && failed === 'registration-failed') { %>
+            <div class="alert alert-danger mt-4" role="alert">
+                Registration failed! Please try again.
+            </div>
+            <% } %>
+        </script>
         <div class="d-flex justify-content-center h-100">
             <div class="card">
                 <div class="card-header">
