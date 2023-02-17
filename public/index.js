@@ -116,7 +116,7 @@ function setActiveLink() {
             ajaxFunc('/team/' + user + '', 'GET', user);
             container.innerHTML += `<h3>My Teams</h3>`
         }
-    }
+    } else return;
 }
 
 function clickedLogo() {
