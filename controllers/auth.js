@@ -40,6 +40,7 @@ exports.register = (req, res) => {
                 res.render('register', {
                     success: 'User Registered!'
                 });
+                res.redirect('/login')
             }
         }
         )
