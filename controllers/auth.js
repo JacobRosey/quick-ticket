@@ -34,13 +34,11 @@ exports.register = async (req, res) => {
             db.query('INSERT INTO Users SET ?', { user_name: user, user_hash: hashedPass }, (err, result) => {
                 if (err) {
                     console.log(err);
-                    res.render('register', {
-                        failed: 'Registration failed!'
-                    })
+                    let failed = "Registration failed! Please try again"
+                    res.redirect('/register?failed=' + encodeURIComponent(failed));
                 } else {
-                    res.render('login', {
-                        success: 'User Registered!'
-                    });  
+                    let success = "Registration successful! Please log in."
+                    res.redirect('/login?success=?' + encodeURIComponent(success))
                 }
             });
         }
