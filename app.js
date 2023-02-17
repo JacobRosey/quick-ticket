@@ -46,39 +46,6 @@ app.use('/login', require('./routes/pages'));
 app.use('/register', require('./routes/pages'));
 app.use('/auth', require('./routes/auth'));
 
-
-app.get('/login', (req, res) => {
-    const success = req.query.success;
-    res.render('login', { success });
-  });
-
-
-//This is where i'll put a global func to get userID at some point
-/*
-function getUser(u) {
-    const dbPromise = new Promise((resolve, reject) => {
-        db.query("SELECT * FROM users WHERE user_name = '" + u + "'", (err, result) => {
-            if (err) {
-                console.log(err)
-                reject();
-            }
-            if (result.length == 0) {
-                console.log('This user does not exist in DB');
-                reject();
-            }
-            if (result.length > 0) {
-                console.log('This user exists in DB');
-                userID = result[0].user_id;
-                resolve(userID);
-            }
-        })
-    });
-    dbPromise.then(() =>{
-        return userID;
-    })
-}
-*/
-
 app.route('/login/:user/:pass')
     .get(function (req, res, err) {
         var pword;
