@@ -9,41 +9,49 @@ exports.register = async (req, res) => {
 
     const { user, password, passwordConfirm } = req.body;
 
-    try {
-        const existingUser = await db.query('SELECT user_name FROM users WHERE user_name = ?', [user]);
-
-        if (user.length <= 6) { 
-            return res.render('register', {
+    db.query('SELECT user_name FROM users WHERE user_name = ?', [user], async (err, result) => {
+        if (err) {
+            console.log(err);
+            res.render('register', {
+                failed: 'Registration failed. Please try again.'
+            });
+        } else if (result.length > 0) {
+            res.render('register', {
+                failed: 'That username is not available!'
+            });
+        } else if (user.length <= 6) {
+            res.render('register', {
                 failed: 'Username must be 6 or more characters'
             });
-        }
-
-        if (existingUser.length > 0) {
-            return res.render('register', {
-                failed: 'That username is not available!'
-            })
-        }
-
-        if (password !== passwordConfirm) {
-            return res.render('register', {
+        } else if (password !== passwordConfirm) {
+            res.render('register', {
                 failed: 'Your passwords do not match!'
             });
+        } else {
+            //Hash the password 8 times using bcrypt
+            let hashedPass = await bcrypt.hash(password, 8);
+            console.log(hashedPass);
+            db.query('INSERT INTO Users SET ?', { user_name: user, user_hash: hashedPass }, (err, result) => {
+                if (err) {
+                    console.log(err);
+                    res.render('register', {
+                        failed: 'Registration failed. Please try again.'
+                    });
+                    setTimeout(() => {
+                        res.redirect('/register');
+                    }, 2000)
+                } else {
+                    res.render('register', {
+                        success: 'User registered successfully!'
+                    });
+                    setTimeout(() => {
+                        res.redirect('/login');
+                    }, 2000)
+                }
+            });
         }
-
-        let hashedPass = await bcrypt.hash(password, 8);
-        console.log(hashedPass);
-        await db.query('INSERT INTO Users SET ?', { user_name: user, user_hash: hashedPass });
-
-        // Redirect to the login page with a success message
-        console.log(res)
-        res.redirect('/login?success=Registration%20successful.%20Please%20log%20in.');
-
-    } catch (err) {
-        console.log(err);
-        res.render('register', {
-            failed: 'An error occurred while processing your request. Please try again later.'
-        });
-    }
+    });
+    
 };
 
 exports.newTicket = (req, res) => {
