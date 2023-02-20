@@ -241,7 +241,7 @@ app.route('/index2/:user/:code')
 
         const dbPromise = new Promise((resolve, reject) => {
 
-            db.query("SELECT * FROM users WHERE user_name = '" + user + "'", (err, result) => {
+            db.query("SELECT * FROM users WHERE user_name = ?", [user], (err, result) => {
                 if (err) {
                     console.log(err)
                     reject();
@@ -259,7 +259,7 @@ app.route('/index2/:user/:code')
         });
         dbPromise.then(() => {
             console.log(userID)
-            db.query("SELECT * FROM Teams WHERE team_code = '" + code + "' ", (err, result) => {
+            db.query("SELECT * FROM Teams WHERE team_code = ?", [code], (err, result) => {
                 if (err) {
                     console.log(err);
                     reject();
@@ -272,7 +272,7 @@ app.route('/index2/:user/:code')
                     console.log('Found the team');
                     teamID = result[0].team_id;
                     teamName = result[0].team_name;
-                    db.query("SELECT * FROM Members WHERE user_id = '" + userID + "' AND team_id = " + teamID + "", (err, result) => {
+                    db.query("SELECT * FROM Members WHERE user_id = ? AND team_id = ?", [userID, teamID], (err, result) => {
                         if (err) {
                             console.log(err);
                             reject();
@@ -280,7 +280,7 @@ app.route('/index2/:user/:code')
                         if (result.length > 0) {
                             res.send("You're already a member of " + teamName + "!")
                         } else {
-                            db.query('INSERT INTO Members (team_id, user_id) VALUES (' + teamID + ', ' + userID + ');', (err, result) => {
+                            db.query('INSERT INTO Members (team_id, user_id) VALUES (?, ?);', [teamID, userID], (err, result) => {
                                 if (err) {
                                     console.log(err);
                                     reject();
