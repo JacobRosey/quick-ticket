@@ -303,9 +303,6 @@ app.route('/team/:user')
         }
         const user = req.params.user;
 
-        console.log("username is " + user);
-
-
         const dbPromise = new Promise((resolve, reject) => {
 
             db.query("SELECT * FROM users WHERE user_name = ?", [user], (err, result) => {
@@ -403,7 +400,7 @@ app.route('/closedtickets/:user')
         console.log(user);
         const dbPromise = new Promise((resolve, reject) => {
 
-            db.query("SELECT * FROM users WHERE user_name = '" + user + "'", (err, result) => {
+            db.query("SELECT * FROM users WHERE user_name = ?", [user], (err, result) => {
                 if (err) {
                     console.log(err)
                     reject('There was an error querying the database');
