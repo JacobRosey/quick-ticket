@@ -593,7 +593,7 @@ app.route('/get-teams/:user')
         console.log(user);
 
         const dbPromise = new Promise((resolve, reject) => {
-            db.query("SELECT * FROM users WHERE user_name = '" + user + "'", (err, result) => {
+            db.query("SELECT * FROM users WHERE user_name = ?", [user], (err, result) => {
                 if (err) {
                     console.log(err)
                     reject('There was an error querying the database');
@@ -613,7 +613,7 @@ app.route('/get-teams/:user')
         dbPromise.then((id) => {
             async function getData() {
                 let teamIDs = [];
-                db.promise().query("SELECT * FROM Members WHERE user_id = " + id + "")
+                db.promise().query("SELECT * FROM Members WHERE user_id = ?", [id])
                     .then(([rows, fields]) => {
                         for (let i = 0; i < rows.length; i++) {
                             teamIDs.push(rows[i].team_id);
@@ -626,7 +626,7 @@ app.route('/get-teams/:user')
                     setTimeout(() => {
                         let arr = []
                         for (let i = 0; i < response.length; i++) {
-                            db.promise().query("SELECT * FROM Teams WHERE team_id = " + response[i])
+                            db.promise().query("SELECT * FROM Teams WHERE team_id = ?", [response[i]])
                                 .then(([rows, fields]) => {
                                     arr.push(rows[0].team_name)
                                 }).catch(err => console.log(err))
