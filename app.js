@@ -660,7 +660,7 @@ app.route('/ticketdata/:user/:status')
         console.log(user);
 
         const dbPromise = new Promise((resolve, reject) => {
-            db.query("SELECT * FROM users WHERE user_name = '" + user + "'", (err, result) => {
+            db.query("SELECT * FROM users WHERE user_name = ?", [user], (err, result) => {
                 if (err) {
                     console.log(err)
                     reject('There was an error querying the database');
@@ -679,7 +679,7 @@ app.route('/ticketdata/:user/:status')
         dbPromise.then((id) => {
             async function getData() {
                 let teamIDs = [];
-                db.promise().query("SELECT * FROM Members WHERE user_id = " + id + "")
+                db.promise().query("SELECT * FROM Members WHERE user_id = ?", [id])
                     .then(([rows, fields]) => {
                         for (let i = 0; i < rows.length; i++) {
                             teamIDs.push(rows[i].team_id);
@@ -695,7 +695,7 @@ app.route('/ticketdata/:user/:status')
                         setTimeout(async () => {
                             await Promise.all(response.map(async res => {
                                 console.log(`now getting tickets where ticket id = ${res}`)
-                                await db.promise().query("SELECT * FROM Tickets WHERE team_id = " + res + " AND ticket_status = '" + status + "'")
+                                await db.promise().query("SELECT * FROM Tickets WHERE team_id = ? AND ticket_status = ?", [res, status])
                                     .then(([rows, fields]) => {
                                         arr.push(rows)
                                     }).catch(err => console.log(err))
@@ -703,7 +703,7 @@ app.route('/ticketdata/:user/:status')
                             }))
                             await arr.forEach(async (row) => {
                                 console.log('Now querying DB for this ticket id: ' + row.ticket_id)
-                                db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + row.ticket_id)
+                                db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = ?", [row.ticket_id])
                                     .then(([rows, fields]) => {
                                         arr.push(rows)
                                     }).catch(err => console.log(err))
@@ -715,7 +715,7 @@ app.route('/ticketdata/:user/:status')
                         setTimeout(async () => {
                             await Promise.all(response.map(async res => {
                                 console.log(`now getting tickets where ticket id = ${res}`)
-                                await db.promise().query("SELECT * FROM Tickets WHERE team_id = " + res + " AND ticket_holder = '" + user + "'")
+                                await db.promise().query("SELECT * FROM Tickets WHERE team_id = ? AND ticket_holder = ?", [res, user])
                                     .then(([rows, fields]) => {
                                         arr.push(rows)
                                     })
@@ -726,7 +726,7 @@ app.route('/ticketdata/:user/:status')
                             //while simultaneously adding elements to the arr. I expected an infinite loop
                             await arr.forEach(async (row) => {
                                 console.log('Now querying DB for this ticket id: ' + row.ticket_id)
-                                db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = " + row.ticket_id)
+                                db.promise().query("SELECT * FROM Ticket_Data WHERE ticket_id = ?", [row.ticket_id])
                                     .then(([rows, fields]) => {
                                         arr.push(rows)
                                     }).catch(err => console.log(err))
