@@ -56,7 +56,7 @@ app.route('/login/:user/:pass')
         console.log(user, pass)
         //Promise to get matching username from mySQL then compare passwords with bcrypt
         const dbPromise = new Promise((resolve, reject) => {
-            db.query("SELECT * FROM users WHERE user_name = '?'", [user], (err, result) => {
+            db.query("SELECT * FROM users WHERE user_name = ?", [user], (err, result) => {
                 if (err) {
                     console.log(err)
                     reject();
