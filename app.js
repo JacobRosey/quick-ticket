@@ -146,7 +146,7 @@ app.route('/home/:user')
                     }, 50)
                 }).then((t) => {
                     setTimeout(() => {
-                        console.log('Returning tickets which is ' + t)
+                        console.log('Returning tickets')
                         res.send(t.toString());
                     }, 75)
                 })
@@ -163,7 +163,7 @@ app.route('/index/:admin/:team')
 
         //Promise to get matching user from mySQL then create new admin record
         const dbPromise = new Promise((resolve, reject) => {
-            db.query("SELECT * FROM users WHERE user_name = '" + admin + "'", (err, result) => {
+            db.query("SELECT * FROM users WHERE user_name = ?", [admin], (err, result) => {
                 if (err) {
                     console.log(err)
                     reject();
@@ -180,15 +180,13 @@ app.route('/index/:admin/:team')
             })
         });
         dbPromise.then(() => {
-            db.promise().query('SELECT * FROM Teams WHERE team_name = "' + team + '"')
+            db.promise().query('SELECT * FROM Teams WHERE team_name = ?', [team])
                 .then(([rows, fields]) => {
                     if (rows.length > 0) {
                         return res.send("Team name not available");
                     } else {
                         const teamCode = crypto.randomBytes(5).toString('hex');
-                        //Only doing this ugly ass nested structure because the commented code above produced 
-                        //an SQL parse error; couldn't find an answer on Google
-                        db.query(`INSERT INTO Teams (team_name, team_code) VALUES ('` + team + `', '` + teamCode + `');`, (err, result) => {
+                        db.query(`INSERT INTO Teams (team_name, team_code) VALUES ('?', '?');`, [team, teamCode], (err, result) => {
                             if (err) {
                                 console.log(err)
                                 res.send('Team creation failed');
@@ -198,19 +196,19 @@ app.route('/index/:admin/:team')
                                         console.log(err);
                                         res.send('Failed to get last inserted team id');
                                     } else {//Could use an SQL trigger instead but not sure if that would be any better
-                                        db.query(`INSERT INTO Members (user_id, team_id) VALUES (` + userID + `, @last_id);`, (err, result) => {
+                                        db.query(`INSERT INTO Members (user_id, team_id) VALUES (?, @last_id);`, [userID], (err, result) => {
                                             if (err) {
                                                 console.log(err);
                                                 res.send('Failed to insert you into members table')
                                             } else {
-                                                db.query(`INSERT INTO Admins (user_id, team_id) VALUES (` + userID + `, @last_id);`, (err, result) => {
+                                                db.query(`INSERT INTO Admins (user_id, team_id) VALUES (?, @last_id);`, [userID], (err, result) => {
                                                     if (err) {
                                                         console.log(err);
                                                         res.send('Failed to insert you into admin table');
                                                     }
                                                     else {
                                                         //Get user who created the team, set is_admin to 1, aka "true"
-                                                        db.query("UPDATE Users SET is_admin = 1 WHERE user_id = '" + userID + "'", (err, result) => {
+                                                        db.query("UPDATE Users SET is_admin = 1 WHERE user_id = ?", [userID], (err, result) => {
                                                             if (err) {
                                                                 console.log(err)
                                                                 res.send('Failed to grant admin privileges');
