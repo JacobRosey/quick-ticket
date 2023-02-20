@@ -429,7 +429,7 @@ app.route('/delete-team/:user')
         console.log(user, team);
         const dbPromise = new Promise((resolve, reject) => {
 
-            db.query("SELECT * FROM users WHERE user_name = '" + user + "'", (err, result) => {
+            db.query("SELECT * FROM users WHERE user_name = ?", [user], (err, result) => {
                 if (err) {
                     console.log(err)
                     reject('There was an error querying the database');
@@ -462,7 +462,7 @@ app.route('/delete-team/:user')
             //Still need to make sure the userID is an admin of 
             //The given team. Last check only verified that user
             //is an admin of any team in general
-            db.query("SELECT * FROM Admins WHERE user_id = " + userID + "", (err, result) => {
+            db.query("SELECT * FROM Admins WHERE user_id = ?", [userID], (err, result) => {
                 if (err) {
                     console.log(err)
                 }
@@ -478,7 +478,7 @@ app.route('/delete-team/:user')
                     async function getData() {
                         let teamNames = [];
                         for (let i = 0; i < arr.length; i++) {
-                            db.promise().query("SELECT * FROM Teams WHERE team_id = " + arr[i] + "")
+                            db.promise().query("SELECT * FROM Teams WHERE team_id = ?", [arr[i]])
                                 .then(([rows, fields]) => {
                                     teamNames.push(rows[0].team_name, rows[0].team_id);
                                 }).catch(console.log)
@@ -506,7 +506,7 @@ app.route('/delete-team/:user')
                                     return res.send("User is not an admin")
                                 } else {
                                     console.log('The team id to be deleted: ' + response)
-                                    db.query("DELETE FROM Teams WHERE team_id = " + response + "", (err, result) => {
+                                    db.query("DELETE FROM Teams WHERE team_id = ?", [response], (err, result) => {
                                         if (err) {
                                             console.log(err)
                                         }
