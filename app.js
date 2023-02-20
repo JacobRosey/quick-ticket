@@ -4,8 +4,6 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
-const { resolve } = require('path/posix');
-const { DH_UNABLE_TO_CHECK_GENERATOR } = require('constants');
 
 const app = express();
 
