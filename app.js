@@ -308,7 +308,7 @@ app.route('/team/:user')
 
         const dbPromise = new Promise((resolve, reject) => {
 
-            db.query("SELECT * FROM users WHERE user_name = '" + user + "'", (err, result) => {
+            db.query("SELECT * FROM users WHERE user_name = ?", [user], (err, result) => {
                 if (err) {
                     console.log(err)
                     reject('There was an error querying the database');
@@ -328,7 +328,7 @@ app.route('/team/:user')
             return res.status(404).send(error)
         });
         dbPromise.then((userID) => {
-            db.query("SELECT * FROM Members WHERE user_id = '" + userID + "'", (err, result) => {
+            db.query("SELECT * FROM Members WHERE user_id = ?", [userID], (err, result) => {
                 if (err) {
                     console.log(err)
                     reject();
@@ -352,23 +352,23 @@ app.route('/team/:user')
                         async function getData() {
                             let arr = [];
                             for (let i = 0; i < teamIDs.length; i++) {
-                                db.promise().query("SELECT * FROM Teams WHERE team_id = " + teamIDs[i] + "")
+                                db.promise().query("SELECT * FROM Teams WHERE team_id = ?", [teamIDs[i]])
                                     .then(([rows, fields]) => {
                                         arr.push(rows);
                                         //Get number of members in each team
-                                        db.promise().query("SELECT * FROM Members WHERE team_id =" + teamIDs[i] + "")
+                                        db.promise().query("SELECT * FROM Members WHERE team_id = ?", [teamIDs[i]])
                                             .then(([rows, fields]) => {
                                                 //Change 2d array to 1d array before we...
                                                 arr = [].concat(...arr)
                                                 //Add key-value pair for member-count
                                                 arr[i].member_count = rows.length;
-                                                db.promise().query("SELECT * FROM Admins WHERE team_id = " + teamIDs[i] + " LIMIT 1")
+                                                db.promise().query("SELECT * FROM Admins WHERE team_id = ? LIMIT 1", [teamIDs[i]])
                                                     .then(([rows, fields]) => {
                                                         rows = [].concat(...rows)
                                                         //rows = JSON.stringify(rows)
                                                         console.log(rows)
                                                         console.log('user id is ' + rows[0].user_id);
-                                                        db.promise().query("SELECT user_name FROM Users WHERE user_id = " + rows[0].user_id)
+                                                        db.promise().query("SELECT user_name FROM Users WHERE user_id = ?", [rows[0].user_id])
                                                             .then(([rows, fields]) => {
                                                                 arr = arr.concat(...arr);
                                                                 arr[i].admin_name = rows[0].user_name;
