@@ -98,7 +98,7 @@ app.route('/home/:user')
         const user = req.params.user;
 
         const dbPromise = new Promise((resolve, reject) => {
-            db.query("SELECT * FROM users WHERE user_name = '" + user + "'", (err, result) => {
+            db.query("SELECT * FROM users WHERE user_name = ?", [user], (err, result) => {
                 if (err) {
                     console.log(err)
                     reject();
