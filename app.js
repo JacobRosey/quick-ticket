@@ -186,7 +186,7 @@ app.route('/index/:admin/:team')
                         return res.send("Team name not available");
                     } else {
                         const teamCode = crypto.randomBytes(5).toString('hex');
-                        db.query(`INSERT INTO Teams (team_name, team_code) VALUES ('?', '?');`, [team, teamCode], (err, result) => {
+                        db.query(`INSERT INTO Teams (team_name, team_code) VALUES (?, ?);`, [team, teamCode], (err, result) => {
                             if (err) {
                                 console.log(err)
                                 res.send('Team creation failed');
