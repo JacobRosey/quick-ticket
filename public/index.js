@@ -632,7 +632,7 @@ function useResponse(res) {
             res.shift();
             console.log(res);
             teamSelectContainer.innerHTML +=
-                `<div class="form-group" style="animation: animate-on-load .75s ease-in-out;
+                `<div class="form-group" style="animation: animate-on-load .5s ease-in-out;
                 transform-origin: right;">
                 <label for="exampleFormControlSelect1">Select Team</label>
                 <select class="form-control" name="team-select-input" id="team-select-input" required>
@@ -686,7 +686,8 @@ function useResponse(res) {
             }
             container.innerHTML +=
                 `
-                <div class="jumbotron">
+                <div class="jumbotron" style="animation: animate-on-load .75s ease-in-out;
+                transform-origin: left;">
                 <div style="display: flex; flex-direction: row;"><i class="`+ iconClass + `" style="margin-right: 15px;"></i><p class="text-center" style="font-weight: bold;">` + top + `</p></div>
                 <p class="lead">`+ bottom + `</p>
                 <hr class="my-4">
@@ -787,7 +788,8 @@ function useResponse(res) {
                 if (expandable == true) {
                     container.innerHTML +=
                         `
-                        <div class="card text-center">
+                        <div class="card text-center" style="animation: animate-on-load .75s ease-in-out;
+                        transform-origin: left;">
                             <div class="card-header">
                                 <b>Ticket ID #`+ res[i].ticket_id + `</b> - <span class="text-muted">
                                 `+ closedOrOpened + `
