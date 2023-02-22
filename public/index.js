@@ -606,8 +606,6 @@ function useResponse(res) {
         if (res[0] == 'team_names') {
             if (res.length == 1) {
                 const container = document.getElementById('new-ticket-container')
-                const breadcrumb = document.getElementById('breadcrumb-container');
-                breadcrumb.style.display = "none";
 
                 container.innerHTML +=
                     `
