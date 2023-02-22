@@ -811,7 +811,8 @@ function useResponse(res) {
                 } else {
                     container.innerHTML +=
                         `
-                        <div class="card text-center">
+                        <div class="card text-center" style="animation: animate-on-load .75s ease-in-out;
+                        transform-origin: left;">
                             <div class="card-header">
                                 <b>Ticket ID #`+ res[i].ticket_id + `</b> - <span class="text-muted">
                                 `+ closedOrOpened + `
