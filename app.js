@@ -573,10 +573,7 @@ app.route('/newticket')
                                 else {
                                     console.log('Ticket created');
                                     db.promise().query("UPDATE Users SET tickets_opened = tickets_opened + 1 WHERE user_name = ?", [user]);
-                                    //res.send('Ticket created');
-                                    res.render('newticket', {
-                                        success: 'Ticket Created!'
-                                    });
+                                    res.send('Ticket created');
                                 }
                             })
 
