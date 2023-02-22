@@ -626,6 +626,37 @@ function useResponse(res) {
                 return;
 
             }
+            let newTicketContainer = document.getElementById('new-ticket-container');
+            container.innerHTLM += 
+            `
+            <form>
+            <div class="form-group" id="team-select">
+
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Ticket Title</label>
+                <input type="text" name="ticketTitle" class="form-control" id="ticketTitle"
+                    placeholder="Issue with promise in app.js" required>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Priority Level</label>
+                <select class="form-control" name="ticketPriority" id="ticketPriority" required>
+                    <option>Low</option>
+                    <option selected>Normal</option>
+                    <option>High</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Ticket Description</label>
+                <textarea class="form-control" name="ticketDesc" id="ticketDesc" rows="3"
+                    placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    required></textarea>
+            </div>
+            <div class="form-group">
+                <button class="btn" onClick="newTicket();">Create</button>
+            </div>
+        </form>
+            `
             let teamSelectContainer = document.getElementById('team-select');
             //remove 'team_names' from arr, that only served to show there are multiple teams
             console.log(res);

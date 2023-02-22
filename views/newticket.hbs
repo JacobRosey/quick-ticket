@@ -67,40 +67,14 @@
         }
     </style>
 
-    <div class="container">
+    <div class="container" id="new-ticket-container">
         {{#if success }}
         <h4 class="alert alert-success mt-4">{{success}}</h4>
         {{/if}}
         {{#if fail }}
         <h4 class="alert alert-danger mt-4">{{fail}}</h4>
         {{/if}}
-        <form>
-            <div class="form-group" id="team-select">
-
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlInput1">Ticket Title</label>
-                <input type="text" name="ticketTitle" class="form-control" id="ticketTitle"
-                    placeholder="Issue with promise in app.js" required>
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlSelect1">Priority Level</label>
-                <select class="form-control" name="ticketPriority" id="ticketPriority" required>
-                    <option>Low</option>
-                    <option selected>Normal</option>
-                    <option>High</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlTextarea1">Ticket Description</label>
-                <textarea class="form-control" name="ticketDesc" id="ticketDesc" rows="3"
-                    placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                    required></textarea>
-            </div>
-            <div class="form-group">
-                <button class="btn" onClick="newTicket();">Create</button>
-            </div>
-        </form>
+        
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
