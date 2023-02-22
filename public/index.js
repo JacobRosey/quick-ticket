@@ -1023,7 +1023,7 @@ function useResponse(res) {
                 calcTotal = res[1] / topOfRange;
             }
 
-            //Create chart for all-time statistics
+            //Create chart for all-time statistics :)
             const container = document.getElementById('chart-container');
             container.innerHTML +=
                 `
