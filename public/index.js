@@ -560,7 +560,7 @@ function useResponse(res) {
                 }
             }
             //remove animation from team cards after animation has completed
-            const elements = document.querySelector('.col-sm');
+            const elements = document.querySelector('.card');
             for(let i=0; i<elements.length; i++){
                 elements[i].addEventListener("animationend", () => {
                     elements[i].style.animation = "none";
