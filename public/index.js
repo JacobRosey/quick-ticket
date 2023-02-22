@@ -604,9 +604,8 @@ function useResponse(res) {
         }
         //Before new ticket creation
         if (res[0] == 'team_names') {
+            const container = document.getElementById('new-ticket-container');
             if (res.length == 1) {
-                const container = document.getElementById('new-ticket-container')
-
                 container.innerHTML +=
                     `
                 <div class="jumbotron" style="animation: animate-on-load .75s ease-in-out;
@@ -622,8 +621,7 @@ function useResponse(res) {
                 return;
 
             }
-            let newTicketContainer = document.getElementById('new-ticket-container');
-            container.innerHTLM += 
+            container.innerHTML += 
             `
             <form>
             <div class="form-group" id="team-select">
