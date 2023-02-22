@@ -613,7 +613,7 @@ function useResponse(res) {
 
                 container[0].innerHTML +=
                     `
-                <div class="jumbotron animation: animate-on-load .75s ease-in-out;
+                <div class="jumbotron" style="animation: animate-on-load .75s ease-in-out;
                 transform-origin: left;">
                 <div style="display: flex; flex-direction: row;"><i class="bi bi-plus-circle" style="margin-right: 15px;"></i><p class="text-center" style="font-weight: bold;">You can't create a ticket; you're not on a team!</p></div>
                 <p class="lead">Go to the home page and join a team using the invitation code, or create a new one</p>
