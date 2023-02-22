@@ -35,7 +35,7 @@
             height: 250px;
             width: 350px;
             margin: auto;
-            animation: animate-on-load 1s cubic-bezier(.5, .85, .95, 1.0);
+            animation: animate-on-load .75s ease-in-out;
             transform-origin: left;
         }
         .col-sm-auto{
@@ -62,7 +62,7 @@
 
         @keyframes animate-on-load{
             from{
-                transform: scale(.9)
+                transform: scale(.85)
             }
             to{
                 transform: scale(1.0)
