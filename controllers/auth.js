@@ -45,3 +45,23 @@ exports.register = async (req, res) => {
     });
     
 };
+
+exports.newTicket = (req, res) => {
+
+    const { ticketTitle, ticketPriority, ticketDesc } = req.body;
+    console.log(ticketTitle, ticketPriority, ticketDesc);
+    if(ticketTitle.trim() == "" || ticketDesc.trim() == ""){
+        return res.render('newticket', {
+            fail: 'Fill out the form properly!'
+        });
+    }
+    
+    /*b.query('INSERT INTO Tickets(team_id, ticket_title, ticket_status, opened_by, creation_date)'
+    'VALUES ()')*/
+    
+    
+    res.render('newticket', {
+        success: 'Ticket Created!'
+    });
+    
+}
