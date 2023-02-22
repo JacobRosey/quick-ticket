@@ -341,10 +341,10 @@ function ajaxFunc(path, method, d) {
             } else console.log('status ' + xhr.status)
             //State whether login was successful or not
             var response = xhr.responseText;
-            if(response === undefined){
+            if (response === undefined) {
                 window.location.reload();
                 return;
-            } if(response.length === 0){
+            } if (response.length === 0) {
                 window.location.reload();
                 return;
             }
@@ -418,10 +418,10 @@ function ajaxFunc(path, method, d) {
             } else console.log('status ' + xhr.status)
             //State whether login was successful or not
             var response = xhr.responseText;
-            if(response === undefined){
+            if (response === undefined) {
                 window.location.reload();
                 return;
-            } if(response.length === 0){
+            } if (response.length === 0) {
                 window.location.reload();
                 return;
             }
@@ -559,8 +559,16 @@ function useResponse(res) {
                     radioBtns.innerHTML = '';
                 }
             }
+            //remove animation from team cards after animation has completed
+            const elements = document.querySelector('.col-sm');
+            for(let i=0; i<elements.length; i++){
+                elements[i].addEventListener("animationend", () => {
+                    elements[i].style.animation = "none";
+                })
+            }
             //Send click event to open modal
             btn.click();
+
 
 
             return;
@@ -624,8 +632,8 @@ function useResponse(res) {
                 return;
 
             }
-            container.innerHTML += 
-            `
+            container.innerHTML +=
+                `
             <form style="animation: animate-on-load .55s ease-in-out;
             transform-origin: right;">
             <div class="form-group" id="team-select">
@@ -936,12 +944,12 @@ function useResponse(res) {
             let calcOpened;
             let calcClosed;
 
-            if(pastWeekOpened.length === 0){
+            if (pastWeekOpened.length === 0) {
                 calcOpened = .1;
             } else {
                 calcOpened = pastWeekOpened.length / topOfRange;
             }
-            if(pastWeekClosed.length === 0){
+            if (pastWeekClosed.length === 0) {
                 calcClosed = .1;
             } else {
                 calcClosed = pastWeekClosed.length / topOfRange;
@@ -975,7 +983,7 @@ function useResponse(res) {
                 `;
         }
 
-        function createMonthlyChart(){
+        function createMonthlyChart() {
 
             var topOfRange;
 
@@ -988,12 +996,12 @@ function useResponse(res) {
             let calcOpened;
             let calcClosed;
 
-            if(pastMonthOpened.length === 0){
+            if (pastMonthOpened.length === 0) {
                 calcOpened = .1;
             } else {
                 calcOpened = pastMonthOpened.length / topOfRange;
             }
-            if(pastMonthClosed.length === 0){
+            if (pastMonthClosed.length === 0) {
                 calcClosed = .1;
             } else {
                 calcClosed = pastMonthClosed.length / topOfRange;
@@ -1029,26 +1037,26 @@ function useResponse(res) {
         }
 
         function createAllTimeChart() {
-            
+
             var topOfRange = Math.max(res[0].tickets_opened, res[0].tickets_closed, res[1]) * 1.25;
 
             let calcOpened;
             let calcClosed;
             let calcTotal;
 
-            if(res[0].tickets_opened === 0){
+            if (res[0].tickets_opened === 0) {
                 calcOpened = .1;
             } else {
                 calcOpened = res[0].tickets_opened / topOfRange;
             }
-            if(res[0].tickets_closed === 0){
+            if (res[0].tickets_closed === 0) {
                 calcClosed = .1;
             } else {
                 calcClosed = res[0].tickets_closed / topOfRange;
             }
-            if(res[1] === 0){
+            if (res[1] === 0) {
                 calcTotal = .1;
-            } else{
+            } else {
                 calcTotal = res[1] / topOfRange;
             }
 
@@ -1065,7 +1073,7 @@ function useResponse(res) {
                                     <i class="bi bi-tag" style="transform: scale(1.5)" data-toggle="tooltip"
                                         data-placement="top" title="My Tickets"></i>
                                 </th>
-                                <td id="hold-html" style="--color: #85bbff;--size: calc(` + calcTotal+ `); margin-top: .1em; margin-bottom: .1em; border-top-right-radius: 10px; border-bottom-right-radius: 10px;">` + res[1] + `&nbsp;&nbsp;</td>
+                                <td id="hold-html" style="--color: #85bbff;--size: calc(` + calcTotal + `); margin-top: .1em; margin-bottom: .1em; border-top-right-radius: 10px; border-bottom-right-radius: 10px;">` + res[1] + `&nbsp;&nbsp;</td>
                             </tr>
                             <tr>
                                 <th scope="row">
