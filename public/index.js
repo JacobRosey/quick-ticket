@@ -632,7 +632,7 @@ function useResponse(res) {
             res.shift();
             console.log(res);
             teamSelectContainer.innerHTML +=
-                `<div class="form-group" style="animation: animate-on-load .75s ease-in-out;
+                `<div class="form-group" style="animation: slide-in .75s ease-in-out;
                 transform-origin: left;">
                 <label for="exampleFormControlSelect1">Select Team</label>
                 <select class="form-control" name="team-select-input" id="team-select-input" required>

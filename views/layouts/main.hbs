@@ -76,13 +76,24 @@
             margin-bottom: 1em;
             text-decoration: underline;
         }
-        
+
         @keyframes animate-on-load{
             from{
                 transform: scale(.85)
             }
             to{
                 transform: scale(1.0)
+            }
+        }
+
+        @keyframes slide-in{
+            from{
+                margin-left: 100%;
+                width: 300%;
+            }
+            to{
+                margin-left: 0%;
+                width: 100%;
             }
         }
     </style>
