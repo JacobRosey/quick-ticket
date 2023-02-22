@@ -35,6 +35,8 @@
             height: 250px;
             width: 350px;
             margin: auto;
+            animation: animate-on-load 1s ease-out;
+            transform-origin: left;
         }
         .col-sm-auto{
             margin-top: .5em;
@@ -56,6 +58,15 @@
         .home-input {
             box-sizing: border-box;
             width: calc(100% - 20px);
+        }
+
+        @keyframes animate-on-load{
+            from{
+                scale(.5)
+            }
+            to{
+                scale(1.0)
+            }
         }
     </style>
 
