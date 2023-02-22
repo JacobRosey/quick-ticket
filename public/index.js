@@ -559,18 +559,8 @@ function useResponse(res) {
                     radioBtns.innerHTML = '';
                 }
             }
-            //remove animation from team cards after animation has completed
-            const elements = document.getElementsByClassName('card');
-            for(let i=0; i<elements.length; i++){
-                elements[i].addEventListener("animationend", () => {
-                    elements[i].style.animation = "none";
-                })
-            }
             //Send click event to open modal
             btn.click();
-
-
-
             return;
         }
 
@@ -599,6 +589,13 @@ function useResponse(res) {
                     </div>
                     </div>
                     `
+            }
+            //remove animation from team cards after animation has completed
+            const elements = document.getElementsByClassName('card');
+            for(let i=0; i<elements.length; i++){
+                elements[i].addEventListener("animationend", () => {
+                    elements[i].style.animation = "none";
+                })
             }
             return;
         }
