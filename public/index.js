@@ -627,7 +627,7 @@ function useResponse(res) {
             container.innerHTML += 
             `
             <form style="animation: animate-on-load .5s ease-in-out;
-            transform-origin: right;">
+            transform-origin: right; animation-delay: 100ms;">
             <div class="form-group" id="team-select">
 
             </div>
