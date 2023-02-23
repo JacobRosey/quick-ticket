@@ -572,6 +572,7 @@ function useResponse(res) {
 
         //On page load
         if (!res.includes('New admin') && !res.includes('User deleted')) {
+            removePlaceholders();
             for (let i = 0; i < res.length; i++) {
                 container.innerHTML += `
                     <div class="col-sm">
