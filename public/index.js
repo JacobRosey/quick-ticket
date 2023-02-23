@@ -442,10 +442,13 @@ function ajaxFunc(path, method, d) {
 function useResponse(res) {
     function removePlaceholders(){
         const placeholders = document.querySelectorAll('.placeholder');
-        for(let i=0; i < placeholders.length; i++){
-            placeholders[i].remove();
+        if(placeholders){
+            for(let i=0; i < placeholders.length; i++){
+                placeholders[i].remove();
+            }
         }
     }
+    removePlaceholders();
     const active = window.location.href.replace("https://quick-ticket.herokuapp.com/", "");
     //If this is the team page load response
     const container = document.getElementById('team-card-container');
@@ -572,7 +575,6 @@ function useResponse(res) {
 
         //On page load
         if (!res.includes('New admin') && !res.includes('User deleted')) {
-            removePlaceholders();
             for (let i = 0; i < res.length; i++) {
                 container.innerHTML += `
                     <div class="col-sm">
@@ -616,7 +618,6 @@ function useResponse(res) {
         }
         //Before new ticket creation
         if (res[0] == 'team_names') {
-            removePlaceholders();
             const container = document.getElementById('new-ticket-container');
             if (res.length == 1) {
                 const breadcrumb = document.getElementById('breadcrumb-container');
@@ -726,7 +727,6 @@ function useResponse(res) {
                     return;
                 default: window.location.reload();
             }
-            removePlaceholders();
             container.innerHTML +=
                 `
                 <div class="jumbotron" style="animation: animate-on-load .75s ease-in-out;
@@ -811,7 +811,6 @@ function useResponse(res) {
                 status = 'In Progress'
                 console.log('My tickets got response');
             }
-            removePlaceholders();
             for (let i = 0; i < res.length; i++) {
                 let leadIn;
                 let expandable;
@@ -1100,8 +1099,6 @@ function useResponse(res) {
                 </div>
             `;
         }
-
-        removePlaceholders();
         createWeeklyChart();
         createMonthlyChart();
         createAllTimeChart();
