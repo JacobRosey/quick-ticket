@@ -440,6 +440,12 @@ function ajaxFunc(path, method, d) {
 }
 
 function useResponse(res) {
+    function removePlaceholders(){
+        const placeholders = document.getElementsByClassName('placeholder');
+        for(let i=0; i <= placeholders.length; i++){
+            placeholders[i].remove();
+        }
+    }
     const active = window.location.href.replace("https://quick-ticket.herokuapp.com/", "");
     //If this is the team page load response
     const container = document.getElementById('team-card-container');
@@ -1091,11 +1097,7 @@ function useResponse(res) {
             `;
         }
 
-        const placeholders = document.getElementsByClassName('placeholder');
-        for(let i=0; i<placeholders.length; i++){
-            placeholders[i].remove();
-        }
-        
+        removePlaceholders();
         createWeeklyChart();
         createMonthlyChart();
         createAllTimeChart();
