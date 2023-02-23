@@ -809,7 +809,7 @@ function useResponse(res) {
                 status = 'In Progress'
                 console.log('My tickets got response');
             }
-            //removePlaceholders();
+            removePlaceholders();
             for (let i = 0; i < res.length; i++) {
                 let leadIn;
                 let expandable;
