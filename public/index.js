@@ -639,7 +639,7 @@ function useResponse(res) {
             container.innerHTML +=
                 `
             <form style="animation: animate-on-load .55s ease-in-out;
-            transform-origin: right;">
+            transform-origin: right; margin-top: 1em;">
             <div class="form-group" id="team-select">
 
             </div>
