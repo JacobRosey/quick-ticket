@@ -440,6 +440,7 @@ function ajaxFunc(path, method, d) {
 }
 
 function useResponse(res) {
+    //If placeholders exist in DOM, remove them (no placeholders in homepage)
     function removePlaceholders(){
         const placeholders = document.querySelectorAll('.placeholder');
         if(placeholders){
