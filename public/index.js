@@ -615,6 +615,7 @@ function useResponse(res) {
         }
         //Before new ticket creation
         if (res[0] == 'team_names') {
+            removePlaceholders();
             const container = document.getElementById('new-ticket-container');
             if (res.length == 1) {
                 const breadcrumb = document.getElementById('breadcrumb-container');
