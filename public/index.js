@@ -441,8 +441,8 @@ function ajaxFunc(path, method, d) {
 
 function useResponse(res) {
     function removePlaceholders(){
-        const placeholders = document.getElementsByClassName('placeholder');
-        for(let i=0; i <= placeholders.length; i++){
+        const placeholders = document.querySelector('.placeholder');
+        for(let i=0; i < placeholders.length; i++){
             placeholders[i].remove();
         }
     }
