@@ -954,10 +954,6 @@ function useResponse(res) {
 
             //Create recent activity chart for actions completed in the past week
             const container = document.getElementById('chart-container');
-            const placeholders = document.getElementsByClassName('placeholder');
-            for(let i=0; i<placeholders.length; i++){
-                placeholders[i].remove();
-            }
 
             container.innerHTML +=
                 `
@@ -1095,6 +1091,11 @@ function useResponse(res) {
             `;
         }
 
+        const placeholders = document.getElementsByClassName('placeholder');
+        for(let i=0; i<placeholders.length; i++){
+            placeholders[i].remove();
+        }
+        
         createWeeklyChart();
         createMonthlyChart();
         createAllTimeChart();
