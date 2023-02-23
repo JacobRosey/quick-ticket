@@ -725,6 +725,7 @@ function useResponse(res) {
                     return;
                 default: window.location.reload();
             }
+            removePlaceholders();
             container.innerHTML +=
                 `
                 <div class="jumbotron" style="animation: animate-on-load .75s ease-in-out;
