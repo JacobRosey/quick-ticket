@@ -149,7 +149,7 @@ function createTeam() {
 
     const reservedRegex = /\\|\'|\"|%|<|>|&|#/g;
         if (reservedRegex.test(team)) {
-            team.value = '';
+            document.getElementById('entered-team-name').value = '';
             return alert('Team creation failed due to use of illegal characters');
         }
 
