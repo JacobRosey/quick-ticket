@@ -530,12 +530,10 @@ app.route('/newticket')
         const { encodedUser, encodedTeam, encodedTitle, encodedPrio, encodedDesc } = req.body;
         const user = decodeURIComponent(encodedUser);
         const team = decodeURIComponent(encodedTeam);
-        const decodedTitle = decodeURIComponent(encodedTitle)
+        const title = decodeURIComponent(encodedTitle).replace(/\\'/g, "'");
         const prio = decodeURIComponent(encodedPrio);
-        const decodedDesc = decodeURIComponent(encodedDesc)
+        const desc = decodeURIComponent(encodedDesc).replace(/\\'/g, "'");
 
-        const title = decodedTitle.replace(/\\'/g, "'");
-        const desc = decodedDesc.replace(/\\'/g, "'");
 
         console.log(user + team + prio + title + desc);
 
