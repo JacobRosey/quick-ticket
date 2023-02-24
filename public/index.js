@@ -771,9 +771,9 @@ function useResponse(res) {
                 //Remove quotations at start and end of title/description/priority
                 //Remove backslashes used to escape route params 
                 res[i].ticket_title = res[i].ticket_title.slice(1, -1);
-                res[i].ticket_title = res[i].ticket_title.replace(/\\'/g, "'");
+                res[i].ticket_title = res[i].ticket_title.replace(/\\(['"%<>&#])/g, '$1');
                 res[i].ticket_desc = res[i].ticket_desc.slice(1, -1);
-                res[i].ticket_desc = res[i].ticket_desc.replace(/\\'/g, "'");
+                res[i].ticket_desc = res[i].ticket_desc.replace(/\\(['"%<>&#])/g, '$1');
                 res[i].ticket_priority = res[i].ticket_priority.slice(1, -1);
                 //Convert UTC timestamps to local time in readable format
                 if (res[i].creation_date !== null) {
