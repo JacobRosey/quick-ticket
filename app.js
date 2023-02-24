@@ -159,6 +159,13 @@ app.route('/index/:admin/:team')
         }
         const { admin, team } = req.body;
 
+        const reservedRegex = /\\|\'|\"|%|<|>|&|#/g;
+        if (reservedRegex.test(team)) {
+            return res.render('index', {
+                failed: 'Team creation failed due to use of illegal characters'
+            })
+        }
+
         //Promise to get matching user from mySQL then create new admin record
         const dbPromise = new Promise((resolve, reject) => {
             db.query("SELECT * FROM users WHERE user_name = ?", [admin], (err, result) => {
@@ -789,7 +796,7 @@ app.route('/performance/:user')
                 console.log(rows.length);
                 arr.push(rows.length);
             })
-        db.promise().query("SELECT * FROM Tickets WHERE opened_by = ? OR closed_by = ?", [db.escape(user), user]) 
+        db.promise().query("SELECT * FROM Tickets WHERE opened_by = ? OR closed_by = ?", [db.escape(user), user])
             .then(([rows, fields]) => {
                 console.log(rows.length);
                 arr.push(rows)
