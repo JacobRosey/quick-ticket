@@ -147,6 +147,11 @@ function createTeam() {
     let team = document.getElementById('entered-team-name').value.trim().replace(/\s+/g, ' ').replace(/ /g, "-");
     let admin = sessionStorage.getItem('user');
 
+    const reservedRegex = /\\|\'|\"|%|<|>|&|#/g;
+        if (reservedRegex.test(team)) {
+            team.value = '';
+            return alert('Team creation failed due to use of illegal characters');
+        }
 
     if (team == '') {
         return alert('You must enter a team name!')
