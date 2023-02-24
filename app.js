@@ -161,9 +161,7 @@ app.route('/index/:admin/:team')
 
         const reservedRegex = /\\|\'|\"|%|<|>|&|#/g;
         if (reservedRegex.test(team)) {
-            return res.render('index', {
-                failed: 'Team creation failed due to use of illegal characters'
-            })
+            return res.send('Team creation failed due to use of illegal characters')
         }
 
         //Promise to get matching user from mySQL then create new admin record
