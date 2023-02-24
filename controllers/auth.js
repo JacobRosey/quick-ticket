@@ -9,6 +9,13 @@ exports.register = async (req, res) => {
 
     const { user, password, passwordConfirm } = req.body;
 
+    const reservedRegex = /\\|\'|\"|%|<|>|&|#/g;
+    if(reservedRegex.test(user) || reservedRegex.test(password)){
+        return res.render('register', {
+            failed: 'Registration failed due to use of illegal characters'
+        })
+    }
+
     db.query('SELECT user_name FROM users WHERE user_name = ?', [user], async (err, result) => {
         if (err) {
             console.log(err);
