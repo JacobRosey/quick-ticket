@@ -148,10 +148,10 @@ function createTeam() {
     let admin = sessionStorage.getItem('user');
 
     const reservedRegex = /\\|\'|\"|%|<|>|&|#/g;
-        if (reservedRegex.test(team)) {
-            document.getElementById('entered-team-name').value = '';
-            return alert('Team creation failed due to use of illegal characters');
-        }
+    if (reservedRegex.test(team)) {
+        document.getElementById('entered-team-name').value = '';
+        return alert('Team creation failed due to use of illegal characters');
+    }
 
     if (team == '') {
         return alert('You must enter a team name!')
@@ -326,7 +326,7 @@ function deleteTeam(num) {
     }
 }
 
-function inviteNewMember(index){
+function inviteNewMember(index) {
     const teamName = document.querySelectorAll('.team-name-span')[index].innerHTML.trim();
 
     const container = document.getElementById('team-container');
@@ -342,8 +342,10 @@ function inviteNewMember(index){
                 <button type="button" id="close" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>Enter the username of the person you wish to invite to `+teamName+`.</p>
-                <form id="admin-candidates">
+                <p>Enter the username of the person you wish to invite to `+ teamName + `.</p>
+                <form id="new-member-form">
+                    <label for="fname">Username:</label><br>
+                    <input type="text" id="username" name="username">
                 </form>
                 </div>
             <div class="modal-footer">
@@ -505,10 +507,10 @@ function ajaxFunc(path, method, d) {
 
 function useResponse(res) {
     //If placeholders exist in DOM, remove them (no placeholders in homepage)
-    function removePlaceholders(){
+    function removePlaceholders() {
         const placeholders = document.querySelectorAll('.placeholder');
-        if(placeholders){
-            for(let i=0; i < placeholders.length; i++){
+        if (placeholders) {
+            for (let i = 0; i < placeholders.length; i++) {
                 placeholders[i].remove();
             }
         }
@@ -650,8 +652,8 @@ function useResponse(res) {
                     <i class="fs-4 bi-people" style="margin-right: .25em;"></i><span class="team-name-span">
                         `+ res[i].team_name + `
                     </span></div>
-                    <ul class="list-group list-group-flush index-`+i+`">
-                        <li class="list-group-item" id="team-code" >Invitation Code: <span style="font-weight: 300;">`+ res[i].team_code + `</span> <i class="bi bi-send-plus" style="color: #ccc; float: right; cursor: pointer; margin: auto;" onMouseOver="this.style.color='black'"; onMouseOut="this.style.color='#ccc'"; onClick="inviteNewMember(`+i+`);"></i></li>
+                    <ul class="list-group list-group-flush index-`+ i + `">
+                        <li class="list-group-item" id="team-code" >Invitation Code: <span style="font-weight: 300;">`+ res[i].team_code + `</span> <i class="bi bi-send-plus" style="color: #ccc; float: right; cursor: pointer; margin: auto;" onMouseOver="this.style.color='black'"; onMouseOut="this.style.color='#ccc'"; onClick="inviteNewMember(` + i + `);"></i></li>
                         <li class="list-group-item" id="member-count">Total Members: <span style="font-weight: 300;">` + res[i].member_count + `</span></li>
                         <li class="list-group-item">Team Admin: <span id="admin-name" style="font-weight: 300;">`+ res[i].admin_name + `</span></li>
                     </ul>
@@ -666,7 +668,7 @@ function useResponse(res) {
             }
             //remove animation from team cards after animation has completed
             const elements = document.getElementsByClassName('card');
-            for(let i=0; i<elements.length; i++){
+            for (let i = 0; i < elements.length; i++) {
                 elements[i].addEventListener("animationend", () => {
                     elements[i].style.animation = "none";
                 })
