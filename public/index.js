@@ -349,7 +349,7 @@ function inviteNewMember(index) {
                 </form>
                 </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onClick="inviteNewMember(`+teamName.toString()+`);">Confirm</button>
+                <button type="button" class="btn btn-primary" onClick="inviteNewMember("`+teamName+`");">Confirm</button>
                 </div>
             </div>
             </div>
@@ -373,8 +373,6 @@ function inviteNewMember(index) {
     // When the user clicks on <span> (x), close the modal
     close.onclick = function () {
         modal.style.display = "none";
-        //Clear out past options from form
-        radioBtns.innerHTML = '';
     }
 
     // When the user clicks anywhere outside of the modal, close it
