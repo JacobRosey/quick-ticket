@@ -328,7 +328,7 @@ function deleteTeam(num) {
 
 function inviteNewMember(index) {
     const teamName = document.querySelectorAll('.team-name-span')[index].innerHTML.trim();
-
+    console.log(teamName)
     const container = document.getElementById('team-container');
 
     container.innerHTML +=
@@ -349,7 +349,7 @@ function inviteNewMember(index) {
                 </form>
                 </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onClick="inviteNewMember("`+teamName+`");">Confirm</button>
+                <button type="button" class="btn btn-primary" onClick="inviteNewMember(`+teamName+`);">Confirm</button>
                 </div>
             </div>
             </div>
