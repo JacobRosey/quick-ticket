@@ -327,9 +327,6 @@ function deleteTeam(num) {
 }
 
 function inviteNewMember(index) {
-    if(index === null){
-        alert('yippee')
-    }
     const teamName = document.querySelectorAll('.team-name-span')[index].innerHTML.trim();
 
     const container = document.getElementById('team-container');
@@ -352,7 +349,7 @@ function inviteNewMember(index) {
                 </form>
                 </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onClick="inviteNewMember();">Confirm</button>
+                <button type="button" class="btn btn-primary" onClick="inviteNewMember(`+teamName+`);">Confirm</button>
                 </div>
             </div>
             </div>
@@ -392,6 +389,19 @@ function inviteNewMember(index) {
     return;
 }
 
+function sendTeamInvite(teamName){
+    // Get the button that closes the modal
+    var close = document.getElementById("close");
+    close.click();
+
+    const newMember = document.getElementById('username').value;
+    const data = {
+        user: newMember,
+        team: teamName
+    }
+
+    ajaxFunc('/invite-member/:user/:team', "POST", data);
+}
 function ajaxFunc(path, method, d) {
 
     let xhr = new XMLHttpRequest();
