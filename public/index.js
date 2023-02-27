@@ -390,6 +390,7 @@ function inviteNewMember(index) {
 }
 
 function sendTeamInvite(teamName){
+    console.log(teamName)
     // Get the button that closes the modal
     var close = document.getElementById("close");
     close.click();
