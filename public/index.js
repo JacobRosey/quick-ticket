@@ -329,7 +329,7 @@ function deleteTeam(num) {
 }
 
 function inviteNewMember(index){
-    const teamName = document.getElementsByClassName('team-name-span');
+    const teamName = document.getElementsByClassName('team-name-span')[index];
     alert('You clicked the element for ' + teamName);
 }
 
