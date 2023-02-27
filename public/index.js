@@ -323,13 +323,14 @@ function deleteTeam(num) {
         }
         console.log(data)
         ajaxFunc('/delete-team/:user', "PUT", data);
-
-
     }
 }
 
 function inviteNewMember(index){
     const teamName = document.querySelectorAll('.team-name-span')[index].innerHTML.trim();
+    const listGroup = document.querySelectorAll('.list-group .list-group-flush .index-'+i);
+    listGroup.style.backgroundColor="green";
+
     alert('You clicked the element for ' + teamName);
 }
 
@@ -596,7 +597,7 @@ function useResponse(res) {
                     <i class="fs-4 bi-people" style="margin-right: .25em;"></i><span class="team-name-span">
                         `+ res[i].team_name + `
                     </span></div>
-                    <ul class="list-group list-group-flush">
+                    <ul class="list-group list-group-flush index-`+i+`">
                         <li class="list-group-item" id="team-code" >Invitation Code: <span style="font-weight: 300;">`+ res[i].team_code + `</span> <i class="bi bi-send-plus" style="color: #ccc; float: right; cursor: pointer; margin: auto;" onMouseOver="this.style.color='black'"; onMouseOut="this.style.color='#ccc'"; onClick="inviteNewMember(`+i+`);"></i></li>
                         <li class="list-group-item" id="member-count">Total Members: <span style="font-weight: 300;">` + res[i].member_count + `</span></li>
                         <li class="list-group-item">Team Admin: <span id="admin-name" style="font-weight: 300;">`+ res[i].admin_name + `</span></li>
