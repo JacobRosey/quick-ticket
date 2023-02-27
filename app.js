@@ -891,3 +891,8 @@ app.route('/admin-transfer')
 
             })
     })
+
+app.route('/invite-member/:user/:team')
+    .post(function (req, res, err){
+        res.send('Testing success')
+    })
