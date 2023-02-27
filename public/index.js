@@ -327,6 +327,9 @@ function deleteTeam(num) {
 }
 
 function inviteNewMember(index) {
+    if(index === null){
+        alert('yippee')
+    }
     const teamName = document.querySelectorAll('.team-name-span')[index].innerHTML.trim();
 
     const container = document.getElementById('team-container');
