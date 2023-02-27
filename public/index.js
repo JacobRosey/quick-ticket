@@ -328,10 +328,63 @@ function deleteTeam(num) {
 
 function inviteNewMember(index){
     const teamName = document.querySelectorAll('.team-name-span')[index].innerHTML.trim();
-    const listGroup = document.querySelector('.list-group .list-group-flush .index-'+index+'');
-    listGroup.remove();
 
-    alert('You clicked the element for ' + teamName);
+    const container = document.getElementById('team-container');
+
+    container.innerHTML +=
+        `
+        <button id="myBtn" style="visibility:hidden;">Open Modal</button>
+        <div class="modal" id="myModal">
+            <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Invite New Member</h5>
+                <button type="button" id="close" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Enter the username of the person you wish to invite to `+teamName+`.</p>
+                <form id="admin-candidates">
+                </form>
+                </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onClick="inviteNewMember();">Confirm</button>
+                </div>
+            </div>
+            </div>
+        </div>
+        `;
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the <span> element that closes the modal
+    var close = document.getElementById("close");
+
+    // When JS sends button click, open the modal 
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    close.onclick = function () {
+        modal.style.display = "none";
+        //Clear out past options from form
+        radioBtns.innerHTML = '';
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+            radioBtns.innerHTML = '';
+        }
+    }
+    //Send click event to open modal
+    btn.click();
+    return;
 }
 
 function ajaxFunc(path, method, d) {
