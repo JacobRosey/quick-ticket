@@ -596,7 +596,7 @@ function useResponse(res) {
                         `+ res[i].team_name + `
                     </span></div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item" id="team-code" >Invitation Code: <span style="font-weight: 300;">`+ res[i].team_code + `</span> <i class="bi bi-send-plus" style="color: #ccc; float: right; cursor: pointer;" onMouseOver="this.style.color='#5e5e5e'"; onMouseOut="this.style.color='#ccc'"; onClick="inviteNewMember();"></i></li>
+                        <li class="list-group-item" id="team-code" >Invitation Code: <span style="font-weight: 300;">`+ res[i].team_code + `</span> <i class="bi bi-send-plus" style="color: #ccc; float: right; cursor: pointer; margin: auto;" onMouseOver="this.style.color='#5e5e5e'"; onMouseOut="this.style.color='#ccc'"; onClick="inviteNewMember();"></i></li>
                         <li class="list-group-item" id="member-count">Total Members: <span style="font-weight: 300;">` + res[i].member_count + `</span></li>
                         <li class="list-group-item">Team Admin: <span id="admin-name" style="font-weight: 300;">`+ res[i].admin_name + `</span></li>
                     </ul>
