@@ -329,8 +329,8 @@ function deleteTeam(num) {
 }
 
 function inviteNewMember(index){
-    const teamName = document.querySelectorAll('.team-name-span');
-    alert('You clicked the element for ' + teamName[index].innerHTML);
+    const teamName = document.querySelectorAll('.team-name-span')[index].innerHTML.trim();
+    alert('You clicked the element for ' + teamName);
 }
 
 function ajaxFunc(path, method, d) {
