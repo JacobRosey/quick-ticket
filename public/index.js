@@ -329,7 +329,7 @@ function deleteTeam(num) {
 function inviteNewMember(index){
     const teamName = document.querySelectorAll('.team-name-span')[index].innerHTML.trim();
     const listGroup = document.querySelector('.list-group .list-group-flush .index-'+index+'');
-    listGroup.style.backgroundColor="green";
+    listGroup.remove();
 
     alert('You clicked the element for ' + teamName);
 }
