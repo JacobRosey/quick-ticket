@@ -328,8 +328,8 @@ function deleteTeam(num) {
     }
 }
 
-function inviteNewMember(){
-    alert('You clicked the ' + i + ' element');
+function inviteNewMember(index){
+    alert('You clicked the ' + index + ' element');
 }
 
 function ajaxFunc(path, method, d) {
