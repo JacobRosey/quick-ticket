@@ -350,7 +350,7 @@ function inviteNewMember(index) {
                 </form>
                 </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onClick="inviteNewMember(`+ noHyphens +`);">Confirm</button>
+                <button type="button" class="btn btn-primary" onClick="sendTeamInvite(`+ noHyphens +`);">Confirm</button>
                 </div>
             </div>
             </div>
