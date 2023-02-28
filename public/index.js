@@ -350,9 +350,9 @@ function inviteNewMember(index) {
                 </form>
                 </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onClick="sendTeamInvite(`+ noHyphens +`);">Confirm</button>
+                <button type="button" class="btn btn-primary" onClick="sendTeamInvite();">Confirm</button>
                 </div>
-            </div>
+            </div>                                            
             </div>
         </div>
         `;
@@ -391,7 +391,7 @@ function sendTeamInvite(teamName){
     console.log(teamName)
     var modal = document.getElementById("myModal");
     var close = document.getElementById("close");
-    
+
     close.onclick = function () {
         modal.remove();
     }
