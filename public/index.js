@@ -349,7 +349,7 @@ function inviteNewMember(index) {
                 </form>
                 </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onClick="inviteNewMember("`+teamName+`");">Confirm</button>
+                <button type="button" class="btn btn-primary" onClick="inviteNewMember(`+teamName.toString()+`);">Confirm</button>
                 </div>
             </div>
             </div>
