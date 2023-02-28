@@ -894,5 +894,8 @@ app.route('/admin-transfer')
 
 app.route('/invite-member/:user/:team')
     .post(function (req, res, err){
+        const user = req.params.user;
+        const team = req.params.team;
+        console.log(user, team)
         res.send('Testing success')
     })
