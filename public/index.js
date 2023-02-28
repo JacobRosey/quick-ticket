@@ -330,7 +330,8 @@ function inviteNewMember(index) {
     const teamName = document.querySelectorAll('.team-name-span')[index].innerHTML.trim();
     console.log(teamName)
     const container = document.getElementById('team-container');
-    const noHyphens = teamName.replace(/-/g, ' ');
+    let noHyphens = teamName.replace(/-/g, ' ');
+    console.log(noHyphens)
 
     container.innerHTML +=
         `
