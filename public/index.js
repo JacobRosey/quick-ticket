@@ -389,12 +389,11 @@ function inviteNewMember(index) {
 }
 
 function sendTeamInvite(teamName){
-    console.log(teamName)
     var modal = document.getElementById("myModal");
-    
+    const newMember = document.getElementById('username').value;
+
     modal.remove();
     
-    const newMember = document.getElementById('username').value;
     const data = {
         user: newMember,
         team: teamName
