@@ -393,14 +393,14 @@ function sendTeamInvite(teamName){
     var modal = document.getElementById("myModal");
     
     modal.remove();
-    /*
+    
     const newMember = document.getElementById('username').value;
     const data = {
         user: newMember,
         team: teamName
     }
 
-    ajaxFunc('/invite-member/:user/:team', "POST", data);*/
+    ajaxFunc('/invite-member/:user/:team', "POST", data);
 }
 function ajaxFunc(path, method, d) {
 
