@@ -894,7 +894,24 @@ app.route('/admin-transfer')
 
 app.route('/invite-member/:user/:team')
     .post(function (req, res, err){
-        const {user, team} = req.body;
-        console.log(user, team)
-        res.send('Testing success')
+        const {user, teamName} = req.body;
+        const team = teamName.replace(/\s+/g, '-');
+        //See if user from input form actually exists
+        let sql = "SELECT * FROM Users WHERE user_name = ?;"
+        db.promise().query(sql, user)
+            .then(([rows, fields]) => {
+            let sql = "INSERT INTO Invitations VALUES (?, ?)";
+            db.promise().query(sql, [user, team])
+            .then(([rows, fields]) => {
+                res.send('Invitation Sent!')
+            }).catch(err=>{
+                console.error(err);
+                db.promise().rollback();
+                res.send(err)
+            })
+        }).catch(err => {
+            console.error(err);
+            db.promise().rollback();
+            res.send('User does not exist');
+        })
     })
