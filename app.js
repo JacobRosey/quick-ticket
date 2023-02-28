@@ -892,7 +892,7 @@ app.route('/admin-transfer')
             })
     })
 
-app.route('/invite-member/:user/:team')
+app.route('/invite-member/:user/:teamName')
     .post(function (req, res, err){
         const {user, teamName} = req.body;
         const team = teamName.replace(/\s+/g, '-');
