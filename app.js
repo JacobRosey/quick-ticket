@@ -892,16 +892,16 @@ app.route('/admin-transfer')
             })
     })
 
-app.route('/invite-member/:user/:teamName')
+app.route('/invite-member/:user/:team')
     .post(function (req, res, err){
-        const {user, teamName} = req.body;
-        const team = teamName.replace(/\s+/g, '-');
+        const {user, team} = req.body;
+        const teamName = team.replace(/\s+/g, '-');
         //See if user from input form actually exists
         let sql = "SELECT * FROM Users WHERE user_name = ?;"
         db.promise().query(sql, user)
             .then(([rows, fields]) => {
             let sql = "INSERT INTO Invitations VALUES (?, ?)";
-            db.promise().query(sql, [user, team])
+            db.promise().query(sql, [user, teamName])
             .then(([rows, fields]) => {
                 res.send('Invitation Sent!')
             }).catch(err=>{
