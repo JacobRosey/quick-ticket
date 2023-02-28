@@ -380,7 +380,6 @@ function inviteNewMember(index) {
     window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
-            radioBtns.innerHTML = '';
         }
     }
     //Send click event to open modal
@@ -390,9 +389,12 @@ function inviteNewMember(index) {
 
 function sendTeamInvite(teamName){
     console.log(teamName)
-    // Get the button that closes the modal
+    var modal = document.getElementById("myModal");
     var close = document.getElementById("close");
-    close.click();
+    
+    close.onclick = function () {
+        modal.remove();
+    }
 
     /*
     const newMember = document.getElementById('username').value;
