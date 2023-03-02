@@ -924,8 +924,12 @@ app.route('/check-invitations/:user')
         db.query().promise(sql, [user])
             .then(([rows, fields]) => {
                 if(!rows.length){
+                    console.log('no rows')
                     res.send('User has no invitations');
-                }else res.send(rows)
+                }else { 
+                    console.log(rows)
+                    res.send(rows)
+                }
             }).catch(err => {
                 console.error(err);
                 res.send('Error occurred')
