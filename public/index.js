@@ -446,6 +446,8 @@ function ajaxFunc(path, method, d) {
                 case "User is not on a team":
                     useResponse("Not on a team");
                     break;
+                case "User has no invitations":
+                    return;
                 default:
                     setTimeout(() => {
                         useResponse(JSON.parse(response))

@@ -4,6 +4,7 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
+const { resolveSoa } = require('dns');
 
 const app = express();
 
@@ -919,6 +920,15 @@ app.route('/invite-member/:user/:team')
 app.route('/check-invitations/:user')
     .get(function (req, res, err){
         const user = req.params.user;
-        console.log(user)
-        res.send('user is ' + user);
+        let sql = "SELECT * FROM Invitations WHERE user_name = ?";
+        db.query().promise(sql, [user])
+            .then(([rows, fields]) => {
+                if(!rows.length){
+                    res.send('User has no invitations');
+                }else res.send('User has invitations: '+ rows)
+            }).catch(err => {
+                console.error(err);
+                res.send('Error occurred')
+            })
+        
     })
