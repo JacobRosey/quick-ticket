@@ -563,7 +563,7 @@ function useResponse(res) {
                     <div class="card-body">
                         <h5 class="card-title">`+ title + `</h5>
                         <p class="card-text">Accept or decline the following invitations</p>
-                        <div class="btn-group" id="team-invite-btn" role="group" style="display: flex; flex-direction: row; background-color: #f7f7f7;">
+                        <div class="btn-group" id="team-invite-btn" role="group" style="background-color: #f7f7f7;">
                         </div>
                     </div>
                 </div>
@@ -573,9 +573,11 @@ function useResponse(res) {
             for(let i=0; i<res.length; i++){
                 inviteContainer.innerHTML +=
                     `
-                    <span>`+res[i].team_name +`</span>
-                    <a class="btn btn-secondary" onclick="teamInviteResponse(true, `+res[i]+`)" role="button" style="font-weight: bold; width: 50%; line-height: 32.5px !important;">Accept</a>
-                    <a class="btn btn-danger" onclick="teamInviteResponse(false, `+res[i]+`)" role="button" style="font-weight: bold; width: 50%; line-height: 32.5px !important;">Decline</a>
+                    <div style="display: flex; flex-direction: row;">
+                        <span>`+res[i].team_name +`</span>
+                        <a class="btn btn-secondary" onclick="teamInviteResponse(true, `+res[i]+`)" role="button" style="font-weight: bold; width: 50%; line-height: 32.5px !important;">Accept</a>
+                        <a class="btn btn-danger" onclick="teamInviteResponse(false, `+res[i]+`)" role="button" style="font-weight: bold; width: 50%; line-height: 32.5px !important;">Decline</a>
+                    </div>
                     `
             }
         } else {
