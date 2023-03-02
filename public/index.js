@@ -573,7 +573,7 @@ function useResponse(res) {
             for(let i=0; i<res.length; i++){
                 inviteContainer.innerHTML +=
                     `
-                    <div display="flex"><span>`+res[i].team_name +`</span>
+                    <div display="flex" flex-direction="row"><span>`+res[i].team_name +`</span>
                     <a class="btn btn-secondary" onclick="teamInviteResponse(true, `+res[i]+`)" role="button" style="font-weight: bold; width: 50%; line-height: 32.5px !important;">Accept</a>
                     <a class="btn btn-danger" onclick="teamInviteResponse(false, `+res[i]+`)" role="button" style="font-weight: bold; width: 50%; line-height: 32.5px !important;">Decline</a>
                     </div>
