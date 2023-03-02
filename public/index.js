@@ -574,8 +574,8 @@ function useResponse(res) {
                     `
                     <div style="display: flex; flex-direction: row;">
                         <span>`+res[i].team_name +`
-                        <a class="btn" onclick="teamInviteResponse(true, `+res[i]+`)" role="button" style="background-color: green; margin: .25em; font-weight: bolder; font-size: 1.5em; width: auto; line-height: 32.5px !important;"><i class="bi bi-check" style="color: white;></i></a>
-                        <a class="btn" onclick="teamInviteResponse(false, `+res[i]+`)" role="button" style="background-color: red; margin: .25em; font-weight: bolder; font-size: 1.5em; width: auto; line-height: 32.5px !important;"><i class="bi bi-x" style="color: white;></i></a></span>
+                        <a class="btn" onclick="teamInviteResponse(true, `+res[i]+`)" role="button" style="background-color: green; margin: .25em; font-weight: bolder; font-size: 1.5em; width: auto; line-height: 32.5px !important;"><i class="bi bi-check" style="color: white;"></i></a>
+                        <a class="btn" onclick="teamInviteResponse(false, `+res[i]+`)" role="button" style="background-color: red; margin: .25em; font-weight: bolder; font-size: 1.5em; width: auto; line-height: 32.5px !important;"><i class="bi bi-x" style="color: white;"></i></a></span>
                     </div>
                     `
             }
