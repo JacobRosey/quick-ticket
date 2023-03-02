@@ -562,7 +562,6 @@ function useResponse(res) {
                 <div class="card text-center">
                     <div class="card-body">
                         <h5 class="card-title">`+ title + `</h5>
-                        <p class="card-text">Accept or decline the following invitations</p>
                         <div class="btn-group" id="team-invite-btn" style="background-color: #f7f7f7;">
                         </div>
                     </div>
