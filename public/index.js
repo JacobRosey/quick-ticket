@@ -549,8 +549,17 @@ function useResponse(res) {
         return;
     }
     if (active == 'home') {
-        let count = document.getElementById('ticket-count');
-        count.innerHTML = res;
+        if(Array.isArray(res)){
+            let container = document.getElementsByClassName('container');
+            console.log(res)
+            container[0].innerHTML += 
+            `
+            <h1>`+res[0]`</h1>
+            `
+        }else{
+            let count = document.getElementById('ticket-count');
+            count.innerHTML = res;
+        }
     }
     if (active == 'team') {
         //Admin deleted team
