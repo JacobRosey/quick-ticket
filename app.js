@@ -915,3 +915,9 @@ app.route('/invite-member/:user/:team')
             res.send('User does not exist');
         })
     })
+
+app.route('/check-invitations/:user')
+    .get(function (req, res, err){
+        const user = req.body;
+        res.send(user);
+    })
