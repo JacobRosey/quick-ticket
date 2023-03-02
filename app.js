@@ -925,7 +925,7 @@ app.route('/check-invitations/:user')
             .then(([rows, fields]) => {
                 if(!rows.length){
                     res.send('User has no invitations');
-                }else res.send('User has invitations: '+ rows)
+                }else res.send(rows)
             }).catch(err => {
                 console.error(err);
                 res.send('Error occurred')
