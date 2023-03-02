@@ -446,7 +446,7 @@ function ajaxFunc(path, method, d) {
                 case "User is not on a team":
                     useResponse("Not on a team");
                     break;
-                case Array.isArray(response):
+                case Array.isArray(JSON.parse(response)):
                     alert('The response was an array');
                     break;
                 case "User has no invitations":
