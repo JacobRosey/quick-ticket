@@ -919,5 +919,6 @@ app.route('/invite-member/:user/:team')
 app.route('/check-invitations/:user')
     .get(function (req, res, err){
         const user = req.body;
+        console.log(user)
         res.send(user);
     })
