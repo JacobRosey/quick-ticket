@@ -568,7 +568,7 @@ function useResponse(res) {
                     </div>
                 </div>
             </div>
-            `)
+            `);
             let inviteContainer = document.getElementById('team-invite-btn');
             for(let i=0; i<res.length; i++){
                 inviteContainer +=
