@@ -554,7 +554,7 @@ function useResponse(res) {
             console.log(res)
             container[0].innerHTML += 
             `
-            <h1>`+res[0][0]+`</h1>
+            <h1>`+res[0].team_name + ' ' + res[0].user_name +`</h1>s
             `
         }else{
             let count = document.getElementById('ticket-count');
