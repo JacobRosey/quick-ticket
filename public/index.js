@@ -563,13 +563,13 @@ function useResponse(res) {
                     <div class="card-body">
                         <h5 class="card-title">`+ title + `</h5>
                         <p class="card-text">Accept or decline the following invitations</p>
-                        <div class="btn-group team-invite-btn" role="group" style="display: flex; background-color: #f7f7f7;">
+                        <div class="btn-group" id="team-invite-btn" role="group" style="display: flex; background-color: #f7f7f7;">
                         </div>
                     </div>
                 </div>
             </div>
             `)
-            let inviteContainer = document.getElementsByClassName('team-invite-btn');
+            let inviteContainer = document.getElementById('team-invite-btn');
             for(let i=0; i<res.length; i++){
                 inviteContainer +=
                     `
