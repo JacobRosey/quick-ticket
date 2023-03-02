@@ -574,10 +574,10 @@ function useResponse(res) {
                 inviteContainer.innerHTML +=
                     `
                     <div style="display: flex; flex-direction: row;">
-                        <span>`+res[i].team_name +`</span>
+                        <span>`+res[i].team_name +`
                         <a class="btn btn-secondary" onclick="teamInviteResponse(true, `+res[i]+`)" role="button" style="font-weight: bold; width: 50%; line-height: 32.5px !important;">Accept</a>
-                        <a class="btn btn-danger" onclick="teamInviteResponse(false, `+res[i]+`)" role="button" style="font-weight: bold; width: 50%; line-height: 32.5px !important;">Decline</a>
-                    </div><br />
+                        <a class="btn btn-danger" onclick="teamInviteResponse(false, `+res[i]+`)" role="button" style="font-weight: bold; width: 50%; line-height: 32.5px !important;">Decline</a></span>
+                    </div>
                     `
             }
         } else {
