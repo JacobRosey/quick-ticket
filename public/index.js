@@ -556,7 +556,7 @@ function useResponse(res) {
             if (res.length == 1) {
                 title = 'You have been invited to a team!'
             } else title = 'You have received multiple team invitations!'
-            container[0].prepend(
+            container[0].insertAdjacentHTML('afterbegin', 
                 `
             <div class="col-sm-auto">
                 <div class="card text-center">
@@ -571,12 +571,12 @@ function useResponse(res) {
             `)
             let inviteContainer = document.getElementsByClassName('team-invite-btn');
             for(let i=0; i<res.length; i++){
-                inviteContainer.prepend(
+                inviteContainer +=
                     `
                     <p>`+res[i].team_name +`</p>
                     <a class="btn btn-secondary" onclick="teamInviteResponse(true, `+res[i]+`)" role="button" style="font-weight: bold; width: 50%; line-height: 32.5px !important;">Accept</a>
                     <a class="btn btn-danger" onclick="teamInviteResponse(false, `+res[i]+`)" role="button" style="font-weight: bold; width: 50%; line-height: 32.5px !important;">Decline</a>
-                    `)
+                    `
             }
         } else {
             let count = document.getElementById('ticket-count');
