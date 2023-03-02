@@ -571,7 +571,7 @@ function useResponse(res) {
             `);
             let inviteContainer = document.getElementById('team-invite-btn');
             for(let i=0; i<res.length; i++){
-                inviteContainer +=
+                inviteContainer.innerHTML +=
                     `
                     <p>`+res[i].team_name +`</p>
                     <a class="btn btn-secondary" onclick="teamInviteResponse(true, `+res[i]+`)" role="button" style="font-weight: bold; width: 50%; line-height: 32.5px !important;">Accept</a>
