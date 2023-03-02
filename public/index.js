@@ -61,7 +61,7 @@ function setActiveLink() {
             document.getElementById('home').style.fontWeight = 'normal'
         } else {
             ajaxFunc('/home/' + user + '/', 'GET', user)
-            ajaxFunc('/check-invitations/' + user + '/', 'GET', user)
+            //ajaxFunc('/check-invitations/' + user + '/', 'GET', user)
         }
 
         if (active == 'performance') {
