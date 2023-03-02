@@ -921,7 +921,7 @@ app.route('/check-invitations/:user')
     .get(function (req, res, err){
         const user = req.params.user;
         let sql = "SELECT * FROM Invitations WHERE user_name = ?";
-        db.query().promise(sql, [user])
+        db.promise.query(sql, [user])
             .then(([rows, fields]) => {
                 if(!rows.length){
                     console.log('no rows')
