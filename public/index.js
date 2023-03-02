@@ -562,7 +562,7 @@ function useResponse(res) {
                 <div class="card text-center">
                     <div class="card-body">
                         <h5 class="card-title">`+ title + `</h5>
-                        <div class="btn-group" id="team-invite-btn" style="background-color: #f7f7f7;">
+                        <div id="team-invite-btn" style="background-color: #f7f7f7;">
                         </div>
                     </div>
                 </div>
