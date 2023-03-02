@@ -352,7 +352,7 @@ function inviteNewMember(index) {
                 </form>
                 </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onClick="sendTeamInvite('`+noHyphens+`');">Confirm</button>
+                <button type="button" class="btn btn-primary" onClick="sendTeamInvite('`+ noHyphens + `');">Confirm</button>
                 </div>
             </div>                                            
             </div>
@@ -389,12 +389,12 @@ function inviteNewMember(index) {
     return;
 }
 
-function sendTeamInvite(teamName){
+function sendTeamInvite(teamName) {
     var modal = document.getElementById("myModal");
     const newMember = document.getElementById('username').value.trim();
 
     modal.remove();
-    
+
     const data = {
         user: newMember,
         team: teamName
@@ -549,14 +549,36 @@ function useResponse(res) {
         return;
     }
     if (active == 'home') {
-        if(Array.isArray(res)){
+        if (Array.isArray(res)) {
             let container = document.getElementsByClassName('container');
             console.log(res)
-            container[0].innerHTML += 
-            `
-            <h1>`+res[0].team_name + ' ' + res[0].user_name +`</h1>s
-            `
-        }else{
+            let title;
+            if (res.length == 1) {
+                title = 'You have been invited to a team!'
+            } else title = 'You have received multiple team invitations!'
+            container[0].prepend(
+                `
+            <div class="col-sm-auto">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">`+ title + `</h5>
+                        <p class="card-text">Accept or decline the following invitations</p>
+                        <div class="btn-group team-invite-btn" role="group" style="display: flex; background-color: #f7f7f7;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            `)
+            let inviteContainer = document.getElementsByClassName('team-invite-btn');
+            for(let i=0; i<res.length; i++){
+                inviteContainer.prepend(
+                    `
+                    <p>`+res[i].team_name +`</p>
+                    <a class="btn btn-secondary" onclick="teamInviteResponse(true, `+res[i]+`)" role="button" style="font-weight: bold; width: 50%; line-height: 32.5px !important;">Accept</a>
+                    <a class="btn btn-danger" onclick="teamInviteResponse(false, `+res[i]+`)" role="button" style="font-weight: bold; width: 50%; line-height: 32.5px !important;">Decline</a>
+                    `)
+            }
+        } else {
             let count = document.getElementById('ticket-count');
             count.innerHTML = res;
         }
