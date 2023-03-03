@@ -554,8 +554,8 @@ function useResponse(res) {
             console.log(res)
             let title;
             if (res.length == 1) {
-                title = 'You have been invited to a team!'
-            } else title = 'You have received multiple team invitations!'
+                title = "You've been invited to a team!"
+            } else title = "You've received multiple team invitations!";
             container[0].insertAdjacentHTML('afterbegin', 
                 `
             <div class="col-sm-auto">
