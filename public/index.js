@@ -572,7 +572,7 @@ function useResponse(res) {
             for(let i=0; i<res.length; i++){
                 inviteContainer.innerHTML +=
                     `
-                    <div style="display: flex; flex-direction: row; justify-content: right;">
+                    <div style="display: flex; flex-direction: row; justify-content: right; border: 1px solid #dbdbdb;">
                         <span>`+res[i].team_name +`
                         <a class="btn" onclick="teamInviteResponse(true, `+res[i]+`)" role="button" style="background-color: green; margin: .25em; margin-left: 1em; width: auto; line-height: 32.5px !important;"><i class="bi bi-check" style="color: white; font-weight: bolder; font-size: 1.5em;"></i></a>
                         <a class="btn" onclick="teamInviteResponse(false, `+res[i]+`)" role="button" style="background-color: red; margin: .25em; width: auto; line-height: 32.5px !important;"><i class="bi bi-x" style="color: white; font-weight: bolder; font-size: 1.5em;"></i></a></span>
