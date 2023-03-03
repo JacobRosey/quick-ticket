@@ -558,7 +558,7 @@ function useResponse(res) {
             } else title = "You've received multiple team invitations!";
             container[0].insertAdjacentHTML('afterbegin', 
                 `
-            <div class="col-sm-auto">
+            <div class="col-sm-auto" style="height: auto;">
                 <div class="card text-center">
                     <div class="card-body">
                         <h5 class="card-title">`+ title + `</h5>
