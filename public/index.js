@@ -402,6 +402,14 @@ function sendTeamInvite(teamName) {
 
     ajaxFunc('/invite-member/:user/:team', "POST", data);
 }
+
+function teamInviteResponse(bool, obj){
+    if(bool === true){
+        alert('You accepted the invite to ' + obj.team_name)
+    } else {
+        alert('You declined the invite to ' + obj.team_name)
+    }
+}
 function ajaxFunc(path, method, d) {
 
     let xhr = new XMLHttpRequest();
