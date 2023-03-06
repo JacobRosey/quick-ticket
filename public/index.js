@@ -580,12 +580,16 @@ function useResponse(res) {
             `);
             let inviteContainer = document.getElementById('team-invite-btn');
             for (let i = 0; i < res.length; i++) {
+                let obj = {
+                    "index" : i,
+                    "team_name" : res[i].team_name
+                };
                 inviteContainer.innerHTML +=
                     `
                     <div style="display: flex; flex-direction: row; justify-content: right;">
                         <span>`+ res[i].team_name + `
-                        <a class="btn" onclick="teamInviteResponse('true', `+ res[i] + `)" role="button" style="background-color: #198753; margin: .25em; margin-left: 1em; width: auto; line-height: 32.5px !important;"><i class="bi bi-check" style="color: white; font-weight: bolder; font-size: 1.5em;"></i></a>
-                        <a class="btn" onclick="teamInviteResponse('false', `+ res[i] + `)" role="button" style="background-color: #dd3444; margin: .25em; width: auto; line-height: 32.5px !important;"><i class="bi bi-x" style="color: white; font-weight: bolder; font-size: 1.5em;"></i></a></span>
+                        <a class="btn" onclick="teamInviteResponse('true', `+ obj + `)" role="button" style="background-color: #198753; margin: .25em; margin-left: 1em; width: auto; line-height: 32.5px !important;"><i class="bi bi-check" style="color: white; font-weight: bolder; font-size: 1.5em;"></i></a>
+                        <a class="btn" onclick="teamInviteResponse('false', `+ obj + `)" role="button" style="background-color: #dd3444; margin: .25em; width: auto; line-height: 32.5px !important;"><i class="bi bi-x" style="color: white; font-weight: bolder; font-size: 1.5em;"></i></a></span>
                     </div>
                     `
             }
