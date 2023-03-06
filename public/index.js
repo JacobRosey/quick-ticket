@@ -554,12 +554,12 @@ function useResponse(res) {
             console.log(res)
             let title;
             if (res.length == 1) {
-                title = "You've been invited to a team!"
+                title = "You've received a team invitation!"
             } else title = "You've received multiple team invitations!";
             container[0].insertAdjacentHTML('afterbegin', 
                 `
-            <div class="col-sm-auto" style="height: 50px;">
-                <div class="card text-center">
+            <div class="col-sm-auto">
+                <div class="card text-center" style="height: 50px;">
                     <div class="card-body">
                         <h5 class="card-title">`+ title + `</h5>
                         <div id="team-invite-btn" style="background-color: #f7f7f7; border: 1px solid #dbdbdb;">
