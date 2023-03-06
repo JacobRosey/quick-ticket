@@ -404,7 +404,7 @@ function sendTeamInvite(teamName) {
 }
 
 function teamInviteResponse(bool, obj){
-    if(bool === true){
+    if(bool === 'true'){
         alert('You accepted the invite to ' + obj.team_name)
     } else {
         alert('You declined the invite to ' + obj.team_name)
@@ -584,8 +584,8 @@ function useResponse(res) {
                     `
                     <div style="display: flex; flex-direction: row; justify-content: right;">
                         <span>`+ res[i].team_name + `
-                        <a class="btn" onclick="teamInviteResponse(true, `+ res[i] + `)" role="button" style="background-color: #198753; margin: .25em; margin-left: 1em; width: auto; line-height: 32.5px !important;"><i class="bi bi-check" style="color: white; font-weight: bolder; font-size: 1.5em;"></i></a>
-                        <a class="btn" onclick="teamInviteResponse(false, `+ res[i] + `)" role="button" style="background-color: #dd3444; margin: .25em; width: auto; line-height: 32.5px !important;"><i class="bi bi-x" style="color: white; font-weight: bolder; font-size: 1.5em;"></i></a></span>
+                        <a class="btn" onclick="teamInviteResponse('true', `+ res[i] + `)" role="button" style="background-color: #198753; margin: .25em; margin-left: 1em; width: auto; line-height: 32.5px !important;"><i class="bi bi-check" style="color: white; font-weight: bolder; font-size: 1.5em;"></i></a>
+                        <a class="btn" onclick="teamInviteResponse('false', `+ res[i] + `)" role="button" style="background-color: #dd3444; margin: .25em; width: auto; line-height: 32.5px !important;"><i class="bi bi-x" style="color: white; font-weight: bolder; font-size: 1.5em;"></i></a></span>
                     </div>
                     `
             }
