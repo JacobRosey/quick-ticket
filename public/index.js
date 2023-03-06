@@ -556,26 +556,28 @@ function useResponse(res) {
             if (res.length == 1) {
                 title = "You've received a team invitation!"
             } else title = "You've received multiple team invitations!";
-            container.insertAdjacentHTML('afterbegin', 
+            container.insertAdjacentHTML('afterbegin',
                 `
-            <div class="col-sm-auto">
-                <div class="card text-center" style="height: auto;">
-                    <div class="card-body">
-                        <h5 class="card-title">`+ title + `</h5>
-                        <div id="team-invite-btn" style="background-color: #f7f7f7; border: 1px solid #dbdbdb;">
+                <div class="row justify-content-md-center">
+                    <div class="col-sm-auto" id="invitation-card">
+                        <div class="card text-center" style="height: auto;">
+                            <div class="card-body">
+                                <h5 class="card-title">`+ title + `</h5>
+                                <div id="team-invite-btn" style="background-color: #f7f7f7; border: 1px solid #dbdbdb;">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
             `);
             let inviteContainer = document.getElementById('team-invite-btn');
-            for(let i=0; i<res.length; i++){
+            for (let i = 0; i < res.length; i++) {
                 inviteContainer.innerHTML +=
                     `
                     <div style="display: flex; flex-direction: row; justify-content: right;">
-                        <span>`+res[i].team_name +`
-                        <a class="btn" onclick="teamInviteResponse(true, `+res[i]+`)" role="button" style="background-color: #198753; margin: .25em; margin-left: 1em; width: auto; line-height: 32.5px !important;"><i class="bi bi-check" style="color: white; font-weight: bolder; font-size: 1.5em;"></i></a>
-                        <a class="btn" onclick="teamInviteResponse(false, `+res[i]+`)" role="button" style="background-color: #dd3444; margin: .25em; width: auto; line-height: 32.5px !important;"><i class="bi bi-x" style="color: white; font-weight: bolder; font-size: 1.5em;"></i></a></span>
+                        <span>`+ res[i].team_name + `
+                        <a class="btn" onclick="teamInviteResponse(true, `+ res[i] + `)" role="button" style="background-color: #198753; margin: .25em; margin-left: 1em; width: auto; line-height: 32.5px !important;"><i class="bi bi-check" style="color: white; font-weight: bolder; font-size: 1.5em;"></i></a>
+                        <a class="btn" onclick="teamInviteResponse(false, `+ res[i] + `)" role="button" style="background-color: #dd3444; margin: .25em; width: auto; line-height: 32.5px !important;"><i class="bi bi-x" style="color: white; font-weight: bolder; font-size: 1.5em;"></i></a></span>
                     </div>
                     `
             }

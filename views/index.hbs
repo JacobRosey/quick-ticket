@@ -38,9 +38,11 @@
             animation: animate-on-load .75s ease-in-out;
             transform-origin: left;
         }
-        .col-sm-auto{
+
+        .col-sm-auto {
             margin-top: .5em;
         }
+
         .btn {
             background-color: #ff914c;
             color: white;
@@ -60,10 +62,15 @@
             width: calc(100% - 20px);
         }
 
+        @media screen and (min-width: 1060px) {
+            #invitation-card{
+                width: 80%;
+            }
+        }
     </style>
 
-    <div class="container">
-        <div class="row justify-content-md-center" id="home-cards">
+    <div class="container" id="home-cards">
+        <div class="row justify-content-md-center">
             <div class="col-sm-auto">
                 <div class="card text-center">
                     <div class="card-body">
@@ -96,7 +103,8 @@
                 <div class="card text-center">
                     <div class="card-body">
                         <h5 class="card-title">Team Tickets</h5>
-                        <p class="card-text">There are currently <span id="ticket-count" style="font-weight: bolder;">?</span> open tickets for your team(s).</p>
+                        <p class="card-text">There are currently <span id="ticket-count"
+                                style="font-weight: bolder;">?</span> open tickets for your team(s).</p>
                         <a href="/opentickets" class="btn">View Tickets</a>
                     </div>
                 </div>
