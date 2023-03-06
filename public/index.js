@@ -550,13 +550,13 @@ function useResponse(res) {
     }
     if (active == 'home') {
         if (Array.isArray(res)) {
-            let container = document.getElementsByClassName('container');
+            let container = document.getElementById('home-cards');
             console.log(res)
             let title;
             if (res.length == 1) {
                 title = "You've received a team invitation!"
             } else title = "You've received multiple team invitations!";
-            container[1].insertAdjacentHTML('afterbegin', 
+            container.insertAdjacentHTML('afterbegin', 
                 `
             <div class="col-sm-auto">
                 <div class="card text-center" style="height: auto;">
