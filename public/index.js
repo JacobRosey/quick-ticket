@@ -559,7 +559,7 @@ function useResponse(res) {
             container[0].insertAdjacentHTML('afterbegin', 
                 `
             <div class="col-sm-auto">
-                <div class="card text-center" style="height: 50px;">
+                <div class="card text-center" style="height: auto;">
                     <div class="card-body">
                         <h5 class="card-title">`+ title + `</h5>
                         <div id="team-invite-btn" style="background-color: #f7f7f7; border: 1px solid #dbdbdb;">
