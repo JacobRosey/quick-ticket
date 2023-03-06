@@ -556,7 +556,7 @@ function useResponse(res) {
             if (res.length == 1) {
                 title = "You've received a team invitation!"
             } else title = "You've received multiple team invitations!";
-            container[0].insertAdjacentHTML('afterbegin', 
+            container[1].insertAdjacentHTML('afterbegin', 
                 `
             <div class="col-sm-auto" style="margin: auto; width: auto;">
                 <div class="card text-center" style="height: auto;">
