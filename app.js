@@ -942,9 +942,39 @@ app.route('/handle-invite/')
         const {user, team, bool} = req.body;
         console.log(user, team, bool)
         if(bool === 'true'){
-            console.log('TRUE')
+            let sql = "SELECT * FROM Teams WHERE team_name = ?";
+            db.promise().query(sql, team)
+                .then(([rows, fields]) => {
+                    const teamID = rows.team_id;
+                    sql = "SELECT * FROM Users WHERE user_name = ?";
+                    db.promise().query(sql, user)
+                        .then(([rows, fields]) => {
+                            const userID = rows.user_id;
+                            sql = "INSERT INTO Members VALUES (?, ?)";
+                            db.promise().query(sql, [userID, teamID])
+                                .then(([rows, fields]) => {
+                                    res.send('You have successfully accepted the invitation')
+                                }).catch(err => {
+                                    console.error(err);
+                                    res.send('Error occurred')
+                                })
+                        }).catch(err => {
+                            console.error(err);
+                            res.send('Error occurred')
+                        })
+                }).catch(err => {
+                    console.error(err);
+                    res.send('Error occurred')
+                })
         } else{
-            console.log('false')
+            let sql = "DELETE FROM Invitations WHERE VALUES (?, ?)";
+            db.promise().query(sql, [user, team])
+                .then(([rows, fields]) => {
+                    res.send('You have successfully declined the invitation');
+                }).catch(err => {
+                    console.error(err);
+                    res.send('Error occurred')
+                })
         }
         res.send("Hello")
     })
