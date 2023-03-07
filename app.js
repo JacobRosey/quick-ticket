@@ -950,7 +950,7 @@ app.route('/handle-invite/')
                     db.promise().query(sql, user)
                         .then(([rows, fields]) => {
                             const userID = rows.user_id;
-                            sql = "INSERT INTO Members VALUES (?, ?)";
+                            sql = "INSERT INTO Members (user_id, team_id) VALUES (?, ?)";
                             db.promise().query(sql, [userID, teamID])
                                 .then(([rows, fields]) => {
                                     res.send('You have successfully accepted the invitation')
