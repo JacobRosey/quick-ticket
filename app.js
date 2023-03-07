@@ -941,5 +941,10 @@ app.route('/handle-invite/')
     .put(function (req, res, err){
         const {user, team, bool} = req.body;
         console.log(user, team, bool)
+        if(bool === true){
+            console.log('TRUE')
+        } else{
+            console.log('false')
+        }
         res.send("Hello")
     })
