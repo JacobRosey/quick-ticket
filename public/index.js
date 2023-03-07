@@ -403,11 +403,11 @@ function sendTeamInvite(teamName) {
     ajaxFunc('/invite-member/:user/:team', "POST", data);
 }
 
-function teamInviteResponse(bool, obj){
+function teamInviteResponse(bool, res){
     if(bool === 'true'){
-        alert('You accepted the invite to ' + obj.team_name)
+        alert('You accepted the invite to ' + res.team_name)
     } else {
-        alert('You declined the invite to ' + obj.team_name)
+        alert('You declined the invite to ' + res.team_name)
     }
 }
 function ajaxFunc(path, method, d) {
