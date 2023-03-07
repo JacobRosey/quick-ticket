@@ -403,11 +403,11 @@ function sendTeamInvite(teamName) {
     ajaxFunc('/invite-member/:user/:team', "POST", data);
 }
 
-function teamInviteResponse(bool, res){
+function teamInviteResponse(bool, team, index){
     if(bool === 'true'){
-        alert('You accepted the invite to ' + res.team_name)
+        alert('You accepted the invite to ' + team)
     } else {
-        alert('You declined the invite to ' + res.team_name)
+        alert('You declined the invite to ' + team)
     }
 }
 function ajaxFunc(path, method, d) {
@@ -584,8 +584,8 @@ function useResponse(res) {
                     `
                     <div style="display: flex; flex-direction: row; justify-content: right;">
                         <span>`+ res[i].team_name + `
-                        <a class="btn" onclick="teamInviteResponse('true', `+ res[i] + `)" role="button" style="background-color: #198753; margin: .25em; margin-left: 1em; width: auto; line-height: 32.5px !important;"><i class="bi bi-check" style="color: white; font-weight: bolder; font-size: 1.5em;"></i></a>
-                        <a class="btn" onclick="teamInviteResponse('false', `+ res[i] + `)" role="button" style="background-color: #dd3444; margin: .25em; width: auto; line-height: 32.5px !important;"><i class="bi bi-x" style="color: white; font-weight: bolder; font-size: 1.5em;"></i></a></span>
+                        <a class="btn" onclick="teamInviteResponse('true', `+ res[i].team_name + `, `+ i +`)" role="button" style="background-color: #198753; margin: .25em; margin-left: 1em; width: auto; line-height: 32.5px !important;"><i class="bi bi-check" style="color: white; font-weight: bolder; font-size: 1.5em;"></i></a>
+                        <a class="btn" onclick="teamInviteResponse('false', `+ res[i].team_name + `, `+ i +`)" role="button" style="background-color: #dd3444; margin: .25em; width: auto; line-height: 32.5px !important;"><i class="bi bi-x" style="color: white; font-weight: bolder; font-size: 1.5em;"></i></a></span>
                     </div>
                     `
             }
