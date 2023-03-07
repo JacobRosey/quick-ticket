@@ -404,11 +404,20 @@ function sendTeamInvite(teamName) {
 }
 
 function teamInviteResponse(bool, team){
+    let user = sessionStorage.getItem('user');
+    const data = {
+        "user" : user, 
+        "team" : team,
+        "bool" : bool
+    }
     if(bool === 'true'){
         alert('You accepted the invite to ' + team)
     } else {
+        //Handle response with ajaxFunc
         alert('You declined the invite to ' + team)
     }
+    //Handle response with ajaxFunc
+    ajaxFunc('/handle-invite/', "PUT", data);
 }
 function ajaxFunc(path, method, d) {
 
