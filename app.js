@@ -936,3 +936,10 @@ app.route('/check-invitations/:user')
             })
         
     })
+
+app.route('handle-invite/')
+    .put(function (req, res, err){
+        const {user, team, bool} = req.body;
+        console.log(user, team, bool)
+        res.send("Hello")
+    })
