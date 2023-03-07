@@ -976,5 +976,4 @@ app.route('/handle-invite/')
                     res.send('Error occurred')
                 })
         }
-        res.send("Hello")
     })
