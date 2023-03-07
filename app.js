@@ -945,11 +945,11 @@ app.route('/handle-invite/')
             let sql = "SELECT * FROM Teams WHERE team_name = ?";
             db.promise().query(sql, team)
                 .then(([rows, fields]) => {
-                    const teamID = rows.team_id;
+                    const teamID = rows[0].team_id;
                     sql = "SELECT * FROM Users WHERE user_name = ?";
                     db.promise().query(sql, user)
                         .then(([rows, fields]) => {
-                            const userID = rows.user_id;
+                            const userID = rows[0].user_id;
                             sql = "INSERT INTO Members (user_id, team_id) VALUES (?, ?)";
                             db.promise().query(sql, [userID, teamID])
                                 .then(([rows, fields]) => {
