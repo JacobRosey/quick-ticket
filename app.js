@@ -910,7 +910,7 @@ app.route('/invite-member/:user/:team')
                         db.promise().query(sql, [teamID, userID])
                             .then(([rows, fields]) => {
                                 if (rows.length) {
-                                    return res.send('That user is already on this team!')
+                                    return res.send("That user is already on this team!")
                                 } else {
                                     db.promise().query()
                                     sql = "INSERT INTO Invitations VALUES (?, ?)";

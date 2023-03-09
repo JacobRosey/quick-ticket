@@ -497,6 +497,9 @@ function ajaxFunc(path, method, d) {
                         window.location.replace('/home')
                     }, 500)
                     break;
+                case "That user is already on this team!":
+                    alert(response);
+                    break;
                 default:
                     alert(response);
                     setTimeout(() => {
