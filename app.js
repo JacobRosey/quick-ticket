@@ -894,39 +894,54 @@ app.route('/admin-transfer')
     })
 
 app.route('/invite-member/:user/:team')
-    .post(function (req, res, err){
-        const {user, team} = req.body;
+    .post(function (req, res, err) {
+        const { user, team } = req.body;
         const teamName = team.replace(/\s+/g, '-');
         //See if user from input form actually exists
         let sql = "SELECT * FROM Users WHERE user_name = ?;"
         db.promise().query(sql, user)
             .then(([rows, fields]) => {
-            let sql = "INSERT INTO Invitations VALUES (?, ?)";
-            db.promise().query(sql, [user, teamName])
-            .then(([rows, fields]) => {
-                res.send('Invitation Sent!')
-            }).catch(err=>{
+                const userID = rows[0].user_id;
+                let sql = "SELECT * FROM Teams WHERE team_name = ?";
+                db.promise().query(sql, team)
+                    .then(([rows, fields]) => {
+                        const teamID = rows[0].team_id
+                        sql = "SELECT * FROM Members WHERE team_id = ? AND user_id = ?";
+                        db.promise().query(sql, [teamID, userID])
+                            .then(([rows, fields]) => {
+                                if (rows.length) {
+                                    return res.send('That user is already on this team!')
+                                } else {
+                                    db.promise().query()
+                                    sql = "INSERT INTO Invitations VALUES (?, ?)";
+                                    db.promise().query(sql, [user, teamName])
+                                        .then(([rows, fields]) => {
+                                            res.send('Invitation Sent!')
+                                        }).catch(err => {
+                                            console.error(err);
+                                            db.promise().rollback();
+                                            res.send(err)
+                                        })
+                                }
+                            })
+                    })
+            }).catch(err => {
                 console.error(err);
                 db.promise().rollback();
-                res.send(err)
+                res.send('User does not exist');
             })
-        }).catch(err => {
-            console.error(err);
-            db.promise().rollback();
-            res.send('User does not exist');
-        })
     })
 
 app.route('/check-invitations/:user')
-    .get(function (req, res, err){
+    .get(function (req, res, err) {
         const user = req.params.user;
         let sql = "SELECT * FROM Invitations WHERE user_name = ?";
         db.promise().query(sql, [user])
             .then(([rows, fields]) => {
-                if(!rows.length){
+                if (!rows.length) {
                     console.log('no rows')
                     res.send('User has no invitations');
-                }else { 
+                } else {
                     console.log(rows)
                     res.send(rows)
                 }
@@ -934,14 +949,14 @@ app.route('/check-invitations/:user')
                 console.error(err);
                 res.send('Error occurred')
             })
-        
+
     })
 
 app.route('/handle-invite/')
-    .put(function (req, res, err){
-        const {user, team, bool} = req.body;
+    .put(function (req, res, err) {
+        const { user, team, bool } = req.body;
         console.log(user, team, bool)
-        if(bool === 'true'){
+        if (bool === 'true') {
             let sql = "SELECT * FROM Teams WHERE team_name = ?";
             db.promise().query(sql, team)
                 .then(([rows, fields]) => {
@@ -966,7 +981,7 @@ app.route('/handle-invite/')
                     console.error(err);
                     res.send('Error occurred')
                 })
-        } else{
+        } else {
             let sql = "DELETE FROM Invitations WHERE VALUES (?, ?)";
             db.promise().query(sql, [user, team])
                 .then(([rows, fields]) => {
