@@ -968,7 +968,10 @@ app.route('/handle-invite/')
                             sql = "INSERT INTO Members (user_id, team_id) VALUES (?, ?)";
                             db.promise().query(sql, [userID, teamID])
                                 .then(([rows, fields]) => {
-                                    res.send('You have successfully accepted the invitation')
+                                    sql = "DELETE FROM Invitations WHERE user_name = ? AND team_name = ?"
+                                    db.promise().query(sql, [user, team]).then(([rows, fields])=> {
+                                        res.send('You have successfully accepted the invitation')
+                                    })
                                 }).catch(err => {
                                     console.error(err);
                                     res.send('Error occurred')
@@ -982,7 +985,7 @@ app.route('/handle-invite/')
                     res.send('Error occurred')
                 })
         } else {
-            let sql = "DELETE FROM Invitations WHERE VALUES (?, ?)";
+            let sql = "DELETE FROM Invitations WHERE user_name = ? AND team_name = ?";
             db.promise().query(sql, [user, team])
                 .then(([rows, fields]) => {
                     res.send('You have successfully declined the invitation');
