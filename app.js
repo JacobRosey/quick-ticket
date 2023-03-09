@@ -896,6 +896,7 @@ app.route('/admin-transfer')
 app.route('/invite-member/:user/:team')
     .post(function (req, res, err) {
         const { user, team } = req.body;
+        console.log(team);
         const teamName = team.replace(/\s+/g, '-');
         //See if user from input form actually exists
         let sql = "SELECT * FROM Users WHERE user_name = ?;"
@@ -903,7 +904,7 @@ app.route('/invite-member/:user/:team')
             .then(([rows, fields]) => {
                 const userID = rows[0].user_id;
                 let sql = "SELECT * FROM Teams WHERE team_name = ?";
-                db.promise().query(sql, [team])
+                db.promise().query(sql, [teamName])
                     .then(([rows, fields]) => {
                         const teamID = rows[0].team_id;
                         sql = "SELECT * FROM Members WHERE team_id = ? AND user_id = ?";
