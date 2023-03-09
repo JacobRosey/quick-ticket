@@ -905,7 +905,7 @@ app.route('/invite-member/:user/:team')
                 let sql = "SELECT * FROM Teams WHERE team_name = ?";
                 db.promise().query(sql, [team])
                     .then(([rows, fields]) => {
-                        let teamID = rows[0].team_id;
+                        const teamID = rows[0].team_id;
                         sql = "SELECT * FROM Members WHERE team_id = ? AND user_id = ?";
                         db.promise().query(sql, [teamID, userID])
                             .then(([rows, fields]) => {
