@@ -486,6 +486,10 @@ function ajaxFunc(path, method, d) {
             //State whether login was successful or not
             var response = xhr.responseText;
             console.log(response)
+            if(response.includes('You accepted the invite') || response.includes('You declined the invite')){
+                alert(response);
+                window.location.reload();
+            }
             switch (response) {
                 case "Team creation failed":
                     alert(response);
@@ -499,10 +503,6 @@ function ajaxFunc(path, method, d) {
                     break;
                 case "That user is already on this team!":
                     alert(response);
-                    break;
-                case response.includes("You accepted the invite"):
-                    alert(response);
-                    window.location.reload()
                     break;
                 default:
                     alert(response);
