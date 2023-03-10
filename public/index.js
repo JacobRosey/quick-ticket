@@ -500,6 +500,10 @@ function ajaxFunc(path, method, d) {
                 case "That user is already on this team!":
                     alert(response);
                     break;
+                case response.includes("You accepted the invite"):
+                    alert(response);
+                    window.location.reload()
+                    break;
                 default:
                     alert(response);
                     setTimeout(() => {
