@@ -504,6 +504,12 @@ function ajaxFunc(path, method, d) {
                 case "That user is already on this team!":
                     alert(response);
                     break;
+                case "Invitation Sent!":
+                    alert(response);
+                    setTimeout(() => {
+                        window.location.reload()
+                    }, 500);
+                    break;
                 default:
                     alert(response);
                     setTimeout(() => {
