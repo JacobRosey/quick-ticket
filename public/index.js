@@ -525,7 +525,7 @@ function ajaxFunc(path, method, d) {
             } else console.log('status ' + xhr.status)
             //State whether login was successful or not
             var response = xhr.responseText;
-            if(response.includes('You accepted the invite') || response.includes('You declined the invite')){
+            if(response.includes('You have successfully accepted') || response.includes('You have successfully declined')){
                 //alert(response);
                 location.reload();
                 return;
