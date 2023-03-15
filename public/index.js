@@ -488,7 +488,7 @@ function ajaxFunc(path, method, d) {
             console.log(response)
             if(response.includes('You accepted the invite') || response.includes('You declined the invite')){
                 alert(response);
-                window.location.reload();
+                location.reload();
             }
             switch (response) {
                 case "Team creation failed":
