@@ -798,7 +798,7 @@ function useResponse(res) {
                     placeholder="Issue with promise in app.js" required>
             </div>
             <div class="form-group">
-                <label for="exampleFormControlSelect1">Priority Level</label>
+                <label for="exampleFormControlSelect1">Priority</label>
                 <select class="form-control" name="ticketPriority" id="ticketPriority" required>
                     <option>Low</option>
                     <option selected>Normal</option>
