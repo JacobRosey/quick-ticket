@@ -487,7 +487,7 @@ function ajaxFunc(path, method, d) {
             var response = xhr.responseText;
             console.log(response)
             if(response.includes('You accepted the invite') || response.includes('You declined the invite')){
-                alert(response);
+                //alert(response);
                 location.reload();
             }
             switch (response) {
